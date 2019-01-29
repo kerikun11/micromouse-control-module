@@ -1,0 +1,10 @@
+{
+    "name": "AccelDesigner",
+    "description": "AccelDesigner",
+    "keywords": "micromouse,robot,vehicle",
+    "build": {
+        "flags": [
+            "-I inc"
+        ]
+    }
+}
