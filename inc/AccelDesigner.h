@@ -44,8 +44,9 @@ public:
    */
   void reset(const float a_max, const float v_start, const float v_end) {
     if (std::abs(v_end - v_start) < 0.001f) {
-      am = t0 = t1 = t2 = t3 = v0 = v1 = v2 = v3 = x0 = x1 = x2 = x3 = tc = tm =
-          0;
+      am = t0 = t1 = t2 = t3 = 0;
+      v0 = v1 = v2 = v3 = v_start;
+      x0 = x1 = x2 = x3 = tc = tm = 0;
       return;
     }
     tc = calcTimeCurve(a_max); //< 速度が曲線である時間を決定
