@@ -72,9 +72,6 @@ public:
     x1 = x(t1);
     x2 = x(t2); //< 式から求めることができる
     x3 = x0 + (v0 + v3) / 2 * (t3 - t0); //< 図中の面積により
-                                         // 表示
-    std::cout << "cv t0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
-              << "\tt3: " << t3 << std::endl;
   }
   /**
    * @brief 時刻$t$における加速度$a$
@@ -150,8 +147,8 @@ public:
    * @param d 走行距離 [mm]
    * @return vm 最大速度 [mm/s]
    */
-  static float calcVelocityEnd(float am, const float vs, const float va,
-                               const float vt, const float d) {
+  static float calcVelocityEnd(float am, const float vs, const float vt,
+                               const float d) {
     // 速度が曲線となる部分の時間を決定
     const float tc = AccelCurve::calcTimeCurve(am);
     // 最大加速度の符号を決定
@@ -176,7 +173,7 @@ public:
       // std::cout << "c2-n: " << c2 << std::endl;
     }
     const float tm = (ve - vs) / am - tc; //< 等加速度直線運動の時間を決定
-    std::cout << "tm: " << tm << std::endl;
+    // std::cout << "tm: " << tm << std::endl;
     if (tm > 0) {
       //< 2次方程式の解
       const float c1 =
@@ -244,12 +241,12 @@ public:
   void reset(const float a_max, const float v_start, const float v_sat,
              const float v_target, float distance, const float x_start = 0,
              const float t_start = 0) {
-    std::cout << "a_max: " << a_max << "\tv_start: " << v_start
-              << "\tv_sat: " << v_sat << "\tv_target: " << v_target
-              << "\tdistance: " << distance << std::endl;
+    // std::cout << "a_max: " << a_max << "\tv_start: " << v_start
+    //           << "\tv_sat: " << v_sat << "\tv_target: " << v_target
+    //           << "\tdistance: " << distance << std::endl;
     // 走行距離から終点速度$v_e$を算出
     float v_end =
-        AccelCurve::calcVelocityEnd(a_max, v_start, v_sat, v_target, distance);
+        AccelCurve::calcVelocityEnd(a_max, v_start, v_target, distance);
     // 走行距離から最大速度$v_m$を算出
     float v_max =
         AccelCurve::calcVelocityMax(a_max, v_start, v_sat, v_end, distance);
@@ -271,15 +268,13 @@ public:
     t3 = t0 + ac.t_end() + (distance - ac.x_end() - dc.x_end()) / v_max +
          dc.t_end(); //< 曲線減速終了の時刻
     // 表示
-    std::cout << "v_start: " << v_start << "\tv_max: " << v_max
-              << "\tv_end: " << v_end << "\tdistance: " << distance
-              << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
-              << "\tt3: " << t3 << std::endl;
-    std::cout << "x0: " << x0 << "\tx1: " << ac.x_end()
-              << "\tx2: " << (distance - ac.x_end() - dc.x_end())
-              << "\tx3: " << x3 << std::endl;
-    std::cout << "dc.x(0): " << dc.x(0) << std::endl;
-    std::cout << "dc.x_end(): " << dc.x_end() << std::endl;
+    // std::cout << "v_start: " << v_start << "\tv_max: " << v_max
+    //           << "\tv_end: " << v_end << "\tdistance: " << distance
+    //           << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
+    //           << "\tt3: " << t3 << std::endl;
+    // std::cout << "x0: " << x0 << "\tx1: " << ac.x_end()
+    //           << "\tx2: " << (distance - ac.x_end() - dc.x_end())
+    //           << "\tx3: " << x3 << std::endl;
   }
   /** @function a
    *   @brief 時刻$t$における加速度$a$

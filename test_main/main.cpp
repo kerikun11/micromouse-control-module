@@ -40,7 +40,7 @@ int main(void) {
   // test(4318.56, 1923.44, 269.985, 979.856, 67.8627, sd.x_end(), sd.t_end());
 
   // sd.reset(9000, 120, 120, 120, 0, 0, 0);
-  int n = 100;
+  int n = 10;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> a_urd(1000, 9000);
   std::uniform_real_distribution<float> v_urd(90, 3600);
