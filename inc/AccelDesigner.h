@@ -74,6 +74,23 @@ public:
     x3 = x0 + (v0 + v3) / 2 * (t3 - t0); //< 図中の面積により
   }
   /**
+   * @brief 時刻$t$における躍度$j$
+   * @param t 時刻[s]
+   * @return 躍度[mm/s/s/s]
+   */
+  float j(const float t) const {
+    if (t <= t0)
+      return 0;
+    else if (t <= t1)
+      return am / tc;
+    else if (t <= t2)
+      return 0;
+    else if (t <= t3)
+      return -am / tc;
+    else
+      return 0;
+  }
+  /**
    * @brief 時刻$t$における加速度$a$
    * @param t 時刻[s]
    * @return 加速度[mm/s/s]
@@ -244,21 +261,21 @@ public:
     // std::cout << "a_max: " << a_max << "\tv_start: " << v_start
     //           << "\tv_sat: " << v_sat << "\tv_target: " << v_target
     //           << "\tdistance: " << distance << std::endl;
-    // 走行距離から終点速度$v_e$を算出
+    /* 走行距離から終点速度$v_e$を算出 */
     float v_end =
         AccelCurve::calcVelocityEnd(a_max, v_start, v_target, distance);
-    // 走行距離から最大速度$v_m$を算出
+    /* 走行距離から最大速度$v_m$を算出 */
     float v_max =
         AccelCurve::calcVelocityMax(a_max, v_start, v_sat, v_end, distance);
-    // 走行距離が負の場合の例外処理
+    /* 走行距離が負の場合の例外処理 */
     if (distance < 0) {
       v_end = v_max = v_start;
       distance = 0;
     }
-    // 曲線を生成
+    /* 曲線を生成 */
     ac.reset(a_max, v_start, v_max); //< 加速
     dc.reset(a_max, v_max, v_end);   //< 減速
-    // 各定数の算出
+    /* 各定数の算出 */
     x0 = x_start;
     x3 = x_start + distance;
     t0 = t_start;
@@ -267,7 +284,7 @@ public:
          (distance - ac.x_end() - dc.x_end()) / v_max; //< 等速走行終了の時刻
     t3 = t0 + ac.t_end() + (distance - ac.x_end() - dc.x_end()) / v_max +
          dc.t_end(); //< 曲線減速終了の時刻
-    // 表示
+    /* 表示 */
     // std::cout << "v_start: " << v_start << "\tv_max: " << v_max
     //           << "\tv_end: " << v_end << "\tdistance: " << distance
     //           << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
@@ -276,10 +293,21 @@ public:
     //           << "\tx2: " << (distance - ac.x_end() - dc.x_end())
     //           << "\tx3: " << x3 << std::endl;
   }
-  /** @function a
-   *   @brief 時刻$t$における加速度$a$
-   *   @param t 時刻[s]
-   *   @return 加速度[mm/s/s]
+  /**
+   * @brief 時刻$t$における躍度$j$
+   * @param t 時刻[s]
+   * @return 躍度[mm/s/s/s]
+   */
+  float j(const float t) const {
+    if (t < t2)
+      return ac.j(t - t0);
+    else
+      return dc.j(t - t2);
+  }
+  /**
+   * @brief 時刻$t$における加速度$a$
+   * @param t 時刻[s]
+   * @return 加速度[mm/s/s]
    */
   float a(const float t) const {
     if (t < t2)
@@ -287,10 +315,10 @@ public:
     else
       return dc.a(t - t2);
   }
-  /** @function v
-   *   @brief 時刻$t$における速度$v$
-   *   @param t 時刻[s]
-   *   @return 速度[mm/s]
+  /**
+   * @brief 時刻$t$における速度$v$
+   * @param t 時刻[s]
+   * @return 速度[mm/s]
    */
   float v(const float t) const {
     if (t < t2)
@@ -298,10 +326,10 @@ public:
     else
       return dc.v(t - t2);
   }
-  /** @function x
-   *   @brief 時刻$t$における位置$x$
-   *   @param t 時刻[s]
-   *   @return 位置[mm]
+  /**
+   * @brief 時刻$t$における位置$x$
+   * @param t 時刻[s]
+   * @return 位置[mm]
    */
   float x(const float t) const {
     if (t < t2)
@@ -309,22 +337,22 @@ public:
     else
       return x3 - dc.x_end() + dc.x(t - t2);
   }
-  /** @function xx_end
-   *   @brief 終端xx
+  /**
+   * @brief 終端xx
    */
   float t_end() const { return t3; }
   float v_end() const { return dc.v_end(); }
   float x_end() const { return x3; }
-  /** @function printCsv
-   *   @brief stdoutに軌道のcsvを出力する関数．
+  /**
+   * @brief stdoutに軌道のcsvを出力する関数．
    */
   void printCsv(const float t_interval = 0.001f) const {
     for (float t = 0; t < t_end(); t += t_interval) {
       printf("%f,%f,%f\n", a(t), v(t), x(t));
     }
   }
-  /** @function printCsv
-   *   @brief std::ofstream に軌道のcsvを出力する関数．
+  /**
+   * @brief std::ofstream に軌道のcsvを出力する関数．
    */
   void printCsv(std::ofstream &f, const float t_interval = 0.001f) const {
     for (float t = t0; t < t_end(); t += t_interval) {
@@ -333,7 +361,7 @@ public:
   }
 
 private:
-  float t0, t1, t2, t3; //< 境界点の時刻 [s]
-  float x0, x3;         //< 境界点の位置 [mm]
-  AccelCurve ac, dc;    //< 曲線加速，曲線減速
+  float t0, t1, t2, t3; /**< 境界点の時刻 [s] */
+  float x0, x3;         /**< 境界点の位置 [mm] */
+  AccelCurve ac, dc;    /**< 曲線加速，曲線減速オブジェクト */
 };
