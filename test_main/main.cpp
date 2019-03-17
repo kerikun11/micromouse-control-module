@@ -11,7 +11,7 @@ std::ofstream of("out.csv");
 void test(float am, float vs, float va, float ve, float d, float xs, float ts) {
   sd.reset(am, vs, va, ve, d, xs, ts);
   sd.printCsv(of);
-  // std::cout << "main x_end: " << sd.x_end() << std::endl;
+  std::cout << "main x_end: " << sd.x_end() << std::endl;
 }
 
 int main(void) {
@@ -39,7 +39,9 @@ int main(void) {
   // test(6000, 2400, 1200, 0, 90, sd.x_end(), sd.t_end());
   // test(4318.56, 1923.44, 269.985, 979.856, 67.8627, sd.x_end(), sd.t_end());
 
-  // sd.reset(9000, 120, 120, 120, 0, 0, 0);
+  // test(1200, 225, 600, 225, 318, 0, 0);
+  // test(5122.87, 2639, 3150, 2176, 14.1, 0, 0);
+#if 1
   int n = 10;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> a_urd(1000, 9000);
@@ -53,6 +55,7 @@ int main(void) {
   auto te = std::chrono::steady_clock::now();
   auto dur = std::chrono::duration_cast<std::chrono::nanoseconds>(te - ts);
   std::cout << "Average Time: " << dur.count() / n << " [ns]" << std::endl;
+#endif
 
   return 0;
 }

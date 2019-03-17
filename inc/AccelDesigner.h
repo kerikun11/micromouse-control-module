@@ -43,6 +43,7 @@ public:
    * この関数によって，すべての変数が初期化される．(漏れはない)
    */
   void reset(const float a_max, const float v_start, const float v_end) {
+    /* 速度差が小さすぎると，発散するので例外処理 */
     if (std::abs(v_end - v_start) < 0.001f) {
       am = t0 = t1 = t2 = t3 = 0;
       v0 = v1 = v2 = v3 = v_start;
@@ -177,17 +178,24 @@ public:
     const float aaa = a * a * a;
     const float c0 = 27 * (32 * aaa * b + 27 * b * b);
     const float c1 = 16 * aaa + 27 * b;
+    // std::cout << "c0: " << c0 << std::endl;
+    // std::cout << "c1: " << c1 << std::endl;
     if (c0 >= 0) {
       // ルートの中が非負のとき
       const float c2 = std::cbrt(std::sqrt(c0) + c1) / 2;
       ve = (c2 + 4 * a * a / c2 - a) / 3; //< 3次方程式の解
+      // std::cout << "sqrt(c0)+c1: " << std::sqrt(c0) + c1 << std::endl;
       // std::cout << "c2-p: " << c2 << std::endl;
+      if (!std::isnan(ve))
+        ve = vt;
     } else {
       // ルートの中が負のとき
       const auto c2 =
           std::pow(std::complex<float>(c1 / 2, std::sqrt(-c0) / 2), 1.0f / 3);
       ve = (c2.real() * 2 - a) / 3; //< 3次方程式の解
       // std::cout << "c2-n: " << c2 << std::endl;
+      if (!std::isnan(ve))
+        ve = vt;
     }
     const float tm = (ve - vs) / am - tc; //< 等加速度直線運動の時間を決定
     // std::cout << "tm: " << tm << std::endl;
@@ -258,6 +266,7 @@ public:
   void reset(const float a_max, const float v_start, const float v_sat,
              const float v_target, float distance, const float x_start = 0,
              const float t_start = 0) {
+    /* 入力情報の表示 */
     // std::cout << "a_max: " << a_max << "\tv_start: " << v_start
     //           << "\tv_sat: " << v_sat << "\tv_target: " << v_target
     //           << "\tdistance: " << distance << std::endl;
@@ -287,11 +296,12 @@ public:
     /* 表示 */
     // std::cout << "v_start: " << v_start << "\tv_max: " << v_max
     //           << "\tv_end: " << v_end << "\tdistance: " << distance
-    //           << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
+    //           << std::endl;
+    // std::cout << "t0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
     //           << "\tt3: " << t3 << std::endl;
-    // std::cout << "x0: " << x0 << "\tx1: " << ac.x_end()
-    //           << "\tx2: " << (distance - ac.x_end() - dc.x_end())
-    //           << "\tx3: " << x3 << std::endl;
+    // std::cout << "x0: " << x0 << "\tx1: " << x0 + ac.x_end()
+    //           << "\tx2: " << x0 + (distance - dc.x_end()) << "\tx3: " << x3
+    //           << std::endl;
   }
   /**
    * @brief 時刻$t$における躍度$j$

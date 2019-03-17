@@ -11,20 +11,14 @@ t = rawdata(:, 1);
 a = rawdata(:, 2) / 10;
 v = rawdata(:, 3);
 x = rawdata(:, 4);
+
+%% plot
 legends= {'Acceleration $a$ [mm/s/s]', 'Velocity $v$ [mm/s]', 'Position $x$ [mm]'};
 ylabels= {'$a$ [mm/s/s]', '$v$ [mm/s]', '$x$ [mm]'};
 titles= {'Acceleration', 'Velocity', 'Position'};
 xlabelstr = '$t$ [s]';
 
 figure(1);
-hold off;
-plot(t, [a v x]);
-grid on;
-title('Accel Designer');
-xlabel(xlabelstr);
-legend(legends, 'Location', 'SouthWest');
-
-figure(2);
 data = [a v x];
 for i = 1 : 3
     subplot(3, 1, i);
@@ -37,3 +31,13 @@ for i = 1 : 3
     ylabel(ylabels(i));
     title(titles(i));
 end
+
+%{
+figure(2);
+hold off;
+plot(t, [a v x]);
+grid on;
+title('Accel Designer');
+xlabel(xlabelstr);
+legend(legends, 'Location', 'SouthWest');
+%}
