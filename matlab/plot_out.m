@@ -14,7 +14,6 @@ v = rawdata(:, 4);
 x = rawdata(:, 5);
 
 %% plot
-legends= {'Jerk $j$ [mm/s/s/s]', 'Acceleration $a$ [mm/s/s]', 'Velocity $v$ [mm/s]', 'Position $x$ [mm]'};
 ylabels= {'$j$ [mm/s/s/s]', '$a$ [mm/s/s]', '$v$ [mm/s]', '$x$ [mm]'};
 titles= {'Jerk', 'Acceleration', 'Velocity', 'Position'};
 xlabelstr = '$t$ [s]';
@@ -32,13 +31,3 @@ for i = 1 : 4
     ylabel(ylabels(i));
     title(titles(i));
 end
-
-%{
-figure(2);
-hold off;
-plot(t, [a v x]);
-grid on;
-title('Accel Designer');
-xlabel(xlabelstr);
-legend(legends, 'Location', 'SouthWest');
-%}

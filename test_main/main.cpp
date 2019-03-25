@@ -1,19 +1,16 @@
 #include "AccelDesigner.h"
 #include <chrono>
-#include <cstdio>
 #include <fstream>
 #include <iostream>
 #include <random>
 
-using namespace signal_processing;
-
-AccelDesigner sd;
+signal_processing::AccelDesigner sd;
 std::ofstream of("out.csv");
 
 void test(float am, float vs, float va, float ve, float d, float xs, float ts) {
   sd.reset(am, vs, va, ve, d, xs, ts);
-  // sd.printCsv(of);
-  // std::cout << "main x_end: " << sd.x_end() << std::endl;
+  sd.printCsv(of);
+  // std::cout << sd << std::endl;
 }
 
 int main(void) {
@@ -44,7 +41,7 @@ int main(void) {
   // test(1200, 225, 600, 225, 318, 0, 0);
   // test(5122.87, 2639, 3150, 2176, 14.1, 0, 0);
 #if 1
-  int n = 10000;
+  int n = 10;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> a_urd(1000, 18000);
   std::uniform_real_distribution<float> v_urd(90, 4800);
