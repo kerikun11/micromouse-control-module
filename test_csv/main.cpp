@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+using namespace signal_processing;
+
 int main(void) {
   /* Parameter Settings */
   float a_max, v_start, v_sat, v_end, distance;
