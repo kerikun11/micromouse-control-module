@@ -21,9 +21,9 @@ int main(void) {
 #elif SLALOM_NUM == 3
   auto constraint = SlalomDesigner::Constraint(M_PI * 3 / 4, 80, 45, 90);
 #elif SLALOM_NUM == 4
-  auto constraint = SlalomDesigner::Constraint(M_PI, 90, 0, 90, 26);
+  auto constraint = SlalomDesigner::Constraint(M_PI, 90, 0, 90, 30);
 #elif SLALOM_NUM == 5
-  auto constraint = SlalomDesigner::Constraint(M_PI / 2, 40, 90 / std::sqrt(2),
+  auto constraint = SlalomDesigner::Constraint(M_PI / 2, 42, 90 / std::sqrt(2),
                                                90 / std::sqrt(2));
 #endif
   signal_processing::SlalomDesigner sd(constraint);

@@ -1,5 +1,6 @@
 %% cleaning
 clear;
+close all;
 set(groot, 'DefaultTextInterpreter', 'Latex');
 set(groot, 'DefaultLegendInterpreter', 'Latex');
 % set(groot, 'DefaultAxesFontSize', 14);

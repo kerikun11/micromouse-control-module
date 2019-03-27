@@ -7,7 +7,6 @@
 namespace signal_processing {
 class SlalomDesigner {
 public:
-  // static constexpr float Ts = 0.001f;
   static constexpr float m_dddth = 9600 * M_PI;
   static constexpr float m_ddth = 90 * M_PI;
   static constexpr float m_dth = 4 * M_PI;
@@ -16,12 +15,14 @@ public:
 public:
   struct Constraint {
     float th;
-    float y;
+    float x, y;
     float x_total, y_total;
-    float x; //< 180度ターン用
+    float x_prev;
+    float straight_prev;
+    float straight_post;
     Constraint(const float th, const float y, const float x_total,
-               const float y_total, const float x = 0.0f)
-        : th(th), y(y), x_total(x_total), y_total(y_total), x(x) {}
+               const float y_total, const float x_prev = 0.0f)
+        : th(th), y(y), x_total(x_total), y_total(y_total), x_prev(x_prev) {}
   };
   struct State {
     float t;
@@ -34,7 +35,7 @@ public:
   };
 
 public:
-  SlalomDesigner(const struct Constraint constraint) : constraint(constraint) {
+  SlalomDesigner(struct Constraint c) : constraint(c) {
     velocity = v_ref;
     const float angle = constraint.th;
     const float Ts = 1e-6;
@@ -49,21 +50,23 @@ public:
       }
       gain_ref *= s.y / constraint.y;
     }
+    constraint.x = s.x;
+    constraint.y = s.y;
     std::cout << "gain_ref: " << gain_ref << std::endl;
     const float sin_th = std::sin(constraint.th);
     const float cos_th = std::cos(constraint.th);
     if (std::abs(sin_th) < 0.001f) {
       /* 180度ターン */
-      straight_prev = constraint.x;
-      straight_post = constraint.x;
+      constraint.straight_prev = constraint.x_prev;
+      constraint.straight_post = constraint.x_prev;
     } else {
       /* 180度ターン以外 */
-      straight_prev = constraint.x_total - s.x -
-                      cos_th / sin_th * (constraint.y_total - s.y);
-      straight_post = 1 / sin_th * (constraint.y_total - s.y);
+      constraint.straight_prev = constraint.x_total - s.x -
+                                 cos_th / sin_th * (constraint.y_total - s.y);
+      constraint.straight_post = 1 / sin_th * (constraint.y_total - s.y);
     }
-    std::cout << "straight_prev: " << straight_prev << std::endl;
-    std::cout << "straight_post: " << straight_post << std::endl;
+    std::cout << "straight_prev: " << constraint.straight_prev << std::endl;
+    std::cout << "straight_post: " << constraint.straight_post << std::endl;
   }
   void reset(const float velocity) {
     this->velocity = velocity;
@@ -100,14 +103,17 @@ public:
     s->dddy = +s->ddx * s->dth + s->dx * s->ddth;
   }
   float t_end() const { return ad.t_end(); }
+  float th_end() const { return constraint.th; }
+  float x_end() const { return constraint.x; }
+  float y_end() const { return constraint.y; }
+  float straight_prev() const { return constraint.straight_prev; }
+  float straight_post() const { return constraint.straight_post; }
 
 private:
   Constraint constraint;
   signal_processing::AccelDesigner ad;
   float gain_ref;
   float velocity;
-  float straight_prev;
-  float straight_post;
 };
 
 } // namespace signal_processing
