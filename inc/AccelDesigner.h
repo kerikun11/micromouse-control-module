@@ -26,6 +26,7 @@ public:
   /**
    * @brief 初期化付きコンストラクタ
    *
+   * @param j_max     最大躍度の大きさ [mm/s/s/s]，正であること
    * @param a_max     最大加速度の大きさ [mm/s/s], 正であること
    * @param v_start   始点速度 [mm/s]
    * @param v_sat     飽和速度 [mm/s]
@@ -35,10 +36,10 @@ public:
    * @param x_start   始点位置 [mm]
    * @param t_start   始点時刻 [t]
    */
-  AccelDesigner(const float a_max, const float v_start, const float v_sat,
-                const float v_target, const float distance,
+  AccelDesigner(const float j_max, const float a_max, const float v_start,
+                const float v_sat, const float v_target, const float distance,
                 const float x_start = 0, const float t_start = 0) {
-    reset(a_max, v_start, v_sat, v_target, distance, x_start, t_start);
+    reset(j_max, a_max, v_start, v_sat, v_target, distance, x_start, t_start);
   }
   /**
    * @brief 空のコンストラクタ．あとで reset() により初期化すること．
@@ -48,6 +49,7 @@ public:
    * @brief 引数の拘束条件から曲線を生成する．
    * この関数によって，すべての変数が初期化される．(漏れはない)
    *
+   * @param j_max     最大躍度の大きさ [mm/s/s/s]，正であること
    * @param a_max     最大加速度の大きさ [mm/s/s], 正であること
    * @param v_start   始点速度 [mm/s]
    * @param v_sat     飽和速度 [mm/s]
@@ -57,9 +59,9 @@ public:
    * @param x_start   始点位置 [mm]
    * @param t_start   始点時刻 [t]
    */
-  void reset(const float a_max, const float v_start, const float v_sat,
-             const float v_target, float distance, const float x_start = 0,
-             const float t_start = 0) {
+  void reset(const float j_max, const float a_max, const float v_start,
+             const float v_sat, const float v_target, float distance,
+             const float x_start = 0, const float t_start = 0) {
     /* 最大速度の仮置き */
     float v_max = std::max({v_start, v_sat, v_target});
     float v_end = v_target;
@@ -70,22 +72,24 @@ public:
       distance = 0;
     }
     /* 走行距離から終点速度$v_e$を算出 */
-    if (distance < AccelCurve::calcMinDistance(a_max, v_start, v_end)) {
+    if (distance < AccelCurve::calcMinDistance(j_max, a_max, v_start, v_end)) {
       /* 走行距離から終点速度$v_e$を算出 */
-      v_end = AccelCurve::calcVelocityEnd(a_max, v_start, v_target, distance);
+      v_end = AccelCurve::calcVelocityEnd(j_max, a_max, v_start, v_target,
+                                          distance);
       v_max = std::max(v_start, v_end);
     }
     /* 曲線を生成 */
-    ac.reset(a_max, v_start, v_max); //< 加速
-    dc.reset(a_max, v_max, v_end);   //< 減速
+    ac.reset(j_max, a_max, v_start, v_max); //< 加速
+    dc.reset(j_max, a_max, v_max, v_end);   //< 減速
     /* 走行距離の拘束を満たさない場合の処理 */
     if (distance < ac.x_end() + dc.x_end()) {
       /* 走行距離から最大速度$v_m$を算出 */
-      v_max = AccelCurve::calcVelocityMax(a_max, v_start, v_end, distance);
+      v_max =
+          AccelCurve::calcVelocityMax(j_max, a_max, v_start, v_end, distance);
       v_max = std::min(v_max, v_sat);            //< 飽和速度で飽和
       v_max = std::max({v_max, v_start, v_end}); //< 無駄な減速を避ける
-      ac.reset(a_max, v_start, v_max);           //< 加速
-      dc.reset(a_max, v_max, v_end);             //< 減速
+      ac.reset(j_max, a_max, v_start, v_max);    //< 加速
+      dc.reset(j_max, a_max, v_max, v_end);      //< 減速
     }
     if (ac.x_end() + dc.x_end() > distance + 0.1f) {
       std::cerr << "Error: distance constraint: " << distance

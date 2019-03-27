@@ -14,7 +14,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g3 -Wall -Wextra")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
 
 add_subdirectory(test_main)
-add_subdirectory(test_csv)
+add_subdirectory(test_traj)
 
 # custom target
 add_custom_target(main
@@ -22,8 +22,8 @@ add_custom_target(main
   DEPENDS test_main
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
-add_custom_target(csv
-  COMMAND ${CMAKE_BINARY_DIR}/test_csv/test_csv
-  DEPENDS test_csv
+add_custom_target(traj
+  COMMAND ${CMAKE_BINARY_DIR}/test_traj/test_traj
+  DEPENDS test_traj
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )

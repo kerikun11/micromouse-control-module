@@ -22,19 +22,15 @@ namespace signal_processing {
 class AccelCurve {
 public:
   /**
-   * @brief 最大躍度の定数 [mm/s/s/s]
-   */
-  static constexpr const float j_max = 500000;
-
-public:
-  /**
    * @brief 初期化付きのコンストラクタ．
-   * @param a_max   最大加速度 [mm/s/s]
+   * @param j_max   最大躍度の大きさ [mm/s/s/s]
+   * @param a_max   最大加速度の大きさ [mm/s/s]
    * @param v_start 始点速度   [mm/s]
    * @param v_end   終点速度   [mm/s]
    */
-  AccelCurve(const float a_max, const float v_start, const float v_end) {
-    reset(a_max, v_start, v_end);
+  AccelCurve(const float j_max, const float a_max, const float v_start,
+             const float v_end) {
+    reset(j_max, a_max, v_start, v_end);
   }
   /**
    * @brief 空のコンストラクタ．あとで reset() により初期化すること．
@@ -46,16 +42,21 @@ public:
   /**
    * @brief 引数の拘束条件から曲線を生成する．
    * この関数によって，すべての変数が初期化される．(漏れはない)
+   * @param j_max   最大躍度の大きさ [mm/s/s/s]
    * @param a_max   最大加速度の大きさ [mm/s/s]
    * @param v_start 始点速度 [mm/s]
    * @param v_end   終点速度 [mm/s]
    */
-  void reset(const float a_max, const float v_start, const float v_end) {
-    tc = calcTimeCurve(a_max); //< 速度が曲線である時間を取得
+  void reset(const float j_max, const float a_max, const float v_start,
+             const float v_end) {
+    /* 速度が曲線となる部分の時間を決定 */
+    const float tc = a_max / j_max;
+    /* 符号付きで代入 */
     am = (v_end - v_start > 0) ? a_max : -a_max; //< 最大加速度の符号を決定
     jm = (v_end - v_start > 0) ? j_max : -j_max; //< 最大躍度の符号を決定
-    v0 = v_start;                                //< 代入
-    v3 = v_end;                                  //< 代入
+    /* 初期値と最終値を代入 */
+    v0 = v_start;             //< 代入
+    v3 = v_end;               //< 代入
     t0 = 0;                   //< ここでは初期値をゼロとする
     x0 = 0;                   //< ここでは初期値はゼロとする
     tm = (v3 - v0) / am - tc; //< 等加速度直線運動の時間を決定
@@ -86,11 +87,11 @@ public:
     if (t <= t0)
       return 0;
     else if (t <= t1)
-      return j_max;
+      return jm;
     else if (t <= t2)
       return 0;
     else if (t <= t3)
-      return -j_max;
+      return -jm;
     else
       return 0;
   }
@@ -141,7 +142,7 @@ public:
     else if (t <= t2)
       return x1 + v1 * (t - t1) + am / 2 * (t - t1) * (t - t1);
     else if (t <= t3)
-      return x3 + v3 * (t - t3) + jm / 6 * (t - t3) * (t - t3) * (t - t3);
+      return x3 + v3 * (t - t3) - jm / 6 * (t - t3) * (t - t3) * (t - t3);
     else
       return x3 + v3 * (t - t3);
   }
@@ -151,26 +152,21 @@ public:
   float t_end() const { return t3; }
   float v_end() const { return v3; }
   float x_end() const { return x3; }
-  /**
-   * @brief 曲線加速部分の時間を決定する関数
-   * @param am 最大加速度の大きさ
-   */
-  static float calcTimeCurve(const float am) {
-    const float tc = std::abs(am) / j_max; //< 時間を算出
-    return tc;
-  }
+
+public:
   /**
    * @brief 走行距離から達しうる終点速度を算出する関数
+   * @param j_max 最大躍度の大きさ [mm/s/s/s]
    * @param a_max 最大加速度の大きさ [mm/s/s]
    * @param vs 始点速度 [mm/s]
    * @param vt 目標速度 [mm/s]
    * @param d 走行距離 [mm]
    * @return ve 終点速度 [mm/s]
    */
-  static float calcVelocityEnd(float a_max, const float vs, const float vt,
-                               const float d) {
+  static float calcVelocityEnd(const float j_max, float a_max, const float vs,
+                               const float vt, const float d) {
     /* 速度が曲線となる部分の時間を決定 */
-    const float tc = AccelCurve::calcTimeCurve(a_max);
+    const float tc = a_max / j_max;
     /* 最大加速度の符号を決定 */
     const float am = (vt - vs > 0) ? a_max : -a_max;
     /* 等加速度直線運動の有無で分岐 */
@@ -201,19 +197,21 @@ public:
     }
     return ve;
   }
-  /** @function calcVelocityMax
-   *   @brief 走行距離から最大速度を算出する関数
-   *   @param am 最大加速度の大きさ [mm/s/s]
-   *   @param vs 始点速度 [mm/s]
-   *   @param va 飽和速度 [mm/s]
-   *   @param ve 終点速度 [mm/s]
-   *   @param d 走行距離 [mm]
-   *   @return vm 最大速度 [mm/s]
+  /**
+   * @brief 走行距離から最大速度を算出する関数
+   *
+   * @param j_max 最大躍度の大きさ [mm/s/s/s]
+   * @param a_max 最大加速度の大きさ [mm/s/s]
+   * @param vs 始点速度 [mm/s]
+   * @param ve 終点速度 [mm/s]
+   * @param d 走行距離 [mm]
+   * @return vm 最大速度 [mm/s]
    */
-  static float calcVelocityMax(const float am, const float vs, const float ve,
-                               const float d) {
+  static float calcVelocityMax(const float j_max, const float a_max,
+                               const float vs, const float ve, const float d) {
     /* 速度が曲線となる部分の時間を決定 */
-    const float tc = AccelCurve::calcTimeCurve(am);
+    const float tc = a_max / j_max;
+    const float am = a_max;
     /* 2次方程式の解の公式を解く */
     const float amtc = am * tc;
     const float D = amtc * amtc - 2 * (vs + ve) * amtc + 4 * am * d +
@@ -228,14 +226,15 @@ public:
   /**
    * @brief 速度差から変位を算出する関数
    *
+   * @param j_max   最大躍度の大きさ [mm/s/s/s]
    * @param a_max   最大加速度の大きさ [mm/s/s]
    * @param v_start 始点速度 [mm/s]
    * @param v_end   終点速度 [mm/s]
    * @return float d 変位 [mm/s]
    */
-  static float calcMinDistance(const float a_max, const float v_start,
-                               const float v_end) {
-    AccelCurve ac(a_max, v_start, v_end);
+  static float calcMinDistance(const float j_max, const float a_max,
+                               const float v_start, const float v_end) {
+    AccelCurve ac(j_max, a_max, v_start, v_end);
     return ac.x_end();
   }
 
