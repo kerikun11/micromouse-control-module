@@ -16,13 +16,14 @@ void test(float jm, float am, float vs, float va, float ve, float d, float xs,
 }
 
 int main(void) {
+  // test(500000, 9000, 0, 1200, 0, -360, 0, 0);
 #if 1
   int n = 100;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> j_urd(100000, 500000);
   std::uniform_real_distribution<float> a_urd(1000, 18000);
   std::uniform_real_distribution<float> v_urd(90, 4800);
-  std::uniform_real_distribution<float> d_urd(-9, 32 * 90);
+  std::uniform_real_distribution<float> d_urd(0, 32 * 90);
   auto ts = std::chrono::steady_clock::now();
   for (int i = 0; i < n; ++i) {
     test(j_urd(mt), a_urd(mt), ad.v_end(), v_urd(mt), v_urd(mt), d_urd(mt),

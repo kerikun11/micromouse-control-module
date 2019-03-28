@@ -168,17 +168,19 @@ public:
     /* 速度が曲線となる部分の時間を決定 */
     const float tc = a_max / j_max;
     /* 最大加速度の符号を決定 */
-    const float am = (vt - vs > 0) ? a_max : -a_max;
+    float am = (vt > vs) ? a_max : -a_max;
     /* 等加速度直線運動の有無で分岐 */
-    if (d > (2 * vs + am / tc * tc * tc) * tc) {
+    if (std::abs(d) > std::abs((2 * vs + am / tc * tc * tc) * tc)) {
       /* 曲線・直線・曲線 */
       /* 2次方程式の解の公式を解く */
       const float amtc = am * tc;
       const float D = amtc * amtc - 4 * (amtc * vs - vs * vs - 2 * am * d);
-      return (-amtc + std::sqrt(D)) / 2;
+      const float sqrtD = std::sqrt(D);
+      return (-amtc + (d > 0 ? sqrtD : -sqrtD)) / 2;
     }
     /* 曲線・曲線 */
     /* 3次方程式を解いて，終点速度を算出 */
+    am = (d > 0) ? a_max : -a_max;
     float ve; //< 変数を用意
     const float a = vs;
     const float b = am * d * d / tc;
@@ -211,7 +213,7 @@ public:
                                const float vs, const float ve, const float d) {
     /* 速度が曲線となる部分の時間を決定 */
     const float tc = a_max / j_max;
-    const float am = a_max;
+    const float am = d > 0 ? a_max : -a_max;
     /* 2次方程式の解の公式を解く */
     const float amtc = am * tc;
     const float D = amtc * amtc - 2 * (vs + ve) * amtc + 4 * am * d +
@@ -221,7 +223,8 @@ public:
       std::cerr << "Error: AccelCurve::calcVelocityMax()" << std::endl;
       return vs;
     }
-    return (-amtc + std::sqrt(D)) / 2; //< 2次方程式の解
+    const float sqrtD = std::sqrt(D);
+    return (-amtc + (d > 0 ? sqrtD : -sqrtD)) / 2; //< 2次方程式の解
   }
   /**
    * @brief 速度差から変位を算出する関数

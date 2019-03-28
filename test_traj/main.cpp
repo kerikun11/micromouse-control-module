@@ -9,11 +9,15 @@
 std::ofstream of("out.csv");
 std::ostream &os = of;
 
+// signal_processing::SlalomDesigner sd_S90(
+//     signal_processing::SlalomDesigner::Constraint(-M_PI / 2, -40, 45, -45));
+
 int main(void) {
   using namespace signal_processing;
-#define SLALOM_NUM 5
+#define SLALOM_NUM 0
 #if SLALOM_NUM == 0
-  auto constraint = SlalomDesigner::Constraint(M_PI / 2, 40, 45, 45);
+  // auto constraint = SlalomDesigner::Constraint(M_PI / 2, 40, 45, 45);
+  auto constraint = SlalomDesigner::Constraint(-M_PI / 2, -40, 45, -45);
 #elif SLALOM_NUM == 1
   auto constraint = SlalomDesigner::Constraint(M_PI / 4, 30, 90, 45);
 #elif SLALOM_NUM == 2
