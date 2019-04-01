@@ -14,14 +14,14 @@
 #include "Position.h"
 
 #include <array>
-#include <iomanip>
+#include <ostream> //< for std::ostream
 
 namespace ctrl {
 
 namespace slalom {
 
 /* 走行定数 */
-static constexpr float m_dddth = 9600 * M_PI;
+static constexpr float m_dddth = 7200 * M_PI;
 static constexpr float m_ddth = 90 * M_PI;
 static constexpr float m_dth = 4 * M_PI;
 

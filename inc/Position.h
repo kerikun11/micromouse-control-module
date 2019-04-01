@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <cstdio>
+#include <ostream>
 
 namespace ctrl {
 
