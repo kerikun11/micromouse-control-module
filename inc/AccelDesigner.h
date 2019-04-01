@@ -15,7 +15,7 @@
 #include <iostream>  //< for std::cout
 #include <ostream>   //< for std::ostream
 
-namespace signal_processing {
+namespace ctrl {
 
 /**
  * @class 加減速曲線を生成するクラス
@@ -207,4 +207,4 @@ private:
   AccelCurve ac, dc;    /**< 曲線加速，曲線減速オブジェクト */
 };
 
-} // namespace signal_processing
+} // namespace ctrl

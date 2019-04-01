@@ -13,7 +13,7 @@
 #include <complex>  //< for std::complex
 #include <iostream> //< for std::cout
 
-namespace signal_processing {
+namespace ctrl {
 
 /**
  * @class 加速曲線を生成するクラス
@@ -250,4 +250,4 @@ private:
   float tc;             //< 曲線加速の時間 [s]
   float tm;             //< 最大加速度の時間 [s]
 };
-} // namespace signal_processing
+} // namespace ctrl

@@ -22,8 +22,7 @@ figure(1);
 data = [j a v x];
 for i = 1 : 4
     subplot(4, 1, i);
-    hold off; plot(nan, nan); % clean
-    hold on;
+    hold off; plot(nan, nan); hold on; % clean
     ax = gca; ax.ColorOrderIndex = i;
     plot(t, data(:, i));
     grid on;

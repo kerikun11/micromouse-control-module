@@ -5,7 +5,7 @@
 #include <iostream>
 #include <random>
 
-signal_processing::AccelDesigner ad;
+ctrl::AccelDesigner ad;
 std::ofstream of("out.csv");
 
 void test(float jm, float am, float vs, float va, float ve, float d, float xs,
