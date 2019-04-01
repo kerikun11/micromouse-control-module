@@ -12,13 +12,22 @@ std::ostream &os = of;
 
 using namespace ctrl;
 
-SlalomDesigner sd_SL90(SlalomDesigner::Shape(Position(45, 45, M_PI / 2), 40));
-SlalomDesigner sd_FL45(SlalomDesigner::Shape(Position(90, 45, M_PI / 4), 30));
-SlalomDesigner sd_FL90(SlalomDesigner::Shape(Position(90, 90, M_PI / 2), 70));
-SlalomDesigner sd_FL135(SlalomDesigner::Shape(Position(45, 90, M_PI * 3 / 4),
-                                              80));
-SlalomDesigner sd_FL180(SlalomDesigner::Shape(Position(0, 90, M_PI), 90, 30));
-SlalomDesigner sd_FLV90(SlalomDesigner::Shape(
+static auto sd_SL90 =
+    SlalomDesigner(SlalomDesigner::Shape(Position(45, 45, M_PI / 2), 40));
+
+static auto sd_FL45 =
+    SlalomDesigner(SlalomDesigner::Shape(Position(90, 45, M_PI / 4), 30));
+
+static auto sd_FL90 =
+    SlalomDesigner(SlalomDesigner::Shape(Position(90, 90, M_PI / 2), 70));
+
+static auto sd_FL135 =
+    SlalomDesigner(SlalomDesigner::Shape(Position(45, 90, M_PI * 3 / 4), 80));
+
+static auto sd_FL180 =
+    SlalomDesigner(SlalomDesigner::Shape(Position(0, 90, M_PI), 90, 30));
+
+static auto sd_FLV90 = SlalomDesigner(SlalomDesigner::Shape(
     Position(45 * std::sqrt(2), 45 * std::sqrt(2), M_PI / 2), 42));
 
 int main(void) {
