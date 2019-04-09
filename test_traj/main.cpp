@@ -13,8 +13,8 @@ std::ostream &os = of;
 
 using namespace ctrl;
 
-static auto SS_SL90 = slalom::Shape(Position(45, 45, M_PI / 2), 40);
-static auto SS_SR90 = slalom::Shape(Position(45, -45, -M_PI / 2), -40);
+static auto SS_SL90 = slalom::Shape(Position(45, 45, M_PI / 2), 44);
+static auto SS_SR90 = slalom::Shape(Position(45, -45, -M_PI / 2), -44);
 static auto SS_FL45 = slalom::Shape(Position(90, 45, M_PI / 4), 25);
 static auto SS_FR45 = slalom::Shape(Position(90, -45, -M_PI / 4), -25);
 static auto SS_FL90 = slalom::Shape(Position(90, 90, M_PI / 2), 60);
