@@ -62,8 +62,9 @@ public:
   float rot; //< rotation [rad]
 
 public:
-  Polar(const float tra = 0, const float rot = 0) : tra(tra), rot(rot) {}
-  Polar(const Polar &o) : tra(o.tra), rot(o.rot) {}
+  constexpr Polar(const float tra = 0, const float rot = 0)
+      : tra(tra), rot(rot) {}
+  constexpr Polar(const Polar &o) : tra(o.tra), rot(o.rot) {}
   const Polar &operator=(const Polar &o) {
     tra = o.tra;
     rot = o.rot;
@@ -110,51 +111,5 @@ public:
   }
   void clear() { tra = rot = 0; }
 };
-
-// class Planar {
-// public:
-//   float x;
-//   float y;
-// public:
-//   Planar(const float x = 0, const float y = 0) : x(x), y(y) {}
-//   Planar(const Planar &o) : x(o.x), y(o.y) {}
-//   const Planar &operator=(const Planar &o) {
-//     x = o.x;
-//     y = o.y;
-//     return *this;
-//   }
-//   const Planar &operator+=(const Planar &o) {
-//     x += o.x;
-//     y += o.y;
-//     return *this;
-//   }
-//   const Planar &operator*=(const Planar &o) {
-//     x *= o.x;
-//     y *= o.y;
-//     return *this;
-//   }
-//   const Planar &operator/=(const Planar &o) {
-//     x /= o.x;
-//     y /= o.y;
-//     return *this;
-//   }
-//   const Planar operator+(const Planar &o) const {
-//     return Planar(x + o.x, y + o.y);
-//   }
-//   const Planar operator-(const Planar &o) const {
-//     return Planar(x - o.x, y - o.y);
-//   }
-//   const Planar operator*(const Planar &o) const {
-//     return Planar(x * o.x, y * o.y);
-//   }
-//   const Planar operator/(const Planar &o) const {
-//     return Planar(x / o.x, y / o.y);
-//   }
-//   const Planar operator+(const float &k) const { return Planar(x + k, y + k);
-//   } const Planar operator-(const float &k) const { return Planar(x - k, y -
-//   k); } const Planar operator*(const float &k) const { return Planar(x * k, y
-//   * k); } const Planar operator/(const float &k) const { return Planar(x / k,
-//   y / k); } void clear() { x = y = 0; }
-// };
 
 } // namespace ctrl
