@@ -28,6 +28,11 @@ public:
 public:
   TrajectoryTracker(const float fb_gain = 0) : fb_gain(fb_gain) {}
   void reset(const float vs = 0) { xi = vs; }
+  static const auto sinc(const auto x) {
+    auto xx = x * x;
+    auto xxxx = xx * xx;
+    return 1 - xx / 6 + xxxx / 120 - xxxx * xx / 5040;
+  }
   const struct Result update(const Position &est_q, const Polar &est_v,
                              const Polar &est_a, const Position &ref_q,
                              const Position &ref_dq, const Position &ref_ddq,
@@ -71,10 +76,27 @@ public:
     /* determine the output signal */
     struct Result res;
     if (xi < xi_threshold) {
-      res.v = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
-      res.w = 0;
+      const auto b = fb_gain;
+      const auto zeta = 0.5f;
+      const auto v_d = ref_dq.x;
+      const auto w_d = 0;
+      const auto k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);
+      const auto k2 = b;
+      const auto k3 = k1;
+      const auto v = v_d * std::cos(th_r - theta) +
+                     k1 * (cos_theta * (x_r - x) + sin_theta * (y_r - y));
+      const auto w = w_d +
+                     k2 * v_d * sinc(th_r - theta) *
+                         (cos_theta * (x_r - x) - sin_theta * (y_r - y)) +
+                     k3 * (th_r - theta);
+      res.v = v;
+      res.w = w;
       res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;
       res.dw = 0;
+      // res.v = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
+      // res.w = 0;
+      // res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;
+      // res.dw = 0;
     } else {
       res.v = xi;
       res.dv = d_xi;
