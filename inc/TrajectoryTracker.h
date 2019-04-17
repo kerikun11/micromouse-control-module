@@ -76,7 +76,7 @@ public:
     /* determine the output signal */
     struct Result res;
     if (xi < xi_threshold) {
-      const auto b = fb_gain;
+      const auto b = 0.001f;
       const auto zeta = 0.5f;
       const auto v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
       const auto w_d = 0;
