@@ -78,7 +78,7 @@ public:
     if (xi < xi_threshold) {
       const auto b = fb_gain;
       const auto zeta = 0.5f;
-      const auto v_d = ref_dq.x;
+      const auto v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
       const auto w_d = 0;
       const auto k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);
       const auto k2 = b;
