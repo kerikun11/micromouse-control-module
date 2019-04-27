@@ -21,9 +21,9 @@ namespace ctrl {
 namespace slalom {
 
 /* 走行定数 */
-static constexpr float m_dddth = 7200 * M_PI;
-static constexpr float m_ddth = 90 * M_PI;
-static constexpr float m_dth = 4 * M_PI;
+static constexpr float m_dddth = 1200 * M_PI;
+static constexpr float m_ddth = 36 * M_PI;
+static constexpr float m_dth = 3 * M_PI;
 
 struct State {
   float t = 0;
