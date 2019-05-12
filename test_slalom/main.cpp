@@ -15,21 +15,20 @@ using namespace ctrl;
 
 static auto SS_SL90 = slalom::Shape(Position(45, 45, M_PI / 2), 44);
 static auto SS_SR90 = slalom::Shape(Position(45, -45, -M_PI / 2), -44);
-static auto SS_FL45 = slalom::Shape(Position(90, 45, M_PI / 4), 24);
-static auto SS_FR45 = slalom::Shape(Position(90, -45, -M_PI / 4), -24);
-static auto SS_FL90 = slalom::Shape(Position(90, 90, M_PI / 2), 60);
-static auto SS_FR90 = slalom::Shape(Position(90, -90, -M_PI / 2), -60);
-static auto SS_FL135 = slalom::Shape(Position(45, 90, M_PI * 3 / 4), 80);
-static auto SS_FR135 = slalom::Shape(Position(45, -90, -M_PI * 3 / 4), -80);
-static auto SS_FL180 = slalom::Shape(Position(0, 90, M_PI), 90, 30);
-static auto SS_FR180 = slalom::Shape(Position(0, -90, -M_PI), -90, 30);
+static auto SS_FL45 = slalom::Shape(Position(90, 45, M_PI / 4), 31);
+static auto SS_FR45 = slalom::Shape(Position(90, -45, -M_PI / 4), -31);
+static auto SS_FL90 = slalom::Shape(Position(90, 90, M_PI / 2), 70);
+static auto SS_FR90 = slalom::Shape(Position(90, -90, -M_PI / 2), -70);
+static auto SS_FL135 = slalom::Shape(Position(45, 90, M_PI * 3 / 4), 85);
+static auto SS_FR135 = slalom::Shape(Position(45, -90, -M_PI * 3 / 4), -85);
+static auto SS_FL180 = slalom::Shape(Position(0, 90, M_PI), 90, 24);
+static auto SS_FR180 = slalom::Shape(Position(0, -90, -M_PI), -90, 24);
 static auto SS_FLV90 =
-    slalom::Shape(Position(45 * std::sqrt(2), 45 * std::sqrt(2), M_PI / 2), 42);
+    slalom::Shape(Position(45 * std::sqrt(2), 45 * std::sqrt(2), M_PI / 2), 50);
 static auto SS_FRV90 = slalom::Shape(
-    Position(45 * std::sqrt(2), -45 * std::sqrt(2), -M_PI / 2), -42);
+    Position(45 * std::sqrt(2), -45 * std::sqrt(2), -M_PI / 2), -50);
 static auto SS_FLS90 = slalom::Shape(Position(45, 45, M_PI / 2), 45);
 static auto SS_FRS90 = slalom::Shape(Position(45, -45, -M_PI / 2), -45);
-
 
 #define TO_STRING(VariableName) #VariableName
 

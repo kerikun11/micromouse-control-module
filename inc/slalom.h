@@ -114,7 +114,9 @@ struct Shape {
     os << "ctrl::Position(" << curve.x << ", " << curve.y << ", " << curve.th
        << "), ";
     os << straight_prev << ", " << straight_post << ", " << v_ref;
-    os << ");";
+    os << "); ";
+    AccelDesigner ad(m_dddth, m_ddth, 0, m_dth, 0, total.th);
+    os << "//< T: " << ad.t_end() + (straight_prev + straight_post) / v_ref;
     os << std::endl;
     return os;
   }
