@@ -40,6 +40,7 @@ struct Shape {
   float straight_prev;
   float straight_post;
   float v_ref;
+  float t_ref;
   Shape(const Position total, const Position curve, float straight_prev,
         const float straight_post, const float v_ref)
       : total(total), curve(curve), straight_prev(straight_prev),
@@ -75,6 +76,9 @@ struct Shape {
       straight_prev = total.x - s.q.x - cos_th / sin_th * (total.y - s.q.y);
       straight_post = 1 / sin_th * (total.y - s.q.y);
     }
+    /* 全体にかかる時間を算出 */
+    ad.reset(m_dddth, m_ddth, 0, m_dth, 0, total.th);
+    t_ref = ad.t_end() + (straight_prev + straight_post) / v_ref;
   }
   static void integrate(const AccelDesigner &ad, struct State *s, const float v,
                         const float Ts) {
@@ -104,10 +108,7 @@ struct Shape {
     s->dddq.x = -s->ddq.y * s->dq.th - s->dq.y * s->ddq.th;
     s->dddq.y = +s->ddq.x * s->dq.th + s->dq.x * s->ddq.th;
   }
-  float getTotalTime() const {
-    AccelDesigner ad(m_dddth, m_ddth, 0, m_dth, 0, total.th);
-    return ad.t_end() + (straight_prev + straight_post) / v_ref;
-  }
+  float getTotalTime() const { return t_ref; }
   /**
    * @brief 情報の表示
    */
