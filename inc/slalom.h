@@ -25,6 +25,7 @@ static constexpr float m_dddth = 1200 * M_PI;
 static constexpr float m_ddth = 36 * M_PI;
 static constexpr float m_dth = 3 * M_PI;
 
+/* 状態変数 */
 struct State {
   float t = 0;
   Position q;
@@ -45,17 +46,17 @@ struct Shape {
         straight_post(straight_post), v_ref(v_ref) {}
   Shape(const Position total, const float y_curve_end, const float x_adv = 0)
       : total(total) {
-    const float Ts = 1e-5; /**< サンプリング周期 */
+    const float Ts = 1e-5; /**< シミュレーションの積分周期 */
     float v = 600.0f;      /**< 初期値 */
     struct State s;        /**< シミュレーションの状態 */
     AccelDesigner ad;
+    /* 複数回行って精度を高める */
     for (int i = 0; i < 2; ++i) {
       ad.reset(m_dddth, m_ddth, 0, m_dth, 0, total.th);
       s.t = s.q.x = s.q.y = 0;
       /* シミュレーション */
-      while (s.t < ad.t_end()) {
+      while (s.t < ad.t_end())
         integrate(ad, &s, v, Ts);
-      }
       integrate(ad, &s, v, s.t - ad.t_end());
       v *= y_curve_end / s.q.y;
     }
@@ -87,7 +88,7 @@ struct Shape {
       cos_th[i] = std::cos(th[i]);
       sin_th[i] = std::sin(th[i]);
     }
-    /* Integral */
+    /* Runge-Kutta Integral */
     s->q.x += v * Ts * (cos_th[0] + 4 * cos_th[1] + cos_th[2]) / 6;
     s->q.y += v * Ts * (sin_th[0] + 4 * sin_th[1] + sin_th[2]) / 6;
     s->t += Ts;
@@ -103,6 +104,10 @@ struct Shape {
     s->dddq.x = -s->ddq.y * s->dq.th - s->dq.y * s->ddq.th;
     s->dddq.y = +s->ddq.x * s->dq.th + s->dq.x * s->ddq.th;
   }
+  float getTotalTime() const {
+    AccelDesigner ad(m_dddth, m_ddth, 0, m_dth, 0, total.th);
+    return ad.t_end() + (straight_prev + straight_post) / v_ref;
+  }
   /**
    * @brief 情報の表示
    */
@@ -115,8 +120,7 @@ struct Shape {
        << "), ";
     os << straight_prev << ", " << straight_post << ", " << v_ref;
     os << "); ";
-    AccelDesigner ad(m_dddth, m_ddth, 0, m_dth, 0, total.th);
-    os << "//< T: " << ad.t_end() + (straight_prev + straight_post) / v_ref;
+    os << "//< T: " << getTotalTime() << " [s]";
     os << std::endl;
     return os;
   }
