@@ -24,6 +24,9 @@ public:
   }
   float getNorm() const { return std::sqrt(x * x + y * y); }
   const Position mirror_x() const { return Position(x, -y, -th); }
+  bool operator==(const Position &obj) const {
+    return x == obj.x && y == obj.y && th == obj.th;
+  }
   const Position &operator=(const Position &o) {
     x = o.x, y = o.y, th = o.th;
     return *this;

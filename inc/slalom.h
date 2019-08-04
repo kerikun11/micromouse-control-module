@@ -109,6 +109,12 @@ struct Shape {
     s->dddq.y = +s->ddq.x * s->dq.th + s->dq.x * s->ddq.th;
   }
   float getTotalTime() const { return t_ref; }
+  bool operator==(const Shape &obj) const {
+    return total == obj.total && curve == obj.curve &&
+           straight_prev == obj.straight_prev &&
+           straight_post == obj.straight_post && v_ref == obj.v_ref &&
+           t_ref == obj.t_ref;
+  }
   /**
    * @brief 情報の表示
    */
