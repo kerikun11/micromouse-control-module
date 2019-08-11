@@ -24,7 +24,7 @@ for i = 1 : 4
     subplot(4, 1, i);
     hold off; plot(nan, nan); hold on; % clean
     ax = gca; ax.ColorOrderIndex = i;
-    plot(t, data(:, i));
+    stairs(t, data(:, i));
     grid on;
     xlabel(xlabelstr);
     ylabel(ylabels(i));

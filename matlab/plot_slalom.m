@@ -40,7 +40,7 @@ for i = 1 : 4
     hold off; plot(nan, nan); % clean
     hold on;
     ax = gca; ax.ColorOrderIndex = i;
-    plot(t, data(:, i));
+    stairs(t, data(:, i));
     grid on;
     xlabel(xlabelstr);
     ylabel(ylabels(i));
@@ -54,7 +54,7 @@ for i = 1 : 4
     hold off; plot(nan, nan); % clean
     hold on;
     ax = gca; ax.ColorOrderIndex = i;
-    plot(t, data(:, i));
+    stairs(t, data(:, i));
     grid on;
     xlabel(xlabelstr);
     ylabel(ylabels(i));
@@ -68,7 +68,7 @@ for i = 1 : 4
     hold off; plot(nan, nan); % clean
     hold on;
     ax = gca; ax.ColorOrderIndex = i;
-    plot(t, data(:, i));
+    stairs(t, data(:, i));
     grid on;
     xlabel(xlabelstr);
     ylabel(ylabels(i));
@@ -94,7 +94,7 @@ legends = {'Reference'};
 data = {dv, v, dw, w};
 for i = 1 : subplotNum
     subplot(subplotNum, 1, i); hold off; 
-    plot(t, data{i}); grid on;
+    stairs(t, data{i}); grid on;
     title(titles{i});
     xlabel('Time $t$ [s]');
     ylabel(ylabels{i});
