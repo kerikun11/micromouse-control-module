@@ -173,5 +173,5 @@ private:
   float velocity;
 };
 
-}; // namespace slalom
+} // namespace slalom
 } // namespace ctrl

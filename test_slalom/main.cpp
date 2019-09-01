@@ -19,8 +19,8 @@ static auto SS_FL45 = slalom::Shape(Position(90, 45, M_PI / 4), 31);
 static auto SS_FR45 = slalom::Shape(Position(90, -45, -M_PI / 4), -31);
 static auto SS_FL90 = slalom::Shape(Position(90, 90, M_PI / 2), 70);
 static auto SS_FR90 = slalom::Shape(Position(90, -90, -M_PI / 2), -70);
-static auto SS_FL135 = slalom::Shape(Position(45, 90, M_PI * 3 / 4), 85);
-static auto SS_FR135 = slalom::Shape(Position(45, -90, -M_PI * 3 / 4), -85);
+static auto SS_FL135 = slalom::Shape(Position(45, 90, M_PI * 3 / 4), 80);
+static auto SS_FR135 = slalom::Shape(Position(45, -90, -M_PI * 3 / 4), -80);
 static auto SS_FL180 = slalom::Shape(Position(0, 90, M_PI), 90, 24);
 static auto SS_FR180 = slalom::Shape(Position(0, -90, -M_PI), -90, 24);
 static auto SS_FLV90 =
@@ -33,6 +33,7 @@ static auto SS_FRS90 = slalom::Shape(Position(45, -45, -M_PI / 2), -45);
 #define TO_STRING(VariableName) #VariableName
 
 int main(void) {
+#if 1
   SS_SL90.printDefinition(std::cout, TO_STRING(SS_SL90));
   SS_SR90.printDefinition(std::cout, TO_STRING(SS_SR90));
   SS_FL45.printDefinition(std::cout, TO_STRING(SS_FL45));
@@ -47,8 +48,9 @@ int main(void) {
   SS_FRV90.printDefinition(std::cout, TO_STRING(SS_FRV90));
   SS_FLS90.printDefinition(std::cout, TO_STRING(SS_FLS90));
   SS_FRS90.printDefinition(std::cout, TO_STRING(SS_FRS90));
+#endif
 
-#define SLALOM_NUM 0
+#define SLALOM_NUM 5
 #if SLALOM_NUM == 0
   auto sd = slalom::Trajectory(SS_SL90);
 #elif SLALOM_NUM == 1
@@ -62,6 +64,8 @@ int main(void) {
 #elif SLALOM_NUM == 5
   auto sd = slalom::Trajectory(SS_FLV90);
 #endif
+  std::cout << sd.getShape() << std::endl;
+
   TrajectoryTracker tt;
   const float v = 600;
   sd.reset(v);
