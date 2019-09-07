@@ -77,7 +77,7 @@ public:
     struct Result res;
     if (xi < xi_threshold) {
       const auto b = 0.001f;
-      const auto zeta = 0.1f;
+      const auto zeta = 1.0f;
       const auto v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
       const auto w_d = 0;
       const auto k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);
