@@ -120,14 +120,15 @@ struct Shape {
    */
   std::ostream &printDefinition(std::ostream &os, std::string name) const {
     os << "static const auto " << name << " = ";
-    os << "ctrl::slalom::Shape(";
+    os << "\tctrl::slalom::Shape(";
     os << "ctrl::Position(" << total.x << ", " << total.y << ", " << total.th
        << "), ";
-    os << "ctrl::Position(" << curve.x << ", " << curve.y << ", " << curve.th
+    os << "\tctrl::Position(" << curve.x << ", " << curve.y << ", " << curve.th
        << "), ";
+    os << "\t";
     os << straight_prev << ", " << straight_post << ", " << v_ref;
     os << "); ";
-    os << "//< T: " << getTotalTime() << " [s]";
+    os << "\t//< T: " << getTotalTime() << " [s]";
     os << std::endl;
     return os;
   }
