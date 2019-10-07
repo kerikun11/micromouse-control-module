@@ -17,7 +17,7 @@ namespace ctrl {
 class TrajectoryTracker {
 public:
   constexpr static const float Ts = 0.001f;
-  constexpr static const float xi_threshold = 150.0f;
+  constexpr static const float xi_threshold = 150.0f; /*< [mm/s] */
   struct Result {
     float v;
     float w;
@@ -29,9 +29,9 @@ public:
   TrajectoryTracker(const float fb_gain = 0) : fb_gain(fb_gain) {}
   void reset(const float vs = 0) { xi = vs; }
   static const auto sinc(const auto x) {
-    auto xx = x * x;
-    auto xxxx = xx * xx;
-    return 1 - xx / 6 + xxxx / 120 - xxxx * xx / 5040;
+    const auto xx = x * x;
+    const auto xxxx = xx * xx;
+    return xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;
   }
   const struct Result update(const Position &est_q, const Polar &est_v,
                              const Polar &est_a, const Position &ref_q,
@@ -76,8 +76,8 @@ public:
     /* determine the output signal */
     struct Result res;
     if (xi < xi_threshold) {
-      const auto b = 0.001f;
-      const auto zeta = 1.0f;
+      const auto b = 0.001f;  //< b > 0
+      const auto zeta = 1.0f; //< zeta \in [0,1]
       const auto v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
       const auto w_d = 0;
       const auto k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);
