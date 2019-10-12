@@ -24,15 +24,16 @@ public:
     float dv;
     float dw;
   };
+  struct Gain {
+    float zeta = 1.0f;
+    float omega_n = 15.0f;
+    float low_zeta = 1.0f; /*< zeta \in [0,1] */
+    float low_b = 0.001f;  /*< b > 0 */
+  };
 
 public:
-  TrajectoryTracker(const float fb_gain = 0) : fb_gain(fb_gain) {}
+  TrajectoryTracker(const struct Gain &gain) : gain(gain) {}
   void reset(const float vs = 0) { xi = vs; }
-  static const auto sinc(const auto x) {
-    const auto xx = x * x;
-    const auto xxxx = xx * xx;
-    return xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;
-  }
   const struct Result update(const Position &est_q, const Polar &est_v,
                              const Polar &est_a, const Position &ref_q,
                              const Position &ref_dq, const Position &ref_ddq,
@@ -48,8 +49,8 @@ public:
     const float ddx = est_a.tra * cos_theta;
     const float ddy = est_a.tra * sin_theta;
     /* Feedback Gain Design */
-    const float zeta = 1.0f;
-    const float omega_n = fb_gain;
+    const float zeta = gain.zeta;
+    const float omega_n = gain.omega_n;
     const float kx = omega_n * omega_n;
     const float kdx = 2 * zeta * omega_n;
     const float ky = kx;
@@ -76,8 +77,8 @@ public:
     /* determine the output signal */
     struct Result res;
     if (xi < xi_threshold) {
-      const auto b = 0.001f;  //< b > 0
-      const auto zeta = 1.0f; //< zeta \in [0,1]
+      const auto b = gain.low_b;       //< b > 0
+      const auto zeta = gain.low_zeta; //< zeta \in [0,1]
       const auto v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
       const auto w_d = 0;
       const auto k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);
@@ -108,7 +109,13 @@ public:
 
 private:
   float xi;
-  float fb_gain;
+  struct Gain gain;
+
+  static const auto sinc(const auto x) {
+    const auto xx = x * x;
+    const auto xxxx = xx * xx;
+    return xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;
+  }
 };
 
 } // namespace ctrl
