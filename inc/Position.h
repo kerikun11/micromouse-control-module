@@ -16,6 +16,9 @@ public:
   Position(const Position &o) : x(o.x), y(o.y), th(o.th) {}
   Position(const float pos[3]) : x(pos[0]), y(pos[1]), th(pos[2]) {}
   void clear() { x = y = th = 0; }
+  const Position homogeneous(const Position offset) const {
+    return offset + this->rotate(offset.th);
+  }
   const Position rotate(const float angle) const {
     const float cos_angle = std::cos(angle);
     const float sin_angle = std::sin(angle);

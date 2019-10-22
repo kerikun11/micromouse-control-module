@@ -1,10 +1,8 @@
 #include "TrajectoryTracker.h"
 #include "slalom.h"
 
-#include <chrono>
 #include <cmath>
 #include <fstream>
-#include <iomanip>
 #include <iostream>
 #include <string>
 
@@ -33,23 +31,6 @@ static auto SS_FRS90 = slalom::Shape(Position(45, -45, -M_PI / 2), -45);
 #define TO_STRING(VariableName) #VariableName
 
 int main(void) {
-#if 1
-  SS_SL90.printDefinition(std::cout, TO_STRING(SS_SL90));
-  SS_SR90.printDefinition(std::cout, TO_STRING(SS_SR90));
-  SS_FL45.printDefinition(std::cout, TO_STRING(SS_FL45));
-  SS_FR45.printDefinition(std::cout, TO_STRING(SS_FR45));
-  SS_FL90.printDefinition(std::cout, TO_STRING(SS_FL90));
-  SS_FR90.printDefinition(std::cout, TO_STRING(SS_FR90));
-  SS_FL135.printDefinition(std::cout, TO_STRING(SS_FL135));
-  SS_FR135.printDefinition(std::cout, TO_STRING(SS_FR135));
-  SS_FL180.printDefinition(std::cout, TO_STRING(SS_FL180));
-  SS_FR180.printDefinition(std::cout, TO_STRING(SS_FR180));
-  SS_FLV90.printDefinition(std::cout, TO_STRING(SS_FLV90));
-  SS_FRV90.printDefinition(std::cout, TO_STRING(SS_FRV90));
-  SS_FLS90.printDefinition(std::cout, TO_STRING(SS_FLS90));
-  SS_FRS90.printDefinition(std::cout, TO_STRING(SS_FRS90));
-#endif
-
 #define SLALOM_NUM 5
 #if SLALOM_NUM == 0
   auto sd = slalom::Trajectory(SS_SL90);
@@ -66,19 +47,20 @@ int main(void) {
 #endif
   std::cout << sd.getShape() << std::endl;
 
-  TrajectoryTracker tt;
+  TrajectoryTracker::Gain gain;
+  TrajectoryTracker tt(gain);
   const float v = 600;
   sd.reset(v);
   tt.reset(v);
-  slalom::State s;
+  State s;
   const float Ts = 0.001f;
-  while (s.t < sd.t_end()) {
-    sd.update(&s, Ts);
+  for (float t = 0; t < sd.t_end(); t += Ts) {
+    sd.update(s, t, Ts);
     auto est_q = Position(0, 0, 0);
     auto est_v = Polar(0, 0);
     auto est_a = Polar(0, 0);
     auto ref = tt.update(est_q, est_v, est_a, s.q, s.dq, s.ddq, s.dddq);
-    os << s.t;
+    os << t;
     os << "," << s.dddq.th;
     os << "," << s.ddq.th;
     os << "," << s.dq.th;

@@ -12,6 +12,7 @@
 
 #include "AccelDesigner.h"
 #include "Position.h"
+#include "TrajectoryTracker.h"
 
 #include <array>
 #include <ostream> //< for std::ostream
@@ -24,15 +25,6 @@ namespace slalom {
 static constexpr float m_dddth = 1200 * M_PI;
 static constexpr float m_ddth = 36 * M_PI;
 static constexpr float m_dth = 3 * M_PI;
-
-/* 状態変数 */
-struct State {
-  float t = 0;
-  Position q;
-  Position dq;
-  Position ddq;
-  Position dddq;
-};
 
 struct Shape {
   Position total;
@@ -54,11 +46,10 @@ struct Shape {
     /* 複数回行って精度を高める */
     for (int i = 0; i < 2; ++i) {
       ad.reset(m_dddth, m_ddth, 0, m_dth, 0, total.th);
-      s.t = s.q.x = s.q.y = 0;
+      s.q.x = s.q.y = 0;
       /* シミュレーション */
-      while (s.t < ad.t_end())
-        integrate(ad, &s, v, Ts);
-      integrate(ad, &s, v, s.t - ad.t_end());
+      for (float t = 0; t < ad.t_end(); t += Ts)
+        integrate(ad, s, v, t, Ts);
       v *= y_curve_end / s.q.y;
     }
     curve = s.q;
@@ -80,10 +71,8 @@ struct Shape {
     ad.reset(m_dddth, m_ddth, 0, m_dth, 0, total.th);
     t_ref = ad.t_end() + (straight_prev + straight_post) / v_ref;
   }
-  static void integrate(const AccelDesigner &ad, struct State *s, const float v,
-                        const float Ts) {
-    /* Preparation */
-    float &t = s->t;
+  static void integrate(const AccelDesigner &ad, struct State &s, const float v,
+                        const float t, const float Ts) {
     /* Calculation */
     const std::array<float, 3> th{ad.x(t), ad.x(t + Ts / 2), ad.x(t + Ts)};
     std::array<float, 3> cos_th;
@@ -93,20 +82,19 @@ struct Shape {
       sin_th[i] = std::sin(th[i]);
     }
     /* Runge-Kutta Integral */
-    s->q.x += v * Ts * (cos_th[0] + 4 * cos_th[1] + cos_th[2]) / 6;
-    s->q.y += v * Ts * (sin_th[0] + 4 * sin_th[1] + sin_th[2]) / 6;
-    s->t += Ts;
+    s.q.x += v * Ts * (cos_th[0] + 4 * cos_th[1] + cos_th[2]) / 6;
+    s.q.y += v * Ts * (sin_th[0] + 4 * sin_th[1] + sin_th[2]) / 6;
     /* Result */
-    s->dq.x = v * cos_th[2];
-    s->dq.y = v * sin_th[2];
-    s->q.th = ad.x(t);
-    s->dq.th = ad.v(t);
-    s->ddq.th = ad.a(t);
-    s->dddq.th = ad.j(t);
-    s->ddq.x = -s->dq.y * s->dq.th;
-    s->ddq.y = +s->dq.x * s->dq.th;
-    s->dddq.x = -s->ddq.y * s->dq.th - s->dq.y * s->ddq.th;
-    s->dddq.y = +s->ddq.x * s->dq.th + s->dq.x * s->ddq.th;
+    s.dq.x = v * cos_th[2];
+    s.dq.y = v * sin_th[2];
+    s.q.th = ad.x(t + Ts);
+    s.dq.th = ad.v(t + Ts);
+    s.ddq.th = ad.a(t + Ts);
+    s.dddq.th = ad.j(t + Ts);
+    s.ddq.x = -s.dq.y * s.dq.th;
+    s.ddq.y = +s.dq.x * s.dq.th;
+    s.dddq.x = -s.ddq.y * s.dq.th - s.dq.y * s.ddq.th;
+    s.dddq.y = +s.ddq.x * s.dq.th + s.dq.x * s.ddq.th;
   }
   float getTotalTime() const { return t_ref; }
   bool operator==(const Shape &obj) const {
@@ -158,8 +146,8 @@ public:
     ad.reset(gain * gain * gain * m_dddth, gain * gain * m_ddth, 0,
              gain * m_dth, 0, shape.total.th);
   }
-  void update(struct State *s, const float Ts) const {
-    return Shape::integrate(ad, s, velocity, Ts);
+  void update(struct State &s, const float t, const float Ts) const {
+    return Shape::integrate(ad, s, velocity, t, Ts);
   }
   float t_end() const { return ad.t_end(); }
   float get_v_ref() const { return shape.v_ref; }

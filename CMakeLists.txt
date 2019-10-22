@@ -13,5 +13,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g3 -Wall -Wextra")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 
 add_subdirectory(test_main)
-add_subdirectory(test_traj)
+add_subdirectory(test_shape)
 add_subdirectory(test_slalom)
+add_subdirectory(test_traj)

@@ -14,6 +14,13 @@
 
 namespace ctrl {
 
+struct State {
+  Position q;
+  Position dq;
+  Position ddq;
+  Position dddq;
+};
+
 class TrajectoryTracker {
 public:
   constexpr static const float Ts = 0.001f;
@@ -30,10 +37,20 @@ public:
     float low_zeta = 1.0f; /*< zeta \in [0,1] */
     float low_b = 0.001f;  /*< b > 0 */
   };
+  static const auto sinc(const auto x) {
+    const auto xx = x * x;
+    const auto xxxx = xx * xx;
+    return xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;
+  }
 
 public:
   TrajectoryTracker(const struct Gain &gain) : gain(gain) {}
   void reset(const float vs = 0) { xi = vs; }
+  const struct Result update(const Position &est_q, const Polar &est_v,
+                             const Polar &est_a, const State &ref_s) {
+    return update(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq,
+                  ref_s.dddq);
+  }
   const struct Result update(const Position &est_q, const Polar &est_v,
                              const Polar &est_a, const Position &ref_q,
                              const Position &ref_dq, const Position &ref_ddq,
@@ -110,12 +127,6 @@ public:
 private:
   float xi;
   struct Gain gain;
-
-  static const auto sinc(const auto x) {
-    const auto xx = x * x;
-    const auto xxxx = xx * xx;
-    return xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;
-  }
 };
 
 } // namespace ctrl
