@@ -152,6 +152,29 @@ public:
   float t_end() const { return t3; }
   float v_end() const { return v3; }
   float x_end() const { return x3; }
+  /**
+   * @brief std::ofstream に軌道のcsvを出力する関数．
+   */
+  void printCsv(std::ostream &os, const float t_interval = 0.001f) const {
+    for (float t = t0; t < t_end(); t += t_interval) {
+      os << t << "," << j(t) << "," << a(t) << "," << v(t) << "," << x(t)
+         << std::endl;
+    }
+  }
+  /**
+   * @brief 情報の表示
+   */
+  friend std::ostream &operator<<(std::ostream &os, const AccelCurve &obj) {
+    os << "AccelCurve ";
+    os << "\tvs: " << obj.v(0);
+    os << "\tve: " << obj.v_end();
+    os << "\tt0: " << obj.t0;
+    os << "\tt1: " << obj.t1;
+    os << "\tt2: " << obj.t2;
+    os << "\tt3: " << obj.t3;
+    os << "\td: " << obj.x3 - obj.x0;
+    return os;
+  }
 
 public:
   /**

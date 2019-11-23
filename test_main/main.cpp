@@ -6,20 +6,23 @@
 #include <random>
 
 ctrl::AccelDesigner ad;
+ctrl::AccelCurve ac;
 std::ofstream of("out.csv");
 
 void test(float jm, float am, float vs, float va, float ve, float d, float xs,
           float ts) {
   ad.reset(jm, am, vs, va, ve, d, xs, ts);
-  // ad.printCsv(of);
-  // std::cout << ad << std::endl;
+  ad.printCsv(of);
+  std::cout << ad << std::endl;
 }
 
 int main(void) {
-  // test(500000, 9000, 0, 1200, 0, -360, 0, 0);
-  // test(500000, 9000, 0, 1200, 0, 90 * 16, 0, 0);
   // test(4800 * M_PI, 48 * M_PI, 0, 4 * M_PI, 0, M_PI / 2, 0, 0);
-#if 1
+  // test(240000, 3600, 720, 720, 0, 90, 0, 0);
+  ac.reset(240000, 3600, 720, 0);
+  ac.printCsv(of);
+  std::cout << ac << std::endl;
+#if 0
   int n = 100;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> j_urd(100000, 500000);

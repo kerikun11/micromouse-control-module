@@ -14,13 +14,14 @@ v = rawdata(:, 4);
 x = rawdata(:, 5);
 
 %% plot
-ylabels= {'$j$ [mm/s/s/s]', '$a$ [mm/s/s]', '$v$ [mm/s]', '$x$ [mm]'};
-titles= {'Jerk', 'Acceleration', 'Velocity', 'Position'};
+ylabels = {'$j$ [mm/s/s/s]', '$a$ [mm/s/s]', '$v$ [mm/s]', '$x$ [mm]'};
+titles = {'Jerk', 'Acceleration', 'Velocity', 'Position'};
 xlabelstr = '$t$ [s]';
 
 figure(1);
 data = [j a v x];
-for i = 1 : 4
+
+for i = 1:4
     subplot(4, 1, i);
     hold off; plot(nan, nan); hold on; % clean
     ax = gca; ax.ColorOrderIndex = i;
