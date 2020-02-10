@@ -15,7 +15,8 @@
 #include "TrajectoryTracker.h"
 
 #include <array>
-#include <ostream> //< for std::ostream
+#include <iomanip>
+#include <ostream>
 
 namespace ctrl {
 
@@ -44,7 +45,7 @@ struct Shape {
     struct State s;        /**< シミュレーションの状態 */
     AccelDesigner ad;
     /* 複数回行って精度を高める */
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < 3; ++i) {
       ad.reset(m_dddth, m_ddth, 0, m_dth, 0, total.th);
       s.q.x = s.q.y = 0;
       /* シミュレーション */
@@ -107,16 +108,21 @@ struct Shape {
    * @brief 情報の表示
    */
   std::ostream &printDefinition(std::ostream &os, std::string name) const {
-    os << "static const auto " << name << " = ";
-    os << "\tctrl::slalom::Shape(";
-    os << "ctrl::Position(" << total.x << ", " << total.y << ", " << total.th
-       << "), ";
-    os << "\tctrl::Position(" << curve.x << ", " << curve.y << ", " << curve.th
-       << "), ";
-    os << "\t";
-    os << straight_prev << ", " << straight_post << ", " << v_ref;
+    int width = 9;
+    os << "static const auto " << name << " =\t";
+    os << "ctrl::slalom::Shape(";
+    os << "ctrl::Position(" << std::setfill(' ') << std::setw(width) << total.x
+       << ", " << std::setfill(' ') << std::setw(width) << total.y << ", "
+       << std::setfill(' ') << std::setw(width) << total.th << "), ";
+    os << "ctrl::Position(" << std::setfill(' ') << std::setw(width) << curve.x
+       << ", " << std::setfill(' ') << std::setw(width) << curve.y << ", "
+       << std::setfill(' ') << std::setw(width) << curve.th << "), ";
+    os << std::setfill(' ') << std::setw(width) << straight_prev << ", "
+       << std::setfill(' ') << std::setw(width) << straight_post << ", "
+       << std::setfill(' ') << std::setw(width) << v_ref;
     os << "); ";
-    os << "\t//< T: " << getTotalTime() << " [s]";
+    os << "/*< T: " << std::setfill(' ') << std::setw(width) << getTotalTime()
+       << " [s] */";
     os << std::endl;
     return os;
   }

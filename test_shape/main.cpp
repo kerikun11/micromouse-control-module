@@ -13,11 +13,11 @@ static auto SS_FR135 = slalom::Shape(Position(45, -90, -M_PI * 3 / 4), -80);
 static auto SS_FL180 = slalom::Shape(Position(0, 90, M_PI), 90, 24);
 static auto SS_FR180 = slalom::Shape(Position(0, -90, -M_PI), -90, 24);
 static auto SS_FLV90 =
-    slalom::Shape(Position(45 * std::sqrt(2), 45 * std::sqrt(2), M_PI / 2), 50);
+    slalom::Shape(Position(45 * std::sqrt(2), 45 * std::sqrt(2), M_PI / 2), 48);
 static auto SS_FRV90 = slalom::Shape(
-    Position(45 * std::sqrt(2), -45 * std::sqrt(2), -M_PI / 2), -50);
-static auto SS_FLS90 = slalom::Shape(Position(45, 45, M_PI / 2), 44.5);
-static auto SS_FRS90 = slalom::Shape(Position(45, -45, -M_PI / 2), -44.5);
+    Position(45 * std::sqrt(2), -45 * std::sqrt(2), -M_PI / 2), -48);
+static auto SS_FLS90 = slalom::Shape(Position(45, 45, M_PI / 2), 44);
+static auto SS_FRS90 = slalom::Shape(Position(45, -45, -M_PI / 2), -44);
 
 #define TO_STRING(VariableName) #VariableName
 
