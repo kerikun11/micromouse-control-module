@@ -73,7 +73,7 @@ struct Shape {
   static void integrate(const AccelDesigner &ad, struct State &s, const float v,
                         const float t, const float Ts) {
     /* Calculation */
-    const std::array<float, 3> th{ad.x(t), ad.x(t + Ts / 2), ad.x(t + Ts)};
+    const std::array<float, 3> th{{ad.x(t), ad.x(t + Ts / 2), ad.x(t + Ts)}};
     std::array<float, 3> cos_th;
     std::array<float, 3> sin_th;
     for (int i = 0; i < 3; ++i) {
