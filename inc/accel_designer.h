@@ -1,14 +1,12 @@
 /**
- * @file AccelDesigner.h
- * @author KERI
- * @date 2018.04.29 created
- * @date 2019.03.25 modified
+ * @file accel_designer.h
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @url https://kerikeri.top/posts/2018-04-29-accel-designer4/
  * @brief 距離の拘束を満たす走行軌道を生成する
  */
 #pragma once
 
-#include "AccelCurve.h"
+#include "accel_curve.h"
 
 #include <algorithm> //< for std::max, std::min
 #include <cmath>     //< for std::sqrt, std::cbrt, std::pow

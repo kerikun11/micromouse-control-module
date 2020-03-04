@@ -1,16 +1,15 @@
 /**
- * @file TrajectoryTracker.h
+ * @file trajectory_tracker.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 独立2輪車の線形化フィードバック軌道追従コントローラ
  * @version 0.1
  * @date 2019-03-31
- *
  * @copyright Copyright (c) 2019
- *
  */
 #pragma once
 
-#include "Position.h"
+#include "polar.h"
+#include "position.h"
 
 namespace ctrl {
 

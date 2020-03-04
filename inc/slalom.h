@@ -1,25 +1,23 @@
 /**
- * @file SlalomDesigner.h
+ * @file slalom.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 拘束条件からスラロームを軌道生成するライブラリ
  * @version 0.1
  * @date 2019-04-01
- *
  * @copyright Copyright (c) 2019
- *
  */
 #pragma once
 
-#include "AccelDesigner.h"
-#include "Position.h"
-#include "TrajectoryTracker.h"
+#include "accel_designer.h"
+#include "position.h"
+#include "trajectory_tracker.h" /*< for State */
 
 #include <array>
+#include <cmath>
 #include <iomanip>
 #include <ostream>
 
 namespace ctrl {
-
 namespace slalom {
 
 /* 走行定数 */
@@ -130,7 +128,7 @@ struct Shape {
    * @brief 情報の表示
    */
   friend std::ostream &operator<<(std::ostream &os, const Shape &obj) {
-    os << "SlalomDesigner" << std::endl;
+    os << "Slalom Shape" << std::endl;
     os << "\ttotal: " << obj.total << std::endl;
     os << "\tnet: " << obj.curve << std::endl;
     os << "\tv_ref: " << obj.v_ref << std::endl;

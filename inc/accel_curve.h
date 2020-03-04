@@ -1,11 +1,8 @@
 /**
- * @file AccelCurve.h
- * @author KERI
- * @date 2018.04.29 created
- * @date 2019.03.25 modified
+ * @file accel_curve.h
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @url https://kerikeri.top/posts/2018-04-29-accel-designer4/
- * @brief 躍度0次，加速度1次，速度2次，位置3次
- * 関数により，滑らかな加速を実現する
+ * @brief 躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する
  */
 #pragma once
 

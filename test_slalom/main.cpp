@@ -1,10 +1,10 @@
-#include "TrajectoryTracker.h"
-#include "slalom.h"
-
 #include <cmath>
 #include <fstream>
 #include <iostream>
 #include <string>
+
+#include "slalom.h"
+#include "trajectory_tracker.h"
 
 std::ofstream of("out.csv");
 std::ostream &os = of;
