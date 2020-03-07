@@ -143,7 +143,7 @@ struct Shape {
 
 class Trajectory {
 public:
-  Trajectory(const Shape shape) : shape(shape) {}
+  Trajectory(const Shape &shape) : shape(shape) {}
   void reset(const float velocity) {
     this->velocity = velocity;
     const float gain = velocity / shape.v_ref;
@@ -158,7 +158,8 @@ public:
   const Position &get_net_curve() const { return shape.curve; }
   float get_straight_prev() const { return shape.straight_prev; }
   float get_straight_post() const { return shape.straight_post; }
-  const struct Shape &getShape() const { return shape; }
+  const Shape &getShape() const { return shape; }
+  const AccelDesigner &getAccelDesigner() const { return ad; }
 
 private:
   Shape shape;

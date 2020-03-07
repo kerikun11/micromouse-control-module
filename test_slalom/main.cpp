@@ -4,10 +4,6 @@
 #include <string>
 
 #include "slalom.h"
-#include "trajectory_tracker.h"
-
-std::ofstream of("out.csv");
-std::ostream &os = of;
 
 using namespace ctrl;
 
@@ -31,35 +27,30 @@ static auto SS_FRS90 = slalom::Shape(Position(45, -45, -M_PI / 2), -44);
 #define TO_STRING(VariableName) #VariableName
 
 int main(void) {
-#define SLALOM_NUM 5
+#define SLALOM_NUM 3
 #if SLALOM_NUM == 0
-  auto sd = slalom::Trajectory(SS_SL90);
+  auto st = slalom::Trajectory(SS_SL90);
 #elif SLALOM_NUM == 1
-  auto sd = slalom::Trajectory(SS_FL45);
+  auto st = slalom::Trajectory(SS_FL45);
 #elif SLALOM_NUM == 2
-  auto sd = slalom::Trajectory(SS_FL90);
+  auto st = slalom::Trajectory(SS_FL90);
 #elif SLALOM_NUM == 3
-  auto sd = slalom::Trajectory(SS_FL135);
+  auto st = slalom::Trajectory(SS_FL135);
 #elif SLALOM_NUM == 4
-  auto sd = slalom::Trajectory(SS_FL180);
+  auto st = slalom::Trajectory(SS_FL180);
 #elif SLALOM_NUM == 5
-  auto sd = slalom::Trajectory(SS_FLV90);
+  auto st = slalom::Trajectory(SS_FLV90);
 #endif
-  std::cout << sd.getShape() << std::endl;
+  std::cout << st.getShape() << std::endl;
 
   TrajectoryTracker::Gain gain;
   TrajectoryTracker tt(gain);
   const float v = 600;
-  sd.reset(v);
+  st.reset(v);
   tt.reset(v);
   State s;
-  const float Ts = 0.001f;
-  for (float t = 0; t < sd.t_end(); t += Ts) {
-    sd.update(s, t, Ts);
-    auto est_q = Position(0, 0, 0);
-    auto est_v = Polar(0, 0);
-    auto est_a = Polar(0, 0);
-    auto ref = tt.update(est_q, est_v, est_a, s.q, s.dq, s.ddq, s.dddq);
+  const float Ts = 0.0001f;
+  const auto printCSV = [](std::ostream &os, const float t, const State &s) {
     os << t;
     os << "," << s.dddq.th;
     os << "," << s.ddq.th;
@@ -73,11 +64,26 @@ int main(void) {
     os << "," << s.ddq.y;
     os << "," << s.dq.y;
     os << "," << s.q.y;
-    os << "," << ref.v;
-    os << "," << ref.w;
-    os << "," << ref.dv;
-    os << "," << ref.dw;
     os << std::endl;
-  }
+  };
+  std::ofstream of;
+  float t = -st.get_straight_prev() / v;
+  int i = 0;
+  of = std::ofstream("slalom_" + std::to_string(i++) + ".csv");
+  while (t < 0)
+    st.update(s, t, Ts), printCSV(of, t, s), t += Ts;
+  of = std::ofstream("slalom_" + std::to_string(i++) + ".csv");
+  while (t < st.getAccelDesigner().t_1())
+    st.update(s, t, Ts), printCSV(of, t, s), t += Ts;
+  of = std::ofstream("slalom_" + std::to_string(i++) + ".csv");
+  while (t < st.getAccelDesigner().t_2())
+    st.update(s, t, Ts), printCSV(of, t, s), t += Ts;
+  of = std::ofstream("slalom_" + std::to_string(i++) + ".csv");
+  while (t < st.getAccelDesigner().t_3())
+    st.update(s, t, Ts), printCSV(of, t, s), t += Ts;
+  of = std::ofstream("slalom_" + std::to_string(i++) + ".csv");
+  while (t < st.t_end() + st.get_straight_post() / v)
+    st.update(s, t, Ts), printCSV(of, t, s), t += Ts;
+
   return 0;
 }

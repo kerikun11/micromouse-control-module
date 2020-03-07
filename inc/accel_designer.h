@@ -169,6 +169,13 @@ public:
   float v_end() const { return dc.v_end(); }
   float x_end() const { return x3; }
   /**
+   * @brief 端点の時刻
+   */
+  float t_0() const { return t0; }
+  float t_1() const { return t1; }
+  float t_2() const { return t2; }
+  float t_3() const { return t3; }
+  /**
    * @brief stdoutに軌道のcsvを出力する関数．
    */
   void printCsv(const float t_interval = 0.001f) const {
