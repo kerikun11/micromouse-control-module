@@ -9,8 +9,8 @@ using namespace ctrl;
 
 static auto SS_SL90 = slalom::Shape(Position(45, 45, M_PI / 2), 44);
 static auto SS_SR90 = slalom::Shape(Position(45, -45, -M_PI / 2), -44);
-static auto SS_FL45 = slalom::Shape(Position(90, 45, M_PI / 4), 31);
-static auto SS_FR45 = slalom::Shape(Position(90, -45, -M_PI / 4), -31);
+static auto SS_FL45 = slalom::Shape(Position(90, 45, M_PI / 4), 30);
+static auto SS_FR45 = slalom::Shape(Position(90, -45, -M_PI / 4), -30);
 static auto SS_FL90 = slalom::Shape(Position(90, 90, M_PI / 2), 70);
 static auto SS_FR90 = slalom::Shape(Position(90, -90, -M_PI / 2), -70);
 static auto SS_FL135 = slalom::Shape(Position(45, 90, M_PI * 3 / 4), 80);
