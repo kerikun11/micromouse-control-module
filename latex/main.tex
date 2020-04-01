@@ -1,0 +1,251 @@
+\documentclass[a5paper]{ltjsarticle}
+\title{加減速軌道設計}
+% \author{}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section{速度拘束}
+
+$$
+    j(t) :=
+    \left\{ \begin{array}{ll}
+        0    & (\hspace{2.2em}t \le t_0) \\
+        j_m  & (t_0 < t \le t_1)         \\
+        0    & (t_1 < t \le t_2)         \\
+        -j_m & (t_2 < t \le t_3)         \\
+        0    & (t_3 < t \hspace{2.2em})
+    \end{array} \right.
+$$
+
+$$
+    a(t) :=
+    \left\{ \begin{array}{ll}
+        0           & (\hspace{2.2em}t \le t_0) \\
+        j_m(t-t_0)  & (t_0 < t \le t_1)         \\
+        a_m         & (t_1 < t \le t_2)         \\
+        -j_m(t-t_3) & (t_2 < t \le t_3)         \\
+        0           & (t_3 < t \hspace{2.2em})
+    \end{array} \right.
+$$
+
+$$
+    v(t) :=
+    \left\{ \begin{array}{ll}
+        v_0                           & (\hspace{2.2em} t \le t_0) \\
+        v_0 + \frac{1}{2}j_m(t-t_0)^2 & (t_0 < t \le t_1)          \\
+        v_1 + a_m(t-t_1)              & (t_1 < t \le t_2)          \\
+        v_3 - \frac{1}{2}j_m(t-t_3)^2 & (t_2 < t \le t_3)          \\
+        v_3                           & (t_3 < t \hspace{2.2em})
+    \end{array} \right.
+$$
+
+$$
+    x(t) :=
+    \left\{ \begin{array}{ll}
+        x_0 + v_0(t-t_0)                           & (\hspace{2.2em} t \le t_0) \\
+        x_0 + v_0(t-t_0) + \frac{1}{6}j_m(t-t_0)^3 & (t_0 < t \le t_1)          \\
+        x_1 + v_1(t-t_1) + \frac{1}{2}a_m(t-t_1)^2 & (t_1 < t \le t_2)          \\
+        x_3 + v_3(t-t_3) - \frac{1}{6}j_m(t-t_3)^3 & (t_2 < t \le t_3)          \\
+        x_3 + v_3(t-t_3)                           & (t_3 < t \hspace{2.2em})
+    \end{array} \right.
+$$
+
+$$
+    j_m = \mathrm{sign}(v_e-v_s) \times|j_m|
+$$
+
+$$
+    a_m = \mathrm{sign}(v_e-v_s) \times|a_m|
+$$
+
+$$
+    t_m := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m} \\
+$$
+
+$$
+    t_c := \frac{a_m}{j_m}
+$$
+
+$$
+    \left\{ \begin{array}{l}
+        \begin{array}{ll}
+            \left\{ \begin{array}{l}
+                t_0 := 0         \\
+                t_1 := t_0 + t_c \\
+                t_2 := t_1 + t_m \\
+                t_3 := t_2 + t_c
+            \end{array} \right.
+             &
+            (t_m > 0)
+            \\
+            \left\{ \begin{array}{l}
+                t_0 := 0                                   \\
+                t_1 := t_0 + \sqrt{\frac{1}{j_m}(v_e-v_s)} \\
+                t_2 := t_1                                 \\
+                t_3 := t_2 + (t_1-t_0)
+            \end{array} \right.
+             &
+            (t_m \le 0)
+        \end{array}
+    \end{array} \right.
+$$
+
+$$
+    \left\{ \begin{array}{l}
+        v_0 := v_s    \\
+        v_1 := v(t_1) \\
+        v_2 := v(t_2) \\
+        v_3 := v_e
+    \end{array} \right.
+$$
+
+$$
+    \left\{ \begin{array}{l}
+        x_0 := 0      \\
+        x_1 := x(t_1) \\
+        x_2 := x(t_2) \\
+        x_3 := x_0 + \frac{1}{2}(v_0 + v_3)(t_3-t_0)
+    \end{array} \right.
+$$
+
+\section{距離拘束}
+
+$$
+    v_e(t_c, a_m, v_s, v_t, d) :=
+    \left\{\begin{array}{ll}
+        v_{e1} & (d        \ge d_m)
+        \\
+        v_{e2} & (d < d_m)
+    \end{array}\right.
+$$
+ただし，
+$$
+    \begin{array}{l@{~}l}
+        d_m    & := 2 v_s t_c + a_m t_c^2
+        \\
+        v_{e1} & :=
+        \frac{-a_m t_c + \sqrt{a_m^2 t_c^2-4(a_m t_c v_s - v_s^2 - 2a_m d)}}{2}
+        \\
+        v_{e2} & :=
+        \frac{1}{3}\left(c +\frac{4a^2}{c}
+        -a
+        \right)
+        \\
+        a      & := v_s
+        \\
+        b      & :=                       \frac{a_md^2}{t_c}
+        \\
+        c      & :=                       \sqrt[3]{\frac{\sqrt{27b(32a^3+27b)} + 16a^3+27b}{2}}
+    \end{array}
+$$
+
+$$
+    v_m(t_c, a_m, v_s, v_a, v_e, d) := \min\{v_a,~v_{m2}\}
+$$
+ただし，
+$$
+    \begin{array}{l@{~}l}
+        v_{m2} & := \max\{v_s, v_e, v_{m1}\}                                                   \\
+        v_{m1} & := \frac{-a_mt_c + \sqrt{a_m^2t_c^2-(v_s+v_e)a_mt_c+4a_md+2(v_s^2+v_e^2)}}{2}
+    \end{array}
+$$
+
+$$
+    \begin{array}{l@{~}l}
+        t_0 & := 0
+        \\
+        t_1 & := ac.t_{end}
+        \\
+        t_2 & := t_1 +             \frac{d - ac.x_{end} - dc.x_{end}}{v_m}
+        \\
+        t_3 & := t_2 + dc.t_{end}
+    \end{array}
+$$
+
+$$
+    \begin{array}{l@{~}l}
+        d_m & =                  \int_{t_0}^{t_1}v(t) dt + \int_{t_1}^{t_2}v(t) dt
+        \\
+            & =                  \int_{t_0}^{t_1}\left( v_0+\frac{1}{2} j_m(t-t_0)^2 \right) dt
+        \\
+            & \quad+ \int_{t_1}^{t_2}\left(
+        v_0+                     \frac{1}{2} j_m(t_1-t_0)^2
+        +j_m(t_1-t_0)(t-t_1) -   \frac{1}{2}j_m(t-t_1)^2
+        \right) dt
+        \\
+            & = 2v_0t_c+a_mt_c^2
+    \end{array}
+$$
+
+ただし，$j_m:=a_m/t_c$
+
+$$
+    \begin{array}{l@{~}l}
+        d                      & = \frac{1}{2}(v_s+v_{e1})(t_3-t_0)
+        \\
+                               & = \frac{1}{2}(v_s+v_{e1})(t_c+t_m+t_c)
+        \\
+                               & = \frac{1}{2}(v_s+v_{e1})\left(t_c+\frac{v_{e1}-v_s}{a_m}\right)
+        \\
+        \Leftrightarrow v_{e1} & =
+        \frac{1}{2}\left(\sqrt{4v_s^2-4v_sa_mt_c+a_m(a_mt_c^2+8d)}-a_mt_c\right)
+    \end{array}
+$$
+
+$$
+    \begin{array}{l@{~}l}
+        d        & =                                                         \frac{1}{2}(v_s+v_{e2})(t_3-t_0)
+        \\
+                 & =                                                         \frac{1}{2}(v_s+v_{e2})2\sqrt{\frac{t_c}{a_m}(v_{e2}-v_s)}
+        \\
+        \Leftrightarrow
+        v_{e2}^3 & + v_s v_{e2}^2-v_s^2v_{e2}-v_s^3-\frac{a_md^2}{t_c} = 0
+        \\
+        \Leftrightarrow
+        v_{e2}   & =
+        \frac{1}{3}\left(c +\frac{4a^2}{c}
+        -a
+        \right)
+        \\
+        a        & := v_s
+        \\
+        b        & :=                                                        \frac{a_md^2}{t_c}
+        \\
+        c        & :=                                                        \sqrt[3]{\frac{\sqrt{27b(32a^3+27b)} + 16a^3+27b}{2}}
+    \end{array}
+$$
+
+以上をまとめると，たどり着き得る終点速度$v_{e1}$は，
+
+$$
+    v_{e} :=
+    \left\{\begin{array}{ll}
+        v_{e1} & (d        \ge d_m) \\
+        v_{e2} & (d < d_m)
+    \end{array}\right.
+$$
+
+$$
+    \begin{array}{l@{~}l}
+        d                      & =
+        \frac{1}{2}(v_s+v_{m1})(t_1-t_0)+
+        \frac{1}{2}(v_{m1}+v_e)(t_3-t_2)
+        \\
+                               & =
+        \frac{1}{2}(v_s+v_{m1})\left(t_c+\frac{v_{m1}-v_s}{a_m}\right)+
+        \frac{1}{2}(v_{m1}+v_e)\left(t_c+\frac{v_e-v_{m1}}{a_m}\right)
+        \\
+        \Leftrightarrow v_{m1} & := \frac{-a_mt_c + \sqrt{a_m^2t_c^2-(v_s+v_e)a_mt_c+4a_md+2(v_s^2+v_e^2)}}{2}
+    \end{array}
+$$
+
+$$
+    v_{m2} := \max\{v_s,~v_e,~v_{m1}\}
+$$
+
+$$
+    v_m = \min\{v_a,~v_{m2}\}
+$$
+
+\end{document}
