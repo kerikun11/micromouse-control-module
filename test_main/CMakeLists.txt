@@ -6,3 +6,8 @@ add_custom_target(main
   DEPENDS test_main
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
+add_custom_target(main_plot
+  COMMAND ${CMAKE_BINARY_DIR}/test_main/test_main && cd ${CMAKE_BINARY_DIR} && python ${CMAKE_HOME_DIRECTORY}/test_main/plot.py --file main.csv
+  DEPENDS test_main
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)

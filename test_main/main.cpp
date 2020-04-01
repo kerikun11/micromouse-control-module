@@ -7,7 +7,7 @@
 
 ctrl::AccelDesigner ad;
 ctrl::AccelCurve ac;
-std::ofstream of("out.csv");
+std::ofstream of("main.csv");
 
 void test(float jm, float am, float vs, float va, float ve, float d, float xs,
           float ts) {
@@ -19,9 +19,9 @@ void test(float jm, float am, float vs, float va, float ve, float d, float xs,
 int main(void) {
   // test(4800 * M_PI, 48 * M_PI, 0, 4 * M_PI, 0, M_PI / 2, 0, 0);
   // test(240000, 3600, 720, 720, 0, 90, 0, 0);
-  ac.reset(240000, 3600, 720, 0);
-  ac.printCsv(of);
-  std::cout << ac << std::endl;
+  // test(100, 10, ad.v_end(), 10, 1, 10, ad.x_end(), ad.t_end());
+  // test(100, 10, ad.v_end(), 10, 1, 0.1, ad.x_end(), ad.t_end());
+  test(100, 100, ad.v_end(), 10, 1, 1, ad.x_end(), ad.t_end());
 #if 0
   int n = 100;
   std::mt19937 mt{std::random_device{}()};
