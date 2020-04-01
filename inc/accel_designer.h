@@ -1,8 +1,8 @@
 /**
  * @file accel_designer.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
- * @url https://kerikeri.top/posts/2018-04-29-accel-designer4/
- * @brief 距離の拘束を満たす走行軌道を生成する
+ * @ref https://kerikeri.top/posts/2018-04-29-accel-designer4/
+ * @brief 距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル
  */
 #pragma once
 
@@ -16,8 +16,9 @@
 namespace ctrl {
 
 /**
- * @class 加減速曲線を生成するクラス
- * @brief 引数の拘束条件に従って速度計画をし，加減速曲線を生成する
+ * @brief 加減速曲線を生成するクラス
+ *
+ * 引数の拘束条件に従って速度計画をし，加減速曲線を生成する
  */
 class AccelDesigner {
 public:
@@ -119,7 +120,7 @@ public:
     }
   }
   /**
-   * @brief 時刻$t$における躍度$j$
+   * @brief 時刻 $t$ における躍度 $j$
    * @param t 時刻[s]
    * @return j 躍度[mm/s/s/s]
    */
@@ -130,7 +131,7 @@ public:
       return dc.j(t - t2);
   }
   /**
-   * @brief 時刻$t$における加速度$a$
+   * @brief 時刻 $t$ における加速度 $a$
    * @param t 時刻 [s]
    * @return a 加速度 [mm/s/s]
    */
@@ -141,7 +142,7 @@ public:
       return dc.a(t - t2);
   }
   /**
-   * @brief 時刻$t$における速度$v$
+   * @brief 時刻 $t$ における速度 $v$
    * @param t 時刻 [s]
    * @return v 速度 [mm/s]
    */
@@ -152,7 +153,7 @@ public:
       return dc.v(t - t2);
   }
   /**
-   * @brief 時刻$t$における位置$x$
+   * @brief 時刻 $t$ における位置 $x$
    * @param t 時刻 [s]
    * @return x 位置 [mm]
    */
@@ -185,10 +186,9 @@ public:
    * @brief std::ofstream に軌道のcsvを出力する関数．
    */
   void printCsv(std::ostream &os, const float t_interval = 0.001f) const {
-    for (float t = t0; t < t_end(); t += t_interval) {
+    for (float t = t0; t < t_end(); t += t_interval)
       os << t << "," << j(t) << "," << a(t) << "," << v(t) << "," << x(t)
          << std::endl;
-    }
   }
   /**
    * @brief 情報の表示
@@ -207,9 +207,9 @@ public:
   }
 
 private:
-  float t0, t1, t2, t3; /**< 境界点の時刻 [s] */
-  float x0, x3;         /**< 境界点の位置 [mm] */
-  AccelCurve ac, dc;    /**< 曲線加速，曲線減速オブジェクト */
+  float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
+  float x0, x3;         /**< @brief 境界点の位置 [mm] */
+  AccelCurve ac, dc; /**< @brief 曲線加速，曲線減速オブジェクト */
 };
 
 } // namespace ctrl

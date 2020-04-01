@@ -1,7 +1,7 @@
 /**
  * @file accel_curve.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
- * @url https://kerikeri.top/posts/2018-04-29-accel-designer4/
+ * @ref https://kerikeri.top/posts/2018-04-29-accel-designer4/
  * @brief 躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する
  */
 #pragma once
@@ -13,13 +13,15 @@
 namespace ctrl {
 
 /**
- * @class 加速曲線を生成するクラス
- * @brief 引数に従って加速曲線を生成する
+ * @brief 加速曲線を生成するクラス
+ *
+ * 引数に従って加速曲線を生成する
  */
 class AccelCurve {
 public:
   /**
    * @brief 初期化付きのコンストラクタ．
+   *
    * @param j_max   最大躍度の大きさ [mm/s/s/s]
    * @param a_max   最大加速度の大きさ [mm/s/s]
    * @param v_start 始点速度   [mm/s]
@@ -33,12 +35,12 @@ public:
    * @brief 空のコンストラクタ．あとで reset() により初期化すること．
    */
   AccelCurve() {
-    jm = am = t0 = t1 = t2 = t3 = v0 = v1 = v2 = v3 = x0 = x1 = x2 = x3 = tc =
-        tm = 0;
+    jm = am = t0 = t1 = t2 = t3 = v0 = v1 = v2 = v3 = x0 = x1 = x2 = x3 = 0;
   }
   /**
    * @brief 引数の拘束条件から曲線を生成する．
    * この関数によって，すべての変数が初期化される．(漏れはない)
+   *
    * @param j_max   最大躍度の大きさ [mm/s/s/s]
    * @param a_max   最大加速度の大きさ [mm/s/s]
    * @param v_start 始点速度 [mm/s]
@@ -46,17 +48,18 @@ public:
    */
   void reset(const float j_max, const float a_max, const float v_start,
              const float v_end) {
-    /* 速度が曲線となる部分の時間を決定 */
-    const float tc = a_max / j_max;
     /* 符号付きで代入 */
     am = (v_end - v_start > 0) ? a_max : -a_max; //< 最大加速度の符号を決定
     jm = (v_end - v_start > 0) ? j_max : -j_max; //< 最大躍度の符号を決定
     /* 初期値と最終値を代入 */
-    v0 = v_start;             //< 代入
-    v3 = v_end;               //< 代入
-    t0 = 0;                   //< ここでは初期値をゼロとする
-    x0 = 0;                   //< ここでは初期値はゼロとする
-    tm = (v3 - v0) / am - tc; //< 等加速度直線運動の時間を決定
+    v0 = v_start; //< 代入
+    v3 = v_end;   //< 代入
+    t0 = 0;       //< ここでは初期値をゼロとする
+    x0 = 0;       //< ここでは初期値はゼロとする
+    /* 速度が曲線となる部分の時間を決定 */
+    const auto tc = a_max / j_max;
+    /* 等加速度直線運動の時間を決定 */
+    const auto tm = (v3 - v0) / am - tc;
     /* 等加速度直線運動の有無で分岐 */
     if (tm > 0) {
       /* 速度: 曲線 -> 直線 -> 曲線 */
@@ -65,7 +68,7 @@ public:
       t3 = t2 + tc;
     } else {
       /* 速度: 曲線 -> 曲線 */
-      t1 = t0 + std::sqrt(tc / am * (v3 - v0)); //< 速度差から算出
+      t1 = t0 + std::sqrt(1 / jm * (v3 - v0)); //< 速度差から算出
       t2 = t1;             //< 加速度一定の時間はないので同じ
       t3 = t2 + (t1 - t0); //< 対称性
     }
@@ -78,9 +81,9 @@ public:
     x3 = x0 + (v0 + v3) / 2 * (t3 - t0); //< 速度グラフの面積により
   }
   /**
-   * @brief 時刻$t$における躍度$j$
-   * @param t 時刻[s]
-   * @return 躍度[mm/s/s/s]
+   * @brief 時刻 $t$ における躍度 $j$
+   * @param t 時刻 [s]
+   * @return 躍度 [mm/s/s/s]
    */
   float j(const float t) const {
     if (t <= t0)
@@ -95,9 +98,9 @@ public:
       return 0;
   }
   /**
-   * @brief 時刻$t$における加速度$a$
-   * @param t 時刻[s]
-   * @return 加速度[mm/s/s]
+   * @brief 時刻 $t$ における加速度 $a$
+   * @param t 時刻 [s]
+   * @return 加速度 [mm/s/s]
    */
   float a(const float t) const {
     if (t <= t0)
@@ -112,9 +115,9 @@ public:
       return 0;
   }
   /**
-   * @brief 時刻$t$における速度$v$
-   * @param t 時刻[s]
-   * @return 速度[mm/s]
+   * @brief 時刻 $t$ における速度 $v$
+   * @param t 時刻 [s]
+   * @return 速度 [mm/s]
    */
   float v(const float t) const {
     if (t <= t0)
@@ -129,9 +132,9 @@ public:
       return v3;
   }
   /**
-   * @brief 時刻$t$における位置$x$
-   * @param t 時刻[s]
-   * @return 位置[mm]
+   * @brief 時刻 $t$ における位置 $x$
+   * @param t 時刻 [s]
+   * @return 位置 [mm]
    */
   float x(const float t) const {
     if (t <= t0)
@@ -178,6 +181,7 @@ public:
 public:
   /**
    * @brief 走行距離から達しうる終点速度を算出する関数
+   *
    * @param j_max 最大躍度の大きさ [mm/s/s/s]
    * @param a_max 最大加速度の大きさ [mm/s/s]
    * @param vs 始点速度 [mm/s]
@@ -203,7 +207,6 @@ public:
     /* 曲線・曲線 */
     /* 3次方程式を解いて，終点速度を算出 */
     am = (d > 0) ? a_max : -a_max;
-    float ve; //< 変数を用意
     const float a = vs;
     const float b = am * d * d / tc;
     const float aaa = a * a * a;
@@ -212,14 +215,13 @@ public:
     if (c0 >= 0) {
       /* ルートの中が非負のとき，つまり，b >= 0 のとき */
       const float c2 = std::cbrt((std::sqrt(c0) + c1) / 2);
-      ve = (c2 + 4 * a * a / c2 - a) / 3; //< 3次方程式の解
+      return (c2 + 4 * a * a / c2 - a) / 3; //< 3次方程式の解
     } else {
       /* ルートの中が負のとき，つまり，b < 0 のとき */
       const auto c2 =
           std::pow(std::complex<float>(c1 / 2, std::sqrt(-c0) / 2), 1.0f / 3);
-      ve = (c2.real() * 2 - a) / 3; //< 3次方程式の解
+      return (c2.real() * 2 - a) / 3; //< 3次方程式の解
     }
-    return ve;
   }
   /**
    * @brief 走行距離から最大速度を算出する関数
@@ -263,13 +265,11 @@ public:
     return ac.x_end();
   }
 
-private:
-  float jm;             //< 最大躍度 [m/s/s]
-  float am;             //< 最大加速度 [m/s/s]
-  float t0, t1, t2, t3; //< 境界点の時刻 [s]
-  float v0, v1, v2, v3; //< 境界点の速度 [m/s]
-  float x0, x1, x2, x3; //< 境界点の位置 [m]
-  float tc;             //< 曲線加速の時間 [s]
-  float tm;             //< 最大加速度の時間 [s]
+protected:
+  float jm;             /**< @brief 最大躍度 [m/s/s] */
+  float am;             /**< @brief 最大加速度 [m/s/s] */
+  float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
+  float v0, v1, v2, v3; /**< @brief 境界点の速度 [m/s] */
+  float x0, x1, x2, x3; /**< @brief 境界点の位置 [m] */
 };
 } // namespace ctrl
