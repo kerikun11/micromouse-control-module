@@ -8,6 +8,12 @@
 \section{速度拘束}
 
 $$
+    j_m = \mathrm{sign}(v_e-v_s) \times|j_{\max}|
+    ,\quad
+    a_m = \mathrm{sign}(v_e-v_s) \times|a_{\max}|
+$$
+
+$$
     j(t) :=
     \left\{ \begin{array}{ll}
         0    & (\hspace{2.2em}t \le t_0) \\
@@ -52,22 +58,6 @@ $$
 $$
 
 $$
-    j_m = \mathrm{sign}(v_e-v_s) \times|j_m|
-$$
-
-$$
-    a_m = \mathrm{sign}(v_e-v_s) \times|a_m|
-$$
-
-$$
-    t_m := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m} \\
-$$
-
-$$
-    t_c := \frac{a_m}{j_m}
-$$
-
-$$
     \left\{ \begin{array}{l}
         \begin{array}{ll}
             \left\{ \begin{array}{l}
@@ -92,15 +82,19 @@ $$
 $$
 
 $$
+    t_m := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m}
+    ,\quad
+    t_c := \frac{a_m}{j_m}
+$$
+
+$$
     \left\{ \begin{array}{l}
         v_0 := v_s    \\
         v_1 := v(t_1) \\
         v_2 := v(t_2) \\
         v_3 := v_e
     \end{array} \right.
-$$
-
-$$
+    \quad
     \left\{ \begin{array}{l}
         x_0 := 0      \\
         x_1 := x(t_1) \\
@@ -162,6 +156,8 @@ $$
         t_3 & := t_2 + dc.t_{end}
     \end{array}
 $$
+
+\subsection{導出}
 
 $$
     \begin{array}{l@{~}l}

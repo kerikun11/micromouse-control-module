@@ -2,15 +2,13 @@
  * @file slalom.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 拘束条件からスラロームを軌道生成するライブラリ
- * @version 0.1
  * @date 2019-04-01
- * @copyright Copyright (c) 2019
  */
 #pragma once
 
 #include "accel_designer.h"
 #include "position.h"
-#include "trajectory_tracker.h" /*< for State */
+#include "state.h"
 
 #include <array>
 #include <cmath>

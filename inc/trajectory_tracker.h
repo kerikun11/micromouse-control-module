@@ -2,23 +2,15 @@
  * @file trajectory_tracker.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 独立2輪車の線形化フィードバック軌道追従コントローラ
- * @version 0.1
  * @date 2019-03-31
- * @copyright Copyright (c) 2019
  */
 #pragma once
 
 #include "polar.h"
 #include "position.h"
+#include "state.h"
 
 namespace ctrl {
-
-struct State {
-  Position q;
-  Position dq;
-  Position ddq;
-  Position dddq;
-};
 
 class TrajectoryTracker {
 public:

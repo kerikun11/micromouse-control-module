@@ -2,14 +2,12 @@
  * @file straight.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 直線軌道を生成する
- * @version 0.1
  * @date 2019-03-31
- * @copyright Copyright (c) 2020
  */
 #pragma once
 
 #include "accel_designer.h"
-#include "trajectory_tracker.h"
+#include "state.h"
 
 namespace ctrl {
 namespace straight {

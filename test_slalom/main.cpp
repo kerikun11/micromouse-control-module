@@ -43,11 +43,8 @@ int main(void) {
 #endif
   std::cout << st.getShape() << std::endl;
 
-  TrajectoryTracker::Gain gain;
-  TrajectoryTracker tt(gain);
   const float v = 600;
   st.reset(v);
-  tt.reset(v);
   State s;
   const float Ts = 0.0001f;
   const auto printCSV = [](std::ostream &os, const float t, const State &s) {
