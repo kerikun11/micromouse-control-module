@@ -142,11 +142,12 @@ struct Shape {
 class Trajectory {
 public:
   Trajectory(const Shape &shape) : shape(shape) {}
-  void reset(const float velocity) {
+  void reset(const float velocity, const float th_start = 0,
+             const float t_start = 0) {
     this->velocity = velocity;
     const float gain = velocity / shape.v_ref;
     ad.reset(gain * gain * gain * m_dddth, gain * gain * m_ddth, 0,
-             gain * m_dth, 0, shape.total.th);
+             gain * m_dth, 0, shape.total.th, th_start, t_start);
   }
   void update(struct State &s, const float t, const float Ts) const {
     return Shape::integrate(ad, s, velocity, t, Ts);

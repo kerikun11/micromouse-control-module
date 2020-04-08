@@ -16,10 +16,12 @@ fig_t, ax_t = plt.subplots(4, 1, figsize=(6, 8))
 
 # ============================================================================ #
 # plot
+s = 3
+filebase = f'./build/slalom/shape_{s}'
 for i in range(5):
     # slalom_i.csv
     # t,dddth,ddth,dth,th,dddx,ddx,dx,x,dddy,ddy,dy,y
-    raw = np.loadtxt(f"./build/slalom/shape_5_{i}.csv", delimiter=',')
+    raw = np.loadtxt(f"{filebase}_{i}.csv", delimiter=',')
     if raw.size == 0:
         raw = np.empty(shape=(0, 13))
     t = raw[:, 0]
@@ -68,7 +70,6 @@ ax_t[-1].autoscale()
 # save
 fig_t.tight_layout()
 fig_xy.tight_layout()
-filebase = 'build/slalom/shape_5_'
 for ext in ['.png', '.pdf', '.svg']:
     fig_xy.savefig(filebase + 'xy' + ext)
     fig_t.savefig(filebase + 't' + ext)

@@ -1,9 +1,10 @@
+#include "slalom.h"
+
 #include <cmath>
 #include <fstream>
 #include <iostream>
 #include <string>
-
-#include "slalom.h"
+#include <vector>
 
 using namespace ctrl;
 
@@ -24,10 +25,8 @@ static auto SS_FRV90 = slalom::Shape(
 static auto SS_FLS90 = slalom::Shape(Position(45, 45, M_PI / 2), 44);
 static auto SS_FRS90 = slalom::Shape(Position(45, -45, -M_PI / 2), -44);
 
-#define TO_STRING(VariableName) #VariableName
-
 int main(void) {
-#define SLALOM_NUM 3
+#define SLALOM_NUM 5
 #if SLALOM_NUM == 0
   auto st = slalom::Trajectory(SS_SL90);
 #elif SLALOM_NUM == 1
@@ -44,8 +43,8 @@ int main(void) {
   std::cout << st.getShape() << std::endl;
 
   const float v = 600;
-  st.reset(v);
   State s;
+  st.reset(v, M_PI / 4);
   const float Ts = 0.00001f;
   const auto printCSV = [](std::ostream &os, const float t, const State &s) {
     os << t;
