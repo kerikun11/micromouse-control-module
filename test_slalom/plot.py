@@ -20,6 +20,8 @@ for i in range(5):
     # slalom_i.csv
     # t,dddth,ddth,dth,th,dddx,ddx,dx,x,dddy,ddy,dy,y
     raw = np.loadtxt(f"./build/slalom_{i}.csv", delimiter=',')
+    if raw.size == 0:
+        raw = np.empty(shape=(0, 13))
     t = raw[:, 0]
     th = raw[:, 1:1+4]
     th = th / np.pi * 180  # rad -> degree
@@ -65,10 +67,11 @@ ax_t[-1].autoscale()
 # save
 fig_t.tight_layout()
 fig_xy.tight_layout()
+filebase = 'build/slalom/shape_0_'
 for ext in ['.png', '.pdf', '.svg']:
-    fig_xy.savefig('build/xy' + ext)
-    fig_t.savefig('build/t' + ext)
+    fig_xy.savefig(filebase + 'xy' + ext)
+    fig_t.savefig(filebase + 't' + ext)
 
 # ============================================================================ #
 # show
-plt.show()
+# plt.show()
