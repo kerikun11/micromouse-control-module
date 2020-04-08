@@ -46,7 +46,7 @@ int main(void) {
   const float v = 600;
   st.reset(v);
   State s;
-  const float Ts = 0.0001f;
+  const float Ts = 0.00001f;
   const auto printCSV = [](std::ostream &os, const float t, const State &s) {
     os << t;
     os << "," << s.dddq.th;
