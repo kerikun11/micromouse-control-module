@@ -52,6 +52,9 @@ def plot_shape(s):
     ax.grid(which='minor', linestyle=':')
     ax.legend(['straight', 'transition curve',
                'pure arc', 'transition curve', 'straight'])
+    # ax.set_title('')
+    # ax.axis('off')
+    # ax.legend().remove()
 
     # ============================================================================ #
     # t style
