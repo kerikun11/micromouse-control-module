@@ -84,12 +84,12 @@ int main(void) {
   printDefinitions();
 
   /* print trajectory to file*/
-  printCsv("slalom/shape_0", SS_SL90);
-  printCsv("slalom/shape_1", SS_FL45);
-  printCsv("slalom/shape_2", SS_FL90);
-  printCsv("slalom/shape_3", SS_FL135);
-  printCsv("slalom/shape_4", SS_FL180);
-  printCsv("slalom/shape_5", SS_FLV90, M_PI / 4);
+  printCsv("shape/shape_0", SS_SL90);
+  printCsv("shape/shape_1", SS_FL45);
+  printCsv("shape/shape_2", SS_FL90);
+  printCsv("shape/shape_3", SS_FL135);
+  printCsv("shape/shape_4", SS_FL180);
+  printCsv("shape/shape_5", SS_FLV90, M_PI / 4);
 
   return 0;
 }
