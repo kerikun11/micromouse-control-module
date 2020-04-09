@@ -92,5 +92,6 @@ def plot_shape(s):
 
 # ============================================================================ #
 # auto plot
-for s in range(6):
+for s in range(7):
+# for s in [6]:
     plot_shape(s)
