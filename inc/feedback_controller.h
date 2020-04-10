@@ -35,7 +35,7 @@ public:
    *        使用しない成分は，0に設定すること．
    *
    * 伝達関数 $ u(s) = K_p e(s) + K_i / s e(s) + K_d s e(s) $,
-   * $ e(s) := r(s) - y(s) $
+   * ただし，$ e(s) := r(s) - y(s) $
    */
   struct Gain {
     T Kp; /**< フィードバック比例ゲイン */
@@ -43,18 +43,16 @@ public:
     T Kd; /**< フィードバック微分ゲイン */
   };
   /**
-   * @brief 制御入力の計算内訳．
-   *        ゲインチューニングの際に可視化するために使用する．
-   *
-   * - ff: フィードフォワード成分
-   * - fb: フィードバック成分
-   * - fbp: フィードバック成分のうち比例成分
-   * - fbi: フィードバック成分のうち積分成分
-   * - fbd: フィードバック成分のうち微分成分
-   * - u: 成分の総和
+   * @brief 制御入力の成分内訳．
+   * ゲインチューニングの際に可視化するために使用する．
    */
   struct Breakdown {
-    T ff, fb, fbp, fbi, fbd, u;
+    T ff;  /**< フィードフォワード成分 */
+    T fb;  /**< フィードバック成分 */
+    T fbp; /**< フィードバック成分のうち比例成分 */
+    T fbi; /**< フィードバック成分のうち積分成分 */
+    T fbd; /**< フィードバック成分のうち微分成分 */
+    T u;   /**< 成分の総和 */
   };
 
 public:
@@ -89,7 +87,7 @@ public:
     bd.fb = bd.fbp + bd.fbi + bd.fbd;
     /* calculate control input value */
     bd.u = bd.ff + bd.fb;
-    /* integral error */
+    /* integrate error */
     e_int += (r - y) * Ts;
     /* complete */
     return bd.u;
