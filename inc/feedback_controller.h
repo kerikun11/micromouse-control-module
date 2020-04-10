@@ -2,20 +2,20 @@
  * @file feedback_controller.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief フィードバック制御器クラスを保持するファイル
- * @date 2020-04-01
- *
- * @copyright Copyright (c) 2020
- *
+ * @date 2020-04-10
+ * @copyright Copyright (c) 2020 Ryotaro Onuki
  */
 #pragma once
 
 #include <cmath>
 
+/**
+ * @brief 制御関係の名前空間
+ */
 namespace ctrl {
 
 /**
- * @brief 1次フィードフォワード＋フィードバック制御クラス
- *
+ * @brief 1次フィードフォワード補償付きフィードバック制御器クラス
  * @tparam T 状態変数の型
  */
 template <typename T> class FeedbackController {
@@ -23,32 +23,38 @@ public:
   /**
    * @brief フィードフォワード成分に使用する1次モデル
    *
-   * 使用しない場合は、 $ K_1 = 0,~ T_1 = 1 $ に設定する。
-   *
+   * 使用しない場合は， $ K_1 = 0,~ T_1 = 1 $ に設定すること．
    * 伝達関数 $ y(s) = \frac{K_1}{T_1s+1} u(s) $
    */
   struct Model {
-    T K1;
-    T T1;
+    T K1; /** 1次モデルの定常ゲイン (使用しない場合は 0 とすること) */
+    T T1; /** 1次モデルの時定数 (使用しない場合は 1 とすること) */
   };
   /**
    * @brief フィードバック成分に使用するPIDゲイン
+   *        使用しない成分は，0に設定すること．
    *
-   * 使用しない成分は、0に設定する。
-   *
-   * 伝達関数 $ u(s) = K_p e(s) + K_i s e(s) + K_d e(s) / s $,
+   * 伝達関数 $ u(s) = K_p e(s) + K_i / s e(s) + K_d s e(s) $,
    * $ e(s) := r(s) - y(s) $
    */
   struct Gain {
-    T Kp;
-    T Ki;
-    T Kd;
+    T Kp; /**< フィードバック比例ゲイン */
+    T Ki; /**< フィードバック積分ゲイン */
+    T Kd; /**< フィードバック微分ゲイン */
   };
   /**
-   * @brief 制御入力の計算内訳。ゲイン設計時に使用するとよい。
+   * @brief 制御入力の計算内訳．
+   *        ゲインチューニングの際に可視化するために使用する．
+   *
+   * - ff: フィードフォワード成分
+   * - fb: フィードバック成分
+   * - fbp: フィードバック成分のうち比例成分
+   * - fbi: フィードバック成分のうち積分成分
+   * - fbd: フィードバック成分のうち微分成分
+   * - u: 成分の総和
    */
   struct Breakdown {
-    T ff, fbp, fbi, fbd, fb, u;
+    T ff, fb, fbp, fbi, fbd, u;
   };
 
 public:
@@ -64,7 +70,7 @@ public:
    */
   void reset() { e_int = T(); }
   /**
-   * @brief 状態を更新して、次の制御入力を得る関数
+   * @brief 状態を更新して，次の制御入力を得る関数
    *
    * @param r 目標値
    * @param y 観測値
