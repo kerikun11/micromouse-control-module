@@ -1,6 +1,7 @@
 #include "slalom.h"
 
 #include <fstream>
+#include <iomanip>
 #include <string>
 #include <vector>
 

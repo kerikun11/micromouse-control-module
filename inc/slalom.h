@@ -12,7 +12,6 @@
 
 #include <array>
 #include <cmath>
-#include <iomanip>
 #include <ostream>
 
 /**
@@ -26,9 +25,10 @@ namespace ctrl {
 namespace slalom {
 
 /**
- * @brief スラロームの形状を表す構造体
+ * @brief slalom::Shape スラロームの形状を表す構造体
  *
  * メンバー変数は互いに依存して決定されるので，個別に数値を変更することは許されない，
+ * スラローム軌道を得るには slalom::Trajectory を用いる．
  */
 struct Shape {
   Position total;      /**< 前後の直線を含めた移動位置姿勢 */
@@ -53,9 +53,12 @@ public:
   /**
    * @brief 拘束条件からスラローム形状を生成するコンストラクタ
    *
-   * @param total
+   * @param total 前後の直線を含めた移動位置姿勢
    * @param y_curve_end
-   * @param x_adv
+   * $y$方向(進行方向に垂直な方向)の移動距離，
+   * カーブの大きさを決めるもので，設計パラメータとなる
+   * @param x_adv $x$方向(進行方向)の前後の直線の長さ．180度ターンなどでは
+   * y_curve_end で調節できないので，例外的にこの値で調節する．
    * @param m_dddth
    * @param m_ddth
    * @param m_dth
@@ -97,6 +100,15 @@ public:
       straight_post = 1 / sin_th * (total.y - s.q.y);
     }
   }
+  /**
+   * @brief 軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．
+   *
+   * @param ad 角速度分布
+   * @param s 状態変数
+   * @param v 並進速度
+   * @param t 時刻
+   * @param Ts 積分時間
+   */
   static void integrate(const AccelDesigner &ad, State &s, const float v,
                         const float t, const float Ts) {
     /* Calculation */
@@ -139,6 +151,11 @@ public:
   }
 };
 
+/**
+ * @brief slalom::Trajectory スラローム軌道を生成するクラス
+ *
+ * スラローム形状 Shape と並進速度をもとに，各時刻における位置や速度を提供する．
+ */
 class Trajectory {
 public:
   Trajectory(const Shape &shape) : shape(shape) {}
@@ -158,9 +175,9 @@ public:
   const AccelDesigner &getAccelDesigner() const { return ad; }
 
 protected:
-  Shape shape;      /**< スラロームの形状 */
-  AccelDesigner ad; /**< 角速度用の曲線加速生成器 */
-  float velocity;   /**< 並進速度 */
+  const Shape &shape; /**< スラロームの形状 */
+  AccelDesigner ad;   /**< 角速度用の曲線加速生成器 */
+  float velocity;     /**< 並進速度 */
 };
 
 } // namespace slalom
