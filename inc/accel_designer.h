@@ -25,15 +25,15 @@ public:
   /**
    * @brief 初期化付きコンストラクタ
    *
-   * @param j_max     最大躍度の大きさ [mm/s/s/s]，正であること
-   * @param a_max     最大加速度の大きさ [mm/s/s], 正であること
-   * @param v_start   始点速度 [mm/s]
-   * @param v_sat     飽和速度の大きさ [mm/s]，正であること
-   * @param v_target  目標速度 [mm/s]
-   * @param v_end     終点速度 [mm/s]
-   * @param dist      移動距離の大きさ [mm], 非負であること
-   * @param x_start   始点位置 [mm]
-   * @param t_start   始点時刻 [t]
+   * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
+   * @param a_max     最大加速度の大きさ [m/s/s], 正であること
+   * @param v_start   始点速度 [m/s]
+   * @param v_sat     飽和速度の大きさ [m/s]，正であること
+   * @param v_target  目標速度 [m/s]
+   * @param v_end     終点速度 [m/s]
+   * @param dist      移動距離 [m]
+   * @param x_start   始点位置 [m] (オプション)
+   * @param t_start   始点時刻 [s] (オプション)
    */
   AccelDesigner(const float j_max, const float a_max, const float v_start,
                 const float v_sat, const float v_target, const float dist,
@@ -48,15 +48,15 @@ public:
    * @brief 引数の拘束条件から曲線を生成する．
    * この関数によって，すべての変数が初期化される．(漏れはない)
    *
-   * @param j_max     最大躍度の大きさ [mm/s/s/s]，正であること
-   * @param a_max     最大加速度の大きさ [mm/s/s], 正であること
-   * @param v_start   始点速度 [mm/s]
-   * @param v_sat     飽和速度の大きさ [mm/s]，正であること
-   * @param v_target  目標速度 [mm/s]
-   * @param v_end     終点速度 [mm/s]
-   * @param dist      移動距離の大きさ [mm], 非負であること
-   * @param x_start   始点位置 [mm]
-   * @param t_start   始点時刻 [t]
+   * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
+   * @param a_max     最大加速度の大きさ [m/s/s], 正であること
+   * @param v_start   始点速度 [m/s]
+   * @param v_sat     飽和速度の大きさ [m/s]，正であること
+   * @param v_target  目標速度 [m/s]
+   * @param v_end     終点速度 [m/s]
+   * @param dist      移動距離 [m]
+   * @param x_start   始点位置 [m] (オプション)
+   * @param t_start   始点時刻 [s] (オプション)
    */
   void reset(const float j_max, const float a_max, const float v_start,
              const float v_sat, const float v_target, const float dist,
@@ -69,8 +69,7 @@ public:
     if (std::abs(dist) <
         std::abs(AccelCurve::calcMinDistance(j_max, a_max, v_start, v_end))) {
       /* 走行距離から終点速度$v_e$を算出 */
-      v_end =
-          AccelCurve::calcVelocityEnd(j_max, a_max, v_start, v_target, dist);
+      v_end = AccelCurve::calcVelocityEnd(j_max, a_max, v_start, dist);
       v_max = dist > 0 ? std::max(v_start, v_end) : std::min(v_start, v_end);
     }
     /* 曲線を生成 */
@@ -122,7 +121,7 @@ public:
   /**
    * @brief 時刻 $t$ における躍度 $j$
    * @param t 時刻[s]
-   * @return j 躍度[mm/s/s/s]
+   * @return j 躍度[m/s/s/s]
    */
   float j(const float t) const {
     if (t < t2)
@@ -133,7 +132,7 @@ public:
   /**
    * @brief 時刻 $t$ における加速度 $a$
    * @param t 時刻 [s]
-   * @return a 加速度 [mm/s/s]
+   * @return a 加速度 [m/s/s]
    */
   float a(const float t) const {
     if (t < t2)
@@ -144,7 +143,7 @@ public:
   /**
    * @brief 時刻 $t$ における速度 $v$
    * @param t 時刻 [s]
-   * @return v 速度 [mm/s]
+   * @return v 速度 [m/s]
    */
   float v(const float t) const {
     if (t < t2)
@@ -155,7 +154,7 @@ public:
   /**
    * @brief 時刻 $t$ における位置 $x$
    * @param t 時刻 [s]
-   * @return x 位置 [mm]
+   * @return x 位置 [m]
    */
   float x(const float t) const {
     if (t < t2)
@@ -208,7 +207,7 @@ public:
 
 private:
   float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
-  float x0, x3;         /**< @brief 境界点の位置 [mm] */
+  float x0, x3;         /**< @brief 境界点の位置 [m] */
   AccelCurve ac, dc; /**< @brief 曲線加速，曲線減速オブジェクト */
 };
 

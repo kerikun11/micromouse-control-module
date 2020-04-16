@@ -76,8 +76,8 @@ public:
    * @param dy 観測値の微分
    * @param Ts 離散時間周期
    */
-  const T update(const T &r, const T &y, const T &dr, const T &dy,
-                 const float Ts) {
+  const T &update(const T &r, const T &y, const T &dr, const T &dy,
+                  const float Ts) {
     /* feedforward signal */
     bd.ff = (M.T1 * dr + r) / M.K1;
     /* feedback signal */
@@ -92,6 +92,8 @@ public:
     /* complete */
     return bd.u;
   }
+  /** @brief エラー積分値を取得 */
+  const T &getErrorIntegral() const { return e_int; }
   /** @brief フィードフォワードモデルを取得する関数 */
   const Model &getModel() const { return M; }
   /** @brief フィードバックゲインを取得する関数 */

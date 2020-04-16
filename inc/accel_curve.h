@@ -22,10 +22,10 @@ public:
   /**
    * @brief 初期化付きのコンストラクタ．
    *
-   * @param j_max   最大躍度の大きさ [mm/s/s/s]
-   * @param a_max   最大加速度の大きさ [mm/s/s]
-   * @param v_start 始点速度   [mm/s]
-   * @param v_end   終点速度   [mm/s]
+   * @param j_max   最大躍度の大きさ [m/s/s/s]
+   * @param a_max   最大加速度の大きさ [m/s/s]
+   * @param v_start 始点速度 [m/s]
+   * @param v_end   終点速度 [m/s]
    */
   AccelCurve(const float j_max, const float a_max, const float v_start,
              const float v_end) {
@@ -41,10 +41,10 @@ public:
    * @brief 引数の拘束条件から曲線を生成する．
    * この関数によって，すべての変数が初期化される．(漏れはない)
    *
-   * @param j_max   最大躍度の大きさ [mm/s/s/s]
-   * @param a_max   最大加速度の大きさ [mm/s/s]
-   * @param v_start 始点速度 [mm/s]
-   * @param v_end   終点速度 [mm/s]
+   * @param j_max   最大躍度の大きさ [m/s/s/s]
+   * @param a_max   最大加速度の大きさ [m/s/s]
+   * @param v_start 始点速度 [m/s]
+   * @param v_end   終点速度 [m/s]
    */
   void reset(const float j_max, const float a_max, const float v_start,
              const float v_end) {
@@ -83,7 +83,7 @@ public:
   /**
    * @brief 時刻 $t$ における躍度 $j$
    * @param t 時刻 [s]
-   * @return 躍度 [mm/s/s/s]
+   * @return j 躍度 [m/s/s/s]
    */
   float j(const float t) const {
     if (t <= t0)
@@ -100,7 +100,7 @@ public:
   /**
    * @brief 時刻 $t$ における加速度 $a$
    * @param t 時刻 [s]
-   * @return 加速度 [mm/s/s]
+   * @return a 加速度 [m/s/s]
    */
   float a(const float t) const {
     if (t <= t0)
@@ -117,7 +117,7 @@ public:
   /**
    * @brief 時刻 $t$ における速度 $v$
    * @param t 時刻 [s]
-   * @return 速度 [mm/s]
+   * @return v 速度 [m/s]
    */
   float v(const float t) const {
     if (t <= t0)
@@ -134,7 +134,7 @@ public:
   /**
    * @brief 時刻 $t$ における位置 $x$
    * @param t 時刻 [s]
-   * @return 位置 [mm]
+   * @return x 位置 [m]
    */
   float x(const float t) const {
     if (t <= t0)
@@ -155,7 +155,7 @@ public:
   float v_end() const { return v3; }
   float x_end() const { return x3; }
   /**
-   * @brief std::ofstream に軌道のcsvを出力する関数．
+   * @brief std::ostream に軌道のcsvを出力する関数．
    */
   void printCsv(std::ostream &os, const float t_interval = 0.001f) const {
     for (float t = t0; t < t_end(); t += t_interval) {
@@ -182,21 +182,21 @@ public:
   /**
    * @brief 走行距離から達しうる終点速度を算出する関数
    *
-   * @param j_max 最大躍度の大きさ [mm/s/s/s]
-   * @param a_max 最大加速度の大きさ [mm/s/s]
-   * @param vs 始点速度 [mm/s]
-   * @param vt 目標速度 [mm/s]
-   * @param d 走行距離 [mm]
-   * @return ve 終点速度 [mm/s]
+   * @param j_max 最大躍度の大きさ [m/s/s/s]
+   * @param a_max 最大加速度の大きさ [m/s/s]
+   * @param vs    始点速度 [m/s]
+   * @param d     走行距離 [m]
+   * @return ve   終点速度 [m/s]
    */
-  static float calcVelocityEnd(const float j_max, float a_max, const float vs,
-                               const float vt, const float d) {
+  static float calcVelocityEnd(const float j_max, const float a_max,
+                               const float vs, const float d) {
     /* 速度が曲線となる部分の時間を決定 */
     const float tc = a_max / j_max;
     /* 最大加速度の符号を決定 */
-    float am = (vt > vs) ? a_max : -a_max;
+    const float jm = (d > 0) ? j_max : -j_max;
+    const float am = (d > 0) ? a_max : -a_max;
     /* 等加速度直線運動の有無で分岐 */
-    if (std::abs(d) > std::abs((2 * vs + am / tc * tc * tc) * tc)) {
+    if (std::abs(d) > std::abs((2 * vs + am * tc) * tc)) {
       /* 曲線・直線・曲線 */
       /* 2次方程式の解の公式を解く */
       const float amtc = am * tc;
@@ -204,11 +204,10 @@ public:
       const float sqrtD = std::sqrt(D);
       return (-amtc + (d > 0 ? sqrtD : -sqrtD)) / 2;
     }
-    /* 曲線・曲線 */
+    /* 曲線・曲線 (走行距離が短すぎる) */
     /* 3次方程式を解いて，終点速度を算出 */
-    am = (d > 0) ? a_max : -a_max;
     const float a = vs;
-    const float b = am * d * d / tc;
+    const float b = jm * d * d;
     const float aaa = a * a * a;
     const float c0 = 27 * (32 * aaa * b + 27 * b * b);
     const float c1 = 16 * aaa + 27 * b;
@@ -224,14 +223,14 @@ public:
     }
   }
   /**
-   * @brief 走行距離から最大速度を算出する関数
+   * @brief 走行距離から達しうる最大速度を算出する関数
    *
-   * @param j_max 最大躍度の大きさ [mm/s/s/s]
-   * @param a_max 最大加速度の大きさ [mm/s/s]
-   * @param vs 始点速度 [mm/s]
-   * @param ve 終点速度 [mm/s]
-   * @param d 走行距離 [mm]
-   * @return vm 最大速度 [mm/s]
+   * @param j_max 最大躍度の大きさ [m/s/s/s]
+   * @param a_max 最大加速度の大きさ [m/s/s]
+   * @param vs    始点速度 [m/s]
+   * @param ve    終点速度 [m/s]
+   * @param d     走行距離 [m]
+   * @return vm   最大速度 [m/s]
    */
   static float calcVelocityMax(const float j_max, const float a_max,
                                const float vs, const float ve, const float d) {
@@ -253,11 +252,11 @@ public:
   /**
    * @brief 速度差から変位を算出する関数
    *
-   * @param j_max   最大躍度の大きさ [mm/s/s/s]
-   * @param a_max   最大加速度の大きさ [mm/s/s]
-   * @param v_start 始点速度 [mm/s]
-   * @param v_end   終点速度 [mm/s]
-   * @return float d 変位 [mm/s]
+   * @param j_max   最大躍度の大きさ [m/s/s/s]
+   * @param a_max   最大加速度の大きさ [m/s/s]
+   * @param v_start 始点速度 [m/s]
+   * @param v_end   終点速度 [m/s]
+   * @return d      変位 [m]
    */
   static float calcMinDistance(const float j_max, const float a_max,
                                const float v_start, const float v_end) {
@@ -266,7 +265,7 @@ public:
   }
 
 protected:
-  float jm;             /**< @brief 最大躍度 [m/s/s] */
+  float jm;             /**< @brief 最大躍度 [m/s/s/s] */
   float am;             /**< @brief 最大加速度 [m/s/s] */
   float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
   float v0, v1, v2, v3; /**< @brief 境界点の速度 [m/s] */

@@ -9,7 +9,6 @@ set(CMAKE_BUILD_TYPE Release)
 
 ## more warnnings
 add_compile_options(-Wfatal-errors -Wall -Wextra)
-add_compile_options(-Werror)
 add_compile_options(-fconcepts)
 
 ## subdirectory

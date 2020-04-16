@@ -1,4 +1,5 @@
 \documentclass[a5paper]{ltjsarticle}
+\usepackage{amsmath}
 \title{加減速軌道設計}
 % \author{}
 \date{\today}
@@ -7,14 +8,14 @@
 
 \section{速度拘束}
 
-$$
-    j_m = \mathrm{sign}(v_e-v_s) \times|j_{\max}|
-    ,\quad
-    a_m = \mathrm{sign}(v_e-v_s) \times|a_{\max}|
-$$
+\begin{align}
+    j_m & = \mathrm{sign}(v_e-v_s) \times|j_{\max}| \\
+    a_m & = \mathrm{sign}(v_e-v_s) \times|a_{\max}|
+\end{align}
 
-$$
-    j(t) :=
+\begin{align}
+    j(t)
+     & :=
     \left\{ \begin{array}{ll}
         0    & (\hspace{2.2em}t \le t_0) \\
         j_m  & (t_0 < t \le t_1)         \\
@@ -22,10 +23,9 @@ $$
         -j_m & (t_2 < t \le t_3)         \\
         0    & (t_3 < t \hspace{2.2em})
     \end{array} \right.
-$$
-
-$$
-    a(t) :=
+    \\
+    a(t)
+     & :=
     \left\{ \begin{array}{ll}
         0           & (\hspace{2.2em}t \le t_0) \\
         j_m(t-t_0)  & (t_0 < t \le t_1)         \\
@@ -33,10 +33,9 @@ $$
         -j_m(t-t_3) & (t_2 < t \le t_3)         \\
         0           & (t_3 < t \hspace{2.2em})
     \end{array} \right.
-$$
-
-$$
-    v(t) :=
+    \\
+    v(t)
+     & :=
     \left\{ \begin{array}{ll}
         v_0                           & (\hspace{2.2em} t \le t_0) \\
         v_0 + \frac{1}{2}j_m(t-t_0)^2 & (t_0 < t \le t_1)          \\
@@ -44,10 +43,9 @@ $$
         v_3 - \frac{1}{2}j_m(t-t_3)^2 & (t_2 < t \le t_3)          \\
         v_3                           & (t_3 < t \hspace{2.2em})
     \end{array} \right.
-$$
-
-$$
-    x(t) :=
+    \\
+    x(t)
+     & :=
     \left\{ \begin{array}{ll}
         x_0 + v_0(t-t_0)                           & (\hspace{2.2em} t \le t_0) \\
         x_0 + v_0(t-t_0) + \frac{1}{6}j_m(t-t_0)^3 & (t_0 < t \le t_1)          \\
@@ -55,7 +53,7 @@ $$
         x_3 + v_3(t-t_3) - \frac{1}{6}j_m(t-t_3)^3 & (t_2 < t \le t_3)          \\
         x_3 + v_3(t-t_3)                           & (t_3 < t \hspace{2.2em})
     \end{array} \right.
-$$
+\end{align}
 
 $$
     \left\{ \begin{array}{l}
@@ -81,11 +79,10 @@ $$
     \end{array} \right.
 $$
 
-$$
-    t_m := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m}
-    ,\quad
-    t_c := \frac{a_m}{j_m}
-$$
+\begin{align}
+    t_m & := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m} \\
+    t_c & := \frac{a_m}{j_m}
+\end{align}
 
 $$
     \left\{ \begin{array}{l}
@@ -106,7 +103,7 @@ $$
 \section{距離拘束}
 
 $$
-    v_e(t_c, a_m, v_s, v_t, d) :=
+    v_e(j_m, a_m, v_s, v_t, d) :=
     \left\{\begin{array}{ll}
         v_{e1} & (d        \ge d_m)
         \\
@@ -117,6 +114,8 @@ $$
 $$
     \begin{array}{l@{~}l}
         d_m    & := 2 v_s t_c + a_m t_c^2
+        \\
+        t_c    & := \frac{a_m}{j_m}
         \\
         v_{e1} & :=
         \frac{-a_m t_c + \sqrt{a_m^2 t_c^2-4(a_m t_c v_s - v_s^2 - 2a_m d)}}{2}

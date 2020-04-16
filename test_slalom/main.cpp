@@ -48,7 +48,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
 }
 
 int main(void) {
-  static auto ss = slalom::Shape(Position(45, 45, M_PI / 4), 44);
+  static auto ss = slalom::Shape(Position(45, 45, M_PI / 2), 40);
   std::cout << ss;
   printCsv("slalom", ss);
 

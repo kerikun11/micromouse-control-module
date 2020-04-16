@@ -7,7 +7,9 @@ import matplotlib.pyplot as plt
 
 # ============================================================================ #
 # global settings
-plt.rcParams["font.family"] = "IPAGothic"
+# plt.rcParams["font.family"] = "IPAGothic"
+plt.rcParams["text.usetex"] = True
+plt.rcParams['text.latex.preamble'] = r'\newcommand{\mathdefault}[1][]{}'
 
 
 def plot_shape(s):
@@ -17,7 +19,7 @@ def plot_shape(s):
     # ============================================================================ #
     # prepare figure
     fig_xy, ax_xy = plt.subplots(figsize=(4, 3))
-    fig_t, ax_t = plt.subplots(4, 1, figsize=(6, 8))
+    fig_t, ax_t = plt.subplots(4, 1, figsize=(4, 6))
 
     # ============================================================================ #
     # plot
@@ -52,21 +54,21 @@ def plot_shape(s):
     ax.grid(which='minor', linestyle=':')
     ax.legend(['straight', 'transition curve',
                'pure arc', 'transition curve', 'straight'])
+    ax.set_xlabel('$x$ [mm]')
+    ax.set_ylabel('$y$ [mm]')
     # ax.set_title('')
     # ax.axis('off')
     # ax.legend().remove()
 
     # ============================================================================ #
     # t style
-    ylabels = ['jerk [deg/s/s/s]', 'accel [deg/s/s]',
-               'vel [deg/s]', 'pos [deg]']
+    ylabels = ['jerk [deg/s/s/s]', 'accel. [deg/s/s]',
+               'velocity [deg/s]', 'position [deg]']
     titles = ['Jerk', 'Acceleration', 'Velocity', 'Position']
-    # ylabels = ['jerk [rad/s/s/s]', 'accel [rad/s/s]', 'vel [rad/s]', 'pos [rad]']
     for i, ax in enumerate(ax_t):
         ax.grid(which='both')
         ax.set_ylabel(ylabels[i])
         ax.set_title('Angular ' + titles[i])
-    # ax_t[0].set_title('Angular Jerk, Acceleration, Velocity, Position')
     for ax in ax_t[0:-1]:
         ax.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
         ax.ticklabel_format(style="sci", axis="y", scilimits=(0, 0))
@@ -81,7 +83,10 @@ def plot_shape(s):
 
     # ============================================================================ #
     # save
-    for ext in ['.png', '.svg']:
+    for ext in [
+        # '.png',
+        '.svg',
+    ]:
         fig_xy.savefig(filebase + '_xy' + ext)
         fig_t.savefig(filebase + '_t' + ext)
 
@@ -92,6 +97,6 @@ def plot_shape(s):
 
 # ============================================================================ #
 # auto plot
+# for s in [2]:
 for s in range(7):
-# for s in [6]:
     plot_shape(s)
