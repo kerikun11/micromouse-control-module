@@ -13,7 +13,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
   auto st = slalom::Trajectory(ss);
   const float v = ss.v_ref;
   State s;
-  st.reset(v, th_start, st.get_straight_prev() / v);
+  st.reset(v, th_start, ss.straight_prev / v);
   const float Ts = 0.00001f;
   const auto printCSV = [](std::ostream &os, const float t, const State &s) {
     os << t;
@@ -37,7 +37,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
       st.getAccelDesigner().t_1(),
       st.getAccelDesigner().t_2(),
       st.getAccelDesigner().t_3(),
-      st.t_end() + st.get_straight_post() / v,
+      st.getAccelDesigner().t_3() + ss.straight_post / v,
   }};
   float t = 0;
   for (size_t i = 0; i < ticks.size(); ++i) {
