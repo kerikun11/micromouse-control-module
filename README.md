@@ -1,6 +1,6 @@
 # micromouse control module
 
-マイクロマウスの制御のうち，モジュール化できる部分をまとめたライブラリ．
+マイクロマウス制御の実装のうち，モジュール化できる部分をまとめたライブラリ．
 
 ## 内容
 
@@ -22,7 +22,7 @@ make main slalom
 
 ## AccelDesigner
 
-曲線加速の軌道を生成するクラス
+拘束条件を満たす曲線加減速の軌道を生成するクラス
 
 - 移動距離の拘束条件を満たす曲線加速軌道を生成する
 - 各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$ を提供する
@@ -32,9 +32,13 @@ make main slalom
 
 ```cpp
 /**
- * @brief 加減速曲線を生成するクラス
+ * @brief 拘束条件を満たす曲線加減速の軌道を生成するクラス
  *
- * 引数の拘束条件に従って速度計画をし，加減速曲線を生成する
+ * - 移動距離の拘束条件を満たす曲線加速軌道を生成する
+ * - 各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$
+ * を提供する
+ * - 最大加速度 $a_{\max}$ と始点速度 $v_s$
+ * など拘束次第では目標速度に達することができない場合があるので注意する
  */
 class AccelDesigner {
 public:
@@ -81,15 +85,15 @@ public:
   /**
    * @brief 終点時刻 [s]
    */
-  float t_end() const { return t3; }
+  float t_end() const;
   /**
    * @brief 終点速度 [m/s]
    */
-  float v_end() const { return dc.v_end(); }
+  float v_end() const;
   /**
    * @brief 終点位置 [m]
    */
-  float x_end() const { return x3; }
+  float x_end() const;
 
 private:
   float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
@@ -205,13 +209,8 @@ protected:
 /**
  * @brief 位置姿勢の座標
  */
-class Pose {
-public:
+struct Pose {
   float x, y, th; /*< (x, y, theta) 成分 */
-
-public:
-  /** デフォルトコンストラクタ */
-  Pose(const float x = 0, const float y = 0, const float th = 0);
 };
 ```
 
@@ -241,10 +240,10 @@ struct State {
 
 ```cpp
 /**
- * @brief 並進と回転の座標を管理する構造体
+ * @brief 並進と回転の座標
  */
 struct Polar {
-  float tra; //< translation [mm]
+  float tra; //< translation [m]
   float rot; //< rotation [rad]
 };
 ```
@@ -305,11 +304,11 @@ public:
    * @param M フィードフォワードモデル
    * @param G フィードバックゲイン
    */
-  FeedbackController(const Model &M, const Gain &G) : M(M), G(G) { reset(); }
+  FeedbackController(const Model &M, const Gain &G);
   /**
    * @brief 積分項をリセットする関数
    */
-  void reset() { e_int = T(); }
+  void reset();
   /**
    * @brief 状態を更新して，次の制御入力を得る関数
    *
@@ -318,17 +317,26 @@ public:
    * @param dr 目標値の微分
    * @param dy 観測値の微分
    * @param Ts 離散時間周期
+   * @return T u 次ステップでの制御入力
    */
   const T &update(const T &r, const T &y, const T &dr, const T &dy,
                   const float Ts);
-  /** @brief エラー積分値を取得 */
-  const T &getErrorIntegral() const { return e_int; }
-  /** @brief フィードフォワードモデルを取得する関数 */
-  const Model &getModel() const { return M; }
-  /** @brief フィードバックゲインを取得する関数 */
-  const Gain &getGain() const { return G; }
-  /** @brief 制御入力の内訳を取得する関数 */
-  const Breakdown &getBreakdown() const { return bd; }
+  /**
+   * @brief エラー積分値を取得
+   */
+  const T &getErrorIntegral() const;
+  /**
+   * @brief フィードフォワードモデルを取得する関数
+   */
+  const Model &getModel() const;
+  /**
+   * @brief フィードバックゲインを取得する関数
+   */
+  const Gain &getGain() const;
+  /**
+   * @brief 制御入力の内訳を取得する関数
+   */
+  const Breakdown &getBreakdown() const;
 
 protected:
   Model M;      /**< @brief フィードフォワードモデル */

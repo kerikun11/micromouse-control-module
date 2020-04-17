@@ -10,7 +10,7 @@
 namespace ctrl {
 
 /**
- * @brief 並進と回転の座標を管理する構造体
+ * @brief 並進と回転の座標
  */
 struct Polar {
   float tra; //< translation [m]
