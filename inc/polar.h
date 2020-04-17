@@ -13,7 +13,7 @@ namespace ctrl {
  * @brief 並進と回転の座標を管理する構造体
  */
 struct Polar {
-  float tra; //< translation [mm]
+  float tra; //< translation [m]
   float rot; //< rotation [rad]
 
 public:

@@ -73,6 +73,7 @@ public:
    * @param dr 目標値の微分
    * @param dy 観測値の微分
    * @param Ts 離散時間周期
+   * @return T u 次ステップでの制御入力
    */
   const T &update(const T &r, const T &y, const T &dr, const T &dy,
                   const float Ts) {
@@ -90,13 +91,21 @@ public:
     /* complete */
     return bd.u;
   }
-  /** @brief エラー積分値を取得 */
+  /**
+   * @brief エラー積分値を取得
+   */
   const T &getErrorIntegral() const { return e_int; }
-  /** @brief フィードフォワードモデルを取得する関数 */
+  /**
+   * @brief フィードフォワードモデルを取得する関数
+   */
   const Model &getModel() const { return M; }
-  /** @brief フィードバックゲインを取得する関数 */
+  /**
+   * @brief フィードバックゲインを取得する関数
+   */
   const Gain &getGain() const { return G; }
-  /** @brief 制御入力の内訳を取得する関数 */
+  /**
+   * @brief 制御入力の内訳を取得する関数
+   */
   const Breakdown &getBreakdown() const { return bd; }
 
 protected:

@@ -30,25 +30,25 @@ namespace slalom {
  * スラローム軌道を得るには slalom::Trajectory を用いる．
  */
 struct Shape {
-  Pose total;      /**< 前後の直線を含めた移動位置姿勢 */
-  Pose curve;      /**< カーブ部分の移動位置姿勢 */
+  Pose total;          /**< 前後の直線を含めた移動位置姿勢 */
+  Pose curve;          /**< カーブ部分の移動位置姿勢 */
   float straight_prev; /**< カーブ前の直線の距離 [m] */
   float straight_post; /**< カーブ後の直線の距離 [m] */
   float v_ref;         /**< カーブ部分の基準速度 [m/s] */
-  float m_dddth;       /**< 最大角躍度の大きさ [rad/s/s/s] */
-  float m_ddth;        /**< 最大角加速度の大きさ [rad/s/s] */
-  float m_dth;         /**< 最大角速度の大きさ [rad/s] */
+  float dddth_max;     /**< 最大角躍度の大きさ [rad/s/s/s] */
+  float ddth_max;      /**< 最大角加速度の大きさ [rad/s/s] */
+  float dth_max;       /**< 最大角速度の大きさ [rad/s] */
 
 public:
   /**
    * @brief 生成済みスラローム形状を代入するコンストラクタ
    */
   Shape(const Pose total, const Pose curve, float straight_prev,
-        const float straight_post, const float v_ref, const float m_dddth,
-        const float m_ddth, const float m_dth)
+        const float straight_post, const float v_ref, const float dddth_max,
+        const float ddth_max, const float dth_max)
       : total(total), curve(curve), straight_prev(straight_prev),
-        straight_post(straight_post), v_ref(v_ref), m_dddth(m_dddth),
-        m_ddth(m_ddth), m_dth(m_dth) {}
+        straight_post(straight_post), v_ref(v_ref), dddth_max(dddth_max),
+        ddth_max(ddth_max), dth_max(dth_max) {}
   /**
    * @brief 拘束条件からスラローム形状を生成するコンストラクタ
    *
@@ -58,20 +58,21 @@ public:
    * カーブの大きさを決めるもので，設計パラメータとなる
    * @param x_adv $x$方向(進行方向)の前後の直線の長さ．180度ターンなどでは
    * y_curve_end で調節できないので，例外的にこの値で調節する．
-   * @param m_dddth
-   * @param m_ddth
-   * @param m_dth
+   * @param dddth_max 最大角躍度の大きさ [rad/s/s/s]
+   * @param ddth_max 最大角加速度の大きさ [rad/s/s]
+   * @param dth_max 最大角速度の大きさ [rad/s]
    */
   Shape(const Pose total, const float y_curve_end, const float x_adv = 0,
-        const float m_dddth = 1200 * M_PI, const float m_ddth = 36 * M_PI,
-        const float m_dth = 3 * M_PI)
-      : total(total), m_dddth(m_dddth), m_ddth(m_ddth), m_dth(m_dth) {
+        const float dddth_max = 1200 * M_PI, const float ddth_max = 36 * M_PI,
+        const float dth_max = 3 * M_PI)
+      : total(total), dddth_max(dddth_max), ddth_max(ddth_max),
+        dth_max(dth_max) {
     /* 生成準備 */
     const float Ts = 1e-3; /**< シミュレーションの積分周期 */
     float v = 600.0f;      /**< 初期値 */
     State s;               /**< シミュレーションの状態 */
     AccelDesigner ad;
-    ad.reset(m_dddth, m_ddth, 0, m_dth, 0, total.th);
+    ad.reset(dddth_max, ddth_max, 0, dth_max, 0, total.th);
     /* 複数回行って精度を高める */
     for (int i = 0; i < 3; ++i) {
       s.q.x = s.q.y = 0;
@@ -162,8 +163,8 @@ public:
              const float t_start = 0) {
     this->velocity = velocity;
     const float gain = velocity / shape.v_ref;
-    ad.reset(gain * gain * gain * shape.m_dddth, gain * gain * shape.m_ddth, 0,
-             gain * shape.m_dth, 0, shape.total.th, th_start, t_start);
+    ad.reset(gain * gain * gain * shape.dddth_max, gain * gain * shape.ddth_max,
+             0, gain * shape.dth_max, 0, shape.total.th, th_start, t_start);
   }
   void update(State &s, const float t, const float Ts) const {
     return Shape::integrate(ad, s, velocity, t, Ts);

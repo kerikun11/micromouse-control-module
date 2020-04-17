@@ -31,7 +31,7 @@ static auto SS_FK90R =
 
 void printDefinition(std::ostream &os, const std::string &name,
                      const slalom::Shape &s) {
-  const AccelDesigner ad(s.m_dddth, s.m_ddth, 0, s.m_dth, 0, s.total.th);
+  const AccelDesigner ad(s.dddth_max, s.ddth_max, 0, s.dth_max, 0, s.total.th);
   const auto t_total =
       ad.t_end() + (s.straight_prev + s.straight_post) / s.v_ref;
   int width = 9;
@@ -46,9 +46,9 @@ void printDefinition(std::ostream &os, const std::string &name,
   os << std::setfill(' ') << std::setw(width) << s.straight_prev << ", "
      << std::setfill(' ') << std::setw(width) << s.straight_post << ", "
      << std::setfill(' ') << std::setw(width) << s.v_ref << ", ";
-  os << std::setfill(' ') << std::setw(6) << s.m_dddth << ", "
-     << std::setfill(' ') << std::setw(6) << s.m_ddth << ", "
-     << std::setfill(' ') << std::setw(6) << s.m_dth;
+  os << std::setfill(' ') << std::setw(6) << s.dddth_max << ", "
+     << std::setfill(' ') << std::setw(6) << s.ddth_max << ", "
+     << std::setfill(' ') << std::setw(6) << s.dth_max;
   os << ");";
   os << " //< T:" << std::setfill(' ') << std::setw(width) << t_total;
   os << std::endl;
