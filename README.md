@@ -17,7 +17,7 @@
 mkdir build
 cd build
 cmake ..
-make main slalom
+make slalom_plot
 ```
 
 ## AccelDesigner

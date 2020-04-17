@@ -1,6 +1,6 @@
 ## author: Ryotaro Onuki @kerikun11
 cmake_minimum_required(VERSION 3.1)
-project("AccelDesigner" CXX)
+project("ctrl" CXX)
 
 ## build option for compiler
 set(CMAKE_CXX_STANDARD 14)
@@ -12,6 +12,7 @@ add_compile_options(-Wfatal-errors -Wall -Wextra)
 add_compile_options(-fconcepts)
 
 ## subdirectory
+add_subdirectory(test_accel)
 add_subdirectory(test_gtest)
 add_subdirectory(test_main)
 add_subdirectory(test_shape)
