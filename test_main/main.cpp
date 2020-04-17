@@ -3,7 +3,7 @@
 #include "accel_designer.h"
 #include "feedback_controller.h"
 
-std::ofstream of("main.csv");
+std::ofstream csv("main.csv");
 
 int main(void) {
   /* Feedforward Model and Feedback Gain */
@@ -25,9 +25,20 @@ int main(void) {
     const float dy = trajectory.a(t); //< differential of measurement output
     const float u = feedback_controller.update(r, y, dr, dy, Ts);
     /* apply control input u here */
-    of << t;
-    of << "," << u;
-    of << std::endl;
+    /* csv output */
+    const auto bd = feedback_controller.getBreakdown();
+    csv << t;
+    csv << "," << r;
+    csv << "," << y;
+    csv << "," << dr;
+    csv << "," << dy;
+    csv << "," << u;
+    csv << "," << bd.ff;
+    csv << "," << bd.fb;
+    csv << "," << bd.fbp;
+    csv << "," << bd.fbi;
+    csv << "," << bd.fbd;
+    csv << std::endl;
   }
 
   return 0;
