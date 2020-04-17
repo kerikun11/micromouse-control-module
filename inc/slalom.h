@@ -2,12 +2,11 @@
  * @file slalom.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 拘束条件からスラロームを軌道生成するライブラリ
- * @date 2019-04-01
  */
 #pragma once
 
 #include "accel_designer.h"
-#include "position.h"
+#include "pose.h"
 #include "state.h"
 
 #include <array>
@@ -31,8 +30,8 @@ namespace slalom {
  * スラローム軌道を得るには slalom::Trajectory を用いる．
  */
 struct Shape {
-  Position total;      /**< 前後の直線を含めた移動位置姿勢 */
-  Position curve;      /**< カーブ部分の移動位置姿勢 */
+  Pose total;      /**< 前後の直線を含めた移動位置姿勢 */
+  Pose curve;      /**< カーブ部分の移動位置姿勢 */
   float straight_prev; /**< カーブ前の直線の距離 [m] */
   float straight_post; /**< カーブ後の直線の距離 [m] */
   float v_ref;         /**< カーブ部分の基準速度 [m/s] */
@@ -44,7 +43,7 @@ public:
   /**
    * @brief 生成済みスラローム形状を代入するコンストラクタ
    */
-  Shape(const Position total, const Position curve, float straight_prev,
+  Shape(const Pose total, const Pose curve, float straight_prev,
         const float straight_post, const float v_ref, const float m_dddth,
         const float m_ddth, const float m_dth)
       : total(total), curve(curve), straight_prev(straight_prev),
@@ -63,14 +62,14 @@ public:
    * @param m_ddth
    * @param m_dth
    */
-  Shape(const Position total, const float y_curve_end, const float x_adv = 0,
+  Shape(const Pose total, const float y_curve_end, const float x_adv = 0,
         const float m_dddth = 1200 * M_PI, const float m_ddth = 36 * M_PI,
         const float m_dth = 3 * M_PI)
       : total(total), m_dddth(m_dddth), m_ddth(m_ddth), m_dth(m_dth) {
     /* 生成準備 */
     const float Ts = 1e-3; /**< シミュレーションの積分周期 */
     float v = 600.0f;      /**< 初期値 */
-    struct State s;        /**< シミュレーションの状態 */
+    State s;               /**< シミュレーションの状態 */
     AccelDesigner ad;
     ad.reset(m_dddth, m_ddth, 0, m_dth, 0, total.th);
     /* 複数回行って精度を高める */
@@ -144,8 +143,8 @@ public:
     os << "\tv_ref: " << obj.v_ref << std::endl;
     os << "\tstraight_prev: " << obj.straight_prev << std::endl;
     os << "\tstraight_post: " << obj.straight_post << std::endl;
-    auto end = Position(obj.straight_prev) + obj.curve +
-               Position(obj.straight_post).rotate(obj.curve.th);
+    auto end = Pose(obj.straight_prev) + obj.curve +
+               Pose(obj.straight_post).rotate(obj.curve.th);
     os << "\terror: " << obj.total - end << std::endl;
     return os;
   }
@@ -166,7 +165,7 @@ public:
     ad.reset(gain * gain * gain * shape.m_dddth, gain * gain * shape.m_ddth, 0,
              gain * shape.m_dth, 0, shape.total.th, th_start, t_start);
   }
-  void update(struct State &s, const float t, const float Ts) const {
+  void update(State &s, const float t, const float Ts) const {
     return Shape::integrate(ad, s, velocity, t, Ts);
   }
   float getVelocity() const { return velocity; }

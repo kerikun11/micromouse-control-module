@@ -1,11 +1,18 @@
+/**
+ * @file polar.h
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
+ * @brief 並進と回転の座標を管理するクラスをもつファイル
+ */
 #pragma once
 
 #include <cmath>
 
 namespace ctrl {
 
-class Polar {
-public:
+/**
+ * @brief 並進と回転の座標を管理する構造体
+ */
+struct Polar {
   float tra; //< translation [mm]
   float rot; //< rotation [rad]
 
@@ -13,6 +20,7 @@ public:
   constexpr Polar(const float tra = 0, const float rot = 0)
       : tra(tra), rot(rot) {}
   constexpr Polar(const Polar &o) : tra(o.tra), rot(o.rot) {}
+  void clear() { tra = rot = 0; }
   const Polar &operator=(const Polar &o) {
     tra = o.tra;
     rot = o.rot;
@@ -57,7 +65,6 @@ public:
   const Polar operator/(const float &k) const {
     return Polar(tra / k, rot / k);
   }
-  void clear() { tra = rot = 0; }
 };
 
 } // namespace ctrl

@@ -13,6 +13,9 @@
 #include <iostream>  //< for std::cout
 #include <ostream>   //< for std::ostream
 
+/**
+ * @brief 制御関係の名前空間
+ */
 namespace ctrl {
 
 /**
@@ -163,13 +166,19 @@ public:
       return x3 - dc.x_end() + dc.x(t - t2);
   }
   /**
-   * @brief 終端xx
+   * @brief 終点時刻 [s]
    */
   float t_end() const { return t3; }
+  /**
+   * @brief 終点速度 [m/s]
+   */
   float v_end() const { return dc.v_end(); }
+  /**
+   * @brief 終点位置 [m]
+   */
   float x_end() const { return x3; }
   /**
-   * @brief 端点の時刻
+   * @brief 境界の時刻
    */
   float t_0() const { return t0; }
   float t_1() const { return t1; }

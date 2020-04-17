@@ -7,7 +7,7 @@
 #pragma once
 
 #include "polar.h"
-#include "position.h"
+#include "pose.h"
 #include "state.h"
 
 namespace ctrl {
@@ -37,15 +37,15 @@ public:
 public:
   TrajectoryTracker(const struct Gain &gain) : gain(gain) {}
   void reset(const float vs = 0) { xi = vs; }
-  const struct Result update(const Position &est_q, const Polar &est_v,
+  const struct Result update(const Pose &est_q, const Polar &est_v,
                              const Polar &est_a, const State &ref_s) {
     return update(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq,
                   ref_s.dddq);
   }
-  const struct Result update(const Position &est_q, const Polar &est_v,
-                             const Polar &est_a, const Position &ref_q,
-                             const Position &ref_dq, const Position &ref_ddq,
-                             const Position &ref_dddq) {
+  const struct Result update(const Pose &est_q, const Polar &est_v,
+                             const Polar &est_a, const Pose &ref_q,
+                             const Pose &ref_dq, const Pose &ref_ddq,
+                             const Pose &ref_dddq) {
     /* Prepare Variable */
     const float x = est_q.x;
     const float y = est_q.y;

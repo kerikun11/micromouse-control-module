@@ -10,6 +10,9 @@
 #include <complex>  //< for std::complex
 #include <iostream> //< for std::cout
 
+/**
+ * @brief 制御関係の名前空間
+ */
 namespace ctrl {
 
 /**
@@ -149,10 +152,16 @@ public:
       return x3 + v3 * (t - t3);
   }
   /**
-   * @brief 終端定数
+   * @brief 終点時刻 [s]
    */
   float t_end() const { return t3; }
+  /**
+   * @brief 終点速度 [m/s]
+   */
   float v_end() const { return v3; }
+  /**
+   * @brief 終点位置 [m]
+   */
   float x_end() const { return x3; }
   /**
    * @brief std::ostream に軌道のcsvを出力する関数．

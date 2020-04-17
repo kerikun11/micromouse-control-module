@@ -1,14 +1,25 @@
+/**
+ * @file state.h
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
+ * @brief 軌道制御の状態変数
+ */
 #pragma once
 
-#include "position.h"
+#include "pose.h"
 
+/**
+ * @brief 制御関係の名前空間
+ */
 namespace ctrl {
 
+/**
+ * @brief 軌道制御の状態変数
+ */
 struct State {
-  Position q;
-  Position dq;
-  Position ddq;
-  Position dddq;
+  Pose q;
+  Pose dq;
+  Pose ddq;
+  Pose dddq;
 };
 
 }; // namespace ctrl

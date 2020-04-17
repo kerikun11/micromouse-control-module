@@ -7,27 +7,27 @@
 
 using namespace ctrl;
 
-static auto SS_S90L = slalom::Shape(Position(45, 45, M_PI / 2), 44);
-static auto SS_S90R = slalom::Shape(Position(45, -45, -M_PI / 2), -44);
-static auto SS_F45L = slalom::Shape(Position(90, 45, M_PI / 4), 30);
-static auto SS_F45R = slalom::Shape(Position(90, -45, -M_PI / 4), -30);
-static auto SS_F90L = slalom::Shape(Position(90, 90, M_PI / 2), 70);
-static auto SS_F90R = slalom::Shape(Position(90, -90, -M_PI / 2), -70);
-static auto SS_F135L = slalom::Shape(Position(45, 90, M_PI * 3 / 4), 80);
-static auto SS_F135R = slalom::Shape(Position(45, -90, -M_PI * 3 / 4), -80);
-static auto SS_F180L = slalom::Shape(Position(0, 90, M_PI), 90, 24);
-static auto SS_F180R = slalom::Shape(Position(0, -90, -M_PI), -90, 24);
+static auto SS_S90L = slalom::Shape(Pose(45, 45, M_PI / 2), 44);
+static auto SS_S90R = slalom::Shape(Pose(45, -45, -M_PI / 2), -44);
+static auto SS_F45L = slalom::Shape(Pose(90, 45, M_PI / 4), 30);
+static auto SS_F45R = slalom::Shape(Pose(90, -45, -M_PI / 4), -30);
+static auto SS_F90L = slalom::Shape(Pose(90, 90, M_PI / 2), 70);
+static auto SS_F90R = slalom::Shape(Pose(90, -90, -M_PI / 2), -70);
+static auto SS_F135L = slalom::Shape(Pose(45, 90, M_PI * 3 / 4), 80);
+static auto SS_F135R = slalom::Shape(Pose(45, -90, -M_PI * 3 / 4), -80);
+static auto SS_F180L = slalom::Shape(Pose(0, 90, M_PI), 90, 24);
+static auto SS_F180R = slalom::Shape(Pose(0, -90, -M_PI), -90, 24);
 static auto SS_FV90L =
-    slalom::Shape(Position(45 * std::sqrt(2), 45 * std::sqrt(2), M_PI / 2), 48);
-static auto SS_FV90R = slalom::Shape(
-    Position(45 * std::sqrt(2), -45 * std::sqrt(2), -M_PI / 2), -48);
-static auto SS_FS90L = slalom::Shape(Position(45, 45, M_PI / 2), 44);
-static auto SS_FS90R = slalom::Shape(Position(45, -45, -M_PI / 2), -44);
+    slalom::Shape(Pose(45 * std::sqrt(2), 45 * std::sqrt(2), M_PI / 2), 48);
+static auto SS_FV90R =
+    slalom::Shape(Pose(45 * std::sqrt(2), -45 * std::sqrt(2), -M_PI / 2), -48);
+static auto SS_FS90L = slalom::Shape(Pose(45, 45, M_PI / 2), 44);
+static auto SS_FS90R = slalom::Shape(Pose(45, -45, -M_PI / 2), -44);
 
-static auto SS_FK90L = slalom::Shape(
-    Position(90 * std::sqrt(2), 90 * std::sqrt(2), M_PI / 2), 125);
-static auto SS_FK90R = slalom::Shape(
-    Position(90 * std::sqrt(2), -90 * std::sqrt(2), -M_PI / 2), -125);
+static auto SS_FK90L =
+    slalom::Shape(Pose(90 * std::sqrt(2), 90 * std::sqrt(2), M_PI / 2), 125);
+static auto SS_FK90R =
+    slalom::Shape(Pose(90 * std::sqrt(2), -90 * std::sqrt(2), -M_PI / 2), -125);
 
 void printDefinition(std::ostream &os, const std::string &name,
                      const slalom::Shape &s) {
@@ -35,15 +35,12 @@ void printDefinition(std::ostream &os, const std::string &name,
   const auto t_total =
       ad.t_end() + (s.straight_prev + s.straight_post) / s.v_ref;
   int width = 9;
-  os << "/* " << std::setfill(' ') << std::setw(8) << name
-     << " Total Time:" << std::setfill(' ') << std::setw(width) << t_total
-     << " [s] */" << std::endl;
   os << "static const auto " << std::setfill(' ') << std::setw(8) << name;
   os << " = ctrl::slalom::Shape(";
-  os << "ctrl::Position(" << std::setfill(' ') << std::setw(width) << s.total.x
+  os << "ctrl::Pose(" << std::setfill(' ') << std::setw(width) << s.total.x
      << ", " << std::setfill(' ') << std::setw(width) << s.total.y << ", "
      << std::setfill(' ') << std::setw(width) << s.total.th << "), ";
-  os << "ctrl::Position(" << std::setfill(' ') << std::setw(width) << s.curve.x
+  os << "ctrl::Pose(" << std::setfill(' ') << std::setw(width) << s.curve.x
      << ", " << std::setfill(' ') << std::setw(width) << s.curve.y << ", "
      << std::setfill(' ') << std::setw(width) << s.curve.th << "), ";
   os << std::setfill(' ') << std::setw(width) << s.straight_prev << ", "
@@ -53,6 +50,7 @@ void printDefinition(std::ostream &os, const std::string &name,
      << std::setfill(' ') << std::setw(6) << s.m_ddth << ", "
      << std::setfill(' ') << std::setw(6) << s.m_dth;
   os << ");";
+  os << " //< T:" << std::setfill(' ') << std::setw(width) << t_total;
   os << std::endl;
 }
 
@@ -114,11 +112,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
   }
 }
 
-int main(void) {
-  /* print definitions to stdout */
-  printDefinitions();
-
-  /* print trajectory to file*/
+void printTrajectory() {
   // printCsv("shape/shape_0", SS_S90R);
   // printCsv("shape/shape_1", SS_F45R);
   // printCsv("shape/shape_2", SS_F90R);
@@ -133,6 +127,14 @@ int main(void) {
   printCsv("shape/shape_4", SS_F180L);
   printCsv("shape/shape_5", SS_FV90L, M_PI / 4);
   printCsv("shape/shape_6", SS_FK90L, M_PI / 4);
+}
+
+int main(void) {
+  /* print definitions to stdout */
+  printDefinitions();
+
+  /* print trajectory to file*/
+  printTrajectory();
 
   return 0;
 }
