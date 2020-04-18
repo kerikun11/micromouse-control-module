@@ -1,4 +1,4 @@
-# micromouse control module
+# MicroMouse Control Module
 
 マイクロマウス制御の実装のうち，モジュール化できる部分をまとめたライブラリ．
 
@@ -17,7 +17,7 @@
 mkdir build
 cd build
 cmake ..
-make slalom_plot
+make slalom slalom_plot
 ```
 
 ## AccelDesigner

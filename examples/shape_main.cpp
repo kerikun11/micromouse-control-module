@@ -1,5 +1,6 @@
 #include "slalom.h"
 
+#include <filesystem>
 #include <fstream>
 #include <iomanip>
 #include <string>
@@ -113,6 +114,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
 }
 
 void printTrajectory() {
+  std::filesystem::create_directory("shape");
   // printCsv("shape/shape_0", SS_S90R);
   // printCsv("shape/shape_1", SS_F45R);
   // printCsv("shape/shape_2", SS_F90R);
