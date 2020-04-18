@@ -28,7 +28,7 @@ make slalom slalom_plot
 - 各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$ を提供する
 - 最大加速度 $a_{\max}$ と始点速度 $v_s$ など拘束次第では目標速度に達することができない場合があるので注意する
 
-[accel_designer.h](inc/accel_designer.h) の抜粋:
+[accel_designer.h](include/accel_designer.h) の抜粋:
 
 ```cpp
 /**
@@ -109,7 +109,7 @@ private:
 - 始点速度，終点速度などの拘束を満たす曲線加速軌道を生成
 - 移動距離に関する拘束はない
 
-[accel_curve.h](inc/accel_curve.h) の抜粋:
+[accel_curve.h](include/accel_curve.h) の抜粋:
 
 ```cpp
 /**
@@ -203,7 +203,7 @@ protected:
 
 平面上の位置および姿勢を表現する座標．
 
-[pose.h](inc/pose.h) の抜粋:
+[pose.h](include/pose.h) の抜粋:
 
 ```cpp
 /**
@@ -218,7 +218,7 @@ struct Pose {
 
 軌道生成などに使用する状態変数
 
-[state.h](inc/state.h) の抜粋:
+[state.h](include/state.h) の抜粋:
 
 ```cpp
 /**
@@ -236,7 +236,7 @@ struct State {
 
 並進と回転の座標を管理する構造体
 
-[polar.h](inc/polar.h) の抜粋:
+[polar.h](include/polar.h) の抜粋:
 
 ```cpp
 /**
@@ -252,7 +252,7 @@ struct Polar {
 
 1 次フィードフォワード補償付きフィードバック制御器クラス
 
-[feedback_controller.h](inc/feedback_controller.h) の抜粋:
+[feedback_controller.h](include/feedback_controller.h) の抜粋:
 
 ```cpp
 /**

@@ -1,5 +1,5 @@
 ## author: Ryotaro Onuki <kerikun11+github@gmail.com>
-include_directories(${CMAKE_HOME_DIRECTORY}/inc)
+include_directories(${CMAKE_HOME_DIRECTORY}/include)
 ## accel
 add_executable(accel_main accel_main)
 add_custom_target(accel ${CMAKE_CURRENT_BINARY_DIR}/accel_main

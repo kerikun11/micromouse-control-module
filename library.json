@@ -1,13 +1,13 @@
 {
-    "name": "AccelDesigner",
-    "description": "AccelDesigner",
-    "keywords": "micromouse,robot,vehicle",
+    "name": "MicroMouseControlModule",
+    "description": "MicroMouse Control Module",
+    "keywords": "micromouse,control,robot,vehicle",
     "build": {
         "flags": [
-            "-I inc"
+            "-I include"
         ],
         "srcFilter": [
-            "+inc"
+            "+include"
         ]
     }
 }
