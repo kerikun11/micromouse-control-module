@@ -158,7 +158,12 @@ public:
  */
 class Trajectory {
 public:
-  Trajectory(const Shape &shape) : shape(shape) {}
+  Trajectory(const Shape &shape, const bool mirror_x = false) : shape(shape) {
+    if (mirror_x) {
+      this->shape.curve = shape.curve.mirror_x();
+      this->shape.total = shape.total.mirror_x();
+    }
+  }
   void reset(const float velocity, const float th_start = 0,
              const float t_start = 0) {
     this->velocity = velocity;
@@ -175,9 +180,9 @@ public:
   const AccelDesigner &getAccelDesigner() const { return ad; }
 
 protected:
-  const Shape &shape; /**< スラロームの形状 */
-  AccelDesigner ad;   /**< 角速度用の曲線加速生成器 */
-  float velocity;     /**< 並進速度 */
+  Shape shape;      /**< スラロームの形状 */
+  AccelDesigner ad; /**< 角速度用の曲線加速生成器 */
+  float velocity;   /**< 並進速度 */
 };
 
 } // namespace slalom
