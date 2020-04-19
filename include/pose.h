@@ -2,6 +2,7 @@
  * @file pose.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 平面上の位置姿勢の座標もつファイル．
+ * @date 2020-04-19
  */
 #pragma once
 

@@ -2,6 +2,7 @@
  * @file polar.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 並進と回転の座標を管理するクラスをもつファイル
+ * @date 2020-04-19
  */
 #pragma once
 

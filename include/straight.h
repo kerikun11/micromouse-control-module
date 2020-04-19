@@ -2,6 +2,7 @@
  * @file straight.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 直線軌道を生成する
+ * @date 2020-04-19
  */
 #pragma once
 

@@ -2,6 +2,7 @@
  * @file slalom.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 拘束条件からスラロームを軌道生成するライブラリ
+ * @date 2020-04-19
  */
 #pragma once
 

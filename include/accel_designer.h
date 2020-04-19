@@ -3,6 +3,7 @@
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @ref https://kerikeri.top/posts/2018-04-29-accel-designer4/
  * @brief 距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル
+ * @date 2020-04-19
  */
 #pragma once
 

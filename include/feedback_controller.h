@@ -2,6 +2,7 @@
  * @file feedback_controller.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief フィードバック制御器クラスを保持するファイル
+ * @date 2020-04-19
  */
 #pragma once
 
