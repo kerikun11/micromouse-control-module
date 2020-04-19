@@ -1,45 +1,37 @@
 #include "accel_designer.h"
 
-#include "feedback_controller.h"
-
-#include <chrono>
 #include <fstream>
 #include <iostream>
-#include <random>
 
-ctrl::AccelDesigner ad;
-ctrl::AccelCurve ac;
-std::ofstream of("accel.csv");
-
-void test(float jm, float am, float vs, float va, float ve, float d, float xs,
-          float ts) {
-  ad.reset(jm, am, vs, va, ve, d, xs, ts);
-  ad.printCsv(of);
-  std::cout << ad << std::endl;
+void printCsv(const std::string &filebase, const ctrl::AccelDesigner &ad) {
+  const float Ts = 0.00001f;
+  std::ofstream of;
+  const auto ticks = ad.getTimeStamp();
+  float t = 0;
+  for (size_t i = 0; i < ticks.size(); ++i) {
+    of = std::ofstream(filebase + "_" + std::to_string(i) + ".csv");
+    while (t + Ts < ticks[i]) {
+      of << t;
+      of << "," << ad.j(t);
+      of << "," << ad.a(t);
+      of << "," << ad.v(t);
+      of << "," << ad.x(t);
+      of << std::endl;
+      t += Ts;
+    }
+  }
 }
 
 int main(void) {
-  // test(4800 * M_PI, 48 * M_PI, 0, 4 * M_PI, 0, M_PI / 2, 0, 0);
-  test(240000, 3600, 720, 720, 0, 90, 0, 0);
-  // test(100, 10, ad.v_end(), 10, 1, 10, ad.x_end(), ad.t_end());
-  // test(100, 10, ad.v_end(), 10, 1, 0.1, ad.x_end(), ad.t_end());
-  // test(100, 100, ad.v_end(), 10, 1, 1, ad.x_end(), ad.t_end());
-#if 1
-  int n = 100;
-  std::mt19937 mt{std::random_device{}()};
-  std::uniform_real_distribution<float> j_urd(100000, 500000);
-  std::uniform_real_distribution<float> a_urd(1000, 18000);
-  std::uniform_real_distribution<float> v_urd(90, 4800);
-  std::uniform_real_distribution<float> d_urd(0, 32 * 90);
-  auto ts = std::chrono::steady_clock::now();
-  for (int i = 0; i < n; ++i) {
-    test(j_urd(mt), a_urd(mt), ad.v_end(), v_urd(mt), v_urd(mt), d_urd(mt),
-         ad.x_end(), ad.t_end());
-  }
-  auto te = std::chrono::steady_clock::now();
-  auto dur = std::chrono::duration_cast<std::chrono::nanoseconds>(te - ts);
-  std::cout << "Average Time: " << dur.count() / n << " [ns]" << std::endl;
-#endif
+  ctrl::AccelDesigner ad;
+  // ad.reset(240, 9, 0, 3.6, 1.2, 0.09 * 32);
+  // ad.reset(240, 0.9, 0, 3.6, 1.2, 0.09 * 32);
+  // ad.reset(240, 0.9, -3.6, 3.6, -1.2, -0.09 * 4);
+  // ad.reset(240, 9, -1.2, 3.6, -2.4, -0.09 * 4);
+  // ad.reset(120, 90, -1.2, 3.6, -2.4, -0.09 * 4);
+  ad.reset(120, 90, 3.6, 3.6, 1.2, 0.09 * 4);
+  std::cout << ad << std::endl;
+  printCsv("accel", ad);
 
   return 0;
 }

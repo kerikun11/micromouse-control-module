@@ -1,34 +1,56 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 # ============================================================================ #
+from matplotlib.ticker import ScalarFormatter
 import numpy as np
 import matplotlib.pyplot as plt
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--file")
-args = parser.parse_args()
 
 # ============================================================================ #
-# load csv
-filename = './build/accel.csv'
+# global settings
+# plt.rcParams["font.family"] = "IPAGothic"
+plt.rcParams["text.usetex"] = True
+plt.rcParams['text.latex.preamble'] = r'\newcommand{\mathdefault}[1][]{}'
 
-if args.file:
-    filename = args.file
-
-raw = np.loadtxt(filename, delimiter=',')
-t = raw[:, 0]
-v = raw[:, 1:5]
+# ============================================================================ #
+# prepare figure
+fig_t, ax_t = plt.subplots(4, 1, figsize=(6, 8))
 
 # ============================================================================ #
 # plot
-titles = ['jerk', 'accel', 'velocity', 'position']
-ylabels = ['jerk [m/s/s/s]', 'accel [m/s/s]', 'velocity [m/s]', 'position [m]']
-for i in range(4):
-    plt.subplot(4, 1, 1 + i)
-    plt.plot(t, v[:, i])
-    plt.ylabel(ylabels[i])
-    plt.grid()
+filebase = f'./build/accel'  # t,j,a,v,x
+for i in range(8):
+    raw = np.loadtxt(f"{filebase}_{i}.csv", delimiter=',')
+    if raw.size == 0:
+        raw = np.empty(shape=(0, 5))
+    t = raw[:, 0]
+    th = raw[:, 1:1+4]
+    # theta
+    for k in range(4):
+        ax_t[k].plot(t, th[:, k], lw=3)
 
-plt.xlabel('Time [s]')
+# ============================================================================ #
+# t style
+ylabels = ['jerk [m/s/s/s]', 'accel. [m/s/s]',
+           'velocity [m/s]', 'position [m]']
+titles = ['Jerk', 'Acceleration', 'Velocity', 'Position']
+for i, ax in enumerate(ax_t):
+    ax.grid(which='both')
+    ax.set_ylabel(ylabels[i])
+    ax.set_title(titles[i])
+for ax in ax_t[0:-1]:
+    ax.yaxis.set_major_formatter(ScalarFormatter(useMathText=True))
+    ax.ticklabel_format(style="sci", axis="y", scilimits=(0, 0))
+ax_t[-1].set_xlabel('time [s]')
 
-plt.tight_layout()
+# ============================================================================ #
+# fit
+fig_t.tight_layout()
+
+# ============================================================================ #
+# save
+for ext in ['.png', '.svg']:
+    fig_t.savefig(filebase + '_t' + ext)
+
+# ============================================================================ #
+# show
 plt.show()

@@ -10,6 +10,7 @@
 #include <cmath>    //< for std::sqrt, std::cbrt, std::pow
 #include <complex>  //< for std::complex
 #include <iostream> //< for std::cout
+#include <ostream>
 
 /**
  * @brief 制御関係の名前空間
@@ -165,6 +166,13 @@ public:
    */
   float x_end() const { return x3; }
   /**
+   * @brief 境界の時刻
+   */
+  float t_0() const { return t0; }
+  float t_1() const { return t1; }
+  float t_2() const { return t2; }
+  float t_3() const { return t3; }
+  /**
    * @brief std::ostream に軌道のcsvを出力する関数．
    */
   void printCsv(std::ostream &os, const float t_interval = 0.001f) const {
@@ -199,12 +207,12 @@ public:
    * @return ve   終点速度 [m/s]
    */
   static float calcVelocityEnd(const float j_max, const float a_max,
-                               const float vs, const float d) {
+                               const float vs, const float vt, const float d) {
     /* 速度が曲線となる部分の時間を決定 */
     const float tc = a_max / j_max;
     /* 最大加速度の符号を決定 */
-    const float jm = (d > 0) ? j_max : -j_max;
-    const float am = (d > 0) ? a_max : -a_max;
+    const float jm = (vt > vs) ? j_max : -j_max;
+    const float am = (vt > vs) ? a_max : -a_max;
     /* 等加速度直線運動の有無で分岐 */
     if (std::abs(d) > std::abs((2 * vs + am * tc) * tc)) {
       /* 曲線・直線・曲線 */

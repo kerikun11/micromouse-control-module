@@ -10,9 +10,9 @@
 #include "accel_curve.h"
 
 #include <algorithm> //< for std::max, std::min
-#include <cmath>     //< for std::sqrt, std::cbrt, std::pow
-#include <iostream>  //< for std::cout
-#include <ostream>   //< for std::ostream
+#include <array>
+#include <iostream> //< for std::cout
+#include <ostream>
 
 /**
  * @brief 制御関係の名前空間
@@ -76,14 +76,15 @@ public:
     /* 走行距離から終点速度$v_e$を算出 */
     if (std::abs(dist) <
         std::abs(AccelCurve::calcMinDistance(j_max, a_max, v_start, v_end))) {
-      /* 走行距離から終点速度$v_e$を算出 */
-      v_end = AccelCurve::calcVelocityEnd(j_max, a_max, v_start, dist);
-      v_max = dist > 0 ? std::max(v_start, v_end) : std::min(v_start, v_end);
+      /* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */
+      v_end =
+          AccelCurve::calcVelocityEnd(j_max, a_max, v_start, v_target, dist);
+      v_max = v_end;
     }
     /* 曲線を生成 */
     ac.reset(j_max, a_max, v_start, v_max); //< 加速
     dc.reset(j_max, a_max, v_max, v_end);   //< 減速
-    /* 走行距離の拘束を満たさない場合の処理 */
+    /* 飽和速度まで加速すると走行距離の拘束を満たさない場合の処理 */
     if (std::abs(dist) < std::abs(ac.x_end() + dc.x_end())) {
       /* 走行距離から最大速度$v_m$を算出 */
       v_max = AccelCurve::calcVelocityMax(j_max, a_max, v_start, v_end, dist);
@@ -217,6 +218,22 @@ public:
     os << "\tt2: " << obj.t2;
     os << "\tt3: " << obj.t3;
     return os;
+  }
+  /**
+   * @brief 境界のタイムスタンプを取得
+   * @return std::array<float, 8> 境界のタイムスタンプの配列
+   */
+  const std::array<float, 8> getTimeStamp() const {
+    return {{
+        t0 + ac.t_0(),
+        t0 + ac.t_1(),
+        t0 + ac.t_2(),
+        t0 + ac.t_3(),
+        t2 + dc.t_0(),
+        t2 + dc.t_1(),
+        t2 + dc.t_2(),
+        t2 + dc.t_3(),
+    }};
   }
 
 private:
