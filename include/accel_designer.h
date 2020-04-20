@@ -72,33 +72,27 @@ public:
     /* 最大速度の仮置き */
     float v_max = dist > 0 ? std::max({v_start, v_sat, v_target})
                            : std::min({v_start, -v_sat, v_target});
-    float v_end = v_target;
     /* 走行距離から終点速度$v_e$を算出 */
+    float v_end = v_target;
     if (std::abs(dist) <
         std::abs(AccelCurve::calcMinDistance(j_max, a_max, v_start, v_end))) {
       /* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */
       v_end =
           AccelCurve::calcVelocityEnd(j_max, a_max, v_start, v_target, dist);
-      v_max = v_end;
+      v_max = v_end; //< 走行距離の拘束を満たすため，飽和速度まで加速できない
     }
     /* 曲線を生成 */
     ac.reset(j_max, a_max, v_start, v_max); //< 加速
     dc.reset(j_max, a_max, v_max, v_end);   //< 減速
     /* 飽和速度まで加速すると走行距離の拘束を満たさない場合の処理 */
     if (std::abs(dist) < std::abs(ac.x_end() + dc.x_end())) {
-      /* 走行距離から最大速度$v_m$を算出 */
+      /* 走行距離から最大速度$v_m$を算出; 下記v_maxは上記v_max以下になる */
       v_max = AccelCurve::calcVelocityMax(j_max, a_max, v_start, v_end, dist);
-      /* 飽和速度で飽和 */
-      v_max = dist > 0 ? std::min(v_max, v_sat) : std::max(v_max, -v_sat);
-      /* 無駄な減速を避ける */
+      /* 無駄な減速を回避 */
       v_max = dist > 0 ? std::max({v_start, v_max, v_end})
                        : std::min({v_start, v_max, v_end});
       ac.reset(j_max, a_max, v_start, v_max); //< 加速
       dc.reset(j_max, a_max, v_max, v_end);   //< 減速
-    }
-    if (std::abs(dist) + 0.1f < std::abs(ac.x_end() + dc.x_end())) {
-      std::cerr << "Error: dist constraint: " << dist
-                << " result: " << ac.x_end() + dc.x_end() << std::endl;
     }
     /* 各定数の算出 */
     x0 = x_start;
@@ -110,16 +104,34 @@ public:
     t3 = t0 + ac.t_end() + (dist - ac.x_end() - dc.x_end()) / v_max +
          dc.t_end(); //< 曲線減速終了の時刻
     /* 出力のチェック */
-    const float e = 0.001f; //< 数値誤差分
+    const float e = 0.01f; //< 数値誤差分
+    /* 移動距離 */
+    if (std::abs(dist) + e < std::abs(ac.x_end() + dc.x_end())) {
+      std::cerr << "Error: Distance Constraint! dist: " << dist
+                << " result: " << ac.x_end() + dc.x_end() << std::endl;
+      std::cerr << (*this) << std::endl;
+    }
+    /* 終点速度 */
+    if (std::abs(v_start - v_end) > e + std::abs(v_start - v_target)) {
+      std::cerr << "Error: Velocity Target!" << std::endl;
+      std::cerr << (*this) << std::endl;
+    }
+    /* 最大速度 */
+    if (std::abs(v_max) >
+        e + std::max({v_sat, std::abs(v_start), std::abs(v_end)})) {
+      std::cerr << "Error: Velocity Max!" << std::endl;
+      std::cerr << (*this) << std::endl;
+    }
+    /* タイムスタンプ */
     if (!(t0 <= t1 + e && t1 <= t2 + e && t2 <= t3 + e)) {
-      std::cerr << "Error: Time Point" << std::endl;
+      std::cerr << "Error: Time Point Relationship!" << std::endl;
       /* 入力情報の表示 */
-      std::cout << "a_max: " << a_max << "\tv_start: " << v_start
-                << "\tv_sat: " << v_sat << "\tv_target: " << v_target
-                << "\tdist: " << dist << std::endl;
+      std::cout << "Constraints: "
+                << "\tj_max: " << j_max << "\ta_max: " << a_max
+                << "\tv_start: " << v_start << "\tv_sat: " << v_sat
+                << "\tv_target: " << v_target << "\tdist: " << dist
+                << std::endl;
       /* 表示 */
-      std::cout << "v_start: " << v_start << "\tv_max: " << v_max
-                << "\tv_end: " << v_end << std::endl;
       std::cout << "t0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
                 << "\tt3: " << t3 << std::endl;
       std::cout << "x0: " << x0 << "\tx1: " << x0 + ac.x_end()

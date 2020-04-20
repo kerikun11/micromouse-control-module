@@ -174,11 +174,12 @@ public:
    * @param j_max 最大躍度の大きさ [m/s/s/s]
    * @param a_max 最大加速度の大きさ [m/s/s]
    * @param vs    始点速度 [m/s]
+   * @param vt    目標速度 [m/s]
    * @param d     走行距離 [m]
    * @return ve   終点速度 [m/s]
    */
   static float calcVelocityEnd(const float j_max, const float a_max,
-                               const float vs, const float d);
+                               const float vs, const float vt, const float d);
   /**
    * @brief 走行距離から達しうる最大速度を算出する関数
    *

@@ -203,6 +203,7 @@ public:
    * @param j_max 最大躍度の大きさ [m/s/s/s]
    * @param a_max 最大加速度の大きさ [m/s/s]
    * @param vs    始点速度 [m/s]
+   * @param vt    目標速度 [m/s]
    * @param d     走行距離 [m]
    * @return ve   終点速度 [m/s]
    */
@@ -211,7 +212,6 @@ public:
     /* 速度が曲線となる部分の時間を決定 */
     const float tc = a_max / j_max;
     /* 最大加速度の符号を決定 */
-    const float jm = (vt > vs) ? j_max : -j_max;
     const float am = (vt > vs) ? a_max : -a_max;
     /* 等加速度直線運動の有無で分岐 */
     if (std::abs(d) > std::abs((2 * vs + am * tc) * tc)) {
@@ -225,7 +225,7 @@ public:
     /* 曲線・曲線 (走行距離が短すぎる) */
     /* 3次方程式を解いて，終点速度を算出 */
     const float a = vs;
-    const float b = jm * d * d;
+    const float b = (d > 0 ? 1 : -1) * j_max * d * d;
     const float aaa = a * a * a;
     const float c0 = 27 * (32 * aaa * b + 27 * b * b);
     const float c1 = 16 * aaa + 27 * b;
