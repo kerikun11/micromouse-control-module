@@ -6,12 +6,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # ============================================================================ #
-# global settings
-# plt.rcParams["font.family"] = "IPAGothic"
-plt.rcParams["text.usetex"] = True
-plt.rcParams['text.latex.preamble'] = r'\newcommand{\mathdefault}[1][]{}'
-
-# ============================================================================ #
 # prepare figure
 fig_t, ax_t = plt.subplots(4, 1, figsize=(6, 8))
 
@@ -23,10 +17,10 @@ for i in range(8):
     if raw.size == 0:
         raw = np.empty(shape=(0, 5))
     t = raw[:, 0]
-    th = raw[:, 1:1+4]
+    value = raw[:, 1:1+4]
     # theta
     for k in range(4):
-        ax_t[k].plot(t, th[:, k], lw=3)
+        ax_t[k].plot(t, value[:, k], lw=4)
 
 # ============================================================================ #
 # t style
