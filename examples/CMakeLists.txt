@@ -9,6 +9,15 @@ add_custom_target(accel ${CMAKE_CURRENT_BINARY_DIR}/accel_main
 add_custom_target(accel_plot python ${CMAKE_CURRENT_SOURCE_DIR}/accel_plot.py
   WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}
 )
+## accel rand
+add_executable(accel_rand_main accel_rand_main)
+add_custom_target(accel_rand ${CMAKE_CURRENT_BINARY_DIR}/accel_rand_main
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  DEPENDS accel_rand_main
+)
+add_custom_target(accel_rand_plot python ${CMAKE_CURRENT_SOURCE_DIR}/accel_rand_plot.py
+  WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}
+)
 ## shape
 add_executable(shape_main shape_main)
 add_custom_target(shape ${CMAKE_CURRENT_BINARY_DIR}/shape_main
