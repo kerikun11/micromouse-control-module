@@ -6,12 +6,23 @@
 
 - 曲線加速の軌道生成
 - スラロームの軌道生成
-- フィードバック制御器
 - 軌道追従制御器
+- フィードバック制御器
 
 ## 使用方法
 
 このリポジトリは CMake プロジェクトになっている．
+
+### 曲線加速軌道の生成
+
+```sh
+mkdir build
+cd build
+cmake ..
+make accel accel_plot
+```
+
+### スラローム軌道の生成
 
 ```sh
 mkdir build
@@ -20,7 +31,9 @@ cmake ..
 make slalom slalom_plot
 ```
 
-## AccelDesigner
+## クラス
+
+### AccelDesigner
 
 拘束条件を満たす曲線加減速の軌道を生成するクラス
 
@@ -102,7 +115,7 @@ private:
 };
 ```
 
-## AccelCurve
+### AccelCurve
 
 曲線加速の軌道を生成する補助クラス
 
@@ -199,7 +212,7 @@ protected:
 };
 ```
 
-## Pose
+### Pose
 
 平面上の位置および姿勢を表現する座標．
 
@@ -214,7 +227,7 @@ struct Pose {
 };
 ```
 
-## State
+### State
 
 軌道生成などに使用する状態変数
 
@@ -232,7 +245,7 @@ struct State {
 };
 ```
 
-## Polar
+### Polar
 
 並進と回転の座標を管理する構造体
 
@@ -248,7 +261,96 @@ struct Polar {
 };
 ```
 
-## FeedbackController
+### slalom
+
+[slalom.h](include/slalom.h) の抜粋:
+
+```cpp
+/**
+ * @brief slalom::Shape スラロームの形状を表す構造体
+ *
+ * メンバー変数は互いに依存して決定されるので，個別に数値を変更することは許されない，
+ * スラローム軌道を得るには slalom::Trajectory を用いる．
+ */
+struct Shape {
+  Pose total;          /**< 前後の直線を含めた移動位置姿勢 */
+  Pose curve;          /**< カーブ部分の移動位置姿勢 */
+  float straight_prev; /**< カーブ前の直線の距離 [m] */
+  float straight_post; /**< カーブ後の直線の距離 [m] */
+  float v_ref;         /**< カーブ部分の基準速度 [m/s] */
+  float dddth_max;     /**< 最大角躍度の大きさ [rad/s/s/s] */
+  float ddth_max;      /**< 最大角加速度の大きさ [rad/s/s] */
+  float dth_max;       /**< 最大角速度の大きさ [rad/s] */
+
+public:
+  /**
+   * @brief 生成済みスラローム形状を代入するコンストラクタ
+   */
+  Shape(const Pose total, const Pose curve, float straight_prev,
+        const float straight_post, const float v_ref, const float dddth_max,
+        const float ddth_max, const float dth_max);
+  /**
+   * @brief 拘束条件からスラローム形状を生成するコンストラクタ
+   *
+   * @param total 前後の直線を含めた移動位置姿勢
+   * @param y_curve_end
+   * $y$方向(進行方向に垂直な方向)の移動距離，
+   * カーブの大きさを決めるもので，設計パラメータとなる
+   * @param x_adv $x$方向(進行方向)の前後の直線の長さ．180度ターンなどでは
+   * y_curve_end で調節できないので，例外的にこの値で調節する．
+   * @param dddth_max 最大角躍度の大きさ [rad/s/s/s]
+   * @param ddth_max 最大角加速度の大きさ [rad/s/s]
+   * @param dth_max 最大角速度の大きさ [rad/s]
+   */
+  Shape(const Pose total, const float y_curve_end, const float x_adv = 0,
+        const float dddth_max = 1200 * M_PI, const float ddth_max = 36 * M_PI,
+        const float dth_max = 3 * M_PI);
+  /**
+   * @brief 軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．
+   *
+   * @param ad 角速度分布
+   * @param s 状態変数
+   * @param v 並進速度
+   * @param t 時刻
+   * @param Ts 積分時間
+   */
+  static void integrate(const AccelDesigner &ad, State &s, const float v,
+                        const float t, const float Ts);
+};
+```
+
+```cpp
+/**
+ * @brief slalom::Trajectory スラローム軌道を生成するクラス
+ *
+ * スラローム形状 Shape と並進速度をもとに，各時刻における位置や速度を提供する．
+ */
+class Trajectory {
+public:
+  Trajectory(const Shape &shape, const bool mirror_x = false);
+  void reset(const float velocity, const float th_start = 0,
+             const float t_start = 0) {
+    this->velocity = velocity;
+    const float gain = velocity / shape.v_ref;
+    ad.reset(gain * gain * gain * shape.dddth_max, gain * gain * shape.ddth_max,
+             0, gain * shape.dth_max, 0, shape.total.th, th_start, t_start);
+  }
+  void update(State &s, const float t, const float Ts) const {
+    return Shape::integrate(ad, s, velocity, t, Ts);
+  }
+  float getVelocity() const { return velocity; }
+  float getTimeCurve() const { return ad.t_end(); }
+  const Shape &getShape() const { return shape; }
+  const AccelDesigner &getAccelDesigner() const { return ad; }
+
+protected:
+  Shape shape;      /**< スラロームの形状 */
+  AccelDesigner ad; /**< 角速度用の曲線加速生成器 */
+  float velocity;   /**< 並進速度 */
+};
+```
+
+### FeedbackController
 
 1 次フィードフォワード補償付きフィードバック制御器クラス
 
