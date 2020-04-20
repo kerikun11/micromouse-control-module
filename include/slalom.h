@@ -31,14 +31,14 @@ namespace slalom {
  * スラローム軌道を得るには slalom::Trajectory を用いる．
  */
 struct Shape {
-  Pose total;          /**< 前後の直線を含めた移動位置姿勢 */
-  Pose curve;          /**< カーブ部分の移動位置姿勢 */
-  float straight_prev; /**< カーブ前の直線の距離 [m] */
-  float straight_post; /**< カーブ後の直線の距離 [m] */
-  float v_ref;         /**< カーブ部分の基準速度 [m/s] */
-  float dddth_max;     /**< 最大角躍度の大きさ [rad/s/s/s] */
-  float ddth_max;      /**< 最大角加速度の大きさ [rad/s/s] */
-  float dth_max;       /**< 最大角速度の大きさ [rad/s] */
+  Pose total; /**< @brief 前後の直線を含めた移動位置姿勢 */
+  Pose curve; /**< @brief カーブ部分の移動位置姿勢 */
+  float straight_prev; /**< @brief カーブ前の直線の距離 [m] */
+  float straight_post; /**< @brief カーブ後の直線の距離 [m] */
+  float v_ref;         /**< @brief カーブ部分の基準速度 [m/s] */
+  float dddth_max;     /**< @brief 最大角躍度の大きさ [rad/s/s/s] */
+  float ddth_max;      /**< @brief 最大角加速度の大きさ [rad/s/s] */
+  float dth_max;       /**< @brief 最大角速度の大きさ [rad/s] */
 
 public:
   /**
@@ -159,12 +159,25 @@ public:
  */
 class Trajectory {
 public:
+  /**
+   * @brief コンストラクタ
+   *
+   * @param shape スラローム形状
+   * @param mirror_x スラローム形状を$x$軸反転(進行方向に対して左右反転)する
+   */
   Trajectory(const Shape &shape, const bool mirror_x = false) : shape(shape) {
     if (mirror_x) {
       this->shape.curve = shape.curve.mirror_x();
       this->shape.total = shape.total.mirror_x();
     }
   }
+  /**
+   * @brief 並進速度を設定して軌道を初期化する関数
+   *
+   * @param velocity 並進速度 [m/s]
+   * @param th_start 初期姿勢 [rad] (オプション)
+   * @param t_start 初期時刻 [s] (オプション)
+   */
   void reset(const float velocity, const float th_start = 0,
              const float t_start = 0) {
     this->velocity = velocity;
@@ -172,18 +185,37 @@ public:
     ad.reset(gain * gain * gain * shape.dddth_max, gain * gain * shape.ddth_max,
              0, gain * shape.dth_max, 0, shape.total.th, th_start, t_start);
   }
-  void update(State &s, const float t, const float Ts) const {
-    return Shape::integrate(ad, s, velocity, t, Ts);
+  /**
+   * @brief 軌道の更新
+   *
+   * @param state 次の時刻に更新する現在状態
+   * @param t 現在時刻 [s]
+   * @param Ts 積分時間 [s]
+   */
+  void update(State &state, const float t, const float Ts) const {
+    return Shape::integrate(ad, state, velocity, t, Ts);
   }
+  /**
+   * @brief 並進速度を取得
+   */
   float getVelocity() const { return velocity; }
+  /**
+   * @brief ターンの合計時間を取得
+   */
   float getTimeCurve() const { return ad.t_end(); }
+  /**
+   * @brief スラローム形状を取得
+   */
   const Shape &getShape() const { return shape; }
+  /**
+   * @brief 角速度設計器を取得
+   */
   const AccelDesigner &getAccelDesigner() const { return ad; }
 
 protected:
-  Shape shape;      /**< スラロームの形状 */
-  AccelDesigner ad; /**< 角速度用の曲線加速生成器 */
-  float velocity;   /**< 並進速度 */
+  Shape shape;      /**< @brief スラロームの形状 */
+  AccelDesigner ad; /**< @brief 角速度用の曲線加速生成器 */
+  float velocity;   /**< @brief 並進速度 */
 };
 
 } // namespace slalom

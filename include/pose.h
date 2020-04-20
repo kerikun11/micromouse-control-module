@@ -15,14 +15,23 @@ namespace ctrl {
  * @brief 位置姿勢の座標
  */
 struct Pose {
-  float x, y, th; /*< (x, y, theta) 成分 */
+  float x;  /**< @brief x 成分 [m] */
+  float y;  /**< @brief y 成分 [m] */
+  float th; /**< @brief theta 成分 [rad] */
 
 public:
-  /** デフォルトコンストラクタ */
+  /**
+   * @brief デフォルトコンストラクタ
+   */
   Pose(const float x = 0, const float y = 0, const float th = 0)
       : x(x), y(y), th(th) {}
-  /** コピーコンストラクタ */
+  /**
+   * @brief コピーコンストラクタ
+   */
   Pose(const Pose &o) : x(o.x), y(o.y), th(o.th) {}
+  /**
+   * @brief 初期化
+   */
   void clear() { x = y = th = 0; }
   const Pose homogeneous(const Pose offset) const {
     return offset + this->rotate(offset.th);
