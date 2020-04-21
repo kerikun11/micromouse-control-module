@@ -8,6 +8,6 @@ add_custom_target(accel
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   DEPENDS example_accel
 )
-add_custom_target(accel_plot python ${CMAKE_CURRENT_SOURCE_DIR}/plot.py
+add_custom_target(accel_plot python3 ${CMAKE_CURRENT_SOURCE_DIR}/plot.py
   WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}
 )

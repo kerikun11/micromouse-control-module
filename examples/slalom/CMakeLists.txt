@@ -8,6 +8,6 @@ add_custom_target(slalom
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   DEPENDS example_slalom
 )
-add_custom_target(slalom_plot python ${CMAKE_CURRENT_SOURCE_DIR}/plot.py
+add_custom_target(slalom_plot python3 ${CMAKE_CURRENT_SOURCE_DIR}/plot.py
   WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}
 )

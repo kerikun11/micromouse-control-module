@@ -2,36 +2,90 @@
 
 マイクロマウス制御の実装のうち，モジュール化できる部分をまとめたライブラリ．
 
-## 内容
-
 - 曲線加速の軌道生成
 - スラロームの軌道生成
 - 軌道追従制御器
 - フィードバック制御器
 
-## 使用方法
+--------------------------------------------------------------------------------
 
-このリポジトリは CMake プロジェクトになっている．
+## マイコンでの使用方法
 
-### 曲線加速軌道の生成
+このライブラリは，ヘッダーファイルのみから構成されている．
+
+リポジトリをダウンロードして，
+`./include/`
+ディレクトリからソースコードを参照して使用する．
+
+--------------------------------------------------------------------------------
+
+## コンピュータでの動作確認方法
+
+### 依存パッケージ
+
+必要に応じて，以下のパッケージをインストールする．
+
+- 必須
+  - `git`
+  - `cmake`
+  - `gcc`, `g++` (`version >= 8`)
+- 可視化のために必要
+  - `python3`
+  - `python3-numpy`
+  - `python3-matplotlib`
+- ドキュメント生成のために必要
+  - `doxygen`
+  - `graphviz`
+
+### 実行方法
+
+このリポジトリは [CMake](https://cmake.org/) プロジェクトになっている．
+
+まずはじめに，以下のコマンドで初期化する．
 
 ```sh
+## クローン
+git clone https://github.com/kerikun11/micromouse-control-module.git
+## 移動
+cd micromouse-control-modlude
+## 作業ディレクトリを作成
 mkdir build
 cd build
+## 初期化 (Makefileの生成)
 cmake ..
+## ビルド
+make all
+```
+
+以降，コマンド `make` は，この `build` ディレクトリで実行すること．
+
+### 曲線加速軌道の生成とプロット
+
+[examples/accel/main.cpp](examples/accel/main.cpp) の実行
+
+```sh
 make accel accel_plot
 ```
 
-### スラローム軌道の生成
+### スラローム軌道の生成とプロット
+
+[examples/slalom/main.cpp](examples/slalom/main.cpp) の実行
 
 ```sh
-mkdir build
-cd build
-cmake ..
 make slalom slalom_plot
 ```
 
-## クラス
+### ドキュメントの自動生成
+
+下記コマンドにより `build/docs/html/index.html` にドキュメントが生成される．
+
+```sh
+make docs
+```
+
+--------------------------------------------------------------------------------
+
+## C++クラス設計
 
 ### AccelDesigner
 
@@ -39,9 +93,8 @@ make slalom slalom_plot
 
 - 移動距離の拘束条件を満たす曲線加速軌道を生成する
 - 各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$ を提供する
-- 最大加速度 $a_{\max}$ と始点速度 $v_s$ など拘束次第では目標速度に達することができない場合があるので注意する
 
-[accel_designer.h](include/accel_designer.h) の抜粋:
+以下， [accel_designer.h](include/accel_designer.h) の抜粋:
 
 ```cpp
 /**
@@ -122,7 +175,7 @@ private:
 - 始点速度，終点速度などの拘束を満たす曲線加速軌道を生成
 - 移動距離に関する拘束はない
 
-[accel_curve.h](include/accel_curve.h) の抜粋:
+以下， [accel_curve.h](include/accel_curve.h) の抜粋:
 
 ```cpp
 /**
@@ -213,11 +266,13 @@ protected:
 };
 ```
 
+--------------------------------------------------------------------------------
+
 ### Pose
 
 平面上の位置および姿勢を表現する座標．
 
-[pose.h](include/pose.h) の抜粋:
+以下， [pose.h](include/pose.h) の抜粋:
 
 ```cpp
 /**
@@ -232,7 +287,7 @@ struct Pose {
 
 軌道生成などに使用する状態変数
 
-[state.h](include/state.h) の抜粋:
+以下， [state.h](include/state.h) の抜粋:
 
 ```cpp
 /**
@@ -250,7 +305,7 @@ struct State {
 
 並進と回転の座標を管理する構造体
 
-[polar.h](include/polar.h) の抜粋:
+以下， [polar.h](include/polar.h) の抜粋:
 
 ```cpp
 /**
@@ -264,7 +319,7 @@ struct Polar {
 
 ### slalom
 
-[slalom.h](include/slalom.h) の抜粋:
+以下， [slalom.h](include/slalom.h) の抜粋:
 
 ```cpp
 /**
@@ -351,11 +406,13 @@ protected:
 };
 ```
 
+--------------------------------------------------------------------------------
+
 ### FeedbackController
 
 1 次フィードフォワード補償付きフィードバック制御器クラス
 
-[feedback_controller.h](include/feedback_controller.h) の抜粋:
+以下， [feedback_controller.h](include/feedback_controller.h) の抜粋:
 
 ```cpp
 /**

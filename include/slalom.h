@@ -141,7 +141,7 @@ public:
   friend std::ostream &operator<<(std::ostream &os, const Shape &obj) {
     os << "Slalom Shape" << std::endl;
     os << "\ttotal: " << obj.total << std::endl;
-    os << "\tnet: " << obj.curve << std::endl;
+    os << "\tcurve: " << obj.curve << std::endl;
     os << "\tv_ref: " << obj.v_ref << std::endl;
     os << "\tstraight_prev: " << obj.straight_prev << std::endl;
     os << "\tstraight_post: " << obj.straight_post << std::endl;
