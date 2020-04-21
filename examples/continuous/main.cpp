@@ -9,7 +9,7 @@
 
 ctrl::AccelDesigner ad;
 ctrl::AccelCurve ac;
-std::ofstream of("accel.csv");
+std::ofstream of("continuous.csv");
 
 void test(float jm, float am, float vs, float va, float ve, float d, float xs,
           float ts) {

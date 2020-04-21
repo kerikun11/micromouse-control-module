@@ -6,7 +6,7 @@ set(groot, 'DefaultLegendInterpreter', 'Latex');
 set(groot, 'DefaultLineLineWidth', 2);
 
 %% load
-rawdata = csvread('../build/main.csv');
+rawdata = csvread('../../build/continuous.csv');
 t = rawdata(:, 1);
 j = rawdata(:, 2);
 a = rawdata(:, 3);

@@ -8,7 +8,7 @@ set(groot, 'DefaultLineLineWidth', 2);
 figindex = 1;
 
 %% load
-rawdata = csvread('../build/out.csv');
+rawdata = csvread('../../build/out.csv');
 index = 1;
 t = rawdata(:, index); index = index + 1;
 dddth = rawdata(:, index); index = index + 1;

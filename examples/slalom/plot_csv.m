@@ -11,7 +11,7 @@ figindex = 1;
 rawdata_array = cell(5);
 for i = 1 : 5
     try
-        rawdata_array{i} = csvread(sprintf('../build/slalom_%d.csv', i-1));
+        rawdata_array{i} = csvread(sprintf('../../build/slalom_%d.csv', i-1));
     catch
         prev = rawdata_array{i-1};
         rawdata_array{i} = prev(end, :);
