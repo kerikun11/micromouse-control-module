@@ -25,6 +25,7 @@
 
 - 必須
   - `git`
+  - `make`
   - `cmake`
   - `gcc`, `g++` (`version >= 8`)
 - 可視化のために必要
@@ -34,6 +35,15 @@
 - ドキュメント生成のために必要
   - `doxygen`
   - `graphviz`
+
+インストールコマンド例
+
+```sh
+# apt (ubuntu, debian, etc.)
+sudo apt install git make cmake g++ python3-matplotlib doxygen graphviz
+# pacman (arch, manjaro, etc.)
+sudo pacman -S --needed git make cmake gcc python-matplotlib doxygen graphviz
+```
 
 ### 実行方法
 
