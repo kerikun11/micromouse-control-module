@@ -1,18 +1,47 @@
+%%============================================================================%%
+%% author: Ryotaro Onuki (kerikun11+github@gmail.com)
+%%============================================================================%%
 \documentclass[a5paper]{ltjsarticle}
+\usepackage[margin=15mm]{geometry}
 \usepackage{amsmath}
-\title{加減速軌道設計}
+\usepackage{ascmac} % for \itembox
+\usepackage{amsfonts} % for \mathbb
+%%============================================================================%%
+\title{速度設計(書き途中)}
 \author{Ryotaro Onuki (kerikun11+github@gmail.com)}
 \date{\today}
+\pagestyle{headings}
+\setlength\fullwidth\textwidth % to fit header size
+%%============================================================================%%
 \begin{document}
 \maketitle
-
-\section{速度拘束}
-
-\begin{align}
-    j_m & = \mathrm{sign}(v_e-v_s) \times|j_{\max}| \\
-    a_m & = \mathrm{sign}(v_e-v_s) \times|a_{\max}|
-\end{align}
-
+%%============================================================================%%
+\section{概要}
+\begin{itembox}[l]{設計1}
+    \quad
+    始点速度から終点速度までの，
+    最大躍度，最大加速度の拘束を満たす速度軌道を設計する．
+    \begin{itemize}
+        \item 飽和: $j_{\max},~ a_{\max} \in \mathbb{R}_+$
+        \item 速度: $v_\mathrm{start},~ v_\mathrm{end} \in \mathbb{R}$
+        \item 出力: $j(t),~ a(t),~ v(t),~ x(t),~ \forall t \in \mathbb{R}$
+    \end{itemize}
+\end{itembox}
+\begin{itembox}[l]{設計2}
+    \quad
+    始点速度から目標速度までの，
+    最大躍度，最大加速度，最大速度，移動距離の拘束を満たす速度軌道を設計する．
+    \begin{itemize}
+        \item 飽和: $j_{\max},~ a_{\max},~ v_{\max} \in \mathbb{R}_+$
+        \item 速度: $v_\mathrm{start},~ v_\mathrm{target} \in \mathbb{R}$
+        \item 位置: $d \in \mathbb{R}$
+        \item 初期値: $v_\mathrm{start},~ t_\mathrm{start} \in \mathbb{R}$
+        \item 出力: $j(t),~ a(t),~ v(t),~ x(t),~ \forall t \in \mathbb{R}$
+    \end{itemize}
+\end{itembox}
+%%============================================================================%%
+\subsection{移動距離拘束なし}
+時刻 $t$ における，躍度 $j(t)$, 加速度 $a(t)$, 速度 $v(t)$, 位置 $x(t)$
 \begin{align}
     j(t)
      & :=
@@ -54,8 +83,18 @@
         x_3 + v_3(t-t_3)                           & (t_3 < t \hspace{2.2em})
     \end{array} \right.
 \end{align}
-
-$$
+躍度定数 $j_m$,
+加速度定数 $a_m$,
+等加速度時間 $t_m$,
+曲線速度時間 $t_c$
+\begin{align}
+    j_m & = \mathrm{sign}(v_e-v_s) \times|j_{\max}|     \\
+    a_m & = \mathrm{sign}(v_e-v_s) \times|a_{\max}|     \\
+    t_m & := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m} \\
+    t_c & := \frac{a_m}{j_m}
+\end{align}
+時刻定数 $t_0,~t_1,~t_2,~t_3$
+\begin{align}
     \left\{ \begin{array}{l}
         \begin{array}{ll}
             \left\{ \begin{array}{l}
@@ -77,14 +116,10 @@ $$
             (t_m \le 0)
         \end{array}
     \end{array} \right.
-$$
-
-\begin{align}
-    t_m & := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m} \\
-    t_c & := \frac{a_m}{j_m}
 \end{align}
-
-$$
+速度定数 $v_0,~v_1,~v_2,~v_3$，
+位置定数 $x_0,~x_1,~x_2,~x_3$
+\begin{align}
     \left\{ \begin{array}{l}
         v_0 := v_s    \\
         v_1 := v(t_1) \\
@@ -98,43 +133,63 @@ $$
         x_2 := x(t_2) \\
         x_3 := x_0 + \frac{1}{2}(v_0 + v_3)(t_3-t_0)
     \end{array} \right.
-$$
+\end{align}
 
-\section{距離拘束}
-始点速度$v_s$ と目標速度 $v_t$ の速度差が小さいとき，
-終点速度 $v_e$ を決定する．
-$$
+\clearpage
+%%============================================================================%%
+\section{移動距離拘束つき}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        パラメータ & 記号  & 単位        & 備考       \\ \hline\hline
+        最大躍度   & $j_m$ & [m/s${}^3$] &            \\
+        最大加速度 & $a_m$ & [m/s${}^2$] &            \\
+        最大速度   & $v_m$ & [m/s]       &            \\
+        始点速度   & $v_s$ & [m/s]       &            \\
+        目標速度   & $v_t$ & [m/s]       &            \\
+        終点速度   & $v_e$ & [m/s]       &            \\
+        移動距離   & $d$   & [m]         &            \\
+        始点時刻   & $t_s$ & [m]         & オプション \\
+        始点位置   & $x_s$ & [m]         & オプション \\
+    \end{tabular}
+\end{table}
+
+始点速度 $v_s$ から目標速度 $v_t$ まで変化するのに必要な移動距離 $d_{v_s,v_t}$
+\begin{align}
+    d_{v_s,v_t}(j_m,a_m,v_s,v_t)
+    := \frac{1}{2}(v_s+v_t) \, t_{v_s,v_t}
+\end{align}
+
+始点速度 $v_s$ と目標速度 $v_t$ の速度差が小さいとき，
+走行距離 $d$ の拘束により
+目標速度 $v_t$ に達しない場合にあるので，
+拘束を満たすような終点速度 $v_e$ を決定する．
+\begin{align}
     v_e(j_m, a_m, v_s, v_t, d) :=
     \left\{\begin{array}{ll}
         v_{e1} & (d > d_{t_m=0} \mbox{\quad and \quad} v_{t_m=0} > 0)
         \\
         v_{e2} & (\mbox{otherwise})
     \end{array}\right.
-$$
+\end{align}
 ただし，
-$$
-    \begin{array}{l@{~}l}
-        d_{t_m=0} & := \left( v_s + \frac{1}{2} a_m t_c \right) t_c
-        \\
-        v_{t_m=0} & := \frac{d}{t_c} - v_s
-        \\
-        t_c       & := \frac{a_m}{j_m}
-        \\
-        v_{e1}    & :=
-        \frac{-a_m t_c + \sqrt{a_m^2 t_c^2-4(a_m t_c v_s - v_s^2 - 2a_m d)}}{2}
-        \\
-        v_{e2}    & :=
-        \frac{1}{3}\left(c +\frac{4a^2}{c}
-        -a
-        \right)
-        \\
-        a         & := v_s
-        \\
-        b         & :=                       \frac{a_md^2}{t_c}
-        \\
-        c         & :=                       \sqrt[3]{\frac{\sqrt{27b(32a^3+27b)} + 16a^3+27b}{2}}
-    \end{array}
-$$
+\begin{align}
+    d_{t_m=0} & := \left( v_s + \frac{1}{2} a_m t_c \right) t_c
+    \\
+    v_{t_m=0} & := \frac{d}{t_c} - v_s
+    \\
+    t_c       & := \frac{a_m}{j_m}
+    \\
+    v_{e1}    & := \frac{-a_m t_c + \sqrt{a_m^2 t_c^2-4(a_m t_c v_s - v_s^2 - 2a_m d)}}{2}
+    \\
+    v_{e2}    & := \frac{1}{3}\left(c +\frac{4a^2}{c} -a \right)
+    \\
+    a         & := v_s
+    \\
+    b         & :=                       \frac{a_md^2}{t_c}
+    \\
+    c         & :=                       \sqrt[3]{\frac{\sqrt{27b(32a^3+27b)} + 16a^3+27b}{2}}
+\end{align}
 
 走行距離に余裕があるとき，
 最大速度 $v_m$ を決定する．
