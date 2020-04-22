@@ -23,7 +23,7 @@
 
 /* Log Info */
 #ifndef loge
-#if 1
+#if 1 /*< Enabled */
 #define loge (std::cout << "[E][" << FILEPATH << ":" << __LINE__ << "]\t")
 #else
 #define loge std::ostream(0)
@@ -31,7 +31,7 @@
 #endif
 /* Log Info */
 #ifndef logi
-#if 0
+#if 0 /*< Enabled */
 #define logi (std::cout << "[I][" << FILEPATH << ":" << __LINE__ << "]\t")
 #else
 #define logi std::ostream(0)
@@ -39,7 +39,7 @@
 #endif
 /* Log Debug */
 #ifndef logd
-#if 0
+#if 0 /*< Enabled */
 #define logd (std::cout << "[D][" << FILEPATH << ":" << __LINE__ << "]\t")
 #else
 #define logd std::ostream(0)
@@ -251,9 +251,9 @@ public:
     /* 等加速度直線運動の有無で分岐 */
     const auto d_triangle = (vs + am * tc / 2) * tc; //< d @ tm == 0
     const auto v_triangle = jm / am * d - vs;        //< v @ tm == 0
-    logd << "d_tri: " << d_triangle << std::endl;
-    logd << "v_tri: " << v_triangle << std::endl;
-    if (std::abs(d) > std::abs(d_triangle) && vs * v_triangle > 0) {
+    // logd << "d_tri: " << d_triangle << std::endl;
+    // logd << "v_tri: " << v_triangle << std::endl;
+    if (std::abs(d) > std::abs(d_triangle) && d * v_triangle > 0) {
       /* 曲線・直線・曲線 */
       logd << "v: curve - straight - curve" << std::endl;
       /* 2次方程式の解の公式を解く */
