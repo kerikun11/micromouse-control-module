@@ -35,15 +35,17 @@ public:
   }
 };
 
-TEST(AccelCurve, AccelCurve) {
+TEST(AccelCurve, AccelCurveTest) {
   AccelCurveTest act;
   int n = 1000;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> j_urd(100000, 1000000);
   std::uniform_real_distribution<float> a_urd(100, 18000);
-  std::uniform_real_distribution<float> v_urd(-4800, 4800);
-  for (int i = 0; i < n; ++i)
+  std::uniform_real_distribution<float> v_urd(1, 4800);
+  for (int i = 0; i < n; ++i) {
     act.test(j_urd(mt), a_urd(mt), v_urd(mt), v_urd(mt));
+    act.test(j_urd(mt), a_urd(mt), -v_urd(mt), -v_urd(mt));
+  }
   act.test(240000, 9000, 0, 1200);
   act.test(240000, 900, 0, 1200);
   act.test(240000, 90, 0, 1200);

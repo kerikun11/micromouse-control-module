@@ -74,8 +74,10 @@ public:
                            : std::min({v_start, -v_sat, v_target});
     /* 走行距離から終点速度$v_e$を算出 */
     float v_end = v_target;
-    if (std::abs(dist) <
-        std::abs(AccelCurve::calcMinDistance(j_max, a_max, v_start, v_end))) {
+    const auto dist_min =
+        AccelCurve::calcMinDistance(j_max, a_max, v_start, v_end);
+    if (std::abs(dist) < std::abs(dist_min)) {
+      logd << "vs -> ve != vt" << std::endl;
       /* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */
       v_end =
           AccelCurve::calcVelocityEnd(j_max, a_max, v_start, v_target, dist);
@@ -85,7 +87,9 @@ public:
     ac.reset(j_max, a_max, v_start, v_max); //< 加速
     dc.reset(j_max, a_max, v_max, v_end);   //< 減速
     /* 飽和速度まで加速すると走行距離の拘束を満たさない場合の処理 */
-    if (std::abs(dist) < std::abs(ac.x_end() + dc.x_end())) {
+    const auto d_sum = ac.x_end() + dc.x_end();
+    if (std::abs(dist) < std::abs(d_sum)) {
+      logd << "vs -> vm -> ve" << std::endl;
       /* 走行距離から最大速度$v_m$を算出; 下記v_maxは上記v_max以下になる */
       v_max = AccelCurve::calcVelocityMax(j_max, a_max, v_start, v_end, dist);
       /* 無駄な減速を回避 */
@@ -105,38 +109,42 @@ public:
          dc.t_end(); //< 曲線減速終了の時刻
     /* 出力のチェック */
     const float e = 0.01f; //< 数値誤差分
-    /* 移動距離 */
-    if (std::abs(dist) + e < std::abs(ac.x_end() + dc.x_end())) {
-      std::cerr << "Error: Distance Constraint! dist: " << dist
-                << " result: " << ac.x_end() + dc.x_end() << std::endl;
-      std::cerr << (*this) << std::endl;
-    }
+    bool show_info = false;
     /* 終点速度 */
     if (std::abs(v_start - v_end) > e + std::abs(v_start - v_target)) {
       std::cerr << "Error: Velocity Target!" << std::endl;
-      std::cerr << (*this) << std::endl;
+      show_info = true;
     }
     /* 最大速度 */
     if (std::abs(v_max) >
         e + std::max({v_sat, std::abs(v_start), std::abs(v_end)})) {
-      std::cerr << "Error: Velocity Max!" << std::endl;
-      std::cerr << (*this) << std::endl;
+      std::cerr << "Error: Velocity Saturation!" << std::endl;
+      show_info = true;
     }
     /* タイムスタンプ */
     if (!(t0 <= t1 + e && t1 <= t2 + e && t2 <= t3 + e)) {
-      std::cerr << "Error: Time Point Relationship!" << std::endl;
-      /* 入力情報の表示 */
-      std::cout << "Constraints: "
-                << "\tj_max: " << j_max << "\ta_max: " << a_max
-                << "\tv_start: " << v_start << "\tv_sat: " << v_sat
-                << "\tv_target: " << v_target << "\tdist: " << dist
-                << std::endl;
+      loge << "Error: Time Point Relationship!" << std::endl;
+      show_info = true;
+    }
+    /* 入力情報の表示 */
+    if (show_info) {
+      loge << "Constraints:"
+           << "\tj_max: " << j_max << "\ta_max: " << a_max
+           << "\tv_start: " << v_start << "\tv_sat: " << v_sat
+           << "\tv_target: " << v_target << "\tdist: " << dist << std::endl;
+      loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_start << ", "
+           << v_sat << ", " << v_target << ", " << dist << ");" << std::endl;
       /* 表示 */
-      std::cout << "t0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
-                << "\tt3: " << t3 << std::endl;
-      std::cout << "x0: " << x0 << "\tx1: " << x0 + ac.x_end()
-                << "\tx2: " << x0 + (dist - dc.x_end()) << "\tx3: " << x3
-                << std::endl;
+      loge << "Time Stamp: "
+           << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
+           << "\tt3: " << t3 << std::endl;
+      loge << "Position:   "
+           << "\tx0: " << x0 << "\tx1: " << x0 + ac.x_end()
+           << "\tx2: " << x0 + (dist - dc.x_end()) << "\tx3: " << x3
+           << std::endl;
+      loge << "Velocity:   "
+           << "\tv0: " << v_start << "\tv1: " << v(t1) << "\tv2: " << v(t2)
+           << "\tv3: " << v_end << std::endl;
     }
   }
   /**
@@ -220,7 +228,7 @@ public:
    * @brief 情報の表示
    */
   friend std::ostream &operator<<(std::ostream &os, const AccelDesigner &obj) {
-    os << "AccelDesigner ";
+    os << "AccelDesigner:";
     os << "\td: " << obj.x3 - obj.x0;
     os << "\tvs: " << obj.ac.v(0);
     os << "\tvm: " << obj.ac.v_end();
@@ -248,7 +256,7 @@ public:
     }};
   }
 
-private:
+protected:
   float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
   float x0, x3;         /**< @brief 境界点の位置 [m] */
   AccelCurve ac, dc; /**< @brief 曲線加速，曲線減速オブジェクト */

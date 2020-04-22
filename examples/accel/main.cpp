@@ -4,7 +4,7 @@
 #include <iostream>
 
 void printCsv(const std::string &filebase, const ctrl::AccelDesigner &ad) {
-  std::cout << ad << std::endl;
+  logi << ad << std::endl;
   const float Ts = 0.0001f;
   std::ofstream of;
   const auto ticks = ad.getTimeStamp();
@@ -31,6 +31,10 @@ int main(void) {
   // ad.reset(100, 10, 0, 4, 2, 0.4);
   // ad.reset(100, 10, 0, 4, -2, -0.4);
 
+  // ad.reset(911459, 128550, 8391.93, 7344.07, 1995.32, 309.06);
+  // ad.reset(911459, 128550, -8391.93, 7344.07, -1995.32, -309.06);
+  // ad.reset(130043, 836543, 6185.94, 8952.48, 2342.21, 1237.71);
+  // ad.reset(130043, 836543, -6185.94, 8952.48, -2342.21, -1237.71);
   printCsv("accel", ad);
 
   return 0;

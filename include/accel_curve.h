@@ -12,6 +12,40 @@
 #include <iostream> //< for std::cout
 #include <ostream>
 
+/* File Path Management */
+#ifdef PROJ_DIR /*< defined at CMakeLists.txt */
+#include <cstring>
+#include <string>
+#define FILEPATH (".." + std::string(__FILE__).substr(std::strlen(PROJ_DIR)))
+#else
+#define FILEPATH __FILE__
+#endif
+
+/* Log Info */
+#ifndef loge
+#if 1
+#define loge (std::cout << "[E][" << FILEPATH << ":" << __LINE__ << "]\t")
+#else
+#define loge std::ostream(0)
+#endif
+#endif
+/* Log Info */
+#ifndef logi
+#if 0
+#define logi (std::cout << "[I][" << FILEPATH << ":" << __LINE__ << "]\t")
+#else
+#define logi std::ostream(0)
+#endif
+#endif
+/* Log Debug */
+#ifndef logd
+#if 0
+#define logd (std::cout << "[D][" << FILEPATH << ":" << __LINE__ << "]\t")
+#else
+#define logd std::ostream(0)
+#endif
+#endif
+
 /**
  * @brief 制御関係の名前空間
  */
@@ -54,8 +88,8 @@ public:
   void reset(const float j_max, const float a_max, const float v_start,
              const float v_end) {
     /* 符号付きで代入 */
-    am = (v_end - v_start > 0) ? a_max : -a_max; //< 最大加速度の符号を決定
-    jm = (v_end - v_start > 0) ? j_max : -j_max; //< 最大躍度の符号を決定
+    am = (v_end > v_start) ? a_max : -a_max; //< 最大加速度の符号を決定
+    jm = (v_end > v_start) ? j_max : -j_max; //< 最大躍度の符号を決定
     /* 初期値と最終値を代入 */
     v0 = v_start; //< 代入
     v3 = v_end;   //< 代入
@@ -210,34 +244,42 @@ public:
   static float calcVelocityEnd(const float j_max, const float a_max,
                                const float vs, const float vt, const float d) {
     /* 速度が曲線となる部分の時間を決定 */
-    const float tc = a_max / j_max;
+    const auto tc = a_max / j_max;
     /* 最大加速度の符号を決定 */
-    const float am = (vt > vs) ? a_max : -a_max;
+    const auto am = (vt > vs) ? a_max : -a_max;
+    const auto jm = (vt > vs) ? j_max : -j_max;
     /* 等加速度直線運動の有無で分岐 */
-    if (std::abs(d) > std::abs((2 * vs + am * tc) * tc)) {
+    const auto d_triangle = (vs + am * tc / 2) * tc; //< d @ tm == 0
+    const auto v_triangle = jm / am * d - vs;        //< v @ tm == 0
+    logd << "d_tri: " << d_triangle << std::endl;
+    logd << "v_tri: " << v_triangle << std::endl;
+    if (std::abs(d) > std::abs(d_triangle) && vs * v_triangle > 0) {
       /* 曲線・直線・曲線 */
+      logd << "v: curve - straight - curve" << std::endl;
       /* 2次方程式の解の公式を解く */
-      const float amtc = am * tc;
-      const float D = amtc * amtc - 4 * (amtc * vs - vs * vs - 2 * am * d);
-      const float sqrtD = std::sqrt(D);
+      const auto amtc = am * tc;
+      const auto D = amtc * amtc - 4 * (amtc * vs - vs * vs - 2 * am * d);
+      const auto sqrtD = std::sqrt(D);
       return (-amtc + (d > 0 ? sqrtD : -sqrtD)) / 2;
     }
     /* 曲線・曲線 (走行距離が短すぎる) */
     /* 3次方程式を解いて，終点速度を算出 */
-    const float a = vs;
-    const float b = (d > 0 ? 1 : -1) * j_max * d * d;
-    const float aaa = a * a * a;
-    const float c0 = 27 * (32 * aaa * b + 27 * b * b);
-    const float c1 = 16 * aaa + 27 * b;
+    const auto a = std::abs(vs);
+    const auto b = (d > 0 ? 1 : -1) * jm * d * d;
+    const auto aaa = a * a * a;
+    const auto c0 = 27 * (32 * aaa * b + 27 * b * b);
+    const auto c1 = 16 * aaa + 27 * b;
     if (c0 >= 0) {
-      /* ルートの中が非負のとき，つまり，b >= 0 のとき */
-      const float c2 = std::cbrt((std::sqrt(c0) + c1) / 2);
-      return (c2 + 4 * a * a / c2 - a) / 3; //< 3次方程式の解
+      /* ルートの中が非負のとき */
+      logd << "v: curve - curve (accel)" << std::endl;
+      const auto c2 = std::cbrt((std::sqrt(c0) + c1) / 2);
+      return (d > 0 ? 1 : -1) * (c2 + 4 * a * a / c2 - a) / 3; //< 3次方程式の解
     } else {
-      /* ルートの中が負のとき，つまり，b < 0 のとき */
+      /* ルートの中が負のとき */
+      logd << "v: curve - curve (decel)" << std::endl;
       const auto c2 =
           std::pow(std::complex<float>(c1 / 2, std::sqrt(-c0) / 2), 1.0f / 3);
-      return (c2.real() * 2 - a) / 3; //< 3次方程式の解
+      return (d > 0 ? 1 : -1) * (c2.real() * 2 - a) / 3; //< 3次方程式の解
     }
   }
   /**
@@ -253,18 +295,21 @@ public:
   static float calcVelocityMax(const float j_max, const float a_max,
                                const float vs, const float ve, const float d) {
     /* 速度が曲線となる部分の時間を決定 */
-    const float tc = a_max / j_max;
-    const float am = d > 0 ? a_max : -a_max;
+    const auto tc = a_max / j_max;
+    const auto am = d > 0 ? a_max : -a_max; /*< 加速方向は移動方向に依存 */
     /* 2次方程式の解の公式を解く */
-    const float amtc = am * tc;
-    const float D = amtc * amtc - 2 * (vs + ve) * amtc + 4 * am * d +
-                    2 * (vs * vs + ve * ve);
+    const auto amtc = am * tc;
+    const auto D = amtc * amtc - 2 * (vs + ve) * amtc + 4 * am * d +
+                   2 * (vs * vs + ve * ve);
     if (D < 0) {
-      /* なんかおかしい */
-      std::cerr << "Error: AccelCurve::calcVelocityMax()" << std::endl;
+      /* 拘束条件がおかしい */
+      loge << "Error! D < 0" << std::endl;
+      /* 入力のチェック */
+      if (vs * ve < 0)
+        loge << "Invalid Input! vs: " << vs << ", ve: " << ve << std::endl;
       return vs;
     }
-    const float sqrtD = std::sqrt(D);
+    const auto sqrtD = std::sqrt(D);
     return (-amtc + (d > 0 ? sqrtD : -sqrtD)) / 2; //< 2次方程式の解
   }
   /**
@@ -278,8 +323,17 @@ public:
    */
   static float calcMinDistance(const float j_max, const float a_max,
                                const float v_start, const float v_end) {
-    AccelCurve ac(j_max, a_max, v_start, v_end);
-    return ac.x_end();
+    /* 符号付きで代入 */
+    const auto am = (v_end > v_start) ? a_max : -a_max;
+    const auto jm = (v_end > v_start) ? j_max : -j_max;
+    /* 速度が曲線となる部分の時間を決定 */
+    const auto tc = a_max / j_max;
+    /* 等加速度直線運動の時間を決定 */
+    const auto tm = (v_end - v_start) / am - tc;
+    /* 始点から終点までの時間を決定 */
+    const auto t_all =
+        (tm > 0) ? (tc + tm + tc) : (2 * std::sqrt((v_end - v_start) / jm));
+    return (v_start + v_end) / 2 * t_all; //< 速度グラフの面積により
   }
 
 protected:
