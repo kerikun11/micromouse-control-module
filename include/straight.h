@@ -23,10 +23,10 @@ class Trajectory : public AccelDesigner {
 public:
   Trajectory() {}
   void update(struct State &s, const float t) const {
-    s.q = Pose(x(t), 0);
-    s.dq = Pose(v(t), 0);
-    s.ddq = Pose(a(t), 0);
-    s.dddq = Pose(j(t), 0);
+    s.q = Pose(x(t), 0, 0);
+    s.dq = Pose(v(t), 0, 0);
+    s.ddq = Pose(a(t), 0, 0);
+    s.dddq = Pose(j(t), 0, 0);
   }
 };
 

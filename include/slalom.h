@@ -73,7 +73,7 @@ public:
     float v = 600.0f;      /**< 初期値 */
     State s;               /**< シミュレーションの状態 */
     AccelDesigner ad;
-    ad.reset(dddth_max, ddth_max, 0, dth_max, 0, total.th);
+    ad.reset(dddth_max, ddth_max, dth_max, 0, 0, total.th);
     /* 複数回行って精度を高める */
     for (int i = 0; i < 3; ++i) {
       s.q.x = s.q.y = 0;
@@ -183,7 +183,7 @@ public:
     this->velocity = velocity;
     const float gain = velocity / shape.v_ref;
     ad.reset(gain * gain * gain * shape.dddth_max, gain * gain * shape.ddth_max,
-             0, gain * shape.dth_max, 0, shape.total.th, th_start, t_start);
+             gain * shape.dth_max, 0, 0, shape.total.th, th_start, t_start);
   }
   /**
    * @brief 軌道の更新

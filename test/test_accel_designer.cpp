@@ -8,9 +8,9 @@ using namespace ctrl;
 
 class AccelDesignerTest : public AccelDesigner {
 public:
-  void test(const float jm, const float am, const float vs, const float va,
+  void test(const float jm, const float am, const float vm, const float vs,
             const float vt, const float d, const float xs, const float ts) {
-    reset(jm, am, vs, va, vt, d, xs, ts);
+    reset(jm, am, vm, vs, vt, d, xs, ts);
     /* error tolerance */
     // const float e = 1e-6;
     /* time point relation */
@@ -44,12 +44,12 @@ TEST(AccelDesigner, AccelDesignerTest) {
   for (int i = 0; i < n; ++i) {
     const auto jm = j_urd(mt);
     const auto am = j_urd(mt);
-    const auto vs = v_urd(mt);
     const auto vm = v_urd(mt);
+    const auto vs = v_urd(mt);
     const auto vt = v_urd(mt);
     const auto xs = x_urd(mt);
     const auto ts = t_urd(mt);
-    ad.reset(jm, am, vs, vm, vt, xs, ts);
-    ad.reset(jm, am, -vs, vm, -vt, -xs, -ts);
+    ad.reset(jm, am, vm, vs, vt, xs, ts);
+    ad.reset(jm, am, vm, -vs, -vt, -xs, -ts);
   }
 }

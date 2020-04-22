@@ -11,16 +11,16 @@ ctrl::AccelDesigner ad;
 ctrl::AccelCurve ac;
 std::ofstream of("continuous.csv");
 
-void test(float jm, float am, float vs, float va, float ve, float d, float xs,
-          float ts) {
-  ad.reset(jm, am, vs, va, ve, d, xs, ts);
+void test(const float jm, const float am, const float vm, const float vs,
+          const float vt, const float d, const float xs, const float ts) {
+  ad.reset(jm, am, vm, vs, vt, d, xs, ts);
   ad.printCsv(of);
   // std::cout << ad << std::endl;
 }
 
 int main(void) {
-  // test(4800 * M_PI, 48 * M_PI, 0, 4 * M_PI, 0, M_PI / 2, 0, 0);
-  // test(240000, 3600, ad.v_end(), 720, 0, 90, ad.x_end(), ad.t_end());
+  // test(4800 * M_PI, 48 * M_PI, 4 * M_PI, 0, 0, M_PI / 2, 0, 0);
+  // test(240000, 3600, 720, ad.v_end(), 0, 90, ad.x_end(), ad.t_end());
 #if 1
   int n = 100;
   std::mt19937 mt{std::random_device{}()};
@@ -31,7 +31,7 @@ int main(void) {
   auto ts = std::chrono::steady_clock::now();
   for (int i = 0; i < n; ++i) {
     const auto sign = 1;
-    test(j_urd(mt), a_urd(mt), ad.v_end(), v_urd(mt), sign * v_urd(mt),
+    test(j_urd(mt), a_urd(mt), v_urd(mt), ad.v_end(), sign * v_urd(mt),
          sign * d_urd(mt), ad.x_end(), ad.t_end());
   }
   auto te = std::chrono::steady_clock::now();

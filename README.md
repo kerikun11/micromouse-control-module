@@ -111,16 +111,16 @@ public:
    *
    * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
    * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_start   始点速度 [m/s]
    * @param v_sat     飽和速度の大きさ [m/s]，正であること
+   * @param v_start   始点速度 [m/s]
    * @param v_target  目標速度 [m/s]
    * @param v_end     終点速度 [m/s]
    * @param dist      移動距離 [m]
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  AccelDesigner(const float j_max, const float a_max, const float v_start,
-                const float v_sat, const float v_target, const float dist,
+  AccelDesigner(const float j_max, const float a_max, const float v_sat,
+                const float v_start, const float v_target, const float dist,
                 const float x_start = 0, const float t_start = 0);
   /**
    * @brief 時刻 $t$ における躍度 $j$
@@ -387,7 +387,7 @@ public:
     this->velocity = velocity;
     const float gain = velocity / shape.v_ref;
     ad.reset(gain * gain * gain * shape.dddth_max, gain * gain * shape.ddth_max,
-             0, gain * shape.dth_max, 0, shape.total.th, th_start, t_start);
+             gain * shape.dth_max, 0, 0, shape.total.th, th_start, t_start);
   }
   void update(State &s, const float t, const float Ts) const {
     return Shape::integrate(ad, s, velocity, t, Ts);

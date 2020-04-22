@@ -12,7 +12,7 @@ int main(void) {
   /* Controller */
   ctrl::FeedbackController<float> feedback_controller(model, gain);
   /* Trajectory */
-  ctrl::AccelDesigner trajectory(240, 9, 0, 1.2, 0, 0.72);
+  ctrl::AccelDesigner trajectory(240, 9, 1.2, 0, 0, 0.72);
   std::cout << trajectory << std::endl;
   /* Control Period [s] */
   const float Ts = 0.001f;

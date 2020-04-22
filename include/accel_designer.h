@@ -35,16 +35,16 @@ public:
    *
    * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
    * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_start   始点速度 [m/s]
    * @param v_sat     飽和速度の大きさ [m/s]，正であること
+   * @param v_start   始点速度 [m/s]
    * @param v_target  目標速度 [m/s]
    * @param v_end     終点速度 [m/s]
    * @param dist      移動距離 [m]
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  AccelDesigner(const float j_max, const float a_max, const float v_start,
-                const float v_sat, const float v_target, const float dist,
+  AccelDesigner(const float j_max, const float a_max, const float v_sat,
+                const float v_start, const float v_target, const float dist,
                 const float x_start = 0, const float t_start = 0) {
     reset(j_max, a_max, v_start, v_sat, v_target, dist, x_start, t_start);
   }
@@ -58,16 +58,16 @@ public:
    *
    * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
    * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_start   始点速度 [m/s]
    * @param v_sat     飽和速度の大きさ [m/s]，正であること
+   * @param v_start   始点速度 [m/s]
    * @param v_target  目標速度 [m/s]
    * @param v_end     終点速度 [m/s]
    * @param dist      移動距離 [m]
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  void reset(const float j_max, const float a_max, const float v_start,
-             const float v_sat, const float v_target, const float dist,
+  void reset(const float j_max, const float a_max, const float v_sat,
+             const float v_start, const float v_target, const float dist,
              const float x_start = 0, const float t_start = 0) {
     /* 最大速度の仮置き */
     float v_max = dist > 0 ? std::max({v_start, v_sat, v_target})
@@ -76,12 +76,14 @@ public:
     float v_end = v_target;
     const auto dist_min =
         AccelCurve::calcMinDistance(j_max, a_max, v_start, v_end);
+    // logd << "dist_min: " << dist_min << std::endl;
     if (std::abs(dist) < std::abs(dist_min)) {
       logd << "vs -> ve != vt" << std::endl;
       /* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */
       v_end =
           AccelCurve::calcVelocityEnd(j_max, a_max, v_start, v_target, dist);
       v_max = v_end; //< 走行距離の拘束を満たすため，飽和速度まで加速できない
+      // logd << "ve: " << v_end << std::endl;
     }
     /* 曲線を生成 */
     ac.reset(j_max, a_max, v_start, v_max); //< 加速
@@ -132,8 +134,8 @@ public:
            << "\tj_max: " << j_max << "\ta_max: " << a_max
            << "\tv_start: " << v_start << "\tv_sat: " << v_sat
            << "\tv_target: " << v_target << "\tdist: " << dist << std::endl;
-      loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_start << ", "
-           << v_sat << ", " << v_target << ", " << dist << ");" << std::endl;
+      loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_sat << ", "
+           << v_start << ", " << v_target << ", " << dist << ");" << std::endl;
       /* 表示 */
       loge << "Time Stamp: "
            << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2

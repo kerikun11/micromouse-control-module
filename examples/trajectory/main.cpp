@@ -36,8 +36,8 @@ void printCsv(const float t, const State &s,
 int main(void) {
   /* constants */
   const float Ts = 0.001f;
-  const float jerk = 240000;
-  const float accel = 6000;
+  const float j_max = 240000;
+  const float a_max = 6000;
   const float v_max = 1200;
   const float v_slalom = 600;
   /* trajectory tracker */
@@ -50,7 +50,7 @@ int main(void) {
   const float d_straight = 90 * 4;
   {
     straight::Trajectory trajectory;
-    trajectory.reset(jerk, accel, v_start, v_max, v_slalom, d_straight);
+    trajectory.reset(j_max, a_max, v_max, v_start, v_slalom, d_straight);
     tt.reset(v_start);
     for (float t = 0; t < trajectory.t_end(); t += Ts) {
       trajectory.update(s, t);

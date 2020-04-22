@@ -24,7 +24,7 @@ std::vector<std::pair<std::string, slalom::Shape>> shapes = {{
 
 void printDefinition(std::ostream &os, const std::string &name,
                      const slalom::Shape &s) {
-  const AccelDesigner ad(s.dddth_max, s.ddth_max, 0, s.dth_max, 0, s.total.th);
+  const AccelDesigner ad(s.dddth_max, s.ddth_max, s.dth_max, 0, 0, s.total.th);
   const auto t_total =
       ad.t_end() + (s.straight_prev + s.straight_post) / s.v_ref;
   const auto sf = std::setfill(' ');
