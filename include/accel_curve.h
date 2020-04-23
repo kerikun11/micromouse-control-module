@@ -245,8 +245,9 @@ public:
    * @param d     走行距離 [m]
    * @return ve   終点速度 [m/s]
    */
-  static float calcVelocityEnd(const float j_max, const float a_max,
-                               const float vs, const float vt, const float d) {
+  static float calcReachableVelocityEnd(const float j_max, const float a_max,
+                                        const float vs, const float vt,
+                                        const float d) {
     /* 速度が曲線となる部分の時間を決定 */
     const auto tc = a_max / j_max;
     /* 最大加速度の符号を決定 */
@@ -271,20 +272,22 @@ public:
      * 簡単のため，値を一度すべて正に変換して，計算結果に符号を付与して返送 */
     const auto a = std::abs(vs);
     const auto b = (d > 0 ? 1 : -1) * jm * d * d;
-    const auto aaa = a * a * a;
-    const auto c0 = 27 * (32 * aaa * b + 27 * b * b);
-    const auto c1 = 16 * aaa + 27 * b;
-    if (c0 >= 0) {
+    const auto aaa_27 = a * a * a / 27;
+    const auto cr = 8 * aaa_27 + b / 2;
+    const auto ci_b = 8 * aaa_27 / b + float(1) / 4;
+    if (ci_b >= 0) {
       /* ルートの中が非負のとき */
       logd << "v: curve - curve (accel)" << std::endl;
-      const auto c2 = std::cbrt((std::sqrt(c0) + c1) / 2);
-      return (d > 0 ? 1 : -1) * (c2 + 4 * a * a / c2 - a) / 3; //< 3次方程式の解
+      const auto cc = std::cbrt(cr + std::abs(b) * std::sqrt(ci_b));
+      return (d > 0 ? 1 : -1) *
+             (cc + 4 * a * a / cc / 9 - a / 3); //< 3次方程式の解
     } else {
       /* ルートの中が負のとき */
       logd << "v: curve - curve (decel)" << std::endl;
-      const auto c2 = std::pow(std::complex<float>(c1 / 2, std::sqrt(-c0) / 2),
-                               float(1) / 3);
-      return (d > 0 ? 1 : -1) * (c2.real() * 2 - a) / 3; //< 3次方程式の解
+      const auto cc =
+          std::pow(std::complex<float>(cr, std::abs(b) * std::sqrt(-ci_b)),
+                   float(1) / 3);
+      return (d > 0 ? 1 : -1) * (cc.real() * 2 - a / 3); //< 3次方程式の解
     }
   }
   /**
@@ -297,8 +300,9 @@ public:
    * @param d     走行距離 [m]
    * @return vm   最大速度 [m/s]
    */
-  static float calcVelocityMax(const float j_max, const float a_max,
-                               const float vs, const float ve, const float d) {
+  static float calcReachableVelocityMax(const float j_max, const float a_max,
+                                        const float vs, const float ve,
+                                        const float d) {
     /* 速度が曲線となる部分の時間を決定 */
     const auto tc = a_max / j_max;
     const auto am = (d > 0) ? a_max : -a_max; /*< 加速方向は移動方向に依存 */
@@ -326,8 +330,10 @@ public:
    * @param v_end   終点速度 [m/s]
    * @return d      変位 [m]
    */
-  static float calcMinDistance(const float j_max, const float a_max,
-                               const float v_start, const float v_end) {
+  static float calcDistanceFromVelocityStartToEnd(const float j_max,
+                                                  const float a_max,
+                                                  const float v_start,
+                                                  const float v_end) {
     /* 符号付きで代入 */
     const auto am = (v_end > v_start) ? a_max : -a_max;
     const auto jm = (v_end > v_start) ? j_max : -j_max;

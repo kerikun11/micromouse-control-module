@@ -112,7 +112,7 @@ make docs
  * - 各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$
  * を提供する
  * - 最大加速度 $a_{\max}$ と始点速度 $v_s$
- * など拘束次第では目標速度に達することができない場合があるので注意する
+ * など拘束次第では目標速度 $v_t$ に達することができない場合があるので注意する
  */
 class AccelDesigner {
 public:
@@ -121,15 +121,14 @@ public:
    *
    * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
    * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_sat     飽和速度の大きさ [m/s]，正であること
+   * @param v_max     最大速度の大きさ [m/s]，正であること
    * @param v_start   始点速度 [m/s]
    * @param v_target  目標速度 [m/s]
-   * @param v_end     終点速度 [m/s]
    * @param dist      移動距離 [m]
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  AccelDesigner(const float j_max, const float a_max, const float v_sat,
+  AccelDesigner(const float j_max, const float a_max, const float v_max,
                 const float v_start, const float v_target, const float dist,
                 const float x_start = 0, const float t_start = 0);
   /**
@@ -262,8 +261,9 @@ public:
    * @param d     走行距離 [m]
    * @return ve   終点速度 [m/s]
    */
-  static float calcVelocityEnd(const float j_max, const float a_max,
-                               const float vs, const float vt, const float d);
+  static float calcReachableVelocityEnd(const float j_max, const float a_max,
+                                        const float vs, const float vt,
+                                        const float d);
   /**
    * @brief 走行距離から達しうる最大速度を算出する関数
    *
@@ -274,8 +274,9 @@ public:
    * @param d     走行距離 [m]
    * @return vm   最大速度 [m/s]
    */
-  static float calcVelocityMax(const float j_max, const float a_max,
-                               const float vs, const float ve, const float d);
+  static float calcReachableVelocityMax(const float j_max, const float a_max,
+                                        const float vs, const float ve,
+                                        const float d);
   /**
    * @brief 速度差から変位を算出する関数
    *
@@ -285,8 +286,10 @@ public:
    * @param v_end   終点速度 [m/s]
    * @return d      変位 [m]
    */
-  static float calcMinDistance(const float j_max, const float a_max,
-                               const float v_start, const float v_end);
+  static float calcDistanceFromVelocityStartToEnd(const float j_max,
+                                                  const float a_max,
+                                                  const float v_start,
+                                                  const float v_end);
 
 protected:
   float jm;             /**< @brief 躍度定数 [m/s/s/s] */

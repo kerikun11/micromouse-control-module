@@ -26,7 +26,7 @@ namespace ctrl {
  * - 各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$
  * を提供する
  * - 最大加速度 $a_{\max}$ と始点速度 $v_s$
- * など拘束次第では目標速度に達することができない場合があるので注意する
+ * など拘束次第では目標速度 $v_t$ に達することができない場合があるので注意する
  */
 class AccelDesigner {
 public:
@@ -35,18 +35,17 @@ public:
    *
    * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
    * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_sat     飽和速度の大きさ [m/s]，正であること
+   * @param v_max     最大速度の大きさ [m/s]，正であること
    * @param v_start   始点速度 [m/s]
    * @param v_target  目標速度 [m/s]
-   * @param v_end     終点速度 [m/s]
    * @param dist      移動距離 [m]
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  AccelDesigner(const float j_max, const float a_max, const float v_sat,
+  AccelDesigner(const float j_max, const float a_max, const float v_max,
                 const float v_start, const float v_target, const float dist,
                 const float x_start = 0, const float t_start = 0) {
-    reset(j_max, a_max, v_sat, v_start, v_target, dist, x_start, t_start);
+    reset(j_max, a_max, v_max, v_start, v_target, dist, x_start, t_start);
   }
   /**
    * @brief 空のコンストラクタ．あとで reset() により初期化すること．
@@ -58,68 +57,72 @@ public:
    *
    * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
    * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_sat     飽和速度の大きさ [m/s]，正であること
+   * @param v_max     最大速度の大きさ [m/s]，正であること
    * @param v_start   始点速度 [m/s]
    * @param v_target  目標速度 [m/s]
-   * @param v_end     終点速度 [m/s]
    * @param dist      移動距離 [m]
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  void reset(const float j_max, const float a_max, const float v_sat,
+  void reset(const float j_max, const float a_max, const float v_max,
              const float v_start, const float v_target, const float dist,
              const float x_start = 0, const float t_start = 0) {
-    /* 最大速度の仮置き */
-    float v_max = dist > 0 ? std::max({v_start, v_sat, v_target})
-                           : std::min({v_start, -v_sat, v_target});
-    /* 走行距離から終点速度$v_e$を算出 */
-    float v_end = v_target;
-    const auto dist_min =
-        AccelCurve::calcMinDistance(j_max, a_max, v_start, v_end);
+    /* 飽和速度の仮置き */
+    float v_sat = dist > 0 ? std::max({v_start, v_max, v_target})
+                           : std::min({v_start, -v_max, v_target});
+    /* 目標速度に到達可能か，走行距離から終点速度を決定していく */
+    float v_end = v_target; /*< 仮代入 */
+    const auto dist_min = AccelCurve::calcDistanceFromVelocityStartToEnd(
+        j_max, a_max, v_start, v_end);
     // logd << "dist_min: " << dist_min << std::endl;
     if (std::abs(dist) < std::abs(dist_min)) {
       logd << "vs -> ve != vt" << std::endl;
       /* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */
-      v_end =
-          AccelCurve::calcVelocityEnd(j_max, a_max, v_start, v_target, dist);
-      v_max = v_end; //< 走行距離の拘束を満たすため，飽和速度まで加速できない
+      v_end = AccelCurve::calcReachableVelocityEnd(j_max, a_max, v_start,
+                                                   v_target, dist);
+      v_sat = v_end; //< 走行距離の拘束を満たすため，飽和速度まで加速できない
       // logd << "ve: " << v_end << std::endl;
     }
     /* 曲線を生成 */
-    ac.reset(j_max, a_max, v_start, v_max); //< 加速
-    dc.reset(j_max, a_max, v_max, v_end);   //< 減速
+    ac.reset(j_max, a_max, v_start, v_sat); //< 加速
+    dc.reset(j_max, a_max, v_sat, v_end);   //< 減速
     /* 飽和速度まで加速すると走行距離の拘束を満たさない場合の処理 */
     const auto d_sum = ac.x_end() + dc.x_end();
     if (std::abs(dist) < std::abs(d_sum)) {
       logd << "vs -> vm -> ve" << std::endl;
-      /* 走行距離から最大速度$v_m$を算出; 下記v_maxは上記v_max以下になる */
-      v_max = AccelCurve::calcVelocityMax(j_max, a_max, v_start, v_end, dist);
+      /* 走行距離から最大速度$v_m$を算出; 下記v_satは上記v_sat以下になる */
+      v_sat = AccelCurve::calcReachableVelocityMax(j_max, a_max, v_start, v_end,
+                                                   dist);
       /* 無駄な減速を回避 */
-      v_max = dist > 0 ? std::max({v_start, v_max, v_end})
-                       : std::min({v_start, v_max, v_end});
-      ac.reset(j_max, a_max, v_start, v_max); //< 加速
-      dc.reset(j_max, a_max, v_max, v_end);   //< 減速
+      v_sat = dist > 0 ? std::max({v_start, v_sat, v_end})
+                       : std::min({v_start, v_sat, v_end});
+      ac.reset(j_max, a_max, v_start, v_sat); //< 加速
+      dc.reset(j_max, a_max, v_sat, v_end);   //< 減速
     }
     /* 各定数の算出 */
+    const auto t23 = (dist - ac.x_end() - dc.x_end()) / v_sat;
     x0 = x_start;
     x3 = x_start + dist;
     t0 = t_start;
-    t1 = t0 + ac.t_end(); //< 曲線加速終了の時刻
-    t2 = t0 + ac.t_end() +
-         (dist - ac.x_end() - dc.x_end()) / v_max; //< 等速走行終了の時刻
-    t3 = t0 + ac.t_end() + (dist - ac.x_end() - dc.x_end()) / v_max +
-         dc.t_end(); //< 曲線減速終了の時刻
+    t1 = t0 + ac.t_end();                    //< 曲線加速終了の時刻
+    t2 = t0 + ac.t_end() + t23;              //< 等速走行終了の時刻
+    t3 = t0 + ac.t_end() + t23 + dc.t_end(); //< 曲線減速終了の時刻
     /* 出力のチェック */
     const float e = 0.01f; //< 数値誤差分
     bool show_info = false;
+    /* 飽和速度時間 */
+    // if (t23 < 0) {
+    //   logd << t23 << std::endl;
+    //   show_info = true;
+    // }
     /* 終点速度 */
     if (std::abs(v_start - v_end) > e + std::abs(v_start - v_target)) {
       std::cerr << "Error: Velocity Target!" << std::endl;
       show_info = true;
     }
-    /* 最大速度 */
-    if (std::abs(v_max) >
-        e + std::max({v_sat, std::abs(v_start), std::abs(v_end)})) {
+    /* 飽和速度 */
+    if (std::abs(v_sat) >
+        e + std::max({v_max, std::abs(v_start), std::abs(v_end)})) {
       std::cerr << "Error: Velocity Saturation!" << std::endl;
       show_info = true;
     }
@@ -132,9 +135,9 @@ public:
     if (show_info) {
       loge << "Constraints:"
            << "\tj_max: " << j_max << "\ta_max: " << a_max
-           << "\tv_start: " << v_start << "\tv_sat: " << v_sat
+           << "\tv_max: " << v_max << "\tv_start: " << v_start
            << "\tv_target: " << v_target << "\tdist: " << dist << std::endl;
-      loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_sat << ", "
+      loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_max << ", "
            << v_start << ", " << v_target << ", " << dist << ");" << std::endl;
       /* 表示 */
       loge << "Time Stamp: "

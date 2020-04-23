@@ -12,23 +12,21 @@ public:
             const float vt, const float d, const float xs, const float ts) {
     reset(jm, am, vm, vs, vt, d, xs, ts);
     /* error tolerance */
-    // const float e = 1e-6;
+    const float e = 1e-5;
     /* time point relation */
-    EXPECT_LE(t0, t1);
-    // EXPECT_LE(t1, t2);
-    EXPECT_LE(t2, t1);
-    EXPECT_LE(t2, t3);
+    EXPECT_FLOAT_EQ(t0, ts);
+    EXPECT_LE(t0, t1 + e);
+    EXPECT_LE(t1, t2 + e);
+    EXPECT_LE(t2, t3 + e);
+    /* velocity */
+    EXPECT_FLOAT_EQ(v(t0), vs);
+    EXPECT_GE(std::abs(vs - vt), std::abs(vs - v_end()));
+    for (const auto &t : getTimeStamp())
+      EXPECT_LE(std::abs(v(t)), std::max({vm, std::abs(vs), std::abs(vt)}));
     /* distance */
-    EXPECT_FLOAT_EQ(d, x3 - x0);
-    /* v */
-    EXPECT_LE(std::abs(vs - v_end()), std::abs(vs - vt));
-    /* x */
-    EXPECT_FLOAT_EQ(x(t0), xs);
-    EXPECT_LE(x(t0), x(t1));
-    EXPECT_LE(x(t1), x(t2));
-    EXPECT_LE(x(t2), x(t3));
-    EXPECT_FLOAT_EQ(x(t3), xs + d);
-    /* trajectory */
+    EXPECT_NEAR(d, x3 - x0, std::abs(d) * e);
+    EXPECT_NEAR(x(t0), xs, std::abs(xs) * e * 1e3);
+    EXPECT_NEAR(x(t3), xs + d, std::abs(xs + d) * e * 1e3);
   }
 };
 
@@ -49,7 +47,7 @@ TEST(AccelDesigner, AccelDesignerTest) {
     const auto vt = v_urd(mt);
     const auto xs = x_urd(mt);
     const auto ts = t_urd(mt);
-    ad.reset(jm, am, vm, vs, vt, xs, ts);
-    ad.reset(jm, am, vm, -vs, -vt, -xs, -ts);
+    ad.test(jm, am, vm, vs, vt, xs, xs, ts);
+    ad.test(jm, am, vm, -vs, -vt, -xs, -xs, -ts);
   }
 }

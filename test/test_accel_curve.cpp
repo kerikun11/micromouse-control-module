@@ -25,12 +25,14 @@ public:
       EXPECT_GE(v1, v2);
       EXPECT_GE(v2, v3);
     }
+    /* error tolerance */
+    const float e = 1e-6;
     /* trajectory */
-    const auto Ts = t_end() / 1e4;
+    const auto Ts = t_end() / 1e-3;
     for (float t = -Ts * 1000; t < t_end() + Ts * 1000; t += Ts) {
-      EXPECT_LE(std::abs(j(t)), jm * (1 + 1e-3));
-      EXPECT_LE(std::abs(a(t)), am * (1 + 1e-3));
-      /* vs < v(t) < ve or vs > v(t) > ve */
+      EXPECT_LE(std::abs(j(t)), jm * (1 + e));
+      EXPECT_LE(std::abs(a(t)), am * (1 + e));
+      /* v(t) is between vs and ve */
       EXPECT_LE(std::abs(v(t) - vs), std::abs(ve - vs));
       EXPECT_LE(std::abs(v(t) - ve), std::abs(ve - vs));
       /* da/dt == j(t) */
@@ -38,8 +40,8 @@ public:
       EXPECT_NEAR((v(t + Ts / 2) - v(t - Ts / 2)) / Ts, a(t), am);
       EXPECT_NEAR((x(t + Ts / 2) - x(t - Ts / 2)) / Ts, v(t), vm);
       /* da/dt < jm */
-      //   EXPECT_LE(std::abs(a(t + Ts / 2) - a(t - Ts / 2)) / Ts, jm * 1.05f);
-      //   EXPECT_LE(std::abs(v(t + Ts / 2) - v(t - Ts / 2)) / Ts, am * 1.05f);
+      EXPECT_LE(std::abs(a(t + Ts / 2) - a(t - Ts / 2)) / Ts, jm);
+      EXPECT_LE(std::abs(v(t + Ts / 2) - v(t - Ts / 2)) / Ts, am);
     }
   }
 };
@@ -49,8 +51,8 @@ TEST(AccelCurve, AccelCurveTest) {
   int n = 1000;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> j_urd(100000, 1000000);
-  std::uniform_real_distribution<float> a_urd(100, 18000);
-  std::uniform_real_distribution<float> v_urd(1, 4800);
+  std::uniform_real_distribution<float> a_urd(100, 10000);
+  std::uniform_real_distribution<float> v_urd(1, 10000);
   for (int i = 0; i < n; ++i) {
     act.test(j_urd(mt), a_urd(mt), v_urd(mt), v_urd(mt));
     act.test(j_urd(mt), a_urd(mt), -v_urd(mt), -v_urd(mt));
