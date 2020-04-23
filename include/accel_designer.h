@@ -46,7 +46,7 @@ public:
   AccelDesigner(const float j_max, const float a_max, const float v_sat,
                 const float v_start, const float v_target, const float dist,
                 const float x_start = 0, const float t_start = 0) {
-    reset(j_max, a_max, v_start, v_sat, v_target, dist, x_start, t_start);
+    reset(j_max, a_max, v_sat, v_start, v_target, dist, x_start, t_start);
   }
   /**
    * @brief 空のコンストラクタ．あとで reset() により初期化すること．
