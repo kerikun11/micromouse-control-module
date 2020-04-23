@@ -412,9 +412,21 @@ $v_s$ と $v_e$ の速度差が十分にあり， $t_m>0$ と仮定する．
     \\
     a         & := v_s
     \\
-    b         & :=                       \frac{a_md^2}{t_c}
+    b         & := \frac{a_md^2}{t_c}
     \\
-    c         & :=                       \sqrt[3]{\frac{\sqrt{27b(32a^3+27b)} + 16a^3+27b}{2}}
+    c         & := \sqrt[3]{\frac{\sqrt{27b(32a^3+27b)} + 16a^3+27b}{2}}
+\end{align}
+簡略化
+\begin{align}
+    v_{e2}  & := c +\bar{c} - a/3 = c + 4a^2/c/9 - a/3
+    \\
+    a       & := v_s
+    \\
+    b       & := \frac{a_md^2}{t_c}
+    \\
+    c       & := \sqrt[3]{8a^3/27+b/2 + \|b\|\sqrt{8a^3/b/27+1/4)}}
+    \\
+    \bar{c} & := \sqrt[3]{8a^3/27+b/2 - \|b\|\sqrt{8a^3/b/27+1/4)}}
 \end{align}
 
 走行距離に余裕があるとき，
