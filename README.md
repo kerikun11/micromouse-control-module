@@ -168,8 +168,16 @@ public:
    * @brief 終点位置 [m]
    */
   float x_end() const;
+  /**
+   * @brief std::ostream に軌道のcsvを出力する関数．
+   */
+  void printCsv(std::ostream &os, const float t_interval = 0.001f) const;
+  /**
+   * @brief 情報の表示
+   */
+  friend std::ostream &operator<<(std::ostream &os, const AccelDesigner &obj);
 
-private:
+protected:
   float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
   float x0, x3;         /**< @brief 境界点の位置 [m] */
   AccelCurve ac, dc; /**< @brief 曲線加速，曲線減速オブジェクト */
@@ -189,15 +197,18 @@ private:
 /**
  * @brief 加速曲線を生成するクラス
  *
- * 引数に従って加速曲線を生成する
+ * - 引数の拘束に従って加速曲線を生成する
+ * - 始点速度と終点速度を滑らかにつなぐ
+ * - 移動距離の拘束はない
+ * - 始点速度および終点速度は，正でも負でも可
  */
 class AccelCurve {
 public:
   /**
    * @brief 初期化付きのコンストラクタ．
    *
-   * @param j_max   最大躍度の大きさ [m/s/s/s]
-   * @param a_max   最大加速度の大きさ [m/s/s]
+   * @param j_max   最大躍度の大きさ [m/s/s/s], 正であること
+   * @param a_max   最大加速度の大きさ [m/s/s], 正であること
    * @param v_start 始点速度 [m/s]
    * @param v_end   終点速度 [m/s]
    */
@@ -227,13 +238,25 @@ public:
    * @return x 位置 [m]
    */
   float x(const float t) const;
+  /**
+   * @brief 終点時刻 [s]
+   */
+  float t_end() const;
+  /**
+   * @brief 終点速度 [m/s]
+   */
+  float v_end() const;
+  /**
+   * @brief 終点位置 [m]
+   */
+  float x_end() const;
 
 public:
   /**
    * @brief 走行距離から達しうる終点速度を算出する関数
    *
-   * @param j_max 最大躍度の大きさ [m/s/s/s]
-   * @param a_max 最大加速度の大きさ [m/s/s]
+   * @param j_max 最大躍度の大きさ [m/s/s/s], 正であること
+   * @param a_max 最大加速度の大きさ [m/s/s], 正であること
    * @param vs    始点速度 [m/s]
    * @param vt    目標速度 [m/s]
    * @param d     走行距離 [m]
@@ -244,8 +267,8 @@ public:
   /**
    * @brief 走行距離から達しうる最大速度を算出する関数
    *
-   * @param j_max 最大躍度の大きさ [m/s/s/s]
-   * @param a_max 最大加速度の大きさ [m/s/s]
+   * @param j_max 最大躍度の大きさ [m/s/s/s], 正であること
+   * @param a_max 最大加速度の大きさ [m/s/s], 正であること
    * @param vs    始点速度 [m/s]
    * @param ve    終点速度 [m/s]
    * @param d     走行距離 [m]
@@ -256,8 +279,8 @@ public:
   /**
    * @brief 速度差から変位を算出する関数
    *
-   * @param j_max   最大躍度の大きさ [m/s/s/s]
-   * @param a_max   最大加速度の大きさ [m/s/s]
+   * @param j_max   最大躍度の大きさ [m/s/s/s], 正であること
+   * @param a_max   最大加速度の大きさ [m/s/s], 正であること
    * @param v_start 始点速度 [m/s]
    * @param v_end   終点速度 [m/s]
    * @return d      変位 [m]
@@ -266,11 +289,11 @@ public:
                                const float v_start, const float v_end);
 
 protected:
-  float jm;             /**< @brief 最大躍度 [m/s/s/s] */
-  float am;             /**< @brief 最大加速度 [m/s/s] */
-  float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
-  float v0, v1, v2, v3; /**< @brief 境界点の速度 [m/s] */
-  float x0, x1, x2, x3; /**< @brief 境界点の位置 [m] */
+  float jm;             /**< @brief 躍度定数 [m/s/s/s] */
+  float am;             /**< @brief 加速度定数 [m/s/s] */
+  float t0, t1, t2, t3; /**< @brief 時刻定数 [s] */
+  float v0, v1, v2, v3; /**< @brief 速度定数 [m/s] */
+  float x0, x1, x2, x3; /**< @brief 位置定数 [m] */
 };
 ```
 
@@ -337,14 +360,14 @@ struct Polar {
  * スラローム軌道を得るには slalom::Trajectory を用いる．
  */
 struct Shape {
-  Pose total;          /**< 前後の直線を含めた移動位置姿勢 */
-  Pose curve;          /**< カーブ部分の移動位置姿勢 */
-  float straight_prev; /**< カーブ前の直線の距離 [m] */
-  float straight_post; /**< カーブ後の直線の距離 [m] */
-  float v_ref;         /**< カーブ部分の基準速度 [m/s] */
-  float dddth_max;     /**< 最大角躍度の大きさ [rad/s/s/s] */
-  float ddth_max;      /**< 最大角加速度の大きさ [rad/s/s] */
-  float dth_max;       /**< 最大角速度の大きさ [rad/s] */
+  Pose total; /**< @brief 前後の直線を含めた移動位置姿勢 */
+  Pose curve; /**< @brief カーブ部分の移動位置姿勢 */
+  float straight_prev; /**< @brief カーブ前の直線の距離 [m] */
+  float straight_post; /**< @brief カーブ後の直線の距離 [m] */
+  float v_ref;         /**< @brief カーブ部分の基準速度 [m/s] */
+  float dddth_max;     /**< @brief 最大角躍度の大きさ [rad/s/s/s] */
+  float ddth_max;      /**< @brief 最大角加速度の大きさ [rad/s/s] */
+  float dth_max;       /**< @brief 最大角速度の大きさ [rad/s] */
 
 public:
   /**
@@ -380,6 +403,10 @@ public:
    */
   static void integrate(const AccelDesigner &ad, State &s, const float v,
                         const float t, const float Ts);
+  /**
+   * @brief 情報の表示
+   */
+  friend std::ostream &operator<<(std::ostream &os, const Shape &obj);
 };
 ```
 
@@ -391,26 +418,51 @@ public:
  */
 class Trajectory {
 public:
+  /**
+   * @brief コンストラクタ
+   *
+   * @param shape スラローム形状
+   * @param mirror_x スラローム形状を$x$軸反転(進行方向に対して左右反転)する
+   */
   Trajectory(const Shape &shape, const bool mirror_x = false);
+  /**
+   * @brief 並進速度を設定して軌道を初期化する関数
+   *
+   * @param velocity 並進速度 [m/s]
+   * @param th_start 初期姿勢 [rad] (オプション)
+   * @param t_start 初期時刻 [s] (オプション)
+   */
   void reset(const float velocity, const float th_start = 0,
-             const float t_start = 0) {
-    this->velocity = velocity;
-    const float gain = velocity / shape.v_ref;
-    ad.reset(gain * gain * gain * shape.dddth_max, gain * gain * shape.ddth_max,
-             gain * shape.dth_max, 0, 0, shape.total.th, th_start, t_start);
-  }
-  void update(State &s, const float t, const float Ts) const {
-    return Shape::integrate(ad, s, velocity, t, Ts);
-  }
-  float getVelocity() const { return velocity; }
-  float getTimeCurve() const { return ad.t_end(); }
-  const Shape &getShape() const { return shape; }
-  const AccelDesigner &getAccelDesigner() const { return ad; }
+             const float t_start = 0);
+  /**
+   * @brief 軌道の更新
+   *
+   * @param state 次の時刻に更新する現在状態
+   * @param t 現在時刻 [s]
+   * @param Ts 積分時間 [s]
+   */
+  void update(State &state, const float t, const float Ts) const;
+  /**
+   * @brief 並進速度を取得
+   */
+  float getVelocity() const;
+  /**
+   * @brief ターンの合計時間を取得
+   */
+  float getTimeCurve() const;
+  /**
+   * @brief スラローム形状を取得
+   */
+  const Shape &getShape() const;
+  /**
+   * @brief 角速度設計器を取得
+   */
+  const AccelDesigner &getAccelDesigner() const;
 
 protected:
-  Shape shape;      /**< スラロームの形状 */
-  AccelDesigner ad; /**< 角速度用の曲線加速生成器 */
-  float velocity;   /**< 並進速度 */
+  Shape shape;      /**< @brief スラロームの形状 */
+  AccelDesigner ad; /**< @brief 角速度用の曲線加速生成器 */
+  float velocity;   /**< @brief 並進速度 */
 };
 ```
 

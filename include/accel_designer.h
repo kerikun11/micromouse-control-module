@@ -213,13 +213,13 @@ public:
   float t_2() const { return t2; }
   float t_3() const { return t3; }
   /**
-   * @brief stdoutに軌道のcsvを出力する関数．
+   * @brief stdout に軌道のcsvを出力する関数．
    */
   void printCsv(const float t_interval = 0.001f) const {
     printCsv(std::cout, t_interval);
   }
   /**
-   * @brief std::ofstream に軌道のcsvを出力する関数．
+   * @brief std::ostream に軌道のcsvを出力する関数．
    */
   void printCsv(std::ostream &os, const float t_interval = 0.001f) const {
     for (float t = t0; t < t_end(); t += t_interval)
