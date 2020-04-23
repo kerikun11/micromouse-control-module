@@ -16,6 +16,15 @@ public:
     EXPECT_LE(t0, t1);
     EXPECT_LE(t1, t2);
     EXPECT_LE(t2, t3);
+    if (AccelCurve::am > 0) {
+      EXPECT_LE(v0, v1);
+      EXPECT_LE(v1, v2);
+      EXPECT_LE(v2, v3);
+    } else {
+      EXPECT_GE(v0, v1);
+      EXPECT_GE(v1, v2);
+      EXPECT_GE(v2, v3);
+    }
     /* trajectory */
     const auto Ts = t_end() / 1e4;
     for (float t = -Ts * 1000; t < t_end() + Ts * 1000; t += Ts) {

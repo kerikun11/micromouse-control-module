@@ -1,6 +1,4 @@
 %%============================================================================%%
-%% author: Ryotaro Onuki (kerikun11+github@gmail.com)
-%%============================================================================%%
 \documentclass[a5paper]{ltjsarticle}
 \usepackage[margin=15mm]{geometry}
 \usepackage{amsmath}
@@ -12,6 +10,7 @@
 \date{\today}
 \pagestyle{headings}
 \setlength\fullwidth\textwidth % to fit header size
+\allowdisplaybreaks
 %%============================================================================%%
 \begin{document}
 \maketitle
@@ -40,7 +39,8 @@
     \end{itemize}
 \end{itembox}
 %%============================================================================%%
-\subsection{移動距離拘束なし}
+\section{移動距離拘束なし}
+\subsection{導出結果}
 時刻 $t$ における，躍度 $j(t)$, 加速度 $a(t)$, 速度 $v(t)$, 位置 $x(t)$
 \begin{align}
     j(t)
@@ -84,56 +84,281 @@
     \end{array} \right.
 \end{align}
 躍度定数 $j_m$,
-加速度定数 $a_m$,
-等加速度時間 $t_m$,
-曲線速度時間 $t_c$
+加速度定数 $a_m$
 \begin{align}
-    j_m & = \mathrm{sign}(v_e-v_s) \times|j_{\max}|     \\
-    a_m & = \mathrm{sign}(v_e-v_s) \times|a_{\max}|     \\
-    t_m & := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m} \\
-    t_c & := \frac{a_m}{j_m}
+    j_m & = \mathrm{sign}(v_e-v_s) \times|j_{\max}| \\
+    a_m & = \mathrm{sign}(v_e-v_s) \times|a_{\max}|
+\end{align}
+等加速度時間 $t_m$,
+曲線速度時間$(t_m>0)$ $t_c$,
+曲線速度時間$(t_m\leq 0)$ $t_c'$
+\begin{align}
+    t_m  & := \frac{1}{a_m}(v_e - v_s) - \frac{a_m}{j_m} \\
+    t_c  & := \frac{a_m}{j_m}                            \\
+    t_c' & := \sqrt{\frac{1}{j_m}(v_e-v_s)}
 \end{align}
 時刻定数 $t_0,~t_1,~t_2,~t_3$
 \begin{align}
-    \left\{ \begin{array}{l}
-        \begin{array}{ll}
-            \left\{ \begin{array}{l}
-                t_0 := 0         \\
-                t_1 := t_0 + t_c \\
-                t_2 := t_1 + t_m \\
-                t_3 := t_2 + t_c
-            \end{array} \right.
-             &
-            (t_m > 0)
-            \\
-            \left\{ \begin{array}{l}
-                t_0 := 0                                   \\
-                t_1 := t_0 + \sqrt{\frac{1}{j_m}(v_e-v_s)} \\
-                t_2 := t_1                                 \\
-                t_3 := t_2 + (t_1-t_0)
-            \end{array} \right.
-             &
-            (t_m \le 0)
-        \end{array}
-    \end{array} \right.
+    \begin{array}{ll}
+        \left\{ \begin{array}{l}
+            t_0 := 0         \\
+            t_1 := t_0 + t_c \\
+            t_2 := t_1 + t_m \\
+            t_3 := t_2 + t_c
+        \end{array} \right.
+         &
+        (t_m > 0)
+        \\
+        \left\{ \begin{array}{l}
+            t_0 := 0          \\
+            t_1 := t_0 + t_c' \\
+            t_2 := t_1        \\
+            t_3 := t_2 + t_c'
+        \end{array} \right.
+         &
+        (t_m \leq 0)
+    \end{array}
 \end{align}
-速度定数 $v_0,~v_1,~v_2,~v_3$，
+速度定数 $v_0,~v_1,~v_2,~v_3$
+\begin{align}
+    \begin{array}{ll}
+        \left\{ \begin{array}{l}
+            v_0 := v_s                        \\
+            v_1 := v_0 + \frac{1}{2}j_m t_c^2 \\
+            v_2 := v_1 + a_m t_m              \\
+            v_3 := v_e
+        \end{array} \right.
+         &
+        (t_m > 0)
+        \\
+        \left\{ \begin{array}{l}
+            v_0 := v_s                                     \\
+            v_1 := v_0 + \frac{1}{2}\left( v_s+v_e \right) \\
+            v_2 := v_1                                     \\
+            v_3 := v_e
+        \end{array} \right.
+         &
+        (t_m \leq 0)
+    \end{array}
+\end{align}
 位置定数 $x_0,~x_1,~x_2,~x_3$
 \begin{align}
-    \left\{ \begin{array}{l}
-        v_0 := v_s    \\
-        v_1 := v(t_1) \\
-        v_2 := v(t_2) \\
-        v_3 := v_e
+    \begin{array}{ll}
+        \left\{ \begin{array}{l}
+            x_0 := 0                         \\
+            x_1 := x_0 + v_0 t_c + j_m t_c^3 \\
+            x_2 := x_1 + v_1 t_m             \\
+            x_3 := x_0 + \frac{1}{2} (v_0+v_3) (2t_c+t_m)
+        \end{array} \right.
+         &
+        (t_m > 0)
+        \\
+        \left\{ \begin{array}{l}
+            x_0 := 0                                       \\
+            x_1 := x_0 + v_1 t_c' + \frac{1}{6} j_m t_c'^3 \\
+            x_2 := x_1                                     \\
+            x_3 := x_0 + 2 v_1 t_c'
+        \end{array} \right.
+         &
+        (t_m \leq 0)
+    \end{array}
+\end{align}
+
+%%============================================================================%%
+\subsection{設計手順}
+\begin{enumerate}
+    \item 躍度定数，加速度定数 $j_m,~a_m$ を求める．
+    \item 時間定数 $t_c,~t_m$ を求める．
+    \item 時刻定数 $t_i$ を求める．
+    \item 速度定数 $v_i$ を求める．
+    \item 位置定数 $x_i$ を求める．
+    \item 関数 $j(t),~ a(t),~ v(t),~ x(t)$ を求める．
+\end{enumerate}
+
+%%============================================================================%%
+\subsection{導出過程}
+まずはじめに，
+躍度定数 $j_m \in \mathbb{R}$ および 加速度定数 $a_m \in \mathbb{R}$ を
+\begin{align}
+    j_m & = \mathrm{sign}(v_\mathrm{end}-v_\mathrm{start}) \times|j_{\max}| \\
+    a_m & = \mathrm{sign}(v_\mathrm{end}-v_\mathrm{start}) \times|a_{\max}|
+\end{align}
+と定義する．
+
+これらを用いて，
+時刻 $t$ における，躍度 $j(t)$, 加速度 $a(t)$, 速度 $v(t)$, 位置 $x(t)$
+\begin{align}
+    j(t)
+     & :=
+    \left\{ \begin{array}{ll}
+        0    & (\hspace{2.2em}t \le t_0) \\
+        j_m  & (t_0 < t \le t_1)         \\
+        0    & (t_1 < t \le t_2)         \\
+        -j_m & (t_2 < t \le t_3)         \\
+        0    & (t_3 < t \hspace{2.2em})
     \end{array} \right.
-    \quad
-    \left\{ \begin{array}{l}
-        x_0 := 0      \\
-        x_1 := x(t_1) \\
-        x_2 := x(t_2) \\
-        x_3 := x_0 + \frac{1}{2}(v_0 + v_3)(t_3-t_0)
+    \\
+    a(t)
+     & :=
+    \left\{ \begin{array}{ll}
+        0           & (\hspace{2.2em}t \le t_0) \\
+        j_m(t-t_0)  & (t_0 < t \le t_1)         \\
+        a_m         & (t_1 < t \le t_2)         \\
+        -j_m(t-t_3) & (t_2 < t \le t_3)         \\
+        0           & (t_3 < t \hspace{2.2em})
+    \end{array} \right.
+    \\
+    v(t)
+     & :=
+    \left\{ \begin{array}{ll}
+        v_0                           & (\hspace{2.2em} t \le t_0) \\
+        v_0 + \frac{1}{2}j_m(t-t_0)^2 & (t_0 < t \le t_1)          \\
+        v_1 + a_m(t-t_1)              & (t_1 < t \le t_2)          \\
+        v_3 - \frac{1}{2}j_m(t-t_3)^2 & (t_2 < t \le t_3)          \\
+        v_3                           & (t_3 < t \hspace{2.2em})
+    \end{array} \right.
+    \\
+    x(t)
+     & :=
+    \left\{ \begin{array}{ll}
+        x_0 + v_0(t-t_0)                           & (\hspace{2.2em} t \le t_0) \\
+        x_0 + v_0(t-t_0) + \frac{1}{6}j_m(t-t_0)^3 & (t_0 < t \le t_1)          \\
+        x_1 + v_1(t-t_1) + \frac{1}{2}a_m(t-t_1)^2 & (t_1 < t \le t_2)          \\
+        x_3 + v_3(t-t_3) - \frac{1}{6}j_m(t-t_3)^3 & (t_2 < t \le t_3)          \\
+        x_3 + v_3(t-t_3)                           & (t_3 < t \hspace{2.2em})
     \end{array} \right.
 \end{align}
+を考える．
+以下で各定数 $t_i,~ v_i,~ x_i$ を求める．
+
+ここで，
+加速中に等加速度直線運動が存在する場合と，存在しない場合があることに注意する．
+
+曲線速度の時間 $t_c$ は，躍度 $j_m$ で加速度 $a_m$ になる時間なので，
+\begin{align}
+    t_c = \frac{a_m}{j_m}
+\end{align}
+と求めることができる．
+次に，
+等加速度直線運動の時間 $t_m$ を求める．
+まず，
+$v_s$ と $v_e$ の速度差が十分にあり， $t_m>0$ と仮定する．
+加速度 $a(t)$ を各時刻区間において積分
+\begin{align}
+     &
+    v_e
+    =
+    v_s + \int_{0}^{t_c}j_m t dt + \int_{t_c}^{t_c+t_m} a_m dt + \int_{t_c+t_m}^{t_c+t_m+t_c} (-j_m)(t-t_c-t_m) dt
+    \\
+     &
+    \Leftrightarrow\quad
+    t_m = \frac{1}{a_m}(v_e-v_s) - t_c
+    = \frac{1}{a_m}(v_e-v_s) - \frac{a_m}{j_m}
+\end{align}
+をして，
+等加速度直線運動の時間 $t_m$ を求めることができる．
+したがって，
+\begin{align}
+    \begin{array}{ll}
+        \left\{ \begin{array}{l}
+            t_0 := 0         \\
+            t_1 := t_0 + t_c \\
+            t_2 := t_1 + t_m \\
+            t_3 := t_2 + t_c
+        \end{array} \right.
+         &
+        (t_m > 0)
+        \\
+        \left\{ \begin{array}{l}
+            v_0 := v_s                        \\
+            v_1 := v_0 + \frac{1}{2}j_m t_c^2 \\
+            v_2 := v_1 + a_m t_m              \\
+            v_3 := v_e
+        \end{array} \right.
+         &
+        (t_m > 0)
+        \\
+        \left\{ \begin{array}{l}
+            x_0 := 0                         \\
+            x_1 := x_0 + v_0 t_c + j_m t_c^3 \\
+            x_2 := x_1 + v_1 t_m             \\
+            x_3 := x_0 + \frac{1}{2} (v_0+v_3) (2t_c+t_m)
+        \end{array} \right.
+         &
+        (t_m > 0)
+    \end{array}
+\end{align}
+が得られる．
+ただし，
+速度曲線の対称性より，走行距離 $x_3-x_0$ は，$x$軸と始点速度 $v_s$, 終点速度 $v_e$ からなる台形の面積に等しい．
+したがって，
+\begin{align}
+    x_3-x_0 = \frac{1}{2}\left( v_e-v_s \right) \left( t_3-t_0 \right)
+\end{align}
+と求めることができる．
+
+逆に， $t_m \leq 0$ となるとき，つまり，
+最大躍度 $j_m$, 最大加速度 $a_m$, 始点速度 $v_s$, 終点速度 $v_e$ が
+\begin{align}
+     &
+    t_m = \frac{1}{a_m}(v_e-v_s) - \frac{a_m}{j_m} < 0
+    \\
+     &
+    \Leftrightarrow
+    \quad
+    \left\{
+    \begin{array}{ll}
+        v_e < v_s + \frac{a_m^2}{j_m} & (a_m \ge 0)
+        \\
+        v_e > v_s + \frac{a_m^2}{j_m} & (a_m <0)
+    \end{array}
+    \right.
+\end{align}
+の関係のとき，等加速度直線運動は存在しないことがわかる．
+このとき，
+新たな曲線加速の時間 $t_c',~(0 < t_c' < t_c)$ を求める．
+始点速度 $v_s$ と 終点速度 $v_e$ および新たな曲線加速の時間 $t_c'$ の関係より，
+\begin{align}
+     &
+    v_e = v_s + \int_{0}^{t_c'} j_m t dt + \int_{t_c'}^{t_c'+t_c'} (-j_m) (t-t_c') dt
+    \\
+     &
+    \Leftrightarrow\quad
+    t_c' = \sqrt{\frac{1}{j_m}(v_e-v_s)}
+\end{align}
+と求めることができる．
+したがって，
+\begin{align}
+    \begin{array}{ll}
+        \left\{ \begin{array}{l}
+            t_0 := 0          \\
+            t_1 := t_0 + t_c' \\
+            t_2 := t_1        \\
+            t_3 := t_2 + t_c'
+        \end{array} \right.
+         &
+        (t_m \leq 0)
+        \\
+        \left\{ \begin{array}{l}
+            v_0 := v_s                                     \\
+            v_1 := v_0 + \frac{1}{2}\left( v_s+v_e \right) \\
+            v_2 := v_1                                     \\
+            v_3 := v_e
+        \end{array} \right.
+         &
+        (t_m \leq 0)
+        \\
+        \left\{ \begin{array}{l}
+            x_0 := 0                                       \\
+            x_1 := x_0 + v_1 t_c' + \frac{1}{6} j_m t_c'^3 \\
+            x_2 := x_1                                     \\
+            x_3 := x_0 + 2 v_1 t_c'
+        \end{array} \right.
+         &
+        (t_m \leq 0)
+    \end{array}
+\end{align}
+が得られる．
 
 \clearpage
 %%============================================================================%%
@@ -154,6 +379,7 @@
     \end{tabular}
 \end{table}
 
+\subsection{導出結果}
 始点速度 $v_s$ から目標速度 $v_t$ まで変化するのに必要な移動距離 $d_{v_s,v_t}$
 \begin{align}
     d_{v_s,v_t}(j_m,a_m,v_s,v_t)
