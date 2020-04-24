@@ -10,42 +10,96 @@
 #include "pose.h"
 #include "state.h"
 
+/**
+ * @brief 制御関係の名前空間
+ */
 namespace ctrl {
 
+/**
+ * @brief 独立2輪車の軌道追従フィードバック制御器
+ */
 class TrajectoryTracker {
 public:
-  constexpr static const float Ts = 0.001f;
-  constexpr static const float xi_threshold = 150.0f; /*< [mm/s] */
-  struct Result {
-    float v;
-    float w;
-    float dv;
-    float dw;
-  };
+  /**
+   * @brief 制御周期 [s]
+   */
+  static constexpr const float Ts = 0.001f;
+  /**
+   * @brief 制御則の切り替え閾値 [mm/s]
+   */
+  static constexpr const float xi_threshold = 150.0f;
+  /**
+   * @brief フィードバックゲインを格納する構造体
+   */
   struct Gain {
     float zeta = 1.0f;
     float omega_n = 15.0f;
     float low_zeta = 1.0f; /*< zeta \in [0,1] */
     float low_b = 0.001f;  /*< b > 0 */
   };
-  static const auto sinc(const auto x) {
+  /**
+   * @brief 計算結果を格納する構造体
+   */
+  struct Result {
+    float v;
+    float w;
+    float dv;
+    float dw;
+  };
+  /**
+   * @brief 自作の sinc 関数 sinc(x) := sin(x) / x
+   *
+   * @param x
+   * @return const auto
+   */
+  static constexpr auto sinc(const auto x) {
     const auto xx = x * x;
     const auto xxxx = xx * xx;
     return xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;
   }
 
 public:
-  TrajectoryTracker(const struct Gain &gain) : gain(gain) {}
+  /**
+   * @brief コンストラクタ
+   *
+   * @param gain 軌道追従フィードバックゲイン
+   */
+  TrajectoryTracker(const Gain &gain) : gain(gain) {}
+  /**
+   * @brief 状態の初期化
+   *
+   * @param vs 初期並進速度
+   */
   void reset(const float vs = 0) { xi = vs; }
-  const struct Result update(const Pose &est_q, const Polar &est_v,
-                             const Polar &est_a, const State &ref_s) {
+  /**
+   * @brief 制御入力の計算
+   *
+   * @param est_q 推定位置
+   * @param est_v 推定速度
+   * @param est_a 推定加速度
+   * @param ref_s 目標状態
+   * @return const Result 制御入力
+   */
+  const Result update(const Pose &est_q, const Polar &est_v, const Polar &est_a,
+                      const State &ref_s) {
     return update(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq,
                   ref_s.dddq);
   }
-  const struct Result update(const Pose &est_q, const Polar &est_v,
-                             const Polar &est_a, const Pose &ref_q,
-                             const Pose &ref_dq, const Pose &ref_ddq,
-                             const Pose &ref_dddq) {
+  /**
+   * @brief 制御入力の計算
+   *
+   * @param est_q 推定位置
+   * @param est_v 推定速度
+   * @param est_a 推定加速度
+   * @param ref_q 目標位置
+   * @param ref_dq 目標速度
+   * @param ref_ddq 目標加速度
+   * @param ref_dddq 目標躍度
+   * @return const Result 制御入力
+   */
+  const Result update(const Pose &est_q, const Polar &est_v, const Polar &est_a,
+                      const Pose &ref_q, const Pose &ref_dq,
+                      const Pose &ref_ddq, const Pose &ref_dddq) {
     /* Prepare Variable */
     const float x = est_q.x;
     const float y = est_q.y;
@@ -83,7 +137,7 @@ public:
     /* integral the state(s) */
     xi += d_xi * Ts;
     /* determine the output signal */
-    struct Result res;
+    Result res;
     if (xi < xi_threshold) {
       const auto b = gain.low_b;       //< b > 0
       const auto zeta = gain.low_zeta; //< zeta \in [0,1]
@@ -115,9 +169,9 @@ public:
     return res;
   }
 
-private:
-  float xi;
-  struct Gain gain;
+protected:
+  float xi;  /**< @brief 補助状態変数 */
+  Gain gain; /**< フィードバックゲイン */
 };
 
 } // namespace ctrl

@@ -8,35 +8,69 @@
 
 #include <new>
 
+/**
+ * @brief データの蓄積器
+ *
+ * @tparam T データの型
+ * @tparam S 蓄積するデータの数
+ */
 template <typename T, size_t S> class Accumulator {
 public:
+  /**
+   * @brief コンストラクタ
+   *
+   * @param value バッファ内の全データに代入する初期値
+   */
   Accumulator(const T &value = T()) {
     buffer = new T[S];
     head = 0;
     clear(value);
   }
+  /**
+   * @brief デストラクタ
+   */
   ~Accumulator() { delete buffer; }
   void clear(const T &value = T()) {
     for (int i = 0; i < S; i++)
       buffer[i] = value;
   }
+  /**
+   * @brief 最新のデータを追加する関数
+   */
   void push(const T &value) {
     head = (head + 1) % S;
     buffer[head] = value;
   }
+  /**
+   * @brief 直近 index 番目の値を取得するオペレータ
+   *
+   * [0] 番目が最新のデータ，[size() - 1] 番目が最古のデータ
+   *
+   * @param index 直近何番目のデータかを指すインデックス
+   * @return const T&
+   */
   const T &operator[](const size_t index) const {
     return buffer[((int)S + head - index) % S];
   }
-  const T average(const int num = S) const {
+  /**
+   * @brief 直近 n 個の平均を取得する関数
+   *
+   * @param n 平均個数
+   * @return const T 平均値
+   */
+  const T average(const int n = S) const {
     T sum = T();
-    for (int i = 0; i < num; i++) {
+    for (int i = 0; i < n; i++) {
       sum += buffer[((int)S + head - i) % S];
     }
-    return sum / num;
+    return sum / n;
   }
+  /**
+   * @brief リングバッファのサイズを返す関数
+   */
   size_t size() const { return S; }
 
 private:
-  T *buffer;
-  size_t head;
+  T *buffer; /**< @brief リングバッファとして使う配列のポインタ */
+  size_t head; /**< @brief リングバッファの先頭インデックス */
 };

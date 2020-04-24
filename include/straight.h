@@ -19,9 +19,24 @@ namespace ctrl {
  */
 namespace straight {
 
+/**
+ * @brief straight::Trajectory 直線の軌道生成器
+ *
+ * ctrl::TrajectoryTracker のために用意されたクラス
+ */
 class Trajectory : public AccelDesigner {
 public:
+  /**
+   * @brief 空のコンストラクタ．
+   * 基底クラスの AccelDesigner::reset() により初期化すること．
+   */
   Trajectory() {}
+  /**
+   * @brief 状態の更新
+   *
+   * @param s 状態変数
+   * @param t 現在時刻
+   */
   void update(struct State &s, const float t) const {
     s.q = Pose(x(t), 0, 0);
     s.dq = Pose(v(t), 0, 0);
