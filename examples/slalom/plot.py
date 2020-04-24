@@ -14,7 +14,7 @@ plt.rcParams['text.latex.preamble'] = r'\newcommand{\mathdefault}[1][]{}'
 # ============================================================================ #
 # prepare figure
 fig_xy, ax_xy = plt.subplots(figsize=(4, 3))
-fig_t, ax_t = plt.subplots(4, 1, figsize=(6, 8))
+fig_t, ax_t = plt.subplots(4, 1, figsize=(4, 6))
 
 # ============================================================================ #
 # plot
@@ -22,7 +22,7 @@ filebase = f'./build/slalom'
 for i in range(5):
     # slalom_i.csv
     # t,dddth,ddth,dth,th,dddx,ddx,dx,x,dddy,ddy,dy,y
-    raw = np.loadtxt(f"{filebase}_{i}.csv", delimiter=',')
+    raw = np.loadtxt(f"{filebase}_{i}.csv", delimiter=',', ndmin=2)
     if raw.size == 0:
         raw = np.empty(shape=(0, 13))
     t = raw[:, 0]
@@ -40,7 +40,7 @@ for i in range(5):
 # xy style
 ax = ax_xy
 ax.set_title('Slalom Shape')
-ax.set_xticks(np.arange(-360, 360, 45))
+ax.set_xticks(np.arange(-360, 360, 15))
 ax.set_xticks(np.arange(-360, 360, 5), minor=True)
 ax.set_yticks(ax.get_xticks())
 ax.set_yticks(ax.get_xticks(minor=True), minor=True)

@@ -27,7 +27,7 @@ def plot_shape(s):
     for i in range(5):
         # slalom_i.csv
         # t,dddth,ddth,dth,th,dddx,ddx,dx,x,dddy,ddy,dy,y
-        raw = np.loadtxt(f"{filebase}_{i}.csv", delimiter=',')
+        raw = np.loadtxt(f"{filebase}_{i}.csv", delimiter=',', ndmin=2)
         if raw.size == 0:
             raw = np.empty(shape=(0, 13))
         t = raw[:, 0]
