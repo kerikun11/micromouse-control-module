@@ -154,9 +154,8 @@ public:
     }
   }
   /**
-   * @brief 時刻 $t$ における躍度 $j$
-   * @param t 時刻[s]
-   * @return j 躍度[m/s/s/s]
+   * @brief 時刻 t [s] における躍度 j [m/s/s/s]
+   * @param t 時刻 [s]
    */
   float j(const float t) const {
     if (t < t2)
@@ -165,9 +164,8 @@ public:
       return dc.j(t - t2);
   }
   /**
-   * @brief 時刻 $t$ における加速度 $a$
+   * @brief 時刻 t [s] における加速度 a [m/s/s]
    * @param t 時刻 [s]
-   * @return a 加速度 [m/s/s]
    */
   float a(const float t) const {
     if (t < t2)
@@ -176,9 +174,8 @@ public:
       return dc.a(t - t2);
   }
   /**
-   * @brief 時刻 $t$ における速度 $v$
+   * @brief 時刻 t [s] における速度 v [m/s]
    * @param t 時刻 [s]
-   * @return v 速度 [m/s]
    */
   float v(const float t) const {
     if (t < t2)
@@ -187,9 +184,8 @@ public:
       return dc.v(t - t2);
   }
   /**
-   * @brief 時刻 $t$ における位置 $x$
+   * @brief 時刻 t [s] における位置 x [m]
    * @param t 時刻 [s]
-   * @return x 位置 [m]
    */
   float x(const float t) const {
     if (t < t2)
@@ -210,7 +206,7 @@ public:
    */
   float x_end() const { return x3; }
   /**
-   * @brief 境界の時刻
+   * @brief 境界の時刻 [s]
    */
   float t_0() const { return t0; }
   float t_1() const { return t1; }

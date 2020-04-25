@@ -132,27 +132,23 @@ public:
                 const float v_start, const float v_target, const float dist,
                 const float x_start = 0, const float t_start = 0);
   /**
-   * @brief 時刻 $t$ における躍度 $j$
-   * @param t 時刻[s]
-   * @return j 躍度[m/s/s/s]
+   * @brief 時刻 t [s] における躍度 j [m/s/s/s]
+   * @param t 時刻 [s]
    */
   float j(const float t) const;
   /**
-   * @brief 時刻 $t$ における加速度 $a$
+   * @brief 時刻 t [s] における加速度 a [m/s/s]
    * @param t 時刻 [s]
-   * @return a 加速度 [m/s/s]
    */
   float a(const float t) const;
   /**
-   * @brief 時刻 $t$ における速度 $v$
+   * @brief 時刻 t [s] における速度 v [m/s]
    * @param t 時刻 [s]
-   * @return v 速度 [m/s]
    */
   float v(const float t) const;
   /**
-   * @brief 時刻 $t$ における位置 $x$
+   * @brief 時刻 t [s] における位置 x [m]
    * @param t 時刻 [s]
-   * @return x 位置 [m]
    */
   float x(const float t) const;
   /**
@@ -214,27 +210,23 @@ public:
   AccelCurve(const float j_max, const float a_max, const float v_start,
              const float v_end);
   /**
-   * @brief 時刻 $t$ における躍度 $j$
+   * @brief 時刻 t [s] における躍度 j [m/s/s/s]
    * @param t 時刻 [s]
-   * @return j 躍度 [m/s/s/s]
    */
   float j(const float t) const;
   /**
-   * @brief 時刻 $t$ における加速度 $a$
+   * @brief 時刻 t [s] における加速度 a [m/s/s]
    * @param t 時刻 [s]
-   * @return a 加速度 [m/s/s]
    */
   float a(const float t) const;
   /**
-   * @brief 時刻 $t$ における速度 $v$
+   * @brief 時刻 t [s] における速度 v [m/s]
    * @param t 時刻 [s]
-   * @return v 速度 [m/s]
    */
   float v(const float t) const;
   /**
-   * @brief 時刻 $t$ における位置 $x$
+   * @brief 時刻 t [s] における位置 x [m]
    * @param t 時刻 [s]
-   * @return x 位置 [m]
    */
   float x(const float t) const;
   /**
@@ -351,7 +343,7 @@ struct Polar {
 };
 ```
 
-### slalom
+### slalom::Shape
 
 以下， [slalom.h](include/slalom.h) の抜粋:
 
@@ -412,6 +404,10 @@ public:
   friend std::ostream &operator<<(std::ostream &os, const Shape &obj);
 };
 ```
+
+### slalom::Trajectory
+
+以下， [slalom.h](include/slalom.h) の抜粋:
 
 ```cpp
 /**
