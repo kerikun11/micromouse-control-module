@@ -5,7 +5,7 @@
 \usepackage{ascmac} % for \itembox
 \usepackage{amsfonts} % for \mathbb
 %%============================================================================%%
-\title{速度設計(書き途中)}
+\title{曲線加速の設計(書き途中)}
 \author{Ryotaro Onuki (kerikun11+github@gmail.com)}
 \date{\today}
 \pagestyle{headings}
@@ -16,6 +16,7 @@
 \maketitle
 %%============================================================================%%
 \section{概要}
+曲線加速の設計は次の2つの段階に分かれている．
 \begin{itembox}[l]{設計1}
     \quad
     始点速度から終点速度までの，
@@ -33,7 +34,7 @@
     \begin{itemize}
         \item 飽和: $j_{\max},~ a_{\max},~ v_{\max} \in \mathbb{R}_+$
         \item 速度: $v_\mathrm{start},~ v_\mathrm{target} \in \mathbb{R}$
-        \item 位置: $d \in \mathbb{R}$
+        \item 変位: $d \in \mathbb{R}$
         \item 初期値: $v_\mathrm{start},~ t_\mathrm{start} \in \mathbb{R}$
         \item 出力: $j(t),~ a(t),~ v(t),~ x(t),~ \forall t \in \mathbb{R}$
     \end{itemize}
@@ -380,16 +381,70 @@ $v_s$ と $v_e$ の速度差が十分にあり， $t_m>0$ と仮定する．
 \end{table}
 
 \subsection{導出結果}
-始点速度 $v_s$ から目標速度 $v_t$ まで変化するのに必要な移動距離 $d_{v_s,v_t}$
-\begin{align}
-    d_{v_s,v_t}(j_m,a_m,v_s,v_t)
-    := \frac{1}{2}(v_s+v_t) \, t_{v_s,v_t}
-\end{align}
-
 始点速度 $v_s$ と目標速度 $v_t$ の速度差が小さいとき，
 走行距離 $d$ の拘束により
-目標速度 $v_t$ に達しない場合にあるので，
-拘束を満たすような終点速度 $v_e$ を決定する．
+目標速度 $v_t$ に達しない場合がある．
+それを考慮して終点速度 $v_e$ を決定する．
+
+終点速度 $v_e$
+\begin{align}
+    v_e(j_m,a_m,v_s,v_t,d) & :=
+    \left\{
+    \begin{array}{lll}
+        v_t    & \mbox{if\quad}      & \|d\| \geq d_{v_s,v_t}
+        \\
+        v_{e1} & \mbox{else if\quad} & \|d\| > \|d_{t_m=0}\| \mbox{\quad and \quad} d\, v_{t_m=0} > 0
+        \\
+        v_{e2} & \mbox{else}
+    \end{array}
+    \right.
+\end{align}
+始点速度 $v_s$ から目標速度 $v_t$ まで変化するのに必要な最小移動距離 $d_{v_s,v_t}$
+\begin{align}
+    d_{v_s,v_t}(j_m,a_m,v_s,v_t) & := \frac{1}{2}(v_s+v_t) \, t_{v_s,v_t}        \\
+    t_{v_s,v_t}                  & :=
+    \left\{\begin{array}{ll}
+        2t_c + t_m & (t_m>0)    \\
+        2t_c'      & (t_m\leq0)
+    \end{array}\right.
+    \\
+    t_m                          & := \frac{1}{a_m}(v_t - v_s) - \frac{a_m}{j_m} \\
+    t_c                          & := \frac{a_m}{j_m}                            \\
+    t_c'                         & := \sqrt{\frac{1}{j_m}(v_t-v_s)}
+\end{align}
+等加速度時間 $t_m = 0$となるときの移動距離 $d_{t_m=0}$ 終点速度 $v_{t_m=0}$
+\begin{align}
+    d_{t_m=0} & := \left( v_s + \frac{1}{2}a_m t_c \right) t_c
+    \\
+    v_{t_m=0} & := \frac{j_m}{a_m} d - v_s
+\end{align}
+終点速度
+\begin{align}
+    v_{e1}  & := \frac{-a_m t_c + \sqrt{a_m^2 t_c^2-4(a_m t_c v_s - v_s^2 - 2a_m d)}}{2}
+    \\
+    v_{e2}  & := c +\bar{c} - \frac{1}{3} a = c + \frac{4a^2}{9c} - \frac{1}{3} a
+    \\
+    a       & := v_s
+    \\
+    b       & := j_m d^2
+    \\
+    c       & := \sqrt[3]{8a^3/27+b/2 + \|b\|\sqrt{8a^3/b/27+1/4)}}
+    \\
+    \bar{c} & := \sqrt[3]{8a^3/27+b/2 - \|b\|\sqrt{8a^3/b/27+1/4)}}
+\end{align}
+
+始点速度 $v_s$ と終点速度 $v_e$ ，移動変位 $d$ を満たす
+到達可能速度 $v_r$
+\begin{align}
+    v_r := \frac{-a_mt_c \pm \sqrt{a_m^2t_c^2-(v_s+v_e)a_mt_c+4a_md+2(v_s^2+v_e^2)}}{2}
+\end{align}
+
+飽和速度
+$$
+    v_m = \min\{v_r,~v_{\max} \}
+$$
+
+\clearpage
 \begin{align}
     v_e(j_m, a_m, v_s, v_t, d) :=
     \left\{\begin{array}{ll}
@@ -519,26 +574,23 @@ $$
     \end{array}\right.
 $$
 
-$$
-    \begin{array}{l@{~}l}
-        d                      & =
-        \frac{1}{2}(v_s+v_{m1})(t_1-t_0)+
-        \frac{1}{2}(v_{m1}+v_e)(t_3-t_2)
-        \\
-                               & =
-        \frac{1}{2}(v_s+v_{m1})\left(t_c+\frac{v_{m1}-v_s}{a_m}\right)+
-        \frac{1}{2}(v_{m1}+v_e)\left(t_c+\frac{v_e-v_{m1}}{a_m}\right)
-        \\
-        \Leftrightarrow v_{m1} & := \frac{-a_mt_c + \sqrt{a_m^2t_c^2-(v_s+v_e)a_mt_c+4a_md+2(v_s^2+v_e^2)}}{2}
-    \end{array}
-$$
+始点速度 $v_s$ と終点速度 $v_e$ ，移動変位 $d$ を満たす
+到達可能速度 $v_r$ の導出
+\begin{align}
+    d               & =
+    \frac{1}{2}(v_s+v_r)(t_1-t_0)+
+    \frac{1}{2}(v_r+v_e)(t_3-t_2)
+    \\
+                    & =
+    \frac{1}{2}(v_s+v_r)\left(t_c+\frac{v_r-v_s}{a_m}\right)+
+    \frac{1}{2}(v_r+v_e)\left(t_c+\frac{v_e-v_r}{a_m}\right)
+    \\
+    \Leftrightarrow & \quad
+    v_r := \frac{-a_mt_c + \sqrt{a_m^2t_c^2-(v_s+v_e)a_mt_c+4a_md+2(v_s^2+v_e^2)}}{2}
+\end{align}
 
 $$
-    v_{m2} := \max\{v_s,~v_e,~v_{m1}\}
-$$
-
-$$
-    v_m = \min\{v_a,~v_{m2}\}
+    v_m = \min\{v_r,~v_{\max} \}
 $$
 
 \end{document}

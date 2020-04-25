@@ -68,10 +68,10 @@ public:
              const float v_start, const float v_target, const float dist,
              const float x_start = 0, const float t_start = 0) {
     /* 飽和速度の仮置き */
-    float v_sat = dist > 0 ? std::max({v_start, v_max, v_target})
-                           : std::min({v_start, -v_max, v_target});
+    auto v_sat = dist > 0 ? std::max({v_start, v_max, v_target})
+                          : std::min({v_start, -v_max, v_target});
     /* 目標速度に到達可能か，走行距離から終点速度を決定していく */
-    float v_end = v_target; /*< 仮代入 */
+    auto v_end = v_target; /*< 仮代入 */
     const auto dist_min = AccelCurve::calcDistanceFromVelocityStartToEnd(
         j_max, a_max, v_start, v_end);
     // logd << "dist_min: " << dist_min << std::endl;
@@ -86,16 +86,17 @@ public:
     /* 曲線を生成 */
     ac.reset(j_max, a_max, v_start, v_sat); //< 加速
     dc.reset(j_max, a_max, v_sat, v_end);   //< 減速
-    /* 飽和速度まで加速すると走行距離の拘束を満たさない場合の処理 */
+    /* 最大速度まで加速すると走行距離の拘束を満たさない場合の処理 */
     const auto d_sum = ac.x_end() + dc.x_end();
     if (std::abs(dist) < std::abs(d_sum)) {
-      logd << "vs -> vm -> ve" << std::endl;
-      /* 走行距離から最大速度$v_m$を算出; 下記v_satは上記v_sat以下になる */
-      v_sat = AccelCurve::calcReachableVelocityMax(j_max, a_max, v_start, v_end,
-                                                   dist);
+      logd << "vs -> vr -> ve" << std::endl;
+      /* 走行距離などの拘束から到達可能速度を算出 */
+      const auto v_rm = AccelCurve::calcReachableVelocityMax(
+          j_max, a_max, v_start, v_end, dist);
+      // logd << "v_rm: " << v_rm << std::endl;
       /* 無駄な減速を回避 */
-      v_sat = dist > 0 ? std::max({v_start, v_sat, v_end})
-                       : std::min({v_start, v_sat, v_end});
+      v_sat = dist > 0 ? std::max({v_start, v_rm, v_end})
+                       : std::min({v_start, v_rm, v_end});
       ac.reset(j_max, a_max, v_start, v_sat); //< 加速
       dc.reset(j_max, a_max, v_sat, v_end);   //< 減速
     }

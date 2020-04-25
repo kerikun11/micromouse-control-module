@@ -50,6 +50,10 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
 int main(void) {
   static auto ss = slalom::Shape(Pose(45, 45, M_PI / 2), 40);
   std::cout << ss;
+  const AccelDesigner ad(ss.dddth_max, ss.ddth_max, ss.dth_max, 0, 0,
+                         ss.curve.th);
+  const auto t_ref = ad.t_end();
+  std::cout << "\tt_ref:\t" << t_ref << std::endl;
   printCsv("slalom", ss);
 
   return 0;

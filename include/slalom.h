@@ -140,14 +140,14 @@ public:
    */
   friend std::ostream &operator<<(std::ostream &os, const Shape &obj) {
     os << "Slalom Shape" << std::endl;
-    os << "\ttotal: " << obj.total << std::endl;
-    os << "\tcurve: " << obj.curve << std::endl;
-    os << "\tv_ref: " << obj.v_ref << std::endl;
-    os << "\tstraight_prev: " << obj.straight_prev << std::endl;
-    os << "\tstraight_post: " << obj.straight_post << std::endl;
+    os << "\ttotal:\t" << obj.total << std::endl;
+    os << "\tcurve:\t" << obj.curve << std::endl;
+    os << "\tv_ref:\t" << obj.v_ref << std::endl;
+    os << "\tstraight_prev:\t" << obj.straight_prev << std::endl;
+    os << "\tstraight_post:\t" << obj.straight_post << std::endl;
     auto end = Pose(obj.straight_prev) + obj.curve +
                Pose(obj.straight_post).rotate(obj.curve.th);
-    os << "\terror: " << obj.total - end << std::endl;
+    os << "\tintegral error:\t" << obj.total - end << std::endl;
     return os;
   }
 };
