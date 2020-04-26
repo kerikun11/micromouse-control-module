@@ -1,0 +1,5 @@
+<map id="ctrl::straight::Trajectory" name="ctrl::straight::Trajectory">
+<area shape="rect" id="node1" title="straight::Trajectory 直線の軌道生成器" alt="" coords="5,185,163,212"/>
+<area shape="rect" id="node2" href="$classctrl_1_1AccelDesigner.html" title="拘束条件を満たす曲線加減速の軌道を生成するクラス" alt="" coords="17,109,151,136"/>
+<area shape="rect" id="node3" href="$classctrl_1_1AccelCurve.html" title="加速曲線を生成するクラス" alt="" coords="26,5,142,32"/>
+</map>
