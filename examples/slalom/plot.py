@@ -47,8 +47,8 @@ ax.set_yticks(ax.get_xticks(minor=True), minor=True)
 ax.axis('equal')
 ax.grid(which='major', linestyle='-')
 ax.grid(which='minor', linestyle=':')
-ax.legend(['straight', 'transition curve',
-           'pure arc', 'transition curve', 'straight'])
+ax.legend(['straight before curve', 'transition curve',
+           'pure arc', 'transition curve', 'straight after curve'])
 ax.set_xlabel('$x$ [mm]')
 ax.set_ylabel('$y$ [mm]')
 # ax.set_title('')

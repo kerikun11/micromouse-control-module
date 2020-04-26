@@ -44,6 +44,7 @@ void printDefinition(std::ostream &os, const std::string &name,
 void printDefinitions() {
   for (const auto &e : shapes)
     printDefinition(std::cout, e.first, e.second);
+  std::cout << std::endl;
 }
 
 void printCsv(const std::string &filebase, const slalom::Shape &ss,
@@ -97,12 +98,29 @@ void printTrajectory() {
   printCsv("shape/shape_7", shapes[7].second);
 }
 
+void printTable() {
+  for (const auto &e : shapes) {
+    std::cout << "|" << e.first;
+    std::cout << "|" << e.second.total.th / M_PI * 180;
+    std::cout << "|(" << e.second.total.x << "," << e.second.total.y << ")";
+    std::cout << "|(" << e.second.curve.x << "," << e.second.curve.y << ")";
+    std::cout << "|" << e.second.v_ref;
+    std::cout << "|" << e.second.straight_prev;
+    std::cout << "|" << e.second.straight_post;
+    std::cout << "|" << std::endl;
+  }
+  std::cout << std::endl;
+}
+
 int main(void) {
   /* print definitions to stdout */
   printDefinitions();
 
   /* print trajectory to file*/
   printTrajectory();
+
+  /* print result table */
+  printTable();
 
   return 0;
 }
