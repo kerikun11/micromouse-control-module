@@ -8,8 +8,6 @@ import matplotlib.pyplot as plt
 # ============================================================================ #
 # global settings
 # plt.rcParams["font.family"] = "IPAGothic"
-plt.rcParams["text.usetex"] = True
-plt.rcParams['text.latex.preamble'] = r'\newcommand{\mathdefault}[1][]{}'
 
 
 def plot_shape(s):
@@ -54,8 +52,8 @@ def plot_shape(s):
     ax.grid(which='minor', linestyle=':')
     ax.legend(['straight', 'transition curve',
                'pure arc', 'transition curve', 'straight'])
-    ax.set_xlabel('$x$ [mm]')
-    ax.set_ylabel('$y$ [mm]')
+    ax.set_xlabel('x [mm]')
+    ax.set_ylabel('y [mm]')
     # ax.set_title('')
     # ax.axis('off')
     # ax.legend().remove()
