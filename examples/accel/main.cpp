@@ -1,5 +1,6 @@
 #include "accel_designer.h"
 
+#include <chrono>
 #include <fstream>
 #include <iostream>
 
@@ -23,20 +24,42 @@ void printCsv(const std::string &filebase, const ctrl::AccelDesigner &ad) {
   }
 }
 
-int main(void) {
+void measurement() {
+  ctrl::AccelDesigner ad;
+  const std::vector<std::vector<float>> params = {
+      {100, 10, 4, 0, 2, 4},     //< vs -> vm -> vt, tm1>0, tm2>0
+      {100, 10, 4, 0, 3, 4},     //< vs -> vm -> vt, tm1>0, tm2<0
+      {100, 10, 4, 3, 0, 4},     //< vs -> vm -> vt, tm1<0, tm2>0
+      {100, 10, 8, 0, 2, 4},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2>0
+      {100, 10, 8, 0, 6, 4},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2<0
+      {100, 10, 8, 0, 0.5, 0.2}, //< vs -> vr -> vt, vr<vm, tm1<0, tm2<0
+      {100, 10, 6, 0, 3, 1},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2<0
+      {100, 10, 6, 0, 4, 1},     //< ve == vt, tm > 0 just
+      {100, 10, 8, 0, 6, 1},     //< ve != vt, tm > 0, accel
+      {100, 10, 8, 4, 0, 1},     //< ve != vt, tm > 0, decel
+      {100, 10, 4, 0, 4, 0.1},   //< ve != vt, tm < 0, accel
+      {100, 10, 4, 4, 0, 0.1},   //< ve != vt, tm < 0, decel
+  };
+  for (const auto &ps : params) {
+    const int n = 10000;
+    const auto ts = std::chrono::steady_clock::now();
+    for (int i = 0; i < n; ++i)
+      ad.reset(ps[0], ps[1], ps[2], ps[3], ps[4], ps[5]);
+    const auto te = std::chrono::steady_clock::now();
+    const auto dur =
+        std::chrono::duration_cast<std::chrono::nanoseconds>(te - ts);
+    std::cout << "Average Time: " << dur.count() / n << " [ns]" << std::endl;
+  }
+}
+
+int main() {
+  /* print csv */
   ctrl::AccelDesigner ad;
   ad.reset(100, 10, 4, 0, 2, 4);
-  // ad.reset(1000, 10, 4, 0, 2, 4);
-  // ad.reset(100, 1, 4, 0, 2, 4);
-  // ad.reset(100, 10, 4, 0, 2, 0.4);
-  // ad.reset(100, 10, 4, 0, -2, -0.4);
-
-  // ad.reset(911459, 128550, 7344.07, 8391.93, 1995.32, 309.06);
-  // ad.reset(911459, 128550, 7344.07, -8391.93, -1995.32, -309.06);
-  // ad.reset(130043, 836543, 8952.48, 6185.94, 2342.21, 1237.71);
-  // ad.reset(130043, 836543, 8952.48, -6185.94, -2342.21, -1237.71);
-  // ad.reset(829703, 6047.83, 7056.55, 0, 7454.57, 1957.28);
   printCsv("accel", ad);
+
+  /* time measurement */
+  measurement();
 
   return 0;
 }

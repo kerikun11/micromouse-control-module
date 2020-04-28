@@ -13,7 +13,7 @@ fig_t, ax_t = plt.subplots(4, 1, figsize=(6, 8))
 # plot
 filebase = f'./build/accel'  # t,j,a,v,x
 for i in range(8):
-    raw = np.loadtxt(f"{filebase}_{i}.csv", delimiter=',')
+    raw = np.loadtxt(f"{filebase}_{i}.csv", delimiter=',', ndmin=2)
     if raw.size == 0:
         raw = np.empty(shape=(0, 5))
     t = raw[:, 0]
