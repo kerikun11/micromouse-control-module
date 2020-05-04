@@ -55,7 +55,7 @@ sudo pacman -S --needed git make cmake gcc python-matplotlib doxygen graphviz
 ## クローン
 git clone https://github.com/kerikun11/micromouse-control-module.git
 ## 移動
-cd micromouse-control-modlude
+cd micromouse-control-module
 ## 作業ディレクトリを作成
 mkdir build
 cd build
