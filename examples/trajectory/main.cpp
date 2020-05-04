@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
+ * @brief trajectory tracking
+ * @date 2020-05-04
+ */
 #include "straight.h"
 #include "trajectory_tracker.h"
 

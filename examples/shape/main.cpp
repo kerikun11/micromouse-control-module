@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
+ * @brief This file generates slalom shapes for each turn of the micromouse.
+ * @date 2020-05-04
+ */
 #include "slalom.h"
 
 #include <filesystem>
@@ -42,8 +48,8 @@ void printDefinition(std::ostream &os, const std::string &name,
 }
 
 void printDefinitions() {
-  for (const auto &e : shapes)
-    printDefinition(std::cout, e.first, e.second);
+  for (const auto &[name, shape] : shapes)
+    printDefinition(std::cout, name, shape);
   std::cout << std::endl;
 }
 
@@ -99,14 +105,14 @@ void printTrajectory() {
 }
 
 void printTable() {
-  for (const auto &e : shapes) {
-    std::cout << "|" << e.first;
-    std::cout << "|" << e.second.total.th / M_PI * 180;
-    std::cout << "|(" << e.second.total.x << "," << e.second.total.y << ")";
-    std::cout << "|(" << e.second.curve.x << "," << e.second.curve.y << ")";
-    std::cout << "|" << e.second.v_ref;
-    std::cout << "|" << e.second.straight_prev;
-    std::cout << "|" << e.second.straight_post;
+  for (const auto &[name, shape] : shapes) {
+    std::cout << "|" << name;
+    std::cout << "|" << shape.total.th / M_PI * 180;
+    std::cout << "|(" << shape.total.x << "," << shape.total.y << ")";
+    std::cout << "|(" << shape.curve.x << "," << shape.curve.y << ")";
+    std::cout << "|" << shape.v_ref;
+    std::cout << "|" << shape.straight_prev;
+    std::cout << "|" << shape.straight_post;
     std::cout << "|" << std::endl;
   }
   std::cout << std::endl;

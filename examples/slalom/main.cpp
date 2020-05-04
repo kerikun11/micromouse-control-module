@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
+ * @brief slalom trajectory generation example
+ * @date 2020-05-04
+ */
 #include "slalom.h"
 
 #include <cmath>

@@ -1,3 +1,9 @@
+/**
+ * @file main.cpp
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
+ * @brief This file evaluates the performance of acceleration curves.
+ * @date 2020-05-04
+ */
 #include "accel_designer.h"
 
 #include "feedback_controller.h"
