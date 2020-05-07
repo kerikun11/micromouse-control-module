@@ -42,7 +42,7 @@ struct Shape {
 
 public:
   /**
-   * @brief 生成済みスラローム形状を代入するコンストラクタ
+   * @brief 生成済みスラローム形状を単に代入するコンストラクタ
    */
   Shape(const Pose total, const Pose curve, float straight_prev,
         const float straight_post, const float v_ref, const float dddth_max,
@@ -106,9 +106,9 @@ public:
    *
    * @param ad 角速度分布
    * @param s 状態変数
-   * @param v 並進速度
-   * @param t 時刻
-   * @param Ts 積分時間
+   * @param v 並進速度 [m/s]
+   * @param t 時刻 [s]
+   * @param Ts 積分時間 [s]
    */
   static void integrate(const AccelDesigner &ad, State &s, const float v,
                         const float t, const float Ts) {

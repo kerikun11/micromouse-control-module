@@ -125,7 +125,6 @@ public:
   }
   /**
    * @brief 時刻 t [s] における躍度 j [m/s/s/s]
-   * @param t 時刻 [s]
    */
   float j(const float t) const {
     if (t <= t0)
@@ -141,7 +140,6 @@ public:
   }
   /**
    * @brief 時刻 t [s] における加速度 a [m/s/s]
-   * @param t 時刻 [s]
    */
   float a(const float t) const {
     if (t <= t0)
@@ -157,7 +155,6 @@ public:
   }
   /**
    * @brief 時刻 t [s] における速度 v [m/s]
-   * @param t 時刻 [s]
    */
   float v(const float t) const {
     if (t <= t0)
@@ -173,7 +170,6 @@ public:
   }
   /**
    * @brief 時刻 t [s] における位置 x [m]
-   * @param t 時刻 [s]
    */
   float x(const float t) const {
     if (t <= t0)
