@@ -90,7 +90,7 @@ public:
     const float sin_th = std::sin(total.th);
     const float cos_th = std::cos(total.th);
     /* 前後の直線の長さを決定 */
-    if (std::abs(sin_th) < float(0.001)) {
+    if (std::abs(sin_th) < float(1e-3)) {
       /* 180度ターン */
       straight_prev = x_adv;
       straight_post = x_adv;

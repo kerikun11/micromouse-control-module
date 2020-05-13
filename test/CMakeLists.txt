@@ -41,7 +41,7 @@ add_executable(test_gtest ${SRCS})
 target_link_libraries(test_gtest gtest)
 
 add_custom_target(gt
-  COMMAND ${CMAKE_CURRENT_BINARY_DIR}/test_gtest
-  DEPENDS test_gtest gtest
+  COMMAND env GTEST_COLOR=1 ${CMAKE_CURRENT_BINARY_DIR}/test_gtest
+  DEPENDS test_gtest
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )

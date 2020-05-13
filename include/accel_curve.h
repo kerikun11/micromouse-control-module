@@ -205,7 +205,7 @@ public:
   /**
    * @brief std::ostream に軌道のcsvを出力する関数．
    */
-  void printCsv(std::ostream &os, const float t_interval = float(0.001)) const {
+  void printCsv(std::ostream &os, const float t_interval = float(1e-3)) const {
     for (float t = t0; t < t_end(); t += t_interval) {
       os << t << "," << j(t) << "," << a(t) << "," << v(t) << "," << x(t)
          << std::endl;

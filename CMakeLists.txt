@@ -12,6 +12,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
 add_compile_options(-fconcepts) # for use of ‘auto’ in parameter declaration
+add_compile_options(-fdiagnostics-color=always) # colorized output for gcc
+
+## additional options
+link_libraries(stdc++fs) # link filesystem library in gcc --version < 9
 
 ## more warnings
 add_compile_options(

@@ -23,7 +23,7 @@ public:
   /**
    * @brief 制御周期 [s]
    */
-  static constexpr const float Ts = float(0.001);
+  static constexpr const float Ts = float(1e-3);
   /**
    * @brief 制御則の切り替え閾値 [mm/s]
    */
@@ -35,7 +35,7 @@ public:
     float zeta = float(1);
     float omega_n = float(15);
     float low_zeta = float(1);  /*< zeta \in [0,1] */
-    float low_b = float(0.001); /*< b > 0 */
+    float low_b = float(1e-3); /*< b > 0 */
   };
   /**
    * @brief 計算結果を格納する構造体
