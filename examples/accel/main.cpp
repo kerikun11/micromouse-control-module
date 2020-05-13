@@ -9,10 +9,11 @@
 #include <chrono>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 void printCsv(const std::string &filebase, const ctrl::AccelDesigner &ad) {
   logi << ad << std::endl;
-  const float Ts = 0.0001f;
+  const float Ts = float(1e-4);
   std::ofstream of;
   const auto ticks = ad.getTimeStamp();
   float t = 0;

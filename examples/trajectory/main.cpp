@@ -41,7 +41,7 @@ void printCsv(const float t, const State &s,
 
 int main(void) {
   /* constants */
-  const float Ts = 0.001f;
+  const float Ts = 0.001;
   const float j_max = 240000;
   const float a_max = 6000;
   const float v_max = 1200;

@@ -59,7 +59,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
   const float v = 600;
   State s;
   st.reset(v, th_start, ss.straight_prev / v);
-  const float Ts = 0.00001f;
+  const float Ts = float(1e-5);
   const auto printCSV = [](std::ostream &os, const float t, const State &s) {
     os << t;
     os << "," << s.dddq.th;
@@ -107,7 +107,7 @@ void printTrajectory() {
 void printTable() {
   for (const auto &[name, shape] : shapes) {
     std::cout << "|" << name;
-    std::cout << "|" << shape.total.th / M_PI * 180;
+    std::cout << "|" << shape.total.th / float(M_PI) * 180;
     std::cout << "|(" << shape.total.x << "," << shape.total.y << ")";
     std::cout << "|(" << shape.curve.x << "," << shape.curve.y << ")";
     std::cout << "|" << shape.v_ref;

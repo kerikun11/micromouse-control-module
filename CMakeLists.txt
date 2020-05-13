@@ -1,26 +1,30 @@
+## file: CMakeLists.txt
 ## author: Ryotaro Onuki <kerikun11+github@gmail.com>
-cmake_minimum_required(VERSION 3.1)
+## date: 2020.05.13
+cmake_minimum_required(VERSION 3.12)
 project("MicroMouse Control Module" CXX)
+
+## Build Type
+set(CMAKE_BUILD_TYPE Release)
 
 ## build option for compiler
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
+add_compile_options(-fconcepts) # for use of ‘auto’ in parameter declaration
 
-## for log stream in C++ src
-add_compile_options(-DPROJ_DIR="${CMAKE_HOME_DIRECTORY}")
-
-## for gcc --version < 9
-link_libraries(stdc++fs)
-
-## more warnnings
-add_compile_options(-Wfatal-errors -Wall -Wextra)
-add_compile_options(-fconcepts)
+## more warnings
+add_compile_options(
+  -Wall
+  -Wextra
+  -fno-common
+  -Wdouble-promotion
+)
 
 ## documentation
 add_subdirectory(docs)
 
-## example
+## examples
 add_subdirectory(examples)
 
 ## test

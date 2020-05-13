@@ -109,7 +109,7 @@ public:
     t2 = t0 + ac.t_end() + t23;              //< 等速走行終了の時刻
     t3 = t0 + ac.t_end() + t23 + dc.t_end(); //< 曲線減速終了の時刻
     /* 出力のチェック */
-    const float e = 0.01f; //< 数値誤差分
+    const auto e = float(0.01); //< 数値誤差分
     bool show_info = false;
     /* 飽和速度時間 */
     // if (t23 < 0) {
@@ -211,13 +211,13 @@ public:
   /**
    * @brief stdout に軌道のcsvを出力する関数．
    */
-  void printCsv(const float t_interval = 0.001f) const {
+  void printCsv(const float t_interval = float(0.001)) const {
     printCsv(std::cout, t_interval);
   }
   /**
    * @brief std::ostream に軌道のcsvを出力する関数．
    */
-  void printCsv(std::ostream &os, const float t_interval = 0.001f) const {
+  void printCsv(std::ostream &os, const float t_interval = float(0.001)) const {
     for (float t = t0; t < t_end(); t += t_interval)
       os << t << "," << j(t) << "," << a(t) << "," << v(t) << "," << x(t)
          << std::endl;

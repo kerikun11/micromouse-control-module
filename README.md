@@ -160,10 +160,6 @@ public:
    */
   float x_end() const;
   /**
-   * @brief std::ostream に軌道のcsvを出力する関数．
-   */
-  void printCsv(std::ostream &os, const float t_interval = 0.001f) const;
-  /**
    * @brief 情報の表示
    */
   friend std::ostream &operator<<(std::ostream &os, const AccelDesigner &obj);

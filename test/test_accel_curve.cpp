@@ -28,7 +28,7 @@ public:
     /* error tolerance */
     const float e = 1e-6;
     /* trajectory */
-    const auto Ts = t_end() / 1e-3;
+    const float Ts = t_end() / float(1e-3);
     for (float t = -Ts * 1000; t < t_end() + Ts * 1000; t += Ts) {
       EXPECT_LE(std::abs(j(t)), jm * (1 + e));
       EXPECT_LE(std::abs(a(t)), am * (1 + e));
