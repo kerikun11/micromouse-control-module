@@ -30,8 +30,8 @@ int main(void) {
 #if 1
   int n = 100;
   std::mt19937 mt{std::random_device{}()};
-  std::uniform_real_distribution<float> j_urd(100000, 1000000);
-  std::uniform_real_distribution<float> a_urd(1000, 10000);
+  std::uniform_real_distribution<float> j_urd(10000, 1000000);
+  std::uniform_real_distribution<float> a_urd(1000, 100000);
   std::uniform_real_distribution<float> v_urd(100, 10000);
   std::uniform_real_distribution<float> d_urd(0, 32 * 90);
   auto ts = std::chrono::steady_clock::now();
