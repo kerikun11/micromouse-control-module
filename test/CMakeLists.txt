@@ -1,4 +1,5 @@
-## author: Ryotaro Onuki <kerikun11+github@gmail.com>
+# author: Ryotaro Onuki <kerikun11+github@gmail.com>
+# date: 2020.05.14
 
 # GoogleTest Project
 # see https://github.com/google/googletest/blob/master/googletest/README.md
@@ -34,14 +35,20 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
   include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-## test
-include_directories(${CMAKE_HOME_DIRECTORY}/include)
-file(GLOB SRCS *.cpp)
-add_executable(test_gtest ${SRCS})
-target_link_libraries(test_gtest gtest)
-
-add_custom_target(gt
-  COMMAND env GTEST_COLOR=1 ${CMAKE_CURRENT_BINARY_DIR}/test_gtest
-  DEPENDS test_gtest
+# give a name
+set(CUSTOM_TARGET_NAME "test")
+set(TARGET_NAME test_${CUSTOM_TARGET_NAME})
+# make a target
+file(GLOB SRC_FILES *.cpp)
+add_executable(${TARGET_NAME} ${SRC_FILES})
+target_include_directories(${TARGET_NAME}
+  PRIVATE ${CMAKE_HOME_DIRECTORY}/include
+)
+target_link_libraries(${TARGET_NAME} gtest)
+# make a custom target to run
+add_custom_target(${CUSTOM_TARGET_NAME}
+  COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_NAME}
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  DEPENDS ${TARGET_NAME} gtest
+  USES_TERMINAL
 )
