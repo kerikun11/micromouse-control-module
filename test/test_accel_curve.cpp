@@ -26,9 +26,9 @@ public:
       EXPECT_GE(v2, v3);
     }
     /* error tolerance */
-    const float e = 1e-6;
+    const float e = 1e-6f;
     /* trajectory */
-    const float Ts = t_end() / float(1e-3);
+    const float Ts = t_end() / 1e3f;
     for (float t = -Ts * 1000; t < t_end() + Ts * 1000; t += Ts) {
       EXPECT_LE(std::abs(j(t)), jm * (1 + e));
       EXPECT_LE(std::abs(a(t)), am * (1 + e));
@@ -40,8 +40,8 @@ public:
       EXPECT_NEAR((v(t + Ts / 2) - v(t - Ts / 2)) / Ts, a(t), am);
       EXPECT_NEAR((x(t + Ts / 2) - x(t - Ts / 2)) / Ts, v(t), vm);
       /* da/dt < jm */
-      EXPECT_LE(std::abs(a(t + Ts / 2) - a(t - Ts / 2)) / Ts, jm);
-      EXPECT_LE(std::abs(v(t + Ts / 2) - v(t - Ts / 2)) / Ts, am);
+      EXPECT_LE(std::abs(a(t + Ts / 2) - a(t - Ts / 2)) / Ts, jm * (2 + e));
+      EXPECT_LE(std::abs(v(t + Ts / 2) - v(t - Ts / 2)) / Ts, am * (2 + e));
     }
   }
 };

@@ -23,19 +23,19 @@ public:
   /**
    * @brief 制御周期 [s]
    */
-  static constexpr const float Ts = float(1e-3);
+  static constexpr const float Ts = 1e-3f;
   /**
    * @brief 制御則の切り替え閾値 [mm/s]
    */
-  static constexpr const float xi_threshold = float(150);
+  static constexpr const float xi_threshold = 150.0f;
   /**
    * @brief フィードバックゲインを格納する構造体
    */
   struct Gain {
-    float zeta = float(1);
-    float omega_n = float(15);
-    float low_zeta = float(1);  /*< zeta \in [0,1] */
-    float low_b = float(1e-3); /*< b > 0 */
+    float zeta = 1.0f;
+    float omega_n = 15.0f;
+    float low_zeta = 1.0f; /*< zeta \in [0,1] */
+    float low_b = 1e-3f;   /*< b > 0 */
   };
   /**
    * @brief 計算結果を格納する構造体

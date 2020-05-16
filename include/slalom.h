@@ -69,9 +69,9 @@ public:
       : total(total), dddth_max(dddth_max), ddth_max(ddth_max),
         dth_max(dth_max) {
     /* 生成準備 */
-    const float Ts = float(1.5e-3); /**< シミュレーションの積分周期 */
-    float v = float(600);           /**< 初期値 */
-    State s;                        /**< シミュレーションの状態 */
+    const float Ts = 1.5e-3f; /**< シミュレーションの積分周期 */
+    float v = 600.0f;         /**< 初期値 */
+    State s;                  /**< シミュレーションの状態 */
     AccelDesigner ad;
     ad.reset(dddth_max, ddth_max, dth_max, 0, 0, total.th);
     /* 複数回行って精度を高める */
@@ -90,7 +90,7 @@ public:
     const float sin_th = std::sin(total.th);
     const float cos_th = std::cos(total.th);
     /* 前後の直線の長さを決定 */
-    if (std::abs(sin_th) < float(1e-3)) {
+    if (std::abs(sin_th) < 1e-3f) {
       /* 180度ターン */
       straight_prev = x_adv;
       straight_post = x_adv;

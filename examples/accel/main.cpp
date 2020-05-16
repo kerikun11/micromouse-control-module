@@ -13,7 +13,7 @@
 
 void printCsv(const std::string &filebase, const ctrl::AccelDesigner &ad) {
   logi << ad << std::endl;
-  const float Ts = float(1e-4);
+  const float Ts = 1e-4f;
   std::ofstream of;
   const auto ticks = ad.getTimeStamp();
   float t = 0;

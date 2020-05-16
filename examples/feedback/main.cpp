@@ -15,7 +15,7 @@ int main(void) {
   ctrl::AccelDesigner trajectory(240, 9, 1.2, 0, 0, 0.72);
   std::cout << trajectory << std::endl;
   /* Control Period [s] */
-  const float Ts = 1e-3;
+  const float Ts = 1e-3f;
   /* Control */
   feedback_controller.reset();
   for (float t = 0; t < trajectory.t_end(); t += Ts) {

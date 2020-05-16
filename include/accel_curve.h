@@ -205,7 +205,7 @@ public:
   /**
    * @brief std::ostream に軌道のcsvを出力する関数．
    */
-  void printCsv(std::ostream &os, const float t_interval = float(1e-3)) const {
+  void printCsv(std::ostream &os, const float t_interval = 1e-3f) const {
     for (float t = t0; t < t_end(); t += t_interval) {
       os << t << "," << j(t) << "," << a(t) << "," << v(t) << "," << x(t)
          << std::endl;
@@ -266,7 +266,7 @@ public:
     const auto b = (d > 0 ? 1 : -1) * jm * d * d;
     const auto aaa_27 = a * a * a / 27;
     const auto cr = 8 * aaa_27 + b / 2;
-    const auto ci_b = 8 * aaa_27 / b + float(1) / 4;
+    const auto ci_b = 8 * aaa_27 / b + 1.0f / 4;
     if (ci_b >= 0) {
       /* ルートの中が非負のとき */
       logd << "v: curve - curve (accel)" << std::endl;
@@ -276,9 +276,8 @@ public:
     } else {
       /* ルートの中が負のとき */
       logd << "v: curve - curve (decel)" << std::endl;
-      const auto cc =
-          std::pow(std::complex<float>(cr, std::abs(b) * std::sqrt(-ci_b)),
-                   float(1) / 3);
+      const auto cc = std::pow(
+          std::complex<float>(cr, std::abs(b) * std::sqrt(-ci_b)), 1.0f / 3);
       return (d > 0 ? 1 : -1) * (cc.real() * 2 - a / 3); //< 3次方程式の解
     }
   }

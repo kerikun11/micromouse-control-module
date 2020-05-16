@@ -12,7 +12,7 @@ public:
             const float vt, const float d, const float xs, const float ts) {
     reset(jm, am, vm, vs, vt, d, xs, ts);
     /* error tolerance */
-    const float e = 1e-5;
+    const float e = 1e-5f;
     /* time point relation */
     EXPECT_FLOAT_EQ(t0, ts);
     EXPECT_LE(t0, t1 + e);
@@ -25,8 +25,8 @@ public:
       EXPECT_LE(std::abs(v(t)), std::max({vm, std::abs(vs), std::abs(vt)}));
     /* distance */
     EXPECT_NEAR(d, x3 - x0, std::abs(d) * e);
-    EXPECT_NEAR(x(t0), xs, std::abs(xs) * e * float(1e3));
-    EXPECT_NEAR(x(t3), xs + d, std::abs(xs + d) * e * float(1e3));
+    EXPECT_NEAR(x(t0), xs, std::abs(xs) * e * 1e3f);
+    EXPECT_NEAR(x(t3), xs + d, std::abs(xs + d) * e * 1e3f);
   }
 };
 

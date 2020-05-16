@@ -59,7 +59,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
   const float v = 600;
   State s;
   st.reset(v, th_start, ss.straight_prev / v);
-  const float Ts = float(1e-5);
+  const float Ts = 1e-5f;
   const auto printCSV = [](std::ostream &os, const float t, const State &s) {
     os << t;
     os << "," << s.dddq.th;
