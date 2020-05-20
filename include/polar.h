@@ -66,6 +66,9 @@ public:
   const Polar operator/(const float &k) const {
     return Polar(tra / k, rot / k);
   }
+  friend std::ostream &operator<<(std::ostream &os, const Polar &o) {
+    return os << "(" << o.tra << ", " << o.rot << ")";
+  }
 };
 
 } // namespace ctrl
