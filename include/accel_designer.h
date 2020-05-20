@@ -100,6 +100,9 @@ public:
       ac.reset(j_max, a_max, v_start, v_sat); //< 加速
       dc.reset(j_max, a_max, v_sat, v_end);   //< 減速
     }
+    /* t23 = nan 回避; vs = ve = d = 0 のときに発生 */
+    if (v_sat == 0)
+      v_sat = 1;
     /* 各定数の算出 */
     const auto t23 = (dist - ac.x_end() - dc.x_end()) / v_sat;
     x0 = x_start;

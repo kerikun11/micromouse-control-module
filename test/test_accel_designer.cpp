@@ -51,3 +51,24 @@ TEST(AccelDesigner, AccelDesignerTest) {
     ad.test(jm, am, vm, -vs, -vt, -xs, -xs, -ts);
   }
 }
+
+TEST(AccelDesigner, EachPattern) {
+  AccelDesignerTest ad;
+  const std::vector<std::vector<float>> params = {
+      {100, 10, 4, 0, 0, 0},     //< 0
+      {100, 10, 4, 0, 2, 4},     //< vs -> vm -> vt, tm1>0, tm2>0
+      {100, 10, 4, 0, 3, 4},     //< vs -> vm -> vt, tm1>0, tm2<0
+      {100, 10, 4, 3, 0, 4},     //< vs -> vm -> vt, tm1<0, tm2>0
+      {100, 10, 8, 0, 2, 4},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2>0
+      {100, 10, 8, 0, 6, 4},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2<0
+      {100, 10, 8, 0, 0.5, 0.2}, //< vs -> vr -> vt, vr<vm, tm1<0, tm2<0
+      {100, 10, 6, 0, 3, 1},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2<0
+      {100, 10, 6, 0, 4, 1},     //< ve == vt, tm > 0 just
+      {100, 10, 8, 0, 6, 1},     //< ve != vt, tm > 0, accel
+      {100, 10, 8, 4, 0, 1},     //< ve != vt, tm > 0, decel
+      {100, 10, 4, 0, 4, 0.1},   //< ve != vt, tm < 0, accel
+      {100, 10, 4, 4, 0, 0.1},   //< ve != vt, tm < 0, decel
+  };
+  for (const auto &ps : params)
+    ad.test(ps[0], ps[1], ps[2], ps[3], ps[4], ps[5], 0, 0);
+}
