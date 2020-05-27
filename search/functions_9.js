@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['shape_148',['Shape',['../structctrl_1_1slalom_1_1Shape.html#a35643e44693fe8140a10996f3e0fc427',1,'ctrl::slalom::Shape::Shape(const Pose total, const Pose curve, float straight_prev, const float straight_post, const float v_ref, const float dddth_max, const float ddth_max, const float dth_max)'],['../structctrl_1_1slalom_1_1Shape.html#a145063348221cc65aea72971f2c7400f',1,'ctrl::slalom::Shape::Shape(const Pose total, const float y_curve_end, const float x_adv=0, const float dddth_max=1200 *M_PI, const float ddth_max=36 *M_PI, const float dth_max=3 *M_PI)']]],
-  ['sinc_149',['sinc',['../classctrl_1_1TrajectoryTracker.html#a8b9ebbe5bee9330d6a849c7792add114',1,'ctrl::TrajectoryTracker']]],
-  ['size_150',['size',['../classAccumulator.html#a34b686c91ebc8c0f5f581d97761ad9d6',1,'Accumulator']]]
+  ['t_5f0_137',['t_0',['../classctrl_1_1AccelCurve.html#af9188276fd6b3bb1ef67077e17b69216',1,'ctrl::AccelCurve::t_0()'],['../classctrl_1_1AccelDesigner.html#abd96747e503de7936f09d7e5a66e95c7',1,'ctrl::AccelDesigner::t_0()']]],
+  ['t_5fend_138',['t_end',['../classctrl_1_1AccelCurve.html#abf2cd866d84dd84f0abc0698f7c0b7a2',1,'ctrl::AccelCurve::t_end()'],['../classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f',1,'ctrl::AccelDesigner::t_end()']]],
+  ['trajectory_139',['Trajectory',['../classctrl_1_1slalom_1_1Trajectory.html#a7e641265c69482a7ba28ac22683a8d6b',1,'ctrl::slalom::Trajectory::Trajectory()'],['../classctrl_1_1straight_1_1Trajectory.html#acf3df4b0da22e808b07f454af4e097bb',1,'ctrl::straight::Trajectory::Trajectory()']]],
+  ['trajectorytracker_140',['TrajectoryTracker',['../classctrl_1_1TrajectoryTracker.html#a345f9bbea569d498343e3b0b207719dc',1,'ctrl::TrajectoryTracker']]]
 ];

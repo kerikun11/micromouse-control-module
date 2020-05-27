@@ -65,7 +65,7 @@ $(function() {
 <div class="title">MicroMouse Control Module </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md__home_kerikun11_Dropbox_Projects_MicroMouse_KERISE_KERISEv4_firmware_lib_ctrl_README"></a> マイクロマウス制御の実装のうち，モジュール化できる部分をまとめたC++ライブラリ．</p>
+<div class="textblock"><p><a class="anchor" id="md__home_kerikun11_Dropbox_Projects_MicroMouse_GitHub_kerikun11_micromouse-control-module_README"></a> マイクロマウス制御の実装のうち，モジュール化できる部分をまとめたC++ライブラリ．</p>
 <ul>
 <li>曲線加速の軌道生成</li>
 <li>スラロームの軌道生成</li>
@@ -75,8 +75,11 @@ $(function() {
 <hr  />
 <h1><a class="anchor" id="autotoc_md2"></a>
 マイコンでの使用方法</h1>
-<p>このライブラリは，C++ヘッダーファイルのみから構成されている．</p>
-<p>このリポジトリをダウンロードして， <code>include</code> ディレクトリからソースコードを参照して使用する．</p>
+<ul>
+<li>このライブラリは，C++ヘッダーファイルのみから構成されている．</li>
+<li>このリポジトリをダウンロードして， <code>include</code> ディレクトリからソースコードを参照して使用する．</li>
+<li>必要に応じてコンパイルオプションに， <code>-std=c++14 -fconcepts</code> を設定する．</li>
+</ul>
 <hr  />
 <h1><a class="anchor" id="autotoc_md4"></a>
 コンピュータでの動作確認方法</h1>
@@ -160,7 +163,6 @@ AccelDesigner</h2>
 <div class="line">  <span class="keywordtype">float</span> t_end() <span class="keyword">const</span>;</div>
 <div class="line">  <span class="keywordtype">float</span> v_end() <span class="keyword">const</span>;</div>
 <div class="line">  <span class="keywordtype">float</span> x_end() <span class="keyword">const</span>;</div>
-<div class="line">  <span class="keywordtype">void</span> printCsv(std::ostream &amp;os, <span class="keyword">const</span> <span class="keywordtype">float</span> t_interval = 0.001f) <span class="keyword">const</span>;</div>
 <div class="line">  <span class="keyword">friend</span> std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <span class="keyword">const</span> AccelDesigner &amp;obj);</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">protected</span>:</div>

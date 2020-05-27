@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classctrl_1_1AccelCurve.html" title="加速曲線を生成するクラス" alt="" coords="5,5,121,32"/>
+<area shape="rect" id="node1" href="$classctrl_1_1AccelDesigner.html" title="拘束条件を満たす曲線加減速の軌道を生成するクラス" alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node2" href="$classctrl_1_1straight_1_1Trajectory.html" title="straight::Trajectory 直線の軌道生成器" alt="" coords="187,5,344,32"/>
 </map>

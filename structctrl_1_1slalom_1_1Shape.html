@@ -94,7 +94,7 @@ Collaboration diagram for ctrl::slalom::Shape:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a35643e44693fe8140a10996f3e0fc427"><td class="memItemLeft" align="right" valign="top"><a id="a35643e44693fe8140a10996f3e0fc427"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a35643e44693fe8140a10996f3e0fc427">Shape</a> (const <a class="el" href="structctrl_1_1Pose.html">Pose</a> <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>, const <a class="el" href="structctrl_1_1Pose.html">Pose</a> <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a>, float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">straight_prev</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">straight_post</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">v_ref</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>)</td></tr>
-<tr class="memdesc:a35643e44693fe8140a10996f3e0fc427"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成済みスラローム形状を代入するコンストラクタ <br /></td></tr>
+<tr class="memdesc:a35643e44693fe8140a10996f3e0fc427"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成済みスラローム形状を単に代入するコンストラクタ <br /></td></tr>
 <tr class="separator:a35643e44693fe8140a10996f3e0fc427"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a145063348221cc65aea72971f2c7400f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a145063348221cc65aea72971f2c7400f">Shape</a> (const <a class="el" href="structctrl_1_1Pose.html">Pose</a> <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>, const float y_curve_end, const float x_adv=0, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>=1200 *M_PI, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>=36 *M_PI, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>=3 *M_PI)</td></tr>
 <tr class="memdesc:a145063348221cc65aea72971f2c7400f"><td class="mdescLeft">&#160;</td><td class="mdescRight">拘束条件からスラローム形状を生成するコンストラクタ  <a href="structctrl_1_1slalom_1_1Shape.html#a145063348221cc65aea72971f2c7400f">More...</a><br /></td></tr>
@@ -286,9 +286,9 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="
   <table class="params">
     <tr><td class="paramname">ad</td><td>角速度分布 </td></tr>
     <tr><td class="paramname">s</td><td>状態変数 </td></tr>
-    <tr><td class="paramname">v</td><td>並進速度 </td></tr>
-    <tr><td class="paramname">t</td><td>時刻 </td></tr>
-    <tr><td class="paramname">Ts</td><td>積分時間 </td></tr>
+    <tr><td class="paramname">v</td><td>並進速度 [m/s] </td></tr>
+    <tr><td class="paramname">t</td><td>時刻 [s] </td></tr>
+    <tr><td class="paramname">Ts</td><td>積分時間 [s] </td></tr>
   </table>
   </dd>
 </dl>

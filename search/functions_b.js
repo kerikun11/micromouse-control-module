@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['update_155',['update',['../classctrl_1_1FeedbackController.html#a4a432aaadc727ba1dac60cb0cbb26c3d',1,'ctrl::FeedbackController::update()'],['../classctrl_1_1slalom_1_1Trajectory.html#a0b33bce8c6acb358a5719dcdfbee10c2',1,'ctrl::slalom::Trajectory::update()'],['../classctrl_1_1straight_1_1Trajectory.html#ac3c82b5ea48e6dc293eda9f5d6c8ab47',1,'ctrl::straight::Trajectory::update()'],['../classctrl_1_1TrajectoryTracker.html#adffafc25d4560bc9304086b515a8ac79',1,'ctrl::TrajectoryTracker::update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const State &amp;ref_s)'],['../classctrl_1_1TrajectoryTracker.html#a84986b8320998b312029d3888c5e4f72',1,'ctrl::TrajectoryTracker::update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const Pose &amp;ref_q, const Pose &amp;ref_dq, const Pose &amp;ref_ddq, const Pose &amp;ref_dddq)']]]
+  ['v_142',['v',['../classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf',1,'ctrl::AccelCurve::v()'],['../classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b',1,'ctrl::AccelDesigner::v()']]],
+  ['v_5fend_143',['v_end',['../classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d',1,'ctrl::AccelCurve::v_end()'],['../classctrl_1_1AccelDesigner.html#a008143ca17f0676dd54255601702f5ef',1,'ctrl::AccelDesigner::v_end()']]]
 ];
