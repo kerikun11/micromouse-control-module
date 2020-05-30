@@ -111,14 +111,16 @@ public:
    * @param Ts 積分時間 [s]
    */
   static void integrate(const AccelDesigner &ad, State &s, const float v,
-                        const float t, const float Ts) {
+                        const float t, const float Ts, const float k_slip = 0) {
     /* Calculation */
     const std::array<float, 3> th{{ad.x(t), ad.x(t + Ts / 2), ad.x(t + Ts)}};
+    const std::array<float, 3> w{{ad.v(t), ad.v(t + Ts / 2), ad.v(t + Ts)}};
     std::array<float, 3> cos_th;
     std::array<float, 3> sin_th;
     for (int i = 0; i < 3; ++i) {
-      cos_th[i] = std::cos(th[i]);
-      sin_th[i] = std::sin(th[i]);
+      const auto th_slip = std::atan(-k_slip * v * w[i]);
+      cos_th[i] = std::cos(th[i] + th_slip);
+      sin_th[i] = std::sin(th[i] + th_slip);
     }
     /* Runge-Kutta Integral */
     s.q.x += v * Ts * (cos_th[0] + 4 * cos_th[1] + cos_th[2]) / 6;
@@ -192,8 +194,9 @@ public:
    * @param t 現在時刻 [s]
    * @param Ts 積分時間 [s]
    */
-  void update(State &state, const float t, const float Ts) const {
-    return Shape::integrate(ad, state, velocity, t, Ts);
+  void update(State &state, const float t, const float Ts,
+              const float k_slip = 0) const {
+    return Shape::integrate(ad, state, velocity, t, Ts, k_slip);
   }
   /**
    * @brief 並進速度を取得

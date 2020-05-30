@@ -20,7 +20,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
   const float v = ss.v_ref;
   State s;
   st.reset(v, th_start, ss.straight_prev / v);
-  const float Ts = 1e-5f;
+  const float Ts = st.getTimeCurve() * 1e-5f;
   const auto printCSV = [](std::ostream &os, const float t, const State &s) {
     os << t;
     os << "," << s.dddq.th;
@@ -54,7 +54,9 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
 }
 
 int main(void) {
-  static auto ss = slalom::Shape(Pose(45, 45, M_PI / 2), 40);
+  // static auto ss = slalom::Shape(Pose(45, 45, M_PI / 2), 40);
+  // static auto ss = slalom::Shape(Pose(90, 90, M_PI / 2), 75);
+  static auto ss = slalom::Shape(Pose(0, 90, M_PI), 90, 10);
   std::cout << ss;
   const AccelDesigner ad(ss.dddth_max, ss.ddth_max, ss.dth_max, 0, 0,
                          ss.curve.th);
