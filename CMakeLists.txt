@@ -27,9 +27,9 @@ add_compile_options(
 
 ## documentation
 add_subdirectory(docs)
-
 ## examples
 add_subdirectory(examples)
-
 ## test
 add_subdirectory(test)
+## python
+add_subdirectory(python)

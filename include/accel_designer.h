@@ -242,9 +242,8 @@ public:
   }
   /**
    * @brief 境界のタイムスタンプを取得
-   * @return std::array<float, 8> 境界のタイムスタンプの配列
    */
-  const std::array<float, 8> getTimeStamp() const {
+  const std::vector<float> getTimeStamp() const {
     return {{
         t0 + ac.t_0(),
         t0 + ac.t_1(),
