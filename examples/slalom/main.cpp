@@ -49,7 +49,7 @@ void printCsv(const std::string &filebase, const slalom::Shape &ss,
   for (size_t i = 0; i < ticks.size(); ++i) {
     of = std::ofstream(filebase + "_" + std::to_string(i) + ".csv");
     while (t < ticks[i])
-      st.update(s, t, Ts), printCSV(of, t, s), t += Ts;
+      st.update(s, t, Ts, 2e-5f), printCSV(of, t, s), t += Ts;
   }
 }
 
