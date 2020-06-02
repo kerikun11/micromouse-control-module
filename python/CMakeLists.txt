@@ -15,7 +15,7 @@ if(NOT PythonLibs_FOUND)
 endif()
 
 # give a target name
-set(CUSTOM_TARGET_NAME "python_module")
+set(CUSTOM_TARGET_NAME "python")
 set(TARGET_NAME ${CUSTOM_TARGET_NAME})
 # make a target
 file(GLOB SRC_FILES *.cpp)
