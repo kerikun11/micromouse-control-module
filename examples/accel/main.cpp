@@ -4,7 +4,7 @@
  * @brief This file evaluates the performance of acceleration curves.
  * @date 2020-05-04
  */
-#include "accel_designer.h"
+#include <ctrl/accel_designer.h>
 
 #include <chrono>
 #include <fstream>

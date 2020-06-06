@@ -1,6 +1,6 @@
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 
-#include "accel_designer.h"
+#include <ctrl/accel_designer.h>
 
 #include <random>
 

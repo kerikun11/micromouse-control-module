@@ -4,8 +4,8 @@
  * @brief trajectory tracking
  * @date 2020-05-04
  */
-#include "straight.h"
-#include "trajectory_tracker.h"
+#include <ctrl/straight.h>
+#include <ctrl/trajectory_tracker.h>
 
 #include <chrono>
 #include <cmath>

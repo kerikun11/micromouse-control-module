@@ -1,5 +1,5 @@
-#include <accel_designer.h>
-#include <slalom.h>
+#include <ctrl/accel_designer.h>
+#include <ctrl/slalom.h>
 
 #include <boost/python.hpp>
 #include <boost/python/suite/indexing/vector_indexing_suite.hpp>

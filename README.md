@@ -102,7 +102,7 @@ make docs
 - 移動距離の拘束条件を満たす曲線加速軌道を生成する
 - 各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$ を提供する
 
-以下， [accel_designer.h](include/accel_designer.h) の抜粋:
+以下， [accel_designer.h](include/ctrl/accel_designer.h) の抜粋:
 
 ```cpp
 /**
@@ -178,7 +178,7 @@ protected:
 - 始点速度，終点速度などの拘束を満たす曲線加速軌道を生成
 - 移動距離に関する拘束はない
 
-以下， [accel_curve.h](include/accel_curve.h) の抜粋:
+以下， [accel_curve.h](include/ctrl/accel_curve.h) の抜粋:
 
 ```cpp
 /**
@@ -286,7 +286,7 @@ protected:
 
 平面上の位置および姿勢を表現する座標．
 
-以下， [pose.h](include/pose.h) の抜粋:
+以下， [pose.h](include/ctrl/pose.h) の抜粋:
 
 ```cpp
 /**
@@ -301,7 +301,7 @@ struct Pose {
 
 軌道生成などに使用する状態変数
 
-以下， [state.h](include/state.h) の抜粋:
+以下， [state.h](include/ctrl/state.h) の抜粋:
 
 ```cpp
 /**
@@ -319,7 +319,7 @@ struct State {
 
 並進と回転の座標を管理する構造体
 
-以下， [polar.h](include/polar.h) の抜粋:
+以下， [polar.h](include/ctrl/polar.h) の抜粋:
 
 ```cpp
 /**
@@ -333,7 +333,7 @@ struct Polar {
 
 ### slalom::Shape
 
-以下， [slalom.h](include/slalom.h) の抜粋:
+以下， [slalom.h](include/ctrl/slalom.h) の抜粋:
 
 ```cpp
 /**
@@ -395,7 +395,7 @@ public:
 
 ### slalom::Trajectory
 
-以下， [slalom.h](include/slalom.h) の抜粋:
+以下， [slalom.h](include/ctrl/slalom.h) の抜粋:
 
 ```cpp
 /**
@@ -459,7 +459,7 @@ protected:
 
 1 次フィードフォワード補償付きフィードバック制御器クラス
 
-以下， [feedback_controller.h](include/feedback_controller.h) の抜粋:
+以下， [feedback_controller.h](include/ctrl/feedback_controller.h) の抜粋:
 
 ```cpp
 /**

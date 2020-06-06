@@ -4,7 +4,7 @@
  * @brief This file generates slalom shapes for each turn of the micromouse.
  * @date 2020-05-04
  */
-#include "slalom.h"
+#include <ctrl/slalom.h>
 
 #include <filesystem>
 #include <fstream>

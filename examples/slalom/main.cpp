@@ -4,7 +4,7 @@
  * @brief slalom trajectory generation example
  * @date 2020-05-04
  */
-#include "slalom.h"
+#include <ctrl/slalom.h>
 
 #include <cmath>
 #include <fstream>
