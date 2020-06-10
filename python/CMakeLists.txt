@@ -2,7 +2,7 @@
 # date: 2020.05.30
 
 # find packages
-find_package(Boost COMPONENTS python38 numpy REQUIRED)
+find_package(Boost COMPONENTS python38 REQUIRED)
 if(NOT Boost_FOUND)
   message(STATUS "!!! Boost NOT FOUND !!!")
   RETURN()
@@ -38,7 +38,7 @@ set_target_properties(${TARGET_NAME} PROPERTIES
 
 # make a custom target to plot
 add_custom_target(${CUSTOM_TARGET_NAME}_plot
-  COMMAND PYTHONPATH=${CMAKE_BINARY_DIR} python ${CMAKE_CURRENT_SOURCE_DIR}/plot.py
+  COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/plot.py
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   USES_TERMINAL
 )

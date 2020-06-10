@@ -1,12 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # ============================================================================ #
-from matplotlib.ticker import ScalarFormatter
+import math
 import numpy as np
 import matplotlib.pyplot as plt
-import math
+from matplotlib.ticker import ScalarFormatter
 
-import ctrl  # calls build/ctrl.so
+if True:
+    import sys
+    import os
+    sys.path.append(os.path.abspath("../build"))
+    import ctrl  # calls build/ctrl.so
 
 
 def plot_accel_designer():
