@@ -1,13 +1,30 @@
 # Python Module
 
-C++ライブラリをPythonから呼び出すためのプロジェクト。
+C++ライブラリをPythonから呼び出すためのサブプロジェクト。
 
-マイクロマウスで実際に使用するC++コードに対し、デバッグのために可視化するときPythonを使用できるようにした。
+マイクロマウスで実際に使用するのはC++コードだが，デバッグの際の可視化ではPythonが使えると便利である．
+
+そこでPythonからC++ライブラリを呼び出すためのラッパーを作成した．
 
 ## 追加の依存パッケージ
 
+Boost::Python を使用する．
+
 - Boost
 - Python3.8
+
+インストールコマンド例
+
+```sh
+# Ubuntu 20.04
+sudo apt install boost python
+# Arch Linux
+sudo pacman -S --needed boost boost-libs python
+# MSYS2 MinGW 64bit
+pacman -S --needed mingw-w64-x86_64-boost mingw-w64-x86_64-python
+```
+
+※ Pythonのバージョンが `3.8` でない場合は，[CMakeLists.txt](CMakeLists.txt)冒頭のPythonバージョンを書き換える．
 
 ## 概要
 

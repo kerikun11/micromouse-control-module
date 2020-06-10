@@ -43,6 +43,9 @@
 sudo apt install git make cmake g++ python3-matplotlib doxygen graphviz
 # pacman (arch, manjaro, etc.)
 sudo pacman -S --needed git make cmake gcc python-matplotlib doxygen graphviz
+# MSYS2 MinGW 64bit
+pacman -S --needed git make \
+mingw-w64-x86_64-cmake mingw-w64-x86_64-python mingw-w64-x86_64-python mingw-w64-x86_64-python
 ```
 
 ### 実行方法
@@ -90,6 +93,16 @@ make slalom slalom_plot
 ```sh
 make docs
 ```
+
+### Pythonモジュールの生成と実行
+
+C++で実装されたPythonモジュール `ctrl` を使用してプロットする．
+
+```sh
+make python_plot # calls ./python/plot.py
+```
+
+詳しくは[こちら](python)
 
 --------------------------------------------------------------------------------
 
