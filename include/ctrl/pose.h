@@ -50,12 +50,12 @@ public:
     x = o.x, y = o.y, th = o.th;
     return *this;
   }
-  const Pose &operator-=(const Pose &o) {
-    x -= o.x, y -= o.y, th -= o.th;
-    return *this;
-  }
   const Pose &operator+=(const Pose &o) {
     x += o.x, y += o.y, th += o.th;
+    return *this;
+  }
+  const Pose &operator-=(const Pose &o) {
+    x -= o.x, y -= o.y, th -= o.th;
     return *this;
   }
   const Pose operator+() const { return Pose(x, y, th); }

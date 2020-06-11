@@ -25,6 +25,13 @@ namespace ctrl {
 namespace slalom {
 
 /**
+ * @brief 必要なデフォルト定数
+ */
+static constexpr float dddth_max_default = 1200 * M_PI;
+static constexpr float ddth_max_default = 36 * M_PI;
+static constexpr float dth_max_default = 3 * M_PI;
+
+/**
  * @brief slalom::Shape スラロームの形状を表す構造体
  *
  * メンバー変数は互いに依存して決定されるので，個別に数値を変更することは許されない，
@@ -64,8 +71,9 @@ public:
    * @param dth_max 最大角速度の大きさ [rad/s]
    */
   Shape(const Pose total, const float y_curve_end, const float x_adv = 0,
-        const float dddth_max = 1200 * M_PI, const float ddth_max = 36 * M_PI,
-        const float dth_max = 3 * M_PI)
+        const float dddth_max = dddth_max_default,
+        const float ddth_max = ddth_max_default,
+        const float dth_max = dth_max_default)
       : total(total), dddth_max(dddth_max), ddth_max(ddth_max),
         dth_max(dth_max) {
     /* 生成準備 */

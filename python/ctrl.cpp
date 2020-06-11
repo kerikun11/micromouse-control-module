@@ -1,6 +1,14 @@
+/**
+ * @file ctrl.cpp
+ * @author Ryotaro Onuki (kerikun11+github@gmail.com)
+ * @brief this files defines a python module implemented in C++
+ * @date 2020-06-11
+ * @copyright Copyright (c) 2020 Ryotaro Onuki
+ */
 #include <ctrl/accel_designer.h>
 #include <ctrl/slalom.h>
 
+#include <pybind11/operators.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
@@ -14,6 +22,7 @@ PYBIND11_MODULE(ctrl, m) {
 
   py::class_<AccelCurve>(m, "AccelCurve")
       .def(py::init<>())
+      .def(py::init<float, float, float, float>())
       .def("reset", &AccelCurve::reset)
       .def("j", &AccelCurve::j)
       .def("a", &AccelCurve::a)
@@ -37,7 +46,14 @@ PYBIND11_MODULE(ctrl, m) {
 
   py::class_<AccelDesigner>(m, "AccelDesigner")
       .def(py::init<>())
-      .def("reset", &AccelDesigner::reset)
+      .def(py::init<float, float, float, float, float, float, float, float>(),
+           py::arg("j_max"), py::arg("a_max"), py::arg("v_max"),
+           py::arg("v_start"), py::arg("v_target"), py::arg("dist"),
+           py::arg("x_start") = float(0), py::arg("t_start") = float(0))
+      .def("reset", &AccelDesigner::reset, //
+           py::arg("j_max"), py::arg("a_max"), py::arg("v_max"),
+           py::arg("v_start"), py::arg("v_target"), py::arg("dist"),
+           py::arg("x_start") = float(0), py::arg("t_start") = float(0))
       .def("j", &AccelDesigner::j)
       .def("a", &AccelDesigner::a)
       .def("v", &AccelDesigner::v)
@@ -69,6 +85,15 @@ PYBIND11_MODULE(ctrl, m) {
       .def("homogeneous", &Pose::homogeneous)
       .def("rotate", &Pose::rotate)
       .def("mirror_x", &Pose::mirror_x)
+      .def(py::self == py::self)
+      .def(py::self += py::self)
+      .def(py::self -= py::self)
+      .def(+py::self)
+      .def(-py::self)
+      .def(py::self + py::self)
+      .def(py::self - py::self)
+      .def(py::self * float())
+      .def(py::self / float())
       .def("__str__",
            [](const Pose &obj) {
              std::stringstream ss;
@@ -79,7 +104,11 @@ PYBIND11_MODULE(ctrl, m) {
       ;
 
   py::class_<slalom::Shape>(m, "Shape")
-      .def(py::init<Pose, float, float, float, float, float>())
+      .def(py::init<Pose, float, float, float, float, float>(),
+           py::arg("total"), py::arg("y_curve_end"), py::arg("x_adv") = 0,
+           py::arg("dddth_max") = slalom::dddth_max_default,
+           py::arg("ddth_max") = slalom::ddth_max_default,
+           py::arg("dth_max") = slalom::dth_max_default)
       .def(py::init<Pose, Pose, float, float, float, float, float, float>())
       .def_readwrite("total", &slalom::Shape::total)
       .def_readwrite("curve", &slalom::Shape::curve)
@@ -89,7 +118,7 @@ PYBIND11_MODULE(ctrl, m) {
       .def_readwrite("dddth_max", &slalom::Shape::dddth_max)
       .def_readwrite("ddth_max", &slalom::Shape::ddth_max)
       .def_readwrite("dth_max", &slalom::Shape::dth_max)
-      .def("integrate", &slalom::Shape::integrate)
+      .def_static("integrate", &slalom::Shape::integrate)
       .def("__str__",
            [](const slalom::Shape &obj) {
              std::stringstream ss;
@@ -109,16 +138,11 @@ PYBIND11_MODULE(ctrl, m) {
       ;
 
   py::class_<slalom::Trajectory>(m, "Trajectory")
-      .def(py::init<slalom::Shape &, bool>())
+      .def(py::init<slalom::Shape &, bool>(), py::arg("shape"),
+           py::arg("mirror_x") = false)
       .def("reset", &slalom::Trajectory::reset)
-      .def(
-          "update",
-          +[](const slalom::Trajectory &obj, const State &s, float t, float Ts,
-              float k_slip) {
-            auto state = s;
-            obj.update(state, t, Ts, k_slip);
-            return state;
-          })
+      .def("update", &slalom::Trajectory::update, py::arg("state"),
+           py::arg("t"), py::arg("Ts"), py::arg("k_slip") = 0e0f)
       .def("getVelocity", &slalom::Trajectory::getVelocity)
       .def("getTimeCurve", &slalom::Trajectory::getTimeCurve)
       .def("getShape", &slalom::Trajectory::getShape)

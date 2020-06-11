@@ -10,13 +10,13 @@ if True:
     import sys
     import os
     sys.path.append(os.path.abspath("../build/python"))
-    import ctrl  # calls build/ctrl.so
+    import ctrl  # calls ctrl.so
 
 
 def plot_accel_designer():
     # prepare AccelDesigner
-    ad = ctrl.AccelDesigner()
-    ad.reset(60, 6, 2, 0, 1, 2, 0, 0)
+    ad = ctrl.AccelDesigner(j_max=60, a_max=6, v_max=2,
+                            v_start=0, v_target=1, dist=2)
     print(ad)
 
     # visualize j, a, v, x
@@ -47,10 +47,9 @@ def plot_accel_designer():
 
 def plot_slalom():
     # prepare AccelDesigner
-
-    total = ctrl.Pose(90, 90, math.pi/2)
-    shape = ctrl.Shape(total, 75, 0, 1200*math.pi, 36*math.pi, 3*math.pi)
-    trajectory = ctrl.Trajectory(shape, False)
+    shape = ctrl.Shape(total=ctrl.Pose(90, 90, math.pi/2), y_curve_end=75)
+    print(shape)
+    trajectory = ctrl.Trajectory(shape)
     v = shape.v_ref
     trajectory.reset(v, 0, shape.straight_prev / v)
     ad = trajectory.getAccelDesigner()
@@ -91,7 +90,7 @@ def plot_slalom():
         x = []
         y = []
         for tt in t:
-            state = trajectory.update(state, tt, Ts, 0)
+            trajectory.update(state, tt, Ts)
             x.append(state.q.x)
             y.append(state.q.y)
         ax.plot(x, y, lw=4)
