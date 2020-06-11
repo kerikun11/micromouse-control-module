@@ -8,31 +8,26 @@ C++ライブラリをPythonから呼び出すためのサブプロジェクト�
 
 ## 追加の依存パッケージ
 
-Boost::Python を使用する．
-
-- Boost
-- Python3.8
+- pybind11
 
 インストールコマンド例
 
 ```sh
 # Ubuntu 20.04
-sudo apt install boost python
+sudo apt install pybind11
 # Arch Linux
-sudo pacman -S --needed boost boost-libs python
+sudo pacman -S --needed pybind11
 # MSYS2 MinGW 64bit
-pacman -S --needed mingw-w64-x86_64-boost mingw-w64-x86_64-python
+pacman -S --needed mingw-w64-x86_64-pybind11
 ```
-
-※ Pythonのバージョンが `3.8` でない場合は，[CMakeLists.txt](CMakeLists.txt)冒頭のPythonバージョンを書き換える．
 
 ## 概要
 
-Boost::Pythonを用いてC++ライブラリをラッピングするPythonモジュールを定義した。
+pybind11を用いてC++ライブラリをラッピングするPythonモジュールを定義した。
 
 新たなC++ファイル [ctrl.cpp](ctrl.cpp) を導入して、名前空間 `ctrl` に含まれるクラスのラッパーを実装した。
 
-このプロジェクトをビルドすると、動的ライブラリ `/build/ctrl.so` が得られる。
+このプロジェクトをビルドすると、動的ライブラリ `ctrl.so` が得られる。
 
 これはPythonモジュールになっており、任意のPythonスクリプトから `import ctrl` することができる。
 

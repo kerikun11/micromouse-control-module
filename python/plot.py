@@ -9,7 +9,7 @@ from matplotlib.ticker import ScalarFormatter
 if True:
     import sys
     import os
-    sys.path.append(os.path.abspath("../build"))
+    sys.path.append(os.path.abspath("../build/python"))
     import ctrl  # calls build/ctrl.so
 
 

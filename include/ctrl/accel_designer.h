@@ -243,7 +243,7 @@ public:
   /**
    * @brief 境界のタイムスタンプを取得
    */
-  const std::vector<float> getTimeStamp() const {
+  const std::array<float, 8> getTimeStamp() const {
     return {{
         t0 + ac.t_0(),
         t0 + ac.t_1(),
