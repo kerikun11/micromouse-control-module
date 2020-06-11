@@ -6,8 +6,6 @@
  */
 #pragma once
 
-#include <cmath>
-
 /**
  * @brief 制御関係の名前空間
  */
@@ -101,9 +99,17 @@ public:
    */
   const Model &getModel() const { return M; }
   /**
+   * @brief フィードフォワードモデルを設定する関数
+   */
+  void setModel(const Model &model) { M = model; }
+  /**
    * @brief フィードバックゲインを取得する関数
    */
   const Gain &getGain() const { return G; }
+  /**
+   * @brief フィードバックゲインを設定する関数
+   */
+  void setGain(const Gain &gain) { G = gain; }
   /**
    * @brief 制御入力の内訳を取得する関数
    */
