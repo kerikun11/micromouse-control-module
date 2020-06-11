@@ -45,9 +45,11 @@ sudo apt install git make cmake gcc g++ python3-matplotlib doxygen graphviz
 sudo pacman -S --needed git make cmake gcc python-matplotlib doxygen graphviz
 # MSYS2 MinGW 64bit
 pacman -S --needed git make \
-    mingw-w64-x86_64-cmake
-    mingw-w64-x86_64-python
-    mingw-w64-x86_64-toolchain
+    mingw-w64-x86_64-cmake \
+    mingw-w64-x86_64-toolchain \
+    mingw-w64-x86_64-python-matplotlib \
+    mingw-w64-x86_64-doxygen \
+    mingw-w64-x86_64-graphviz
 ```
 
 ### 実行方法
@@ -65,8 +67,8 @@ cd micromouse-control-module
 mkdir build
 cd build
 ## 初期化 (Makefileの生成)
-cmake .. # Linux
-cmake .. -G "MSYS Makefiles" # MSYS2 
+cmake .. # at Linux
+cmake .. -G "MSYS Makefiles" # at MSYS2
 ## ビルド
 make all
 ```
