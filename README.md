@@ -39,13 +39,15 @@
 インストールコマンド例
 
 ```sh
-# apt (ubuntu, debian, etc.)
-sudo apt install git make cmake g++ python3-matplotlib doxygen graphviz
-# pacman (arch, manjaro, etc.)
+# Ubuntu 20.04
+sudo apt install git make cmake gcc g++ python3-matplotlib doxygen graphviz
+# Arch Linux
 sudo pacman -S --needed git make cmake gcc python-matplotlib doxygen graphviz
 # MSYS2 MinGW 64bit
 pacman -S --needed git make \
-mingw-w64-x86_64-cmake mingw-w64-x86_64-python mingw-w64-x86_64-python mingw-w64-x86_64-python
+    mingw-w64-x86_64-cmake
+    mingw-w64-x86_64-python
+    mingw-w64-x86_64-toolchain
 ```
 
 ### 実行方法
@@ -63,7 +65,8 @@ cd micromouse-control-module
 mkdir build
 cd build
 ## 初期化 (Makefileの生成)
-cmake ..
+cmake .. # Linux
+cmake .. -G "MSYS Makefiles" # MSYS2 
 ## ビルド
 make all
 ```

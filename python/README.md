@@ -17,6 +17,8 @@ C++ライブラリをPythonから呼び出すためのサブプロジェクト�
 sudo apt install pybind11
 # Arch Linux
 sudo pacman -S --needed pybind11
+# MSYS2 MinGW 64bit
+pacman -S --needed mingw-w64-x86_64-pybind11
 ```
 
 ## 概要
