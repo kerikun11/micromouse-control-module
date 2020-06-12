@@ -45,6 +45,6 @@ cd ../build
 # Pythonモジュール ctrl.so の生成
 make all
 # 可視化用Pythonスクリプト ./plot.py の実行
-make python_plot
+make pybind11_plot
 # Pythonでプロットしたグラフが現れる
 ```

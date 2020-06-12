@@ -13,7 +13,7 @@
 
 - このライブラリは，C++ヘッダーファイルのみから構成されている．
 - このリポジトリをダウンロードして， `include` ディレクトリからソースコードを参照して使用する．
-- 必要に応じてコンパイルオプションに， `-std=c++14 -fconcepts` を設定する．
+- 必要に応じてコンパイルオプションに， `-std=c++14` を設定する．
 
 --------------------------------------------------------------------------------
 
@@ -77,8 +77,7 @@ cd micromouse-control-module
 mkdir build
 cd build
 ## 初期化 (Makefileの生成)
-cmake .. # at Linux
-cmake .. -G "MSYS Makefiles" # at MSYS2
+cmake .. # MSYS2の場合は cmake .. -G "MSYS Makefiles"
 ## ビルド
 make all
 ```
@@ -114,10 +113,10 @@ make docs
 C++で実装されたPythonモジュール `ctrl` を使用してプロットする．
 
 ```sh
-make python_plot # calls ./python/plot.py
+make ctrl pybind11_plot # calls ./pybind11/plot.py
 ```
 
-詳しくは[こちら](python)
+詳しくは[こちら](pybind11)
 
 --------------------------------------------------------------------------------
 

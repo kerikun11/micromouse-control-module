@@ -31,5 +31,5 @@ add_subdirectory(docs)
 add_subdirectory(examples)
 ## test
 add_subdirectory(test)
-## python
-add_subdirectory(python)
+## pybind11
+add_subdirectory(pybind11)

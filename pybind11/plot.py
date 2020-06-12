@@ -9,7 +9,7 @@ from matplotlib.ticker import ScalarFormatter
 if True:
     import sys
     import os
-    sys.path.append(os.path.abspath("../build/python"))
+    sys.path.append(os.path.abspath("../build/pybind11"))
     import ctrl  # calls ctrl.so
 
 

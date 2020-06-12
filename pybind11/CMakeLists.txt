@@ -20,7 +20,7 @@ target_include_directories(${MODULE_NAME}
 target_compile_options(${MODULE_NAME} PRIVATE -Wno-self-assign)
 
 # give a name
-set(CUSTOM_TARGET_NAME "python")
+set(CUSTOM_TARGET_NAME "pybind11")
 # find python interpreter
 find_package(Python3)
 if(NOT Python3_FOUND)
