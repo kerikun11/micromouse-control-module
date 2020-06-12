@@ -1,7 +1,7 @@
 ## file: CMakeLists.txt
 ## author: Ryotaro Onuki <kerikun11+github@gmail.com>
 ## date: 2020.05.13
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.12)
 project("MicroMouse Control Module" CXX)
 
 ## Build Type
