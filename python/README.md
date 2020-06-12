@@ -8,13 +8,15 @@ C++ライブラリをPythonから呼び出すためのサブプロジェクト�
 
 ## 追加の依存パッケージ
 
+[必須のパッケージ](../README.md)に加えて，以下のパッケージをインストールする．
+
 - pybind11
 
 インストールコマンド例
 
 ```sh
-# Ubuntu 20.04
-sudo apt install pybind11
+# Ubuntu
+sudo apt install python3-dev pybind11-dev
 # Arch Linux
 sudo pacman -S --needed pybind11
 # MSYS2 MinGW 64bit
@@ -42,7 +44,7 @@ pybind11を用いてC++ライブラリをラッピングするPythonモジュー
 cd ../build
 # Pythonモジュール ctrl.so の生成
 make all
-# 可視化用Pythonスクリプト plot.py の実行
+# 可視化用Pythonスクリプト ./plot.py の実行
 make python_plot
 # Pythonでプロットしたグラフが現れる
 ```
