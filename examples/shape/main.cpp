@@ -14,8 +14,8 @@
 
 using namespace ctrl;
 
-static constexpr auto pi = M_PI;
-static constexpr auto sqrt_2 = std::sqrt(2);
+static const float pi = M_PI;
+static const float sqrt_2 = std::sqrt(2);
 
 std::vector<std::pair<std::string, slalom::Shape>> shapes = {{
     {"SS_S90 ", slalom::Shape(Pose(45, 45, pi / 2), 44)},

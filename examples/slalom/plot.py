@@ -16,7 +16,7 @@ fig_t, ax_t = plt.subplots(4, 1, figsize=(4, 6))
 
 # ============================================================================ #
 # plot
-filebase = f'./build/slalom'
+filebase = f'./slalom'
 for i in range(5):
     # slalom_i.csv
     # t,dddth,ddth,dth,th,dddx,ddx,dx,x,dddy,ddy,dy,y

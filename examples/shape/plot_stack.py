@@ -16,7 +16,7 @@ fig_xy, ax_xy = plt.subplots(figsize=(4, 4))
 # ============================================================================ #
 # plot
 for s in [1, 2, 3, 4]:
-    filebase = f'./build/shape/shape_{s}'
+    filebase = f'./shape/shape_{s}'
     raw = np.empty(shape=(0, 13))
     for i in range(5):
         # csv: t,dddth,ddth,dth,th,dddx,ddx,dx,x,dddy,ddy,dy,y

@@ -1,2 +1,9 @@
-build/*
+# author: Ryotaro Onuki <kerikun11+github@gmail.com>
+# description: .gitignore for a CMake Project
+
+# build directory
+build
+build-*
+
+# VSCode
 .vscode/*

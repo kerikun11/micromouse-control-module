@@ -22,6 +22,6 @@ find_package(Python3 REQUIRED)
 # make a custom target to plot
 add_custom_target(${CUSTOM_TARGET_NAME}_plot
   COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/plot.py
-  WORKING_DIRECTORY ${CMAKE_HOME_DIRECTORY}
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   USES_TERMINAL
 )

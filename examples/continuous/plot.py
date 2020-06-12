@@ -9,7 +9,7 @@ args = parser.parse_args()
 
 # ============================================================================ #
 # load csv
-filename = './build/continuous.csv'
+filename = './continuous.csv'
 
 if args.file:
     filename = args.file

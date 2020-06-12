@@ -21,7 +21,7 @@ def plot_shape(s):
 
     # ============================================================================ #
     # plot
-    filebase = f'./build/shape/shape_{s}'
+    filebase = f'./shape/shape_{s}'
     for i in range(5):
         # slalom_i.csv
         # t,dddth,ddth,dth,th,dddx,ddx,dx,x,dddy,ddy,dy,y

@@ -3,6 +3,11 @@
 
 # find packages
 find_package(pybind11 REQUIRED)
+if(NOT pybind11_FOUND)
+  message(WARNING "not found :(")
+  message("...skipped")
+  RETURN()
+endif()
 
 # make a python module
 set(MODULE_NAME "ctrl")
@@ -12,6 +17,8 @@ target_include_directories(${MODULE_NAME}
   PRIVATE ${CMAKE_HOME_DIRECTORY}/include
   PRIVATE ${PYBIND11_INCLUDE_DIR}
 )
+# to suppress warning in clang
+target_compile_options(${MODULE_NAME} PRIVATE -Wno-self-assign)
 
 # give a name
 set(CUSTOM_TARGET_NAME "python")

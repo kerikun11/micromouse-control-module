@@ -1,7 +1,8 @@
 find_package(Doxygen)
 
 if(NOT DOXYGEN_FOUND)
-  message(WARNING "doxygen binary couldn't be found")
+  message(WARNING "not found doxygen :(")
+  message("...skipped")
   RETURN()
 endif()
 

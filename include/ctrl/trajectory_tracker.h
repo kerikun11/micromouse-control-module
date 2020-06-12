@@ -50,9 +50,9 @@ public:
    * @brief 自作の sinc 関数 sinc(x) := sin(x) / x
    *
    * @param x
-   * @return const auto
+   * @return sinc(x)
    */
-  static constexpr auto sinc(const auto x) {
+  static constexpr float sinc(const float x) {
     const auto xx = x * x;
     const auto xxxx = xx * xx;
     return xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;
