@@ -6,11 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import ScalarFormatter
 
-if True:
-    import sys
-    import os
-    sys.path.append(os.path.abspath("../build/pybind11"))
-    import ctrl  # calls ctrl.so
+import ctrl  # calls $PYTHONPATH/ctrl.so
 
 
 def plot_accel_designer():
