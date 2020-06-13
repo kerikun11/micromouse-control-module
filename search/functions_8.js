@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['shape_135',['Shape',['../structctrl_1_1slalom_1_1Shape.html#a35643e44693fe8140a10996f3e0fc427',1,'ctrl::slalom::Shape::Shape(const Pose total, const Pose curve, float straight_prev, const float straight_post, const float v_ref, const float dddth_max, const float ddth_max, const float dth_max)'],['../structctrl_1_1slalom_1_1Shape.html#a145063348221cc65aea72971f2c7400f',1,'ctrl::slalom::Shape::Shape(const Pose total, const float y_curve_end, const float x_adv=0, const float dddth_max=1200 *M_PI, const float ddth_max=36 *M_PI, const float dth_max=3 *M_PI)']]],
-  ['sinc_136',['sinc',['../classctrl_1_1TrajectoryTracker.html#a8b9ebbe5bee9330d6a849c7792add114',1,'ctrl::TrajectoryTracker']]]
+  ['reset_149',['reset',['../classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8',1,'ctrl::AccelCurve::reset()'],['../classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc',1,'ctrl::AccelDesigner::reset()'],['../classctrl_1_1FeedbackController.html#af24fe8168e772be04cf11b6a723cddad',1,'ctrl::FeedbackController::reset()'],['../classctrl_1_1slalom_1_1Trajectory.html#a4f8cfb2453f73fc27cb5708a2741a54a',1,'ctrl::slalom::Trajectory::reset()'],['../classctrl_1_1TrajectoryTracker.html#a651ed72d050a7567f2dee2493d0272e0',1,'ctrl::TrajectoryTracker::reset()']]]
 ];

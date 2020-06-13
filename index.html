@@ -78,12 +78,26 @@ $(function() {
 <ul>
 <li>このライブラリは，C++ヘッダーファイルのみから構成されている．</li>
 <li>このリポジトリをダウンロードして， <code>include</code> ディレクトリからソースコードを参照して使用する．</li>
-<li>必要に応じてコンパイルオプションに， <code>-std=c++14 -fconcepts</code> を設定する．</li>
+<li>必要に応じてコンパイルオプションに， <code>-std=c++14</code> を設定する．</li>
 </ul>
 <hr  />
 <h1><a class="anchor" id="autotoc_md4"></a>
 コンピュータでの動作確認方法</h1>
 <h2><a class="anchor" id="autotoc_md5"></a>
+動作環境</h2>
+<p>とりあえず以下の環境での動作を確認した．</p>
+<ul>
+<li>Linux<ul>
+<li>Ubuntu 20.04</li>
+<li>Manjaro Linux 20.0.3</li>
+</ul>
+</li>
+<li>Windows<ul>
+<li>MSYS2 MinGW 64 bit - 20200602</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md6"></a>
 依存パッケージ</h2>
 <p>必要に応じて，以下のパッケージをインストールする．</p>
 <ul>
@@ -107,11 +121,18 @@ $(function() {
 </li>
 </ul>
 <p>インストールコマンド例</p>
-<div class="fragment"><div class="line"># apt (ubuntu, debian, etc.)</div>
-<div class="line">sudo apt install git make cmake g++ python3-matplotlib doxygen graphviz</div>
-<div class="line"># pacman (arch, manjaro, etc.)</div>
+<div class="fragment"><div class="line"># Ubuntu 20.04</div>
+<div class="line">sudo apt install git make cmake gcc g++ python3-matplotlib doxygen graphviz</div>
+<div class="line"># Arch Linux</div>
 <div class="line">sudo pacman -S --needed git make cmake gcc python-matplotlib doxygen graphviz</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+<div class="line"># MSYS2 MinGW 64bit</div>
+<div class="line">pacman -S --needed git make \</div>
+<div class="line">    mingw-w64-x86_64-cmake \</div>
+<div class="line">    mingw-w64-x86_64-toolchain \</div>
+<div class="line">    mingw-w64-x86_64-python-matplotlib \</div>
+<div class="line">    mingw-w64-x86_64-doxygen \</div>
+<div class="line">    mingw-w64-x86_64-graphviz</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
 実行方法</h2>
 <p>このリポジトリは <a href="https://cmake.org/">CMake</a> プロジェクトになっている．</p>
 <p>まずはじめに，以下のコマンドで初期化する．</p>
@@ -123,33 +144,38 @@ $(function() {
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
 <div class="line">## 初期化 (Makefileの生成)</div>
-<div class="line">cmake ..</div>
+<div class="line">cmake .. # MSYS2の場合は cmake .. -G &quot;MSYS Makefiles&quot;</div>
 <div class="line">## ビルド</div>
 <div class="line">make all</div>
 </div><!-- fragment --><p>以降，コマンド <code>make</code> は，この <code>build</code> ディレクトリで実行すること．</p>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md8"></a>
 曲線加速軌道の生成とプロット</h2>
 <p><a href="examples/accel/main.cpp">examples/accel/main.cpp</a> の実行</p>
 <div class="fragment"><div class="line">make accel accel_plot</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 スラローム軌道の生成とプロット</h2>
 <p><a href="examples/slalom/main.cpp">examples/slalom/main.cpp</a> の実行</p>
 <div class="fragment"><div class="line">make slalom slalom_plot</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 ドキュメントの自動生成</h2>
 <p>下記コマンドにより <code>build/docs/html/index.html</code> にドキュメントが生成される．</p>
 <div class="fragment"><div class="line">make docs</div>
-</div><!-- fragment --><hr  />
-<h1><a class="anchor" id="autotoc_md11"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md11"></a>
+Pythonモジュールの生成と実行</h2>
+<p>C++で実装されたPythonモジュール <code>ctrl</code> を使用してプロットする．</p>
+<div class="fragment"><div class="line">make ctrl pybind11_plot # calls ./pybind11/plot.py</div>
+</div><!-- fragment --><p>詳しくは[こちら](pybind11)</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md13"></a>
 C++クラス設計</h1>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 AccelDesigner</h2>
 <p>拘束条件を満たす曲線加減速の軌道を生成するクラス</p>
 <ul>
 <li>移動距離の拘束条件を満たす曲線加速軌道を生成する</li>
 <li>各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$ を提供する</li>
 </ul>
-<p>以下， <a href="include/accel_designer.h">accel_designer.h</a> の抜粋:</p>
+<p>以下， <a href="include/ctrl/accel_designer.h">accel_designer.h</a> の抜粋:</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">class </span>AccelDesigner {</div>
 <div class="line"><span class="keyword">public</span>:</div>
@@ -170,14 +196,14 @@ AccelDesigner</h2>
 <div class="line">  <span class="keywordtype">float</span> x0, x3;         </div>
 <div class="line">  AccelCurve ac, dc; </div>
 <div class="line">};</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md13"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
 AccelCurve</h2>
 <p>曲線加速の軌道を生成する補助クラス</p>
 <ul>
 <li>始点速度，終点速度などの拘束を満たす曲線加速軌道を生成</li>
 <li>移動距離に関する拘束はない</li>
 </ul>
-<p>以下， <a href="include/accel_curve.h">accel_curve.h</a> の抜粋:</p>
+<p>以下， <a href="include/ctrl/accel_curve.h">accel_curve.h</a> の抜粋:</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">class </span>AccelCurve {</div>
 <div class="line"><span class="keyword">public</span>:</div>
@@ -211,18 +237,18 @@ AccelCurve</h2>
 <div class="line">  <span class="keywordtype">float</span> x0, x1, x2, x3; </div>
 <div class="line">};</div>
 </div><!-- fragment --><hr  />
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 Pose</h2>
 <p>平面上の位置および姿勢を表現する座標．</p>
-<p>以下， <a href="include/pose.h">pose.h</a> の抜粋:</p>
+<p>以下， <a href="include/ctrl/pose.h">pose.h</a> の抜粋:</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>Pose {</div>
 <div class="line">  <span class="keywordtype">float</span> x, y, th; <span class="comment">/*&lt; (x, y, theta) 成分 */</span></div>
 <div class="line">};</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md16"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
 State</h2>
 <p>軌道生成などに使用する状態変数</p>
-<p>以下， <a href="include/state.h">state.h</a> の抜粋:</p>
+<p>以下， <a href="include/ctrl/state.h">state.h</a> の抜粋:</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>State {</div>
 <div class="line">  Pose q;</div>
@@ -230,18 +256,18 @@ State</h2>
 <div class="line">  Pose ddq;</div>
 <div class="line">  Pose dddq;</div>
 <div class="line">};</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md17"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
 Polar</h2>
 <p>並進と回転の座標を管理する構造体</p>
-<p>以下， <a href="include/polar.h">polar.h</a> の抜粋:</p>
+<p>以下， <a href="include/ctrl/polar.h">polar.h</a> の抜粋:</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>Polar {</div>
 <div class="line">  <span class="keywordtype">float</span> tra; <span class="comment">//&lt; translation [m]</span></div>
 <div class="line">  <span class="keywordtype">float</span> rot; <span class="comment">//&lt; rotation [rad]</span></div>
 <div class="line">};</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md18"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md20"></a>
 slalom::Shape</h2>
-<p>以下， <a href="include/slalom.h">slalom.h</a> の抜粋:</p>
+<p>以下， <a href="include/ctrl/slalom.h">slalom.h</a> の抜粋:</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">struct </span>Shape {</div>
 <div class="line">  Pose total; </div>
@@ -260,19 +286,20 @@ slalom::Shape</h2>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> dddth_max = 1200 * M_PI, <span class="keyword">const</span> <span class="keywordtype">float</span> ddth_max = 36 * M_PI,</div>
 <div class="line">        <span class="keyword">const</span> <span class="keywordtype">float</span> dth_max = 3 * M_PI);</div>
 <div class="line">  <span class="keyword">static</span> <span class="keywordtype">void</span> integrate(<span class="keyword">const</span> AccelDesigner &amp;ad, State &amp;s, <span class="keyword">const</span> <span class="keywordtype">float</span> v,</div>
-<div class="line">                        <span class="keyword">const</span> <span class="keywordtype">float</span> t, <span class="keyword">const</span> <span class="keywordtype">float</span> Ts);</div>
+<div class="line">                        <span class="keyword">const</span> <span class="keywordtype">float</span> t, <span class="keyword">const</span> <span class="keywordtype">float</span> Ts, <span class="keyword">const</span> <span class="keywordtype">float</span> k_slip = 0);</div>
 <div class="line">  <span class="keyword">friend</span> std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <span class="keyword">const</span> Shape &amp;obj);</div>
 <div class="line">};</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md19"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md21"></a>
 slalom::Trajectory</h2>
-<p>以下， <a href="include/slalom.h">slalom.h</a> の抜粋:</p>
+<p>以下， <a href="include/ctrl/slalom.h">slalom.h</a> の抜粋:</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">class </span>Trajectory {</div>
 <div class="line"><span class="keyword">public</span>:</div>
 <div class="line">  Trajectory(<span class="keyword">const</span> Shape &amp;shape, <span class="keyword">const</span> <span class="keywordtype">bool</span> mirror_x = <span class="keyword">false</span>);</div>
 <div class="line">  <span class="keywordtype">void</span> reset(<span class="keyword">const</span> <span class="keywordtype">float</span> velocity, <span class="keyword">const</span> <span class="keywordtype">float</span> th_start = 0,</div>
 <div class="line">             <span class="keyword">const</span> <span class="keywordtype">float</span> t_start = 0);</div>
-<div class="line">  <span class="keywordtype">void</span> update(State &amp;state, <span class="keyword">const</span> <span class="keywordtype">float</span> t, <span class="keyword">const</span> <span class="keywordtype">float</span> Ts) <span class="keyword">const</span>;</div>
+<div class="line">  <span class="keywordtype">void</span> update(State &amp;state, <span class="keyword">const</span> <span class="keywordtype">float</span> t, <span class="keyword">const</span> <span class="keywordtype">float</span> Ts,</div>
+<div class="line">              <span class="keyword">const</span> <span class="keywordtype">float</span> k_slip = 0) <span class="keyword">const</span>;</div>
 <div class="line">  <span class="keywordtype">float</span> getVelocity() <span class="keyword">const</span>;</div>
 <div class="line">  <span class="keywordtype">float</span> getTimeCurve() <span class="keyword">const</span>;</div>
 <div class="line">  <span class="keyword">const</span> Shape &amp;getShape() <span class="keyword">const</span>;</div>
@@ -284,10 +311,10 @@ slalom::Trajectory</h2>
 <div class="line">  <span class="keywordtype">float</span> velocity;   </div>
 <div class="line">};</div>
 </div><!-- fragment --><hr  />
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 FeedbackController</h2>
 <p>1 次フィードフォワード補償付きフィードバック制御器クラス</p>
-<p>以下， <a href="include/feedback_controller.h">feedback_controller.h</a> の抜粋:</p>
+<p>以下， <a href="include/ctrl/feedback_controller.h">feedback_controller.h</a> の抜粋:</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><span class="keyword">class </span>FeedbackController {</div>

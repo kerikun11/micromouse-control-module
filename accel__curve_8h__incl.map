@@ -1,5 +1,5 @@
-<map id="accel_curve.h" name="accel_curve.h">
-<area shape="rect" id="node1" title="躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する" alt="" coords="121,5,223,32"/>
+<map id="ctrl/accel_curve.h" name="ctrl/accel_curve.h">
+<area shape="rect" id="node1" title="躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する" alt="" coords="109,5,235,32"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,80,64,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="89,80,159,107"/>
 <area shape="rect" id="node4" title=" " alt="" coords="184,80,256,107"/>

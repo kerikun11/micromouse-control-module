@@ -1,5 +1,5 @@
-<map id="trajectory_tracker.h" name="trajectory_tracker.h">
-<area shape="rect" id="node1" title="独立2輪車の線形化フィードバック軌道追従コントローラ" alt="" coords="38,5,173,32"/>
+<map id="ctrl/trajectory_tracker.h" name="ctrl/trajectory_tracker.h">
+<area shape="rect" id="node1" title="独立2輪車の線形化フィードバック軌道追従コントローラ" alt="" coords="27,5,183,32"/>
 <area shape="rect" id="node2" href="$polar_8h.html" title="並進と回転の座標を管理するクラスをもつファイル" alt="" coords="5,155,67,181"/>
 <area shape="rect" id="node5" href="$pose_8h.html" title="平面上の位置姿勢の座標もつファイル．" alt="" coords="91,155,152,181"/>
 <area shape="rect" id="node6" href="$state_8h.html" title="軌道制御の状態変数" alt="" coords="74,80,137,107"/>

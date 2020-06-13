@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MicroMouse Control Module: pose.h Source File</title>
+<title>MicroMouse Control Module: ctrl/pose.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -45,7 +45,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,6 +59,11 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_263426dc267c7f7b8bc816493cda4bef.html">ctrl</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">pose.h</div>  </div>
@@ -99,12 +103,12 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> = o.x, <a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> = o.y, <a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a> = o.th;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> &amp;operator-=(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> &amp;o) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> -= o.x, <a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> -= o.y, <a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a> -= o.th;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> &amp;operator+=(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> &amp;o) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> += o.x, <a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> += o.y, <a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a> += o.th;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> &amp;operator+=(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> &amp;o) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> += o.x, <a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> += o.y, <a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a> += o.th;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> &amp;operator-=(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> &amp;o) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> -= o.x, <a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> -= o.y, <a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a> -= o.th;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a> operator+()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="structctrl_1_1Pose.html#a7c12abc59bfa3c54d1d4b40e86437432">Pose</a>(<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a>, <a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a>, <a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>); }</div>

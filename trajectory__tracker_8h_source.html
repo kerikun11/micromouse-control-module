@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.18"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MicroMouse Control Module: trajectory_tracker.h Source File</title>
+<title>MicroMouse Control Module: ctrl/trajectory_tracker.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -45,7 +45,6 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -60,6 +59,11 @@ $(function() {
 </iframe>
 </div>
 
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_263426dc267c7f7b8bc816493cda4bef.html">ctrl</a></li>  </ul>
+</div>
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
 <div class="title">trajectory_tracker.h</div>  </div>
@@ -90,7 +94,7 @@ $(function() {
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">float</span> dv;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">float</span> dw;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  };</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a8b9ebbe5bee9330d6a849c7792add114">   55</a></span>&#160;  <span class="keyword">static</span> constexpr <span class="keyword">auto</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a8b9ebbe5bee9330d6a849c7792add114">sinc</a>(<span class="keyword">const</span> <span class="keyword">auto</span> x) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">   55</a></span>&#160;  <span class="keyword">static</span> constexpr <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">sinc</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> x) {</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> xx = x * x;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> xxxx = xx * xx;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;</div>
@@ -156,7 +160,7 @@ $(function() {
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> v = v_d * std::cos(th_r - theta) +</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                     k1 * (cos_theta * (x_r - x) + sin_theta * (y_r - y));</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> w = w_d +</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                     k2 * v_d * <a class="code" href="classctrl_1_1TrajectoryTracker.html#a8b9ebbe5bee9330d6a849c7792add114">sinc</a>(th_r - theta) *</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                     k2 * v_d * <a class="code" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">sinc</a>(th_r - theta) *</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                         (cos_theta * (x_r - x) - sin_theta * (y_r - y)) +</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                     k3 * (th_r - theta);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      res.v = v;</div>
@@ -187,7 +191,6 @@ $(function() {
 <div class="ttc" id="astructctrl_1_1State_html"><div class="ttname"><a href="structctrl_1_1State.html">ctrl::State</a></div><div class="ttdoc">軌道制御の状態変数</div><div class="ttdef"><b>Definition:</b> state.h:19</div></div>
 <div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a345f9bbea569d498343e3b0b207719dc"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a345f9bbea569d498343e3b0b207719dc">ctrl::TrajectoryTracker::TrajectoryTracker</a></div><div class="ttdeci">TrajectoryTracker(const Gain &amp;gain)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:67</div></div>
 <div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a4bdb756d6f423b9186738b067cca70eb"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a4bdb756d6f423b9186738b067cca70eb">ctrl::TrajectoryTracker::Ts</a></div><div class="ttdeci">static constexpr const float Ts</div><div class="ttdoc">制御周期 [s]</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:26</div></div>
-<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a8b9ebbe5bee9330d6a849c7792add114"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a8b9ebbe5bee9330d6a849c7792add114">ctrl::TrajectoryTracker::sinc</a></div><div class="ttdeci">static constexpr auto sinc(const auto x)</div><div class="ttdoc">自作の sinc 関数 sinc(x) := sin(x) / x</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:55</div></div>
 <div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Result_html"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Result.html">ctrl::TrajectoryTracker::Result</a></div><div class="ttdoc">計算結果を格納する構造体</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:43</div></div>
 <div class="ttc" id="apolar_8h_html"><div class="ttname"><a href="polar_8h.html">polar.h</a></div><div class="ttdoc">並進と回転の座標を管理するクラスをもつファイル</div></div>
 <div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a6a95bfcfdc5dba1a19299f30ab048f37"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">ctrl::TrajectoryTracker::gain</a></div><div class="ttdeci">Gain gain</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:174</div></div>
@@ -204,6 +207,7 @@ $(function() {
 <div class="ttc" id="astructctrl_1_1Pose_html_a24c74beee36f9b2a6398bd49aa0c3c29"><div class="ttname"><a href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">ctrl::Pose::y</a></div><div class="ttdeci">float y</div><div class="ttdoc">y 成分 [m]</div><div class="ttdef"><b>Definition:</b> pose.h:19</div></div>
 <div class="ttc" id="astate_8h_html"><div class="ttname"><a href="state_8h.html">state.h</a></div><div class="ttdoc">軌道制御の状態変数</div></div>
 <div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html">ctrl::TrajectoryTracker</a></div><div class="ttdoc">独立2輪車の軌道追従フィードバック制御器</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:21</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a686dedb83d169045dfbe3a2c31f31985"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">ctrl::TrajectoryTracker::sinc</a></div><div class="ttdeci">static constexpr float sinc(const float x)</div><div class="ttdoc">自作の sinc 関数 sinc(x) := sin(x) / x</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:55</div></div>
 <div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html">ctrl::TrajectoryTracker::Gain</a></div><div class="ttdoc">フィードバックゲインを格納する構造体</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:34</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

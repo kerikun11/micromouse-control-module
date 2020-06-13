@@ -99,9 +99,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4f8cfb2453f73fc27cb5708a2741a54a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1slalom_1_1Trajectory.html#a4f8cfb2453f73fc27cb5708a2741a54a">reset</a> (const float <a class="el" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">velocity</a>, const float th_start=0, const float t_start=0)</td></tr>
 <tr class="memdesc:a4f8cfb2453f73fc27cb5708a2741a54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">並進速度を設定して軌道を初期化する関数  <a href="classctrl_1_1slalom_1_1Trajectory.html#a4f8cfb2453f73fc27cb5708a2741a54a">More...</a><br /></td></tr>
 <tr class="separator:a4f8cfb2453f73fc27cb5708a2741a54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b33bce8c6acb358a5719dcdfbee10c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1slalom_1_1Trajectory.html#a0b33bce8c6acb358a5719dcdfbee10c2">update</a> (<a class="el" href="structctrl_1_1State.html">State</a> &amp;state, const float t, const float Ts) const</td></tr>
-<tr class="memdesc:a0b33bce8c6acb358a5719dcdfbee10c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">軌道の更新  <a href="classctrl_1_1slalom_1_1Trajectory.html#a0b33bce8c6acb358a5719dcdfbee10c2">More...</a><br /></td></tr>
-<tr class="separator:a0b33bce8c6acb358a5719dcdfbee10c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef5cabb9cff7bd405b3cd8a70879112a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1slalom_1_1Trajectory.html#aef5cabb9cff7bd405b3cd8a70879112a">update</a> (<a class="el" href="structctrl_1_1State.html">State</a> &amp;state, const float t, const float Ts, const float k_slip=0) const</td></tr>
+<tr class="memdesc:aef5cabb9cff7bd405b3cd8a70879112a"><td class="mdescLeft">&#160;</td><td class="mdescRight">軌道の更新  <a href="classctrl_1_1slalom_1_1Trajectory.html#aef5cabb9cff7bd405b3cd8a70879112a">More...</a><br /></td></tr>
+<tr class="separator:aef5cabb9cff7bd405b3cd8a70879112a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4515f6a78dfa623b41538c0da8159608"><td class="memItemLeft" align="right" valign="top"><a id="a4515f6a78dfa623b41538c0da8159608"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1slalom_1_1Trajectory.html#a4515f6a78dfa623b41538c0da8159608">getVelocity</a> () const</td></tr>
 <tr class="memdesc:a4515f6a78dfa623b41538c0da8159608"><td class="mdescLeft">&#160;</td><td class="mdescRight">並進速度を取得 <br /></td></tr>
@@ -236,8 +236,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 
 </div>
 </div>
-<a id="a0b33bce8c6acb358a5719dcdfbee10c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b33bce8c6acb358a5719dcdfbee10c2">&#9670;&nbsp;</a></span>update()</h2>
+<a id="aef5cabb9cff7bd405b3cd8a70879112a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef5cabb9cff7bd405b3cd8a70879112a">&#9670;&nbsp;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,7 +261,13 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const float&#160;</td>
-          <td class="paramname"><em>Ts</em>&#160;</td>
+          <td class="paramname"><em>Ts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>k_slip</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -289,7 +295,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="slalom_8h_source.html">slalom.h</a></li>
+<li>ctrl/<a class="el" href="slalom_8h_source.html">slalom.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
