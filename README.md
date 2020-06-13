@@ -410,9 +410,10 @@ public:
    * @param v 並進速度
    * @param t 時刻
    * @param Ts 積分時間
+   * @param k_slip スリップ角定数
    */
   static void integrate(const AccelDesigner &ad, State &s, const float v,
-                        const float t, const float Ts);
+                        const float t, const float Ts, const float k_slip = 0);
   /**
    * @brief 情報の表示
    */
@@ -455,7 +456,8 @@ public:
    * @param t 現在時刻 [s]
    * @param Ts 積分時間 [s]
    */
-  void update(State &state, const float t, const float Ts) const;
+  void update(State &state, const float t, const float Ts,
+              const float k_slip = 0) const;
   /**
    * @brief 並進速度を取得
    */

@@ -117,6 +117,7 @@ public:
    * @param v 並進速度 [m/s]
    * @param t 時刻 [s]
    * @param Ts 積分時間 [s]
+   * @param k_slip スリップ角定数
    */
   static void integrate(const AccelDesigner &ad, State &s, const float v,
                         const float t, const float Ts, const float k_slip = 0) {
