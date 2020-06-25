@@ -12,19 +12,10 @@
 #include <iostream> //< for std::cout
 #include <ostream>
 
-/* File Path Management */
-#ifdef PROJ_DIR /*< defined at CMakeLists.txt */
-#include <cstring>
-#include <string>
-#define FILEPATH (".." + std::string(__FILE__).substr(std::strlen(PROJ_DIR)))
-#else
-#define FILEPATH __FILE__
-#endif
-
 /* Log Info */
 #ifndef loge
 #if 1 /*< Enabled */
-#define loge (std::cout << "[E][" << FILEPATH << ":" << __LINE__ << "]\t")
+#define loge (std::cout << "[E][" << __FILE__ << ":" << __LINE__ << "]\t")
 #else
 #define loge std::ostream(0)
 #endif
@@ -32,7 +23,7 @@
 /* Log Info */
 #ifndef logi
 #if 0 /*< Enabled */
-#define logi (std::cout << "[I][" << FILEPATH << ":" << __LINE__ << "]\t")
+#define logi (std::cout << "[I][" << __FILE__ << ":" << __LINE__ << "]\t")
 #else
 #define logi std::ostream(0)
 #endif
@@ -40,7 +31,7 @@
 /* Log Debug */
 #ifndef logd
 #if 0 /*< Enabled */
-#define logd (std::cout << "[D][" << FILEPATH << ":" << __LINE__ << "]\t")
+#define logd (std::cout << "[D][" << __FILE__ << ":" << __LINE__ << "]\t")
 #else
 #define logd std::ostream(0)
 #endif

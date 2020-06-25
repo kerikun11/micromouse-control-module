@@ -4,9 +4,6 @@
 cmake_minimum_required(VERSION 3.12)
 project("MicroMouse Control Module" CXX)
 
-## Build Type
-set(CMAKE_BUILD_TYPE Release)
-
 ## build option for compiler
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
