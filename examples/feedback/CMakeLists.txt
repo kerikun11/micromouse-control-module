@@ -12,9 +12,8 @@ target_include_directories(${TARGET_NAME}
 )
 # make a custom target to run
 add_custom_target(${CUSTOM_TARGET_NAME}
-  COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${TARGET_NAME}
+  COMMAND ${TARGET_NAME}
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-  DEPENDS ${TARGET_NAME}
   USES_TERMINAL
 )
 # find python interpreter
