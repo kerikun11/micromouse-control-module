@@ -27,6 +27,6 @@ add_subdirectory(docs)
 ## examples
 add_subdirectory(examples)
 ## test
-add_subdirectory(test EXCLUDE_FROM_ALL)
+add_subdirectory(test)
 ## pybind11
 add_subdirectory(pybind11 EXCLUDE_FROM_ALL)

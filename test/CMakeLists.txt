@@ -36,7 +36,7 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # give a name
-set(CUSTOM_TARGET_NAME "test")
+set(CUSTOM_TARGET_NAME "gt")
 set(TARGET_NAME test_${CUSTOM_TARGET_NAME})
 # make a target
 file(GLOB SRC_FILES *.cpp)
@@ -51,4 +51,15 @@ add_custom_target(${CUSTOM_TARGET_NAME}
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   DEPENDS ${TARGET_NAME} gtest
   USES_TERMINAL
+)
+# make a test
+enable_testing()
+# add_test(NAME "googletest"
+#   COMMAND ${TARGET_NAME}
+#   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+# )
+include(GoogleTest)
+gtest_discover_tests(${TARGET_NAME}
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  DISCOVERY_TIMEOUT 10 # [s]
 )
