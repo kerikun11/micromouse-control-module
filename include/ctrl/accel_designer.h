@@ -67,25 +67,23 @@ public:
   void reset(const float j_max, const float a_max, const float v_max,
              const float v_start, const float v_target, const float dist,
              const float x_start = 0, const float t_start = 0) {
-    /* 飽和速度の仮置き */
-    auto v_sat = dist > 0 ? std::max({v_start, v_max, v_target})
-                          : std::min({v_start, -v_max, v_target});
     /* 目標速度に到達可能か，走行距離から終点速度を決定していく */
     auto v_end = v_target; /*< 仮代入 */
+    /* 移動距離の拘束により，目標速度に達し得ない場合の処理 */
     const auto dist_min = AccelCurve::calcDistanceFromVelocityStartToEnd(
         j_max, a_max, v_start, v_end);
-    // logd << "dist_min: " << dist_min << std::endl;
     if (std::abs(dist) < std::abs(dist_min)) {
       logd << "vs -> ve != vt" << std::endl;
       /* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */
       v_end = AccelCurve::calcReachableVelocityEnd(j_max, a_max, v_start,
                                                    v_target, dist);
-      v_sat = v_end; //< 走行距離の拘束を満たすため，飽和速度まで加速できない
-      // logd << "ve: " << v_end << std::endl;
     }
+    /* 飽和速度の仮置き */
+    auto v_sat = dist > 0 ? std::max({v_start, v_max, v_end})
+                          : std::min({v_start, -v_max, v_end});
     /* 曲線を生成 */
-    ac.reset(j_max, a_max, v_start, v_sat); //< 加速
-    dc.reset(j_max, a_max, v_sat, v_end);   //< 減速
+    ac.reset(j_max, a_max, v_start, v_sat); //< 加速部分
+    dc.reset(j_max, a_max, v_sat, v_end);   //< 減速部分
     /* 最大速度まで加速すると走行距離の拘束を満たさない場合の処理 */
     const auto d_sum = ac.x_end() + dc.x_end();
     if (std::abs(dist) < std::abs(d_sum)) {
@@ -93,7 +91,6 @@ public:
       /* 走行距離などの拘束から到達可能速度を算出 */
       const auto v_rm = AccelCurve::calcReachableVelocityMax(
           j_max, a_max, v_start, v_end, dist);
-      // logd << "v_rm: " << v_rm << std::endl;
       /* 無駄な減速を回避 */
       v_sat = dist > 0 ? std::max({v_start, v_rm, v_end})
                        : std::min({v_start, v_rm, v_end});
@@ -111,14 +108,15 @@ public:
     t1 = t0 + ac.t_end();                    //< 曲線加速終了の時刻
     t2 = t0 + ac.t_end() + t23;              //< 等速走行終了の時刻
     t3 = t0 + ac.t_end() + t23 + dc.t_end(); //< 曲線減速終了の時刻
+#if 0
     /* 出力のチェック */
     const auto e = 0.01f; //< 数値誤差分
     bool show_info = false;
     /* 飽和速度時間 */
-    // if (t23 < 0) {
-    //   logd << t23 << std::endl;
-    //   show_info = true;
-    // }
+    if (t23 < 0) {
+      logd << t23 << std::endl;
+      show_info = true;
+    }
     /* 終点速度 */
     if (std::abs(v_start - v_end) > e + std::abs(v_start - v_target)) {
       std::cerr << "Error: Velocity Target!" << std::endl;
@@ -155,6 +153,7 @@ public:
            << "\tv0: " << v_start << "\tv1: " << v(t1) << "\tv2: " << v(t2)
            << "\tv3: " << v_end << std::endl;
     }
+#endif
   }
   /**
    * @brief 時刻 t [s] における躍度 j [m/s/s/s]
