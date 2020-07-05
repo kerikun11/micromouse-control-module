@@ -8,7 +8,6 @@
 #pragma once
 
 #include <cmath>    //< for std::sqrt, std::cbrt, std::pow
-#include <complex>  //< for std::complex
 #include <iostream> //< for std::cout
 #include <ostream>
 
@@ -259,17 +258,17 @@ public:
     const auto cr = 8 * aaa_27 + b / 2;
     const auto ci_b = 8 * aaa_27 / b + 1.0f / 4;
     if (ci_b >= 0) {
-      /* ルートの中が非負のとき */
+      /* ルートの中が非負のとき，3乗根により解を求める */
       logd << "v: curve - curve (accel)" << std::endl;
-      const auto cc = std::cbrt(cr + std::abs(b) * std::sqrt(ci_b));
-      return (d > 0 ? 1 : -1) *
-             (cc + 4 * a * a / cc / 9 - a / 3); //< 3次方程式の解
+      const auto c = std::cbrt(cr + std::abs(b) * std::sqrt(ci_b));
+      return (d > 0 ? 1 : -1) * (c + 4 * a * a / c / 9 - a / 3);
     } else {
-      /* ルートの中が負のとき */
+      /* ルートの中が負のとき，極座標変換して解を求める */
       logd << "v: curve - curve (decel)" << std::endl;
-      const auto cc = std::pow(
-          std::complex<float>(cr, std::abs(b) * std::sqrt(-ci_b)), 1.0f / 3);
-      return (d > 0 ? 1 : -1) * (cc.real() * 2 - a / 3); //< 3次方程式の解
+      const auto ci = std::abs(b) * std::sqrt(-ci_b);
+      const auto r = std::hypot(cr, ci); //< = sqrt(cr^2 + ci^2)
+      const auto th = std::atan2(ci, cr);
+      return (d > 0 ? 1 : -1) * (2 * std::cbrt(r) * std::cos(th / 3) - a / 3);
     }
   }
   /**
