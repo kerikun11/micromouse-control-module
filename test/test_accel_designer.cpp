@@ -30,9 +30,9 @@ public:
   }
 };
 
-TEST(AccelDesigner, AccelDesignerTest) {
+TEST(AccelDesigner, RandomConstraints) {
   AccelDesignerTest ad;
-  int n = 1000;
+  int n = 100;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> j_urd(100000, 1000000);
   std::uniform_real_distribution<float> a_urd(100, 10000);
@@ -52,9 +52,10 @@ TEST(AccelDesigner, AccelDesignerTest) {
   }
 }
 
-TEST(AccelDesigner, EachPattern) {
+TEST(AccelDesigner, GivenConstraints) {
   AccelDesignerTest ad;
   const std::vector<std::vector<float>> params = {
+      // jm, am, vm, vs, vt, d
       {100, 10, 4, 0, 0, 0},     //< 0
       {100, 10, 4, 0, 2, 4},     //< vs -> vm -> vt, tm1>0, tm2>0
       {100, 10, 4, 0, 3, 4},     //< vs -> vm -> vt, tm1>0, tm2<0
@@ -69,6 +70,8 @@ TEST(AccelDesigner, EachPattern) {
       {100, 10, 4, 0, 4, 0.1},   //< ve != vt, tm < 0, accel
       {100, 10, 4, 4, 0, 0.1},   //< ve != vt, tm < 0, decel
   };
-  for (const auto &ps : params)
-    ad.test(ps[0], ps[1], ps[2], ps[3], ps[4], ps[5], 0, 0);
+  for (const auto &ps : params) {
+    ad.test(ps[0], ps[1], ps[2], +ps[3], +ps[4], +ps[5], 0, 0);
+    ad.test(ps[0], ps[1], ps[2], -ps[3], -ps[4], -ps[5], 0, 0);
+  }
 }

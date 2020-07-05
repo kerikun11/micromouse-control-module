@@ -35,6 +35,7 @@ PYBIND11_MODULE(ctrl, m) {
       .def("t_1", &AccelCurve::t_1)
       .def("t_2", &AccelCurve::t_2)
       .def("t_3", &AccelCurve::t_3)
+      .def("getTimeStamp", &AccelCurve::getTimeStamp)
       .def("__str__",
            [](const AccelCurve &obj) {
              std::stringstream ss;

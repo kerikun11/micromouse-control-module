@@ -36,23 +36,32 @@ def plot_accel_designer(ad):
     plt.show()
 
 
-if __name__ == "__main__":
-    # prepare AccelDesigner
-    # ad = ctrl.AccelDesigner(j_max=60, a_max=6, v_max=2,
-    #                         v_start=0, v_target=1, dist=2)
+def test_accel_curve():
     params = [
-        (100, 10, 4, 0, 2, 4),     # vs -> vm -> vt, tm1>0, tm2>0
-        (100, 10, 4, 0, 3, 4),     # vs -> vm -> vt, tm1>0, tm2<0
-        (100, 10, 4, 3, 0, 4),     # vs -> vm -> vt, tm1<0, tm2>0
-        (100, 10, 8, 0, 2, 4),     # vs -> vr -> vt, vr<vm, tm1>0, tm2>0
-        (100, 10, 8, 0, 6, 4),     # vs -> vr -> vt, vr<vm, tm1>0, tm2<0
+        (100, 10, 0, 2),  # vm > 0
+        (100, 10, 1, 2),  # vm < 0
+        (100, 10, 2, 1),  # vm < 0
+        (100, 10, 2, 0),  # vm > 0
+    ]
+    for p in params:
+        ad = ctrl.AccelCurve(*p)
+        plot_accel_designer(ad)
+
+
+def test_accel_designer():
+    params = [
+        (100, 10, 4, 0, 2, 4),      # vs -> vm -> vt, tm1>0, tm2>0
+        (100, 10, 4, 0, 3, 4),      # vs -> vm -> vt, tm1>0, tm2<0
+        (100, 10, 4, 3, 0, 4),      # vs -> vm -> vt, tm1<0, tm2>0
+        (100, 10, 8, 0, 2, 4),      # vs -> vr -> vt, vr<vm, tm1>0, tm2>0
+        (100, 10, 8, 0, 6, 4),      # vs -> vr -> vt, vr<vm, tm1>0, tm2<0
         (100, 10, 8, 0, 0.5, 0.2),  # vs -> vr -> vt, vr<vm, tm1<0, tm2<0
-        (100, 10, 6, 0, 3, 1),     # vs -> vr -> vt, vr<vm, tm1>0, tm2<0
-        (100, 10, 6, 0, 4, 1),     # ve == vt, tm > 0 just
-        (100, 10, 8, 0, 6, 1),     # ve != vt, tm > 0, accel
-        (100, 10, 8, 4, 0, 1),     # ve != vt, tm > 0, decel
-        (100, 10, 4, 0, 4, 0.1),   # ve != vt, tm < 0, accel
-        (100, 10, 4, 4, 0, 0.1),   # ve != vt, tm < 0, decel
+        (100, 10, 6, 0, 3, 1),      # vs -> vr -> vt, vr<vm, tm1>0, tm2<0
+        (100, 10, 6, 0, 4, 1),      # ve == vt, tm > 0 just
+        (100, 10, 8, 0, 6, 1),      # ve != vt, tm > 0, accel
+        (100, 10, 8, 4, 0, 1),      # ve != vt, tm > 0, decel
+        (100, 10, 4, 0, 4, 0.1),    # ve != vt, tm < 0, accel
+        (100, 10, 4, 4, 0, 0.1),    # ve != vt, tm < 0, decel
     ]
     for p in params:
         ad = ctrl.AccelDesigner(j_max=p[0], a_max=p[1], v_max=p[2],
@@ -61,3 +70,8 @@ if __name__ == "__main__":
         ad = ctrl.AccelDesigner(j_max=p[0], a_max=p[1], v_max=p[2],
                                 v_start=-p[3], v_target=-p[4], dist=-p[5])
         plot_accel_designer(ad)
+
+
+if __name__ == "__main__":
+    test_accel_curve()
+    # test_accel_designer()

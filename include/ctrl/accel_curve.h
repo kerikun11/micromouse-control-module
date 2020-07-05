@@ -7,7 +7,8 @@
  */
 #pragma once
 
-#include <cmath>    //< for std::sqrt, std::cbrt, std::pow
+#include <array>
+#include <cmath>    //< for std::sqrt, std::cbrt
 #include <iostream> //< for std::cout
 #include <ostream>
 
@@ -192,6 +193,10 @@ public:
   float t_1() const { return t1; }
   float t_2() const { return t2; }
   float t_3() const { return t3; }
+  /**
+   * @brief 境界のタイムスタンプを取得
+   */
+  const std::array<float, 4> getTimeStamp() const { return {{t0, t1, t2, t3}}; }
   /**
    * @brief std::ostream に軌道のcsvを出力する関数．
    */

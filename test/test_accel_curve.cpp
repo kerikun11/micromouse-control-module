@@ -46,19 +46,28 @@ public:
   }
 };
 
-TEST(AccelCurve, AccelCurveTest) {
+TEST(AccelCurve, RandomConstraint) {
   AccelCurveTest act;
-  int n = 1000;
+  int n = 100;
   std::mt19937 mt{std::random_device{}()};
   std::uniform_real_distribution<float> j_urd(100000, 1000000);
   std::uniform_real_distribution<float> a_urd(100, 10000);
   std::uniform_real_distribution<float> v_urd(1, 10000);
   for (int i = 0; i < n; ++i) {
-    act.test(j_urd(mt), a_urd(mt), v_urd(mt), v_urd(mt));
+    act.test(j_urd(mt), a_urd(mt), +v_urd(mt), +v_urd(mt));
     act.test(j_urd(mt), a_urd(mt), -v_urd(mt), -v_urd(mt));
   }
-  act.test(240000, 9000, 0, 1200);
-  act.test(240000, 900, 0, 1200);
-  act.test(240000, 90, 0, 1200);
-  act.test(240000, 90, 1200, 1200);
+}
+
+TEST(AccelCurve, GivenConstraints) {
+  AccelCurveTest act;
+  const std::vector<std::vector<float>> params = {
+      // jm, am, vs, ve
+      {100, 10, 0, 1}, {100, 10, 0, 2}, {100, 10, 1, 2},
+      {100, 10, 2, 1}, {100, 10, 2, 0}, {100, 10, 1, 0},
+  };
+  for (const auto &ps : params) {
+    act.test(ps[0], ps[1], +ps[2], +ps[3]);
+    act.test(ps[0], ps[1], -ps[2], -ps[3]);
+  }
 }
