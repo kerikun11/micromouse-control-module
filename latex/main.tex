@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{ascmac} % for \itembox
 \usepackage{amsfonts} % for \mathbb
+\usepackage{graphicx}
 %%============================================================================%%
 \title{曲線加速の設計(書き途中)}
 \author{Ryotaro Onuki (kerikun11+github@gmail.com)}
@@ -17,6 +18,8 @@
 %%============================================================================%%
 \section{概要}
 曲線加速の設計は次の2つの段階に分かれている．
+実際の走行に使用するのは設計2である．
+設計1は設計2の補助である．
 \begin{itembox}[l]{設計1}
     \quad
     始点速度から終点速度までの，
@@ -40,9 +43,19 @@
     \end{itemize}
 \end{itembox}
 %%============================================================================%%
-\section{移動距離拘束なし}
+\section{設計1：移動距離拘束なし}
+はじめに，
+走行位置には拘束を設けず，
+与えらた始点速度と終点速度を滑らかにつなぐ速度軌道を設計する．
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/accel_curve.pdf}
+    \caption{滑らかな速度軌道}
+\end{figure}
+
 \subsection{導出結果}
-時刻 $t$ における，躍度 $j(t)$, 加速度 $a(t)$, 速度 $v(t)$, 位置 $x(t)$
+任意の時刻 $t$ における，躍度 $j(t)$, 加速度 $a(t)$, 速度 $v(t)$, 位置 $x(t)$
+は，
 \begin{align}
     j(t)
      & :=
@@ -84,6 +97,8 @@
         x_3 + v_3(t-t_3)                           & (t_3 < t \hspace{2.2em})
     \end{array} \right.
 \end{align}
+である．
+ただし，
 躍度定数 $j_m$,
 加速度定数 $a_m$
 \begin{align}
@@ -164,12 +179,14 @@
         (t_m \leq 0)
     \end{array}
 \end{align}
+を定義する．
 
 %%============================================================================%%
 \subsection{設計手順}
+前述の式を以下の手順で計算する．
 \begin{enumerate}
     \item 躍度定数，加速度定数 $j_m,~a_m$ を求める．
-    \item 時間定数 $t_c,~t_m$ を求める．
+    \item 時間定数 $t_m,~t_c,~t_c'$ を求める．
     \item 時刻定数 $t_i$ を求める．
     \item 速度定数 $v_i$ を求める．
     \item 位置定数 $x_i$ を求める．
@@ -178,6 +195,8 @@
 
 %%============================================================================%%
 \subsection{導出過程}
+躍度の関数を適当に与えて，それを積分する形で導出した．
+
 加速と減速の双方で共通の式を使用できるように，
 躍度定数 $j_m \in \mathbb{R}$ および 加速度定数 $a_m \in \mathbb{R}$ を
 \begin{align}
@@ -364,7 +383,15 @@ $v_s$ と $v_e$ の速度差が十分にあり， $t_m>0$ と仮定する．
 
 \clearpage
 %%============================================================================%%
-\section{移動距離拘束つき}
+\section{設計2：移動距離拘束つき}
+つぎに，
+走行距離の拘束を満たす滑らかな速度軌道を設計する．
+実際に走行に使用する軌道である．
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/accel_designer.pdf}
+    \caption{滑らかな速度軌道}
+\end{figure}
 \begin{table}[htbp]
     \centering
     \caption{変数のまとめ}
@@ -374,7 +401,7 @@ $v_s$ と $v_e$ の速度差が十分にあり， $t_m>0$ と仮定する．
         最大加速度 & $a_m$ & [m/s${}^2$] & 拘束   &                  \\
         最大速度   & $v_m$ & [m/s]       & 拘束   &                  \\
         始点速度   & $v_s$ & [m/s]       & 初期値 &                  \\
-        目標速度   & $v_t$ & [m/s]       & 目標   & 目標終点速度     \\
+        目標速度   & $v_t$ & [m/s]       & 目標値 & 目標終点速度     \\
         終点速度   & $v_e$ & [m/s]       & 結果   & 到達可能終点速度 \\
         移動距離   & $d$   & [m]         & 拘束   &                  \\
         始点時刻   & $t_s$ & [m]         & 初期値 & オプション       \\
@@ -395,7 +422,7 @@ $v_s$ と $v_e$ の速度差が十分にあり， $t_m>0$ と仮定する．
     \begin{array}{lll}
         v_t    & \mbox{if\quad}      & \|d\| \geq d_{v_s,v_t}
         \\
-        v_{e1} & \mbox{else if\quad} & \|d\| > \|d_{t_m=0}\| \mbox{\quad and \quad} d\, v_{t_m=0} > 0
+        v_{e1} & \mbox{else if\quad} & \|d\| \geq d_{t_m=0} \mbox{\quad and \quad} d\, v_{t_m=0} > 0
         \\
         v_{e2} & \mbox{else}
     \end{array}
@@ -403,16 +430,19 @@ $v_s$ と $v_e$ の速度差が十分にあり， $t_m>0$ と仮定する．
 \end{align}
 始点速度 $v_s$ から目標速度 $v_t$ まで変化するのに必要な最小移動距離 $d_{v_s,v_t}$
 \begin{align}
-    d_{v_s,v_t}(j_m,a_m,v_s,v_t) & := \frac{1}{2}(v_s+v_t) \, t_{v_s,v_t}        \\
+    d_{v_s,v_t}(j_m,a_m,v_s,v_t) & := \frac{1}{2}(v_s+v_t) \, t_{v_s,v_t} \\
     t_{v_s,v_t}                  & :=
     \left\{\begin{array}{ll}
         2t_c + t_m & (t_m>0)    \\
         2t_c'      & (t_m\leq0)
     \end{array}\right.
-    \\
-    t_m                          & := \frac{1}{a_m}(v_t - v_s) - \frac{a_m}{j_m} \\
-    t_c                          & := \frac{a_m}{j_m}                            \\
-    t_c'                         & := \sqrt{\frac{1}{j_m}(v_t-v_s)}
+\end{align}
+等加速度が一定となる時間 $t_m$ ，
+躍度が一定となる時間 $t_c,~t_c'$
+\begin{align}
+    t_m  & := \frac{1}{a_m}(v_t - v_s) - \frac{a_m}{j_m} \\
+    t_c  & := \frac{a_m}{j_m}                            \\
+    t_c' & := \sqrt{\frac{1}{j_m}(v_t-v_s)}
 \end{align}
 等加速度時間 $t_m = 0$となるときの移動距離 $d_{t_m=0}$ ，終点速度 $v_{t_m=0}$
 \begin{align}
@@ -434,82 +464,27 @@ $v_s$ と $v_e$ の速度差が十分にあり， $t_m>0$ と仮定する．
     \\
     \bar{c} & := \sqrt[3]{8a^3/27+b/2 - \|b\|\sqrt{8a^3/b/27+1/4}}
 \end{align}
-
 始点速度 $v_s$ と終点速度 $v_e$ ，移動変位 $d$ を満たす
 到達可能速度 $v_r$
 \begin{align}
     v_r := \frac{-a_mt_c \pm \sqrt{a_m^2t_c^2-(v_s+v_e)a_mt_c+4a_md+2(v_s^2+v_e^2)}}{2}
 \end{align}
-
 飽和速度
-$$
+\begin{align}
     v_m = \min\{v_r,~v_{\max} \}
-$$
-
-\clearpage
-\begin{align}
-    v_e(j_m, a_m, v_s, v_t, d) :=
-    \left\{\begin{array}{ll}
-        v_{e1} & (d > d_{t_m=0} \mbox{\quad and \quad} v_{t_m=0} > 0)
-        \\
-        v_{e2} & (\mbox{otherwise})
-    \end{array}\right.
 \end{align}
-ただし，
+時刻定数を決定
 \begin{align}
-    d_{t_m=0} & := \left( v_s + \frac{1}{2} a_m t_c \right) t_c
-    \\
-    v_{t_m=0} & := \frac{d}{t_c} - v_s
-    \\
-    t_c       & := \frac{a_m}{j_m}
-    \\
-    v_{e1}    & := \frac{-a_m t_c + \sqrt{a_m^2 t_c^2-4(a_m t_c v_s - v_s^2 - 2a_m d)}}{2}
-    \\
-    v_{e2}    & := \frac{1}{3}\left(c +\frac{4a^2}{c} -a \right)
-    \\
-    a         & := v_s
-    \\
-    b         & := \frac{a_md^2}{t_c}
-    \\
-    c         & := \sqrt[3]{\frac{\sqrt{27b(32a^3+27b)} + 16a^3+27b}{2}}
-\end{align}
-簡略化
-\begin{align}
-    v_{e2}  & := c +\bar{c} - a/3 = c + 4a^2/c/9 - a/3
-    \\
-    a       & := v_s
-    \\
-    b       & := \frac{a_md^2}{t_c}
-    \\
-    c       & := \sqrt[3]{8a^3/27+b/2 + \|b\|\sqrt{8a^3/b/27+1/4)}}
-    \\
-    \bar{c} & := \sqrt[3]{8a^3/27+b/2 - \|b\|\sqrt{8a^3/b/27+1/4)}}
-\end{align}
-
-走行距離に余裕があるとき，
-最大速度 $v_m$ を決定する．
-$$
-    v_m(t_c, a_m, v_s, v_a, v_e, d) := \min\{v_a,~v_{m2}\}
-$$
-ただし，
-$$
     \begin{array}{l@{~}l}
-        v_{m2} & := \max\{v_s, v_e, v_{m1}\}                                                   \\
-        v_{m1} & := \frac{-a_mt_c + \sqrt{a_m^2t_c^2-(v_s+v_e)a_mt_c+4a_md+2(v_s^2+v_e^2)}}{2}
-    \end{array}
-$$
-
-$$
-    \begin{array}{l@{~}l}
-        t_0 & := 0
+        t_0 & := t_0
         \\
-        t_1 & := ac.t_{end}
+        t_1 & := t_o + ac.t_{end}
         \\
-        t_2 & := t_1 +             \frac{d - ac.x_{end} - dc.x_{end}}{v_m}
+        t_2 & := t_1 + \frac{d - ac.x_{end} - dc.x_{end}}{v_m}
         \\
         t_3 & := t_2 + dc.t_{end}
     \end{array}
-$$
+\end{align}
 
 \subsection{導出}
 
@@ -585,7 +560,7 @@ $$
     \\
                     & =
     \frac{1}{2}(v_s+v_r)\left(t_c+\frac{v_r-v_s}{a_m}\right)+
-    \frac{1}{2}(v_r+v_e)\left(t_c+\frac{v_e-v_r}{a_m}\right)
+    \frac{1}{2}(v_r+v_e)\left(t_c+\frac{v_r-v_s}{a_m}\right)
     \\
     \Leftrightarrow & \quad
     v_r := \frac{-a_mt_c + \sqrt{a_m^2t_c^2-(v_s+v_e)a_mt_c+4a_md+2(v_s^2+v_e^2)}}{2}

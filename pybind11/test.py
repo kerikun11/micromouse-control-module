@@ -16,8 +16,9 @@ def plot_accel_designer(ad):
     ylabels = ['j [m/s/s/s]', 'a [m/s/s]', 'v [m/s]', 'p [m]']
 
     time_stamps = ad.getTimeStamp()
+    dt = (time_stamps[-1] - time_stamps[0]) * 1e-4
     for i in range(len(time_stamps)-1):
-        t = np.arange(time_stamps[i], time_stamps[i+1], 1e-3)
+        t = np.arange(time_stamps[i]+dt, time_stamps[i+1], dt)
         j = np.array([ad.j(tt) for tt in t])
         a = np.array([ad.a(tt) for tt in t])
         v = np.array([ad.v(tt) for tt in t])
@@ -73,5 +74,9 @@ def test_accel_designer():
 
 
 if __name__ == "__main__":
-    test_accel_curve()
+    # test_accel_curve()
     # test_accel_designer()
+    plot_accel_designer(ctrl.AccelCurve(100, 6, 0, 1))
+    # plt.savefig('accel_curve.pdf')
+    plot_accel_designer(ctrl.AccelDesigner(100, 6, 2, 0, 1, 1))
+    # plt.savefig('accel_designer.pdf')
