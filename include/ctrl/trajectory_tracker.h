@@ -142,7 +142,7 @@ public:
       const auto b = gain.low_b;       //< b > 0
       const auto zeta = gain.low_zeta; //< zeta \in [0,1]
       const auto v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
-      const auto w_d = 0;
+      const auto w_d = ref_dq.th;
       const auto k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);
       const auto k2 = b;
       const auto k3 = k1;
@@ -155,7 +155,7 @@ public:
       res.v = v;
       res.w = w;
       res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;
-      res.dw = 0;
+      res.dw = ref_ddq.th;
       // res.v = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
       // res.w = 0;
       // res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;
