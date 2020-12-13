@@ -157,9 +157,9 @@ public:
       res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;
       res.dw = ref_ddq.th;
       // res.v = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
-      // res.w = 0;
+      // res.w = red_dq.th;
       // res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;
-      // res.dw = 0;
+      // res.dw = ref_ddq.th;
     } else {
       res.v = xi;
       res.dv = d_xi;

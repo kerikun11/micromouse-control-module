@@ -51,7 +51,7 @@ public:
   /**
    * @brief 生成済みスラローム形状を単に代入するコンストラクタ
    */
-  Shape(const Pose total, const Pose curve, float straight_prev,
+  Shape(const Pose &total, const Pose &curve, float straight_prev,
         const float straight_post, const float v_ref, const float dddth_max,
         const float ddth_max, const float dth_max)
       : total(total), curve(curve), straight_prev(straight_prev),
@@ -70,7 +70,7 @@ public:
    * @param ddth_max 最大角加速度の大きさ [rad/s/s]
    * @param dth_max 最大角速度の大きさ [rad/s]
    */
-  Shape(const Pose total, const float y_curve_end, const float x_adv = 0,
+  Shape(const Pose &total, const float y_curve_end, const float x_adv = 0,
         const float dddth_max = dddth_max_default,
         const float ddth_max = ddth_max_default,
         const float dth_max = dth_max_default)

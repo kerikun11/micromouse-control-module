@@ -21,52 +21,27 @@ struct Polar {
 public:
   constexpr Polar(const float tra = 0, const float rot = 0)
       : tra(tra), rot(rot) {}
-  constexpr Polar(const Polar &o) : tra(o.tra), rot(o.rot) {}
   void clear() { tra = rot = 0; }
-  const Polar &operator=(const Polar &o) {
-    tra = o.tra;
-    rot = o.rot;
-    return *this;
+  Polar &operator+=(const Polar &o) {
+    return tra += o.tra, rot += o.rot, *this;
   }
-  const Polar &operator+=(const Polar &o) {
-    tra += o.tra;
-    rot += o.rot;
-    return *this;
+  Polar &operator-=(const Polar &o) {
+    return tra -= o.tra, rot -= o.rot, *this;
   }
-  const Polar &operator*=(const Polar &o) {
-    tra *= o.tra;
-    rot *= o.rot;
-    return *this;
+  Polar &operator*=(const Polar &o) {
+    return tra *= o.tra, rot *= o.rot, *this;
   }
-  const Polar &operator/=(const Polar &o) {
-    tra /= o.tra;
-    rot /= o.rot;
-    return *this;
+  Polar &operator/=(const Polar &o) {
+    return tra /= o.tra, rot /= o.rot, *this;
   }
-  const Polar operator+(const Polar &o) const {
-    return Polar(tra + o.tra, rot + o.rot);
-  }
-  const Polar operator-(const Polar &o) const {
-    return Polar(tra - o.tra, rot - o.rot);
-  }
-  const Polar operator*(const Polar &o) const {
-    return Polar(tra * o.tra, rot * o.rot);
-  }
-  const Polar operator/(const Polar &o) const {
-    return Polar(tra / o.tra, rot / o.rot);
-  }
-  const Polar operator+(const float &k) const {
-    return Polar(tra + k, rot + k);
-  }
-  const Polar operator-(const float &k) const {
-    return Polar(tra - k, rot - k);
-  }
-  const Polar operator*(const float &k) const {
-    return Polar(tra * k, rot * k);
-  }
-  const Polar operator/(const float &k) const {
-    return Polar(tra / k, rot / k);
-  }
+  Polar operator+(const Polar &o) const { return {tra + o.tra, rot + o.rot}; }
+  Polar operator-(const Polar &o) const { return {tra - o.tra, rot - o.rot}; }
+  Polar operator*(const Polar &o) const { return {tra * o.tra, rot / o.rot}; }
+  Polar operator/(const Polar &o) const { return {tra / o.tra, rot / o.rot}; }
+  Polar operator+(const float k) const { return {tra + k, rot + k}; }
+  Polar operator-(const float k) const { return {tra - k, rot - k}; }
+  Polar operator*(const float k) const { return {tra * k, rot * k}; }
+  Polar operator/(const float k) const { return {tra / k, rot / k}; }
   friend std::ostream &operator<<(std::ostream &os, const Polar &o) {
     return os << "(" << o.tra << ", " << o.rot << ")";
   }

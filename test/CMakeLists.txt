@@ -36,7 +36,7 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
 endif()
 
 # give a name
-set(CUSTOM_TARGET_NAME "gt")
+set(CUSTOM_TARGET_NAME "test")
 set(TARGET_NAME test_${CUSTOM_TARGET_NAME})
 # make a target
 file(GLOB SRC_FILES *.cpp)

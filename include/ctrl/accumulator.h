@@ -6,12 +6,10 @@
  */
 #pragma once
 
-#include <cstdint>
 #include <new>
 
 namespace ctrl {
 
-static_assert(sizeof(std::size_t) == 4, "");
 /**
  * @brief データの蓄積器
  *
@@ -33,7 +31,12 @@ public:
   /**
    * @brief デストラクタ
    */
-  ~Accumulator() { delete buffer; }
+  ~Accumulator() { delete[] buffer; }
+  /**
+   * @brief バッファをクリアする関数
+   *
+   * @param value 代入する値
+   */
   void clear(const T &value = T()) {
     for (int i = 0; i < S; i++)
       buffer[i] = value;

@@ -20,61 +20,30 @@ struct Pose {
   float th; /**< @brief theta 成分 [rad] */
 
 public:
-  /**
-   * @brief デフォルトコンストラクタ
-   */
   Pose(const float x = 0, const float y = 0, const float th = 0)
       : x(x), y(y), th(th) {}
-  /**
-   * @brief コピーコンストラクタ
-   */
-  Pose(const Pose &o) : x(o.x), y(o.y), th(o.th) {}
-  /**
-   * @brief 初期化
-   */
   void clear() { x = y = th = 0; }
-  const Pose homogeneous(const Pose offset) const {
-    return offset + this->rotate(offset.th);
-  }
-  const Pose rotate(const float angle) const {
+  Pose mirror_x() const { return Pose(x, -y, -th); }
+  Pose rotate(const float angle) const {
     const float cos_angle = std::cos(angle);
     const float sin_angle = std::sin(angle);
-    return Pose(x * cos_angle - y * sin_angle, x * sin_angle + y * cos_angle,
-                th);
+    return {x * cos_angle - y * sin_angle, x * sin_angle + y * cos_angle, th};
   }
-  const Pose mirror_x() const { return Pose(x, -y, -th); }
-  bool operator==(const Pose &obj) const {
-    return x == obj.x && y == obj.y && th == obj.th;
+  Pose homogeneous(const Pose &offset) const {
+    return offset + this->rotate(offset.th);
   }
-  const Pose &operator=(const Pose &o) {
-    x = o.x, y = o.y, th = o.th;
-    return *this;
+  Pose &operator+=(const Pose &o) {
+    return x += o.x, y += o.y, th += o.th, *this;
   }
-  const Pose &operator+=(const Pose &o) {
-    x += o.x, y += o.y, th += o.th;
-    return *this;
+  Pose &operator-=(const Pose &o) {
+    return x -= o.x, y -= o.y, th -= o.th, *this;
   }
-  const Pose &operator-=(const Pose &o) {
-    x -= o.x, y -= o.y, th -= o.th;
-    return *this;
-  }
-  const Pose operator+() const { return Pose(x, y, th); }
-  const Pose operator-() const { return Pose(-x, -y, -th); }
-  const Pose operator+(const Pose &o) const {
-    return Pose(x + o.x, y + o.y, th + o.th);
-  }
-  const Pose operator-(const Pose &o) const {
-    return Pose(x - o.x, y - o.y, th - o.th);
-  }
-  const Pose operator*(const float &k) const {
-    return Pose(x * k, y * k, th * k);
-  }
-  const Pose operator/(const float &k) const {
-    return Pose(x / k, y / k, th / k);
-  }
+  Pose operator+() const { return *this; }
+  Pose operator-() const { return Pose(-x, -y, -th); }
+  Pose operator+(const Pose &o) const { return {x + o.x, y + o.y, th + o.th}; }
+  Pose operator-(const Pose &o) const { return {x - o.x, y - o.y, th - o.th}; }
   friend std::ostream &operator<<(std::ostream &os, const Pose &o) {
-    os << "(" << o.x << ", " << o.y << ", " << o.th << ")";
-    return os;
+    return os << "(" << o.x << ", " << o.y << ", " << o.th << ")";
   }
 };
 

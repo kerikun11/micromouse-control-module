@@ -83,18 +83,15 @@ PYBIND11_MODULE(ctrl, m) {
       .def_readwrite("y", &Pose::y)
       .def_readwrite("th", &Pose::th)
       .def("clear", &Pose::clear)
-      .def("homogeneous", &Pose::homogeneous)
-      .def("rotate", &Pose::rotate)
       .def("mirror_x", &Pose::mirror_x)
-      .def(py::self == py::self)
+      .def("rotate", &Pose::rotate)
+      .def("homogeneous", &Pose::homogeneous)
       .def(py::self += py::self)
       .def(py::self -= py::self)
       .def(+py::self)
       .def(-py::self)
       .def(py::self + py::self)
       .def(py::self - py::self)
-      .def(py::self * float())
-      .def(py::self / float())
       .def("__str__",
            [](const Pose &obj) {
              std::stringstream ss;

@@ -5,6 +5,7 @@
 add_compile_options(
   -Werror
   -Wundef
+  -fdiagnostics-color=always # colorized output for gcc
 )
 
 ## add examples
