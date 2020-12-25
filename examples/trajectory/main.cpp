@@ -61,8 +61,8 @@ int main(void) {
     for (float t = 0; t < trajectory.t_end(); t += Ts) {
       trajectory.update(s, t);
       const auto est_q = s.q;
-      const auto est_v = s.dq.x;
-      const auto est_a = s.ddq.x;
+      const auto est_v = Polar(s.dq.x, 0);
+      const auto est_a = Polar(s.ddq.x, 0);
       const auto ref = tt.update(est_q, est_v, est_a, s);
       printCsv(t, s, ref);
     }

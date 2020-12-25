@@ -88,8 +88,6 @@ PYBIND11_MODULE(ctrl, m) {
       .def("homogeneous", &Pose::homogeneous)
       .def(py::self += py::self)
       .def(py::self -= py::self)
-      .def(+py::self)
-      .def(-py::self)
       .def(py::self + py::self)
       .def(py::self - py::self)
       .def("__str__",

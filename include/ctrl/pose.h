@@ -38,8 +38,6 @@ public:
   Pose &operator-=(const Pose &o) {
     return x -= o.x, y -= o.y, th -= o.th, *this;
   }
-  Pose operator+() const { return *this; }
-  Pose operator-() const { return Pose(-x, -y, -th); }
   Pose operator+(const Pose &o) const { return {x + o.x, y + o.y, th + o.th}; }
   Pose operator-(const Pose &o) const { return {x - o.x, y - o.y, th - o.th}; }
   friend std::ostream &operator<<(std::ostream &os, const Pose &o) {
