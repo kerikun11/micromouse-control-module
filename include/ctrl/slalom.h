@@ -25,10 +25,16 @@ namespace ctrl {
 namespace slalom {
 
 /**
- * @brief 必要なデフォルト定数
+ * @brief 最大角躍度のデフォルト値 [rad/s/s/s]
  */
 static constexpr float dddth_max_default = 1200 * M_PI;
+/**
+ * @brief 最大角加速度のデフォルト値 [rad/s/s]
+ */
 static constexpr float ddth_max_default = 36 * M_PI;
+/**
+ * @brief 最大角速度のデフォルト値 [rad/s]
+ */
 static constexpr float dth_max_default = 3 * M_PI;
 
 /**

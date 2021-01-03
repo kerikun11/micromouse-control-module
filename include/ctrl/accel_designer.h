@@ -258,7 +258,8 @@ public:
 protected:
   float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
   float x0, x3;         /**< @brief 境界点の位置 [m] */
-  AccelCurve ac, dc; /**< @brief 曲線加速，曲線減速オブジェクト */
+  AccelCurve ac;        /**< @brief 曲線加速用オブジェクト */
+  AccelCurve dc;        /**< @brief 曲線減速用オブジェクト */
 };
 
 } // namespace ctrl

@@ -1,31 +1,28 @@
 ## file: CMakeLists.txt
 ## author: Ryotaro Onuki <kerikun11+github@gmail.com>
-## date: 2020.05.13
-cmake_minimum_required(VERSION 3.12)
+## date: 2021.01.03
+cmake_minimum_required(VERSION 3.13)
 project("MicroMouse Control Module" CXX)
 
-## build option for compiler
+## global build options
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
-add_compile_definitions(_USE_MATH_DEFINES) # for use of M_PI in <cmath>
+add_compile_options(-fdiagnostics-color=always) # colorized output for gcc
 
-## additional options
-link_libraries(stdc++fs) # link filesystem library in gcc --version < 9
-
-## more warnings
-add_compile_options(
-  -Wall
-  -Wextra
-  -fno-common
-  -Wdouble-promotion
+## make a interface library (header only library)
+set(MICROMOUSE_CONTROL_MODULE "mmcm")
+add_library(${MICROMOUSE_CONTROL_MODULE} INTERFACE)
+target_include_directories(${MICROMOUSE_CONTROL_MODULE} INTERFACE include)
+target_compile_definitions(${MICROMOUSE_CONTROL_MODULE}
+  INTERFACE _USE_MATH_DEFINES # for use of M_PI in <cmath>
 )
 
-## documentation
-add_subdirectory(docs)
+## unit test
+add_subdirectory(test)
 ## examples
 add_subdirectory(examples)
-## test
-add_subdirectory(test)
 ## pybind11
 add_subdirectory(pybind11 EXCLUDE_FROM_ALL)
+## documentation
+add_subdirectory(docs)

@@ -1,11 +1,12 @@
 ## author: Ryotaro Onuki <kerikun11+github@gmail.com>
 ## date: 2020.05.13
 
-## make warning error in examples
+## add warnings in examples
 add_compile_options(
-  -Werror
-  -Wundef
-  -fdiagnostics-color=always # colorized output for gcc
+  -Wall # Enables a big group of common warnings - see https://clang.llvm.org/docs/DiagnosticsReference.html#wall
+  -Wextra # Enables key warnings like -Wunused-parameter and -Wsign-compare - see https://clang.llvm.org/docs/DiagnosticsReference.html#wextra
+  -Wundef # Warn if an undefined identifier is evaluated in an #if directive. Such identifiers are replaced with zero.
+  -Wdouble-promotion # Give a warning when a value of type float is implicitly promoted to double.
 )
 
 ## add examples

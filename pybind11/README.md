@@ -42,7 +42,7 @@ pybind11を用いてC++ライブラリをラッピングするPythonモジュー
 ```sh
 # CMake ビルドディレクトリへ移動
 cd ../build
-# Pythonモジュール ctrl.so の生成
+# Pythonモジュール ctrl.so (または ctrl.dll) の生成
 make all
 # 可視化用Pythonスクリプト ./plot.py の実行
 make pybind11_plot

@@ -2,12 +2,16 @@
     "name": "MicroMouseControlModule",
     "description": "MicroMouse Control Module",
     "keywords": "micromouse,control,robot,vehicle",
+    "repository": "https://github.com/kerikun11/micromouse-control-module.git",
+    "authors": {
+        "name": "Ryotaro Onuki",
+        "email": "kerikun11+github@gmail.com",
+        "url": "https://github.com/kerikun11/"
+    },
+    "license": "MIT",
     "build": {
         "flags": [
-            "-I include"
-        ],
-        "srcFilter": [
-            "+include"
+            "-std=c++14"
         ]
     }
 }
