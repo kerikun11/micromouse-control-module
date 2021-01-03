@@ -1,0 +1,39 @@
+name: GitHub Pages Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Install Packages
+        run: sudo apt install -y gcc g++ make cmake graphviz
+
+      - name: Install Specific Doxygen
+        env:
+          DOXYGEN_VERSION: 1.8.20
+        run: |
+          sudo apt install -y gcc g++ make flex bison cmake python
+          cd /tmp
+          curl -L https://doxygen.nl/files/doxygen-$DOXYGEN_VERSION.src.tar.gz | tar xz
+          cd doxygen-$DOXYGEN_VERSION
+          mkdir build; cd build; cmake .. -D CMAKE_BUILD_TYPE=Release
+          sudo make -j$(nproc) install
+
+      - name: Build
+        run: mkdir build && cd build && cmake .. && make docs
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/docs/html
+          publish_branch: gh-pages
