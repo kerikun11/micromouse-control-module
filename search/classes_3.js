@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gain_102',['Gain',['../structctrl_1_1FeedbackController_1_1Gain.html',1,'ctrl::FeedbackController&lt; T &gt;::Gain'],['../structctrl_1_1TrajectoryTracker_1_1Gain.html',1,'ctrl::TrajectoryTracker::Gain']]]
+  ['gain_109',['Gain',['../da/d79/structctrl_1_1FeedbackController_1_1Gain.html',1,'ctrl::FeedbackController&lt; T &gt;::Gain'],['../db/d67/structctrl_1_1TrajectoryTracker_1_1Gain.html',1,'ctrl::TrajectoryTracker::Gain']]]
 ];

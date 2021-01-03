@@ -1,4 +1,0 @@
-<map id="ctrl::AccelDesigner" name="ctrl::AccelDesigner">
-<area shape="rect" id="node1" title="拘束条件を満たす曲線加減速の軌道を生成するクラス" alt="" coords="5,109,139,136"/>
-<area shape="rect" id="node2" href="$classctrl_1_1AccelCurve.html" title="加速曲線を生成するクラス" alt="" coords="14,5,130,32"/>
-</map>

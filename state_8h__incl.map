@@ -1,6 +1,0 @@
-<map id="ctrl/state.h" name="ctrl/state.h">
-<area shape="rect" id="node1" title="軌道制御の状態変数" alt="" coords="37,5,121,32"/>
-<area shape="rect" id="node2" href="$pose_8h.html" title="平面上の位置姿勢の座標もつファイル．" alt="" coords="48,80,109,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,155,64,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="88,155,157,181"/>
-</map>

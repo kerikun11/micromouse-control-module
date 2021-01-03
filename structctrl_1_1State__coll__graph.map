@@ -1,4 +1,0 @@
-<map id="ctrl::State" name="ctrl::State">
-<area shape="rect" id="node1" title="軌道制御の状態変数" alt="" coords="5,139,84,165"/>
-<area shape="rect" id="node2" href="$structctrl_1_1Pose.html" title="位置姿勢の座標" alt="" coords="5,5,84,32"/>
-</map>
