@@ -1,5 +1,5 @@
 # author: Ryotaro Onuki <kerikun11+github@gmail.com>
-# date: 2020.06.12
+# date: 2021.01.03
 
 # find Doxygen
 find_package(Doxygen)
@@ -17,6 +17,20 @@ set(DOXYGEN_MACRO_EXPANSION YES)
 set(DOXYGEN_EXPAND_ONLY_PREDEF YES)
 set(DOXYGEN_PREDEFINED __attribute__((__packed__)))
 set(DOXYGEN_CREATE_SUBDIRS YES) # to resolve src code link
+
+# set library version
+find_package(Git)
+if(GIT_FOUND)
+  execute_process(
+    COMMAND ${GIT_EXECUTABLE} describe --tags --dirty
+    WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
+    OUTPUT_VARIABLE GIT_DESCRIBE_VERSION
+    RESULT_VARIABLE GIT_DESCRIBE_RESULT
+    ERROR_VARIABLE GIT_DESCRIBE_ERROR
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+  set(DOXYGEN_PROJECT_NUMBER ${GIT_DESCRIBE_VERSION})
+endif()
 
 # add target to generate docs
 set(TARGET_NAME "docs")
