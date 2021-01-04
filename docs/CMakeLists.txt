@@ -8,7 +8,7 @@ if(NOT DOXYGEN_FOUND)
   RETURN()
 endif()
 
-# modify doxyfile
+# Doxygen Configuration
 set(DOXYGEN_USE_MDFILE_AS_MAINPAGE "README.md")
 set(DOXYGEN_STRIP_FROM_PATH ${PROJECT_SOURCE_DIR}/include)
 set(DOXYGEN_EXTRACT_STATIC YES)
@@ -32,7 +32,7 @@ if(GIT_FOUND)
   set(DOXYGEN_PROJECT_NUMBER ${GIT_DESCRIBE_VERSION})
 endif()
 
-# add target to generate docs
+# make a custom target to generate docs
 set(TARGET_NAME "docs")
 doxygen_add_docs(${TARGET_NAME}
   ${PROJECT_SOURCE_DIR}/docs

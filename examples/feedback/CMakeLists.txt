@@ -4,11 +4,11 @@
 # give a name
 set(CUSTOM_TARGET_NAME "feedback")
 set(TARGET_NAME example_${CUSTOM_TARGET_NAME})
-# make a target
+# make a executable
 file(GLOB SRC_FILES *.cpp)
 add_executable(${TARGET_NAME} ${SRC_FILES})
 target_link_libraries(${TARGET_NAME} PRIVATE ${MICROMOUSE_CONTROL_MODULE})
-# make a custom target to run
+# make a custom target to run example
 add_custom_target(${CUSTOM_TARGET_NAME}
   COMMAND ${TARGET_NAME}
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
