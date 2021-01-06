@@ -188,20 +188,20 @@ Pythonモジュールの生成とプロットスクリプトの実行</h2>
 <div class="line">make docs</div>
 <div class="line"># ブラウザで開く (open コマンドは環境依存)</div>
 <div class="line">open docs/html/index.html</div>
-</div><!-- fragment --><p>上記コマンドにより <code>/build/docs/html/index.html</code> にリファレンスが生成される．</p>
+</div><!-- fragment --><p>上記コマンドにより <code>build/docs/html/index.html</code> にリファレンスが生成される．</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md29"></a>
 ユニットテスト</h2>
 <p><a href="https://github.com/google/googletest">GoogleTest</a> によるユニットテストと <a href="https://github.com/linux-test-project/lcov">LCOV</a> によるカバレッジテストを実行する</p>
-<div class="fragment"><div class="line"># テストを実行</div>
+<div class="fragment"><div class="line"># カバレッジ結果の初期化</div>
+<div class="line">make lcov_init</div>
+<div class="line"># テストを実行</div>
 <div class="line">make test_run</div>
 <div class="line"># カバレッジ結果の収集</div>
 <div class="line">make lcov</div>
-<div class="line"># ブラウザで開く (open コマンドは環境依存)</div>
+<div class="line"># ブラウザでカバレッジ結果をみる (open コマンドは環境依存)</div>
 <div class="line">open test/html/index.html</div>
-<div class="line"># カバレッジのクリア</div>
-<div class="line">make lcov_clean</div>
-</div><!-- fragment --><p>上記コマンドにより <code>/build/test/html/index.html</code> にカバレッジ結果が生成される． </p>
+</div><!-- fragment --><p>上記コマンドにより <code>build/test/html/index.html</code> にカバレッジ結果が生成される． </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
