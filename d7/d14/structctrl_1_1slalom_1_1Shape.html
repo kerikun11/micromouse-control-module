@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.1.2-1-gd9f8eda</span>
+   &#160;<span id="projectnumber">v1.1.3</span>
    </div>
   </td>
  </tr>
@@ -214,18 +214,15 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="
 <p>拘束条件からスラローム形状を生成するコンストラクタ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramtype"></td><td class="paramname">total</td><td>前後の直線を含めた移動位置姿勢 </td></tr>
-    <tr><td class="paramtype">y_curve_end</td><td class="paramname">$y,$方向(進行方向に垂直な方向)の移動距離，</td><td>カーブの大きさを決めるもので，設計パラメータとなる </td></tr>
-    <tr><td class="paramtype">x_adv</td><td class="paramname">$x,$方向(進行方向)の前後の直線の長さ．180度ターンなどでは</td><td>y_curve_end で調節できないので，例外的にこの値で調節する． </td></tr>
-    <tr><td class="paramtype"></td><td class="paramname">dddth_max</td><td>最大角躍度の大きさ [rad/s/s/s] </td></tr>
-    <tr><td class="paramtype"></td><td class="paramname">ddth_max</td><td>最大角加速度の大きさ [rad/s/s] </td></tr>
-    <tr><td class="paramtype"></td><td class="paramname">dth_max</td><td>最大角速度の大きさ [rad/s] </td></tr>
+    <tr><td class="paramname">total</td><td>前後の直線を含めた移動位置姿勢 </td></tr>
+    <tr><td class="paramname">y_curve_end</td><td>y軸方向(進行方向に垂直な方向)の移動距離， カーブの大きさを決めるもので，設計パラメータとなる </td></tr>
+    <tr><td class="paramname">x_adv</td><td>x軸方向(進行方向)の前後の直線の長さ．180度ターンなどでは y_curve_end で調節できないので，例外的にこの値で調節する． </td></tr>
+    <tr><td class="paramname">dddth_max</td><td>最大角躍度の大きさ [rad/s/s/s] </td></tr>
+    <tr><td class="paramname">ddth_max</td><td>最大角加速度の大きさ [rad/s/s] </td></tr>
+    <tr><td class="paramname">dth_max</td><td>最大角速度の大きさ [rad/s] </td></tr>
   </table>
   </dd>
 </dl>
-<p>&lt; シミュレーションの積分周期</p>
-<p>&lt; 初期値</p>
-<p>&lt; シミュレーションの状態</p>
 
 </div>
 </div>

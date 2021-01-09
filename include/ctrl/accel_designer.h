@@ -1,7 +1,7 @@
 /**
  * @file accel_designer.h
  * @author Ryotaro Onuki (kerikun11+github@gmail.com)
- * @ref https://kerikeri.top/posts/2018-04-29-accel-designer4/
+ * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  * @brief 距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル
  * @date 2020-04-19
  */
@@ -25,7 +25,7 @@ namespace ctrl {
  * - 移動距離の拘束条件を満たす曲線加速軌道を生成する
  * - 各時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$
  * を提供する
- * - 最大加速度 $a_{\max}$ と始点速度 $v_s$
+ * - 最大加速度 $a_{\\max}$ と始点速度 $v_s$
  * など拘束次第では目標速度 $v_t$ に達することができない場合があるので注意する
  */
 class AccelDesigner {

@@ -67,10 +67,9 @@ public:
    * @brief 拘束条件からスラローム形状を生成するコンストラクタ
    *
    * @param total 前後の直線を含めた移動位置姿勢
-   * @param y_curve_end
-   * $y$方向(進行方向に垂直な方向)の移動距離，
+   * @param y_curve_end y軸方向(進行方向に垂直な方向)の移動距離，
    * カーブの大きさを決めるもので，設計パラメータとなる
-   * @param x_adv $x$方向(進行方向)の前後の直線の長さ．180度ターンなどでは
+   * @param x_adv x軸方向(進行方向)の前後の直線の長さ．180度ターンなどでは
    * y_curve_end で調節できないので，例外的にこの値で調節する．
    * @param dddth_max 最大角躍度の大きさ [rad/s/s/s]
    * @param ddth_max 最大角加速度の大きさ [rad/s/s]
@@ -83,9 +82,9 @@ public:
       : total(total), dddth_max(dddth_max), ddth_max(ddth_max),
         dth_max(dth_max) {
     /* 生成準備 */
-    const float Ts = 1.5e-3f; /**< シミュレーションの積分周期 */
-    float v = 600.0f;         /**< 初期値 */
-    State s;                  /**< シミュレーションの状態 */
+    const float Ts = 1.5e-3f; /*< シミュレーションの積分周期 */
+    float v = 600.0f;         /*< 初期値 */
+    State s;                  /*< シミュレーションの状態 */
     AccelDesigner ad;
     ad.reset(dddth_max, ddth_max, dth_max, 0, 0, total.th);
     /* 複数回行って精度を高める */
@@ -208,6 +207,7 @@ public:
    * @param state 次の時刻に更新する現在状態
    * @param t 現在時刻 [s]
    * @param Ts 積分時間 [s]
+   * @param k_slip スリップ角の比例定数
    */
   void update(State &state, const float t, const float Ts,
               const float k_slip = 0) const {
