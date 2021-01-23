@@ -138,7 +138,7 @@ public:
     xi += d_xi * Ts;
     /* determine the output signal */
     Result res;
-    if (xi < xi_threshold) {
+    if (std::abs(xi) < xi_threshold) {
       const auto b = gain.low_b;       //< b > 0
       const auto zeta = gain.low_zeta; //< zeta \in [0,1]
       const auto v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
