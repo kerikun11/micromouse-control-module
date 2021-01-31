@@ -4,6 +4,7 @@
  * @brief This file evaluates the performance of acceleration curves.
  * @date 2020-05-04
  */
+#define CTRL_LOG_LEVEL CTRL_LOG_LEVEL_INFO
 #include <ctrl/accel_designer.h>
 
 #include <chrono>
@@ -12,7 +13,7 @@
 #include <vector>
 
 void printCsv(const std::string &filebase, const ctrl::AccelDesigner &ad) {
-  logi << ad << std::endl;
+  ctrl_logi << ad << std::endl;
   const float Ts = 1e-4f;
   std::ofstream of;
   const auto ticks = ad.getTimeStamp();
