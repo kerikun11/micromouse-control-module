@@ -12,29 +12,39 @@
 #include <iostream> //< for std::cout
 #include <ostream>
 
-/* Log Info */
-#ifndef loge
-#if 1 /*< Enabled */
-#define loge (std::cout << "[E][" << __FILE__ << ":" << __LINE__ << "]\t")
+/* log level definition */
+#define CTRL_LOG_LEVEL_NONE 0
+#define CTRL_LOG_LEVEL_ERROR 1
+#define CTRL_LOG_LEVEL_WARNING 2
+#define CTRL_LOG_LEVEL_INFO 3
+#define CTRL_LOG_LEVEL_DEBUG 4
+/* set log level */
+#ifndef CTRL_LOG_LEVEL
+#define CTRL_LOG_LEVEL CTRL_LOG_LEVEL_WARNING
+#endif
+/* Log Error */
+#if CTRL_LOG_LEVEL >= CTRL_LOG_LEVEL_ERROR
+#define ctrl_loge (std::cout << "[E][" __FILE__ ":" << __LINE__ << "]\t")
 #else
-#define loge std::ostream(0)
+#define ctrl_loge std::ostream(0)
 #endif
+/* Log Warning */
+#if CTRL_LOG_LEVEL >= CTRL_LOG_LEVEL_WARNING
+#define ctrl_logw (std::cout << "[W][" __FILE__ ":" << __LINE__ << "]\t")
+#else
+#define ctrl_logw std::ostream(0)
 #endif
 /* Log Info */
-#ifndef logi
-#if 0 /*< Enabled */
-#define logi (std::cout << "[I][" << __FILE__ << ":" << __LINE__ << "]\t")
+#if CTRL_LOG_LEVEL >= CTRL_LOG_LEVEL_INFO
+#define ctrl_logi (std::cout << "[I][" __FILE__ ":" << __LINE__ << "]\t")
 #else
-#define logi std::ostream(0)
-#endif
+#define ctrl_logi std::ostream(0)
 #endif
 /* Log Debug */
-#ifndef logd
-#if 0 /*< Enabled */
-#define logd (std::cout << "[D][" << __FILE__ << ":" << __LINE__ << "]\t")
+#if CTRL_LOG_LEVEL >= CTRL_LOG_LEVEL_DEBUG
+#define ctrl_logd (std::cout "[D][" << __FILE__ ":" << __LINE__ << "]\t")
 #else
-#define logd std::ostream(0)
-#endif
+#define ctrl_logd std::ostream(0)
 #endif
 
 /**
@@ -243,11 +253,11 @@ public:
     /* 等加速度直線運動の有無で分岐 */
     const auto d_triangle = (vs + am * tc / 2) * tc; //< distance @ tm == 0
     const auto v_triangle = jm / am * d - vs;        //< v_end @ tm == 0
-    // logd << "d_tri: " << d_triangle << std::endl;
-    // logd << "v_tri: " << v_triangle << std::endl;
+    // ctrl_logd << "d_tri: " << d_triangle << std::endl;
+    // ctrl_logd << "v_tri: " << v_triangle << std::endl;
     if (d * v_triangle > 0 && std::abs(d) > std::abs(d_triangle)) {
       /* 曲線・直線・曲線 */
-      logd << "v: curve - straight - curve" << std::endl;
+      ctrl_logd << "v: curve - straight - curve" << std::endl;
       /* 2次方程式の解の公式を解く */
       const auto amtc = am * tc;
       const auto D = amtc * amtc - 4 * (amtc * vs - vs * vs - 2 * am * d);
@@ -264,12 +274,12 @@ public:
     const auto ci_b = 8 * aaa_27 / b + 1.0f / 4;
     if (ci_b >= 0) {
       /* ルートの中が非負のとき，3乗根により解を求める */
-      logd << "v: curve - curve (accel)" << std::endl;
+      ctrl_logd << "v: curve - curve (accel)" << std::endl;
       const auto c = std::cbrt(cr + std::abs(b) * std::sqrt(ci_b));
       return (d > 0 ? 1 : -1) * (c + 4 * a * a / c / 9 - a / 3);
     } else {
       /* ルートの中が負のとき，極座標変換して解を求める */
-      logd << "v: curve - curve (decel)" << std::endl;
+      ctrl_logd << "v: curve - curve (decel)" << std::endl;
       const auto ci = std::abs(b) * std::sqrt(-ci_b);
       const auto r = std::hypot(cr, ci); //< = sqrt(cr^2 + ci^2)
       const auto th = std::atan2(ci, cr);
@@ -298,10 +308,10 @@ public:
                    2 * (vs * vs + ve * ve);
     if (D < 0) {
       /* 拘束条件がおかしい */
-      loge << "Error! D = " << D << " < 0" << std::endl;
+      ctrl_loge << "Error! D = " << D << " < 0" << std::endl;
       /* 入力のチェック */
       if (vs * ve < 0)
-        loge << "Invalid Input! vs: " << vs << ", ve: " << ve << std::endl;
+        ctrl_loge << "Invalid Input! vs: " << vs << ", ve: " << ve << std::endl;
       return vs;
     }
     const auto sqrtD = std::sqrt(D);

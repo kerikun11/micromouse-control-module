@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.1.3</span>
+   &#160;<span id="projectnumber">v1.2.0</span>
    </div>
   </td>
  </tr>
@@ -150,7 +150,7 @@ $(function() {
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a> += d_xi * <a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a4bdb756d6f423b9186738b067cca70eb">Ts</a>;</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="comment">/* determine the output signal */</span></div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="../../d8/d91/structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a> res;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a> &lt; <a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#aec832143d32f6192357795d601cf87bc">xi_threshold</a>) {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">if</span> (std::abs(<a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>) &lt; <a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#aec832143d32f6192357795d601cf87bc">xi_threshold</a>) {</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> b = <a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.low_b;       <span class="comment">//&lt; b &gt; 0</span></div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> zeta = <a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.low_zeta; <span class="comment">//&lt; zeta \in [0,1]</span></div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> v_d = ref_dq.<a class="code" href="../../d3/d14/structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> * cos_th_r + ref_dq.<a class="code" href="../../d3/d14/structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> * sin_th_r;</div>
@@ -162,7 +162,7 @@ $(function() {
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                     k1 * (cos_theta * (x_r - x) + sin_theta * (y_r - y));</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> w = w_d +</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                     k2 * v_d * <a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">sinc</a>(th_r - theta) *</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                         (cos_theta * (x_r - x) - sin_theta * (y_r - y)) +</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                         (-sin_theta * (x_r - x) + cos_theta * (y_r - y)) +</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                     k3 * (th_r - theta);</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      res.v = v;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      res.w = w;</div>
@@ -197,7 +197,7 @@ $(function() {
 <div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a84986b8320998b312029d3888c5e4f72"><div class="ttname"><a href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a84986b8320998b312029d3888c5e4f72">ctrl::TrajectoryTracker::update</a></div><div class="ttdeci">const Result update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const Pose &amp;ref_q, const Pose &amp;ref_dq, const Pose &amp;ref_ddq, const Pose &amp;ref_dddq)</div><div class="ttdoc">制御入力の計算</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:100</div></div>
 <div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_adffafc25d4560bc9304086b515a8ac79"><div class="ttname"><a href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#adffafc25d4560bc9304086b515a8ac79">ctrl::TrajectoryTracker::update</a></div><div class="ttdeci">const Result update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const State &amp;ref_s)</div><div class="ttdoc">制御入力の計算</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:83</div></div>
 <div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_aec832143d32f6192357795d601cf87bc"><div class="ttname"><a href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#aec832143d32f6192357795d601cf87bc">ctrl::TrajectoryTracker::xi_threshold</a></div><div class="ttdeci">static constexpr const float xi_threshold</div><div class="ttdoc">制御則の切り替え閾値 [mm/s]</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:30</div></div>
-<div class="ttc" id="anamespacectrl_html"><div class="ttname"><a href="../../df/d64/namespacectrl.html">ctrl</a></div><div class="ttdoc">制御関係の名前空間</div><div class="ttdef"><b>Definition:</b> accel_curve.h:43</div></div>
+<div class="ttc" id="anamespacectrl_html"><div class="ttname"><a href="../../df/d64/namespacectrl.html">ctrl</a></div><div class="ttdoc">制御関係の名前空間</div><div class="ttdef"><b>Definition:</b> accel_curve.h:53</div></div>
 <div class="ttc" id="apolar_8h_html"><div class="ttname"><a href="../../d5/d93/polar_8h.html">polar.h</a></div><div class="ttdoc">並進と回転の座標を管理するクラスをもつファイル</div></div>
 <div class="ttc" id="apose_8h_html"><div class="ttname"><a href="../../d7/def/pose_8h.html">pose.h</a></div><div class="ttdoc">平面上の位置姿勢の座標もつファイル．</div></div>
 <div class="ttc" id="astate_8h_html"><div class="ttname"><a href="../../db/d3b/state_8h.html">state.h</a></div><div class="ttdoc">軌道制御の状態変数</div></div>

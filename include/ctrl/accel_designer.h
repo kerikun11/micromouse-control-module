@@ -73,7 +73,7 @@ public:
     const auto dist_min = AccelCurve::calcDistanceFromVelocityStartToEnd(
         j_max, a_max, v_start, v_end);
     if (std::abs(dist) < std::abs(dist_min)) {
-      logd << "vs -> ve != vt" << std::endl;
+      ctrl_logd << "vs -> ve != vt" << std::endl;
       /* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */
       v_end = AccelCurve::calcReachableVelocityEnd(j_max, a_max, v_start,
                                                    v_target, dist);
@@ -87,7 +87,7 @@ public:
     /* 最大速度まで加速すると走行距離の拘束を満たさない場合の処理 */
     const auto d_sum = ac.x_end() + dc.x_end();
     if (std::abs(dist) < std::abs(d_sum)) {
-      logd << "vs -> vr -> ve" << std::endl;
+      ctrl_logd << "vs -> vr -> ve" << std::endl;
       /* 走行距離などの拘束から到達可能速度を算出 */
       const auto v_rm = AccelCurve::calcReachableVelocityMax(
           j_max, a_max, v_start, v_end, dist);
@@ -114,7 +114,7 @@ public:
     bool show_info = false;
     /* 飽和速度時間 */
     if (t23 < 0) {
-      logd << t23 << std::endl;
+      ctrl_logd << t23 << std::endl;
       show_info = true;
     }
     /* 終点速度 */
@@ -130,26 +130,26 @@ public:
     }
     /* タイムスタンプ */
     if (!(t0 <= t1 + e && t1 <= t2 + e && t2 <= t3 + e)) {
-      loge << "Error: Time Point Relationship!" << std::endl;
+      ctrl_loge << "Error: Time Point Relationship!" << std::endl;
       show_info = true;
     }
     /* 入力情報の表示 */
     if (show_info) {
-      loge << "Constraints:"
+      ctrl_loge << "Constraints:"
            << "\tj_max: " << j_max << "\ta_max: " << a_max
            << "\tv_max: " << v_max << "\tv_start: " << v_start
            << "\tv_target: " << v_target << "\tdist: " << dist << std::endl;
-      loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_max << ", "
+      ctrl_loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_max << ", "
            << v_start << ", " << v_target << ", " << dist << ");" << std::endl;
       /* 表示 */
-      loge << "Time Stamp: "
+      ctrl_loge << "Time Stamp: "
            << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
            << "\tt3: " << t3 << std::endl;
-      loge << "Position:   "
+      ctrl_loge << "Position:   "
            << "\tx0: " << x0 << "\tx1: " << x0 + ac.x_end()
            << "\tx2: " << x0 + (dist - dc.x_end()) << "\tx3: " << x3
            << std::endl;
-      loge << "Velocity:   "
+      ctrl_loge << "Velocity:   "
            << "\tv0: " << v_start << "\tv1: " << v(t1) << "\tv2: " << v(t2)
            << "\tv3: " << v_end << std::endl;
     }

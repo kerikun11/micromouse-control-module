@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.1.3</span>
+   &#160;<span id="projectnumber">v1.2.0</span>
    </div>
   </td>
  </tr>
@@ -121,15 +121,36 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a1e69b3fecde2cf090c735c12623a1db5"><td class="memItemLeft" align="right" valign="top"><a id="a1e69b3fecde2cf090c735c12623a1db5"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>loge</b>&#160;&#160;&#160;(std::cout &lt;&lt; &quot;[E][&quot; &lt;&lt; __FILE__ &lt;&lt; &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;]\t&quot;)</td></tr>
-<tr class="separator:a1e69b3fecde2cf090c735c12623a1db5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01e989328dc5a79561e22d608e05a496"><td class="memItemLeft" align="right" valign="top"><a id="a01e989328dc5a79561e22d608e05a496"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>logi</b>&#160;&#160;&#160;std::ostream(0)</td></tr>
-<tr class="separator:a01e989328dc5a79561e22d608e05a496"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50224979f2c1c8026617305ada927c06"><td class="memItemLeft" align="right" valign="top"><a id="a50224979f2c1c8026617305ada927c06"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>logd</b>&#160;&#160;&#160;std::ostream(0)</td></tr>
-<tr class="separator:a50224979f2c1c8026617305ada927c06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8f35949aa5e39e81c20bd3de3e26a4d"><td class="memItemLeft" align="right" valign="top"><a id="aa8f35949aa5e39e81c20bd3de3e26a4d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_LOG_LEVEL_NONE</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:aa8f35949aa5e39e81c20bd3de3e26a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a272b23823a04201db45a7d577e91ea"><td class="memItemLeft" align="right" valign="top"><a id="a1a272b23823a04201db45a7d577e91ea"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_LOG_LEVEL_ERROR</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a1a272b23823a04201db45a7d577e91ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0782719d4fb20c7da33342ea9b9f0fe8"><td class="memItemLeft" align="right" valign="top"><a id="a0782719d4fb20c7da33342ea9b9f0fe8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_LOG_LEVEL_WARNING</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a0782719d4fb20c7da33342ea9b9f0fe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fece72e1ba442ec81f0cc987442ae36"><td class="memItemLeft" align="right" valign="top"><a id="a3fece72e1ba442ec81f0cc987442ae36"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_LOG_LEVEL_INFO</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a3fece72e1ba442ec81f0cc987442ae36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69687636b2e137b92c6ca4d85331145a"><td class="memItemLeft" align="right" valign="top"><a id="a69687636b2e137b92c6ca4d85331145a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_LOG_LEVEL_DEBUG</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:a69687636b2e137b92c6ca4d85331145a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7e2e7a62b69da9b9ddbf77249bf520"><td class="memItemLeft" align="right" valign="top"><a id="a6c7e2e7a62b69da9b9ddbf77249bf520"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CTRL_LOG_LEVEL</b>&#160;&#160;&#160;CTRL_LOG_LEVEL_WARNING</td></tr>
+<tr class="separator:a6c7e2e7a62b69da9b9ddbf77249bf520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a2a559eff68b46832734415ffdc472f"><td class="memItemLeft" align="right" valign="top"><a id="a4a2a559eff68b46832734415ffdc472f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ctrl_loge</b>&#160;&#160;&#160;(std::cout &lt;&lt; &quot;[E][&quot; __FILE__ &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;]\t&quot;)</td></tr>
+<tr class="separator:a4a2a559eff68b46832734415ffdc472f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eb7b01c55438a22fe86d40da79e8ba4"><td class="memItemLeft" align="right" valign="top"><a id="a7eb7b01c55438a22fe86d40da79e8ba4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ctrl_logw</b>&#160;&#160;&#160;(std::cout &lt;&lt; &quot;[W][&quot; __FILE__ &quot;:&quot; &lt;&lt; __LINE__ &lt;&lt; &quot;]\t&quot;)</td></tr>
+<tr class="separator:a7eb7b01c55438a22fe86d40da79e8ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19da8a3811c8f7cbd0de3aa2fa82a626"><td class="memItemLeft" align="right" valign="top"><a id="a19da8a3811c8f7cbd0de3aa2fa82a626"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ctrl_logi</b>&#160;&#160;&#160;std::ostream(0)</td></tr>
+<tr class="separator:a19da8a3811c8f7cbd0de3aa2fa82a626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e76eb7f641be745466d7ddab3ce0a4a"><td class="memItemLeft" align="right" valign="top"><a id="a0e76eb7f641be745466d7ddab3ce0a4a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>ctrl_logd</b>&#160;&#160;&#160;std::ostream(0)</td></tr>
+<tr class="separator:a0e76eb7f641be745466d7ddab3ce0a4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する </p>
