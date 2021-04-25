@@ -150,7 +150,7 @@ public:
                      k1 * (cos_theta * (x_r - x) + sin_theta * (y_r - y));
       const auto w = w_d +
                      k2 * v_d * sinc(th_r - theta) *
-                         (cos_theta * (x_r - x) - sin_theta * (y_r - y)) +
+                         (-sin_theta * (x_r - x) + cos_theta * (y_r - y)) +
                      k3 * (th_r - theta);
       res.v = v;
       res.w = w;
