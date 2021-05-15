@@ -1,0 +1,19 @@
+name: Unit Test
+
+on:
+  push:
+
+jobs:
+  unit-test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Packages
+        run: |
+          apt update
+          apt install -y build-essential cmake libgtest-dev
+
+      - name: Build and Test
+        run: mkdir build && cd build && cmake .. && make -j$(nproc) test_run
