@@ -12,8 +12,8 @@ jobs:
 
       - name: Install Packages
         run: |
-          apt update
-          apt install -y build-essential cmake libgtest-dev
+          sudo apt update
+          sudo apt install -y make gcc g++ cmake libgtest-dev
 
       - name: Build and Test
         run: mkdir build && cd build && cmake .. && make -j$(nproc) test_run
