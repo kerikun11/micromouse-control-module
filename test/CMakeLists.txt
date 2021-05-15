@@ -8,6 +8,9 @@ if(NOT GTEST_FOUND)
   RETURN()
 endif()
 
+# find Threads for GoogleTest
+find_package(Threads REQUIRED)
+
 # make a target to test
 set(TARGET_NAME "test")
 file(GLOB SRC_FILES
@@ -17,7 +20,7 @@ file(GLOB SRC_FILES
 add_executable(${TARGET_NAME} ${SRC_FILES})
 target_include_directories(${TARGET_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
 target_compile_options(${TARGET_NAME} PRIVATE -g -O0 --coverage -fno-inline -fno-inline-small-functions -fno-default-inline)
-target_link_libraries(${TARGET_NAME} PRIVATE ${GTEST_LIBRARIES})
+target_link_libraries(${TARGET_NAME} PRIVATE ${GTEST_LIBRARIES} Threads::Threads)
 target_link_options(${TARGET_NAME} PRIVATE --coverage)
 # make a custom target to run
 add_custom_target("${TARGET_NAME}_run"
