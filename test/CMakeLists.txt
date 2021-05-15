@@ -33,18 +33,16 @@ add_custom_target("${TARGET_NAME}_run"
 # make a custom target to run lcov
 set(CUSTOM_TARGET_NAME "lcov")
 set(INFO_FILENAME "${CMAKE_PROJECT_NAME}.info")
-add_custom_target(${CUSTOM_TARGET_NAME}
-  # COMMAND lcov --quiet --output ${INFO_FILENAME} --capture --directory ${CMAKE_CURRENT_BINARY_DIR} --initial
-  # COMMAND ${TARGET_NAME}
-  COMMAND lcov --quiet --output ${INFO_FILENAME} --capture --directory ${CMAKE_CURRENT_BINARY_DIR}
-  COMMAND lcov --quiet --output ${INFO_FILENAME} --extract ${INFO_FILENAME} ${PROJECT_SOURCE_DIR}/{include,src}/'*'
-  COMMAND lcov --summary ${INFO_FILENAME}
-  COMMAND genhtml --quiet ${INFO_FILENAME} --output ${CMAKE_CURRENT_BINARY_DIR}/html
+add_custom_target(${CUSTOM_TARGET_NAME}_init
+  COMMAND lcov --quiet --output ${INFO_FILENAME} --capture --directory ${CMAKE_CURRENT_BINARY_DIR} --initial
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   USES_TERMINAL
 )
-add_custom_target(${CUSTOM_TARGET_NAME}_init
-  COMMAND lcov --quiet --output ${INFO_FILENAME} --capture --directory ${CMAKE_CURRENT_BINARY_DIR} --initial
+add_custom_target(${CUSTOM_TARGET_NAME}
+  COMMAND lcov --quiet --output ${INFO_FILENAME} --capture --directory ${CMAKE_CURRENT_BINARY_DIR}
+  COMMAND lcov --quiet --output ${INFO_FILENAME} --extract ${INFO_FILENAME} ${PROJECT_SOURCE_DIR}/include/'*'
+  COMMAND lcov --summary ${INFO_FILENAME}
+  COMMAND genhtml --quiet ${INFO_FILENAME} --output ${CMAKE_CURRENT_BINARY_DIR}/html
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   USES_TERMINAL
 )
