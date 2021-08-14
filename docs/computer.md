@@ -4,6 +4,22 @@
 
 --------------------------------------------------------------------------------
 
+### Docker による環境構築
+
+```sh
+# build dev env
+./docker/build.sh
+# run dev env
+./docker/run.sh
+# configure
+rm -rf build
+./docker/run.sh cmake ..
+# build
+./docker/run.sh make
+```
+
+--------------------------------------------------------------------------------
+
 ### 動作確認済みの環境
 
 - Linux

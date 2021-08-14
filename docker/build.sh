@@ -1,3 +1,7 @@
 #!/bin/sh
 
-docker build -t micromouse-control-module $(dirname $0)
+## config
+set -x # show command
+
+## build
+docker build --tag micromouse-control-module $(dirname $0)

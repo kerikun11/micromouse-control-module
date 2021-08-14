@@ -2,7 +2,7 @@
 FROM ubuntu:20.04
 
 # description
-LABEL maintainer="kerikun11+github@gmail.com"
+LABEL maintainer="Ryotaro Onuki <kerikun11+github@gmail.com>"
 
 # install packages
 ENV DEBIAN_FRONTEND=noninteractive
