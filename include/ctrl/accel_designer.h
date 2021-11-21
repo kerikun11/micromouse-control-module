@@ -98,7 +98,7 @@ public:
       dc.reset(j_max, a_max, v_sat, v_end);   //< 減速
     }
     /* t23 = nan 回避; vs = ve = d = 0 のときに発生 */
-    if (v_sat == 0)
+    if (std::abs(v_sat) < std::numeric_limits<float>::epsilon())
       v_sat = 1;
     /* 各定数の算出 */
     const auto t23 = (dist - ac.x_end() - dc.x_end()) / v_sat;
