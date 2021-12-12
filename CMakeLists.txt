@@ -5,10 +5,8 @@ cmake_minimum_required(VERSION 3.13)
 project("MicroMouse Control Module" CXX)
 
 ## global build options
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
-set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
-add_compile_options(-fdiagnostics-color=always) # colorized output for gcc
+set(CMAKE_CXX_STANDARD 17) # enable option -std=c++17
+set(CMAKE_CXX_EXTENSIONS OFF) # without compiler extensions like gnu++17
 
 ## make a interface library (header only library)
 set(MICROMOUSE_CONTROL_MODULE "mmcm")
@@ -16,6 +14,9 @@ add_library(${MICROMOUSE_CONTROL_MODULE} INTERFACE)
 target_include_directories(${MICROMOUSE_CONTROL_MODULE} INTERFACE include)
 target_compile_definitions(${MICROMOUSE_CONTROL_MODULE}
   INTERFACE _USE_MATH_DEFINES # for use of M_PI in <cmath>
+)
+target_compile_options(${MICROMOUSE_CONTROL_MODULE} INTERFACE
+  -fdiagnostics-color=always # colorized output for gcc
 )
 
 ## unit test
