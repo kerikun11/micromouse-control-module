@@ -63,7 +63,10 @@ public:
   /**
    * @brief 積分項をリセットする関数
    */
-  void reset() { e_int = T(); }
+  void reset() {
+    e_int = T();
+    bd = Breakdown();
+  }
   /**
    * @brief 状態を更新して，次の制御入力を得る関数
    *
