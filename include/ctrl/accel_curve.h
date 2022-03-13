@@ -1,9 +1,9 @@
 /**
  * @file accel_curve.h
- * @author Ryotaro Onuki <kerikun11+github@gmail.com>
- * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  * @brief 躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  */
 #pragma once
 

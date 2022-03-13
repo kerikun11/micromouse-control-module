@@ -1,9 +1,9 @@
 /**
  * @file accel_designer.h
- * @author Ryotaro Onuki <kerikun11+github@gmail.com>
- * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  * @brief 距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  */
 #pragma once
 
