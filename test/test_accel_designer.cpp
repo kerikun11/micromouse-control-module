@@ -7,9 +7,15 @@
 using namespace ctrl;
 
 class AccelDesignerTest : public AccelDesigner {
-public:
-  void test(const float jm, const float am, const float vm, const float vs,
-            const float vt, const float d, const float xs, const float ts) {
+ public:
+  void test(const float jm,
+            const float am,
+            const float vm,
+            const float vs,
+            const float vt,
+            const float d,
+            const float xs,
+            const float ts) {
     reset(jm, am, vm, vs, vt, d, xs, ts);
     /* error tolerance */
     const float e = 1e-5f;
@@ -21,7 +27,7 @@ public:
     /* velocity */
     EXPECT_FLOAT_EQ(v(t0), vs);
     EXPECT_GE(std::abs(vs - vt), std::abs(vs - v_end()));
-    for (const auto &t : getTimeStamp())
+    for (const auto& t : getTimeStamp())
       EXPECT_LE(std::abs(v(t)), std::max({vm, std::abs(vs), std::abs(vt)}));
     /* distance */
     EXPECT_NEAR(d, x3 - x0, std::abs(d) * e);
@@ -56,21 +62,21 @@ TEST(AccelDesigner, GivenConstraints) {
   AccelDesignerTest ad;
   const std::vector<std::vector<float>> params = {
       // jm, am, vm, vs, vt, d
-      {100, 10, 4, 0, 0, 0},     //< 0
-      {100, 10, 4, 0, 2, 4},     //< vs -> vm -> vt, tm1>0, tm2>0
-      {100, 10, 4, 0, 3, 4},     //< vs -> vm -> vt, tm1>0, tm2<0
-      {100, 10, 4, 3, 0, 4},     //< vs -> vm -> vt, tm1<0, tm2>0
-      {100, 10, 8, 0, 2, 4},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2>0
-      {100, 10, 8, 0, 6, 4},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2<0
-      {100, 10, 8, 0, 0.5, 0.2}, //< vs -> vr -> vt, vr<vm, tm1<0, tm2<0
-      {100, 10, 6, 0, 3, 1},     //< vs -> vr -> vt, vr<vm, tm1>0, tm2<0
-      {100, 10, 6, 0, 4, 1},     //< ve == vt, tm > 0 just
-      {100, 10, 8, 0, 6, 1},     //< ve != vt, tm > 0, accel
-      {100, 10, 8, 4, 0, 1},     //< ve != vt, tm > 0, decel
-      {100, 10, 4, 0, 4, 0.1},   //< ve != vt, tm < 0, accel
-      {100, 10, 4, 4, 0, 0.1},   //< ve != vt, tm < 0, decel
+      {100, 10, 4, 0, 0, 0},      //< 0
+      {100, 10, 4, 0, 2, 4},      //< vs -> vm -> vt, tm1>0, tm2>0
+      {100, 10, 4, 0, 3, 4},      //< vs -> vm -> vt, tm1>0, tm2<0
+      {100, 10, 4, 3, 0, 4},      //< vs -> vm -> vt, tm1<0, tm2>0
+      {100, 10, 8, 0, 2, 4},      //< vs -> vr -> vt, vr<vm, tm1>0, tm2>0
+      {100, 10, 8, 0, 6, 4},      //< vs -> vr -> vt, vr<vm, tm1>0, tm2<0
+      {100, 10, 8, 0, 0.5, 0.2},  //< vs -> vr -> vt, vr<vm, tm1<0, tm2<0
+      {100, 10, 6, 0, 3, 1},      //< vs -> vr -> vt, vr<vm, tm1>0, tm2<0
+      {100, 10, 6, 0, 4, 1},      //< ve == vt, tm > 0 just
+      {100, 10, 8, 0, 6, 1},      //< ve != vt, tm > 0, accel
+      {100, 10, 8, 4, 0, 1},      //< ve != vt, tm > 0, decel
+      {100, 10, 4, 0, 4, 0.1},    //< ve != vt, tm < 0, accel
+      {100, 10, 4, 4, 0, 0.1},    //< ve != vt, tm < 0, decel
   };
-  for (const auto &ps : params) {
+  for (const auto& ps : params) {
     ad.test(ps[0], ps[1], ps[2], +ps[3], +ps[4], +ps[5], 0, 0);
     ad.test(ps[0], ps[1], ps[2], -ps[3], -ps[4], -ps[5], 0, 0);
   }

@@ -1,7 +1,7 @@
 /**
  * @file straight.h
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 直線軌道を生成する
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
  */
 #pragma once
@@ -25,7 +25,7 @@ namespace straight {
  * ctrl::TrajectoryTracker のために用意されたクラス
  */
 class Trajectory : public AccelDesigner {
-public:
+ public:
   /**
    * @brief 空のコンストラクタ．
    * 基底クラスの AccelDesigner::reset() により初期化すること．
@@ -37,7 +37,7 @@ public:
    * @param s 状態変数
    * @param t 現在時刻
    */
-  void update(struct State &s, const float t) const {
+  void update(struct State& s, const float t) const {
     s.q = Pose(x(t), 0, 0);
     s.dq = Pose(v(t), 0, 0);
     s.ddq = Pose(a(t), 0, 0);
@@ -45,5 +45,5 @@ public:
   }
 };
 
-} // namespace straight
-} // namespace ctrl
+}  // namespace straight
+}  // namespace ctrl

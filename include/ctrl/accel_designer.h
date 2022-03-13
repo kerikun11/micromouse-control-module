@@ -1,6 +1,6 @@
 /**
  * @file accel_designer.h
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  * @brief 距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル
  * @date 2020-04-19
@@ -9,9 +9,9 @@
 
 #include "accel_curve.h"
 
-#include <algorithm> //< for std::max, std::min
+#include <algorithm>  //< for std::max, std::min
 #include <array>
-#include <iostream> //< for std::cout
+#include <iostream>  //< for std::cout
 #include <ostream>
 
 /**
@@ -29,7 +29,7 @@ namespace ctrl {
  * など拘束次第では目標速度 $v_t$ に達することができない場合があるので注意する
  */
 class AccelDesigner {
-public:
+ public:
   /**
    * @brief 初期化付きコンストラクタ
    *
@@ -42,9 +42,14 @@ public:
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  AccelDesigner(const float j_max, const float a_max, const float v_max,
-                const float v_start, const float v_target, const float dist,
-                const float x_start = 0, const float t_start = 0) {
+  AccelDesigner(const float j_max,
+                const float a_max,
+                const float v_max,
+                const float v_start,
+                const float v_target,
+                const float dist,
+                const float x_start = 0,
+                const float t_start = 0) {
     reset(j_max, a_max, v_max, v_start, v_target, dist, x_start, t_start);
   }
   /**
@@ -64,9 +69,14 @@ public:
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  void reset(const float j_max, const float a_max, const float v_max,
-             const float v_start, const float v_target, const float dist,
-             const float x_start = 0, const float t_start = 0) {
+  void reset(const float j_max,
+             const float a_max,
+             const float v_max,
+             const float v_start,
+             const float v_target,
+             const float dist,
+             const float x_start = 0,
+             const float t_start = 0) {
     /* 目標速度に到達可能か，走行距離から終点速度を決定していく */
     auto v_end = v_target; /*< 仮代入 */
     /* 移動距離の拘束により，目標速度に達し得ない場合の処理 */
@@ -82,8 +92,8 @@ public:
     auto v_sat = dist > 0 ? std::max({v_start, v_max, v_end})
                           : std::min({v_start, -v_max, v_end});
     /* 曲線を生成 */
-    ac.reset(j_max, a_max, v_start, v_sat); //< 加速部分
-    dc.reset(j_max, a_max, v_sat, v_end);   //< 減速部分
+    ac.reset(j_max, a_max, v_start, v_sat);  //< 加速部分
+    dc.reset(j_max, a_max, v_sat, v_end);    //< 減速部分
     /* 最大速度まで加速すると走行距離の拘束を満たさない場合の処理 */
     const auto d_sum = ac.x_end() + dc.x_end();
     if (std::abs(dist) < std::abs(d_sum)) {
@@ -94,8 +104,8 @@ public:
       /* 無駄な減速を回避 */
       v_sat = dist > 0 ? std::max({v_start, v_rm, v_end})
                        : std::min({v_start, v_rm, v_end});
-      ac.reset(j_max, a_max, v_start, v_sat); //< 加速
-      dc.reset(j_max, a_max, v_sat, v_end);   //< 減速
+      ac.reset(j_max, a_max, v_start, v_sat);  //< 加速
+      dc.reset(j_max, a_max, v_sat, v_end);    //< 減速
     }
     /* t23 = nan 回避; vs = ve = d = 0 のときに発生 */
     if (std::abs(v_sat) < std::numeric_limits<float>::epsilon())
@@ -105,9 +115,9 @@ public:
     x0 = x_start;
     x3 = x_start + dist;
     t0 = t_start;
-    t1 = t0 + ac.t_end();                    //< 曲線加速終了の時刻
-    t2 = t0 + ac.t_end() + t23;              //< 等速走行終了の時刻
-    t3 = t0 + ac.t_end() + t23 + dc.t_end(); //< 曲線減速終了の時刻
+    t1 = t0 + ac.t_end();                     //< 曲線加速終了の時刻
+    t2 = t0 + ac.t_end() + t23;               //< 等速走行終了の時刻
+    t3 = t0 + ac.t_end() + t23 + dc.t_end();  //< 曲線減速終了の時刻
 #if 0
     /* 出力のチェック */
     const auto e = 0.01f; //< 数値誤差分
@@ -219,7 +229,7 @@ public:
   /**
    * @brief std::ostream に軌道のcsvを出力する関数．
    */
-  void printCsv(std::ostream &os, const float t_interval = 1e-3f) const {
+  void printCsv(std::ostream& os, const float t_interval = 1e-3f) const {
     for (float t = t0; t < t_end(); t += t_interval)
       os << t << "," << j(t) << "," << a(t) << "," << v(t) << "," << x(t)
          << std::endl;
@@ -227,7 +237,7 @@ public:
   /**
    * @brief 情報の表示
    */
-  friend std::ostream &operator<<(std::ostream &os, const AccelDesigner &obj) {
+  friend std::ostream& operator<<(std::ostream& os, const AccelDesigner& obj) {
     os << "AccelDesigner:";
     os << "\td: " << obj.x3 - obj.x0;
     os << "\tvs: " << obj.ac.v(0);
@@ -255,11 +265,11 @@ public:
     }};
   }
 
-protected:
+ protected:
   float t0, t1, t2, t3; /**< @brief 境界点の時刻 [s] */
   float x0, x3;         /**< @brief 境界点の位置 [m] */
   AccelCurve ac;        /**< @brief 曲線加速用オブジェクト */
   AccelCurve dc;        /**< @brief 曲線減速用オブジェクト */
 };
 
-} // namespace ctrl
+}  // namespace ctrl

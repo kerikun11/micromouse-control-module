@@ -1,7 +1,7 @@
 /**
  * @file trajectory_tracker.h
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 独立2輪車の線形化フィードバック軌道追従コントローラ
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2019-03-31
  */
 #pragma once
@@ -19,7 +19,7 @@ namespace ctrl {
  * @brief 独立2輪車の軌道追従フィードバック制御器
  */
 class TrajectoryTracker {
-public:
+ public:
   /**
    * @brief 制御周期 [s]
    */
@@ -58,13 +58,13 @@ public:
     return xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;
   }
 
-public:
+ public:
   /**
    * @brief コンストラクタ
    *
    * @param gain 軌道追従フィードバックゲイン
    */
-  TrajectoryTracker(const Gain &gain) : gain(gain) {}
+  TrajectoryTracker(const Gain& gain) : gain(gain) {}
   /**
    * @brief 状態の初期化
    *
@@ -80,8 +80,10 @@ public:
    * @param ref_s 目標状態
    * @return const Result 制御入力
    */
-  const Result update(const Pose &est_q, const Polar &est_v, const Polar &est_a,
-                      const State &ref_s) {
+  const Result update(const Pose& est_q,
+                      const Polar& est_v,
+                      const Polar& est_a,
+                      const State& ref_s) {
     return update(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq,
                   ref_s.dddq);
   }
@@ -97,9 +99,13 @@ public:
    * @param ref_dddq 目標躍度
    * @return const Result 制御入力
    */
-  const Result update(const Pose &est_q, const Polar &est_v, const Polar &est_a,
-                      const Pose &ref_q, const Pose &ref_dq,
-                      const Pose &ref_ddq, const Pose &ref_dddq) {
+  const Result update(const Pose& est_q,
+                      const Polar& est_v,
+                      const Polar& est_a,
+                      const Pose& ref_q,
+                      const Pose& ref_dq,
+                      const Pose& ref_ddq,
+                      const Pose& ref_dddq) {
     /* Prepare Variable */
     const float x = est_q.x;
     const float y = est_q.y;
@@ -139,8 +145,8 @@ public:
     /* determine the output signal */
     Result res;
     if (std::abs(xi) < xi_threshold) {
-      const auto b = gain.low_b;       //< b > 0
-      const auto zeta = gain.low_zeta; //< zeta \in [0,1]
+      const auto b = gain.low_b;        //< b > 0
+      const auto zeta = gain.low_zeta;  //< zeta \in [0,1]
       const auto v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;
       const auto w_d = ref_dq.th;
       const auto k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);
@@ -169,9 +175,9 @@ public:
     return res;
   }
 
-protected:
+ protected:
   float xi;  /**< @brief 補助状態変数 */
   Gain gain; /**< フィードバックゲイン */
 };
 
-} // namespace ctrl
+}  // namespace ctrl

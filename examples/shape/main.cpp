@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief This file generates slalom shapes for each turn of the micromouse.
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
  */
 #include <ctrl/slalom.h>
@@ -28,15 +28,16 @@ std::vector<std::pair<std::string, slalom::Shape>> shapes = {{
     {"SS_FS90", slalom::Shape(Pose(45, 45, pi / 2), 44)},
 }};
 
-void printDefinition(std::ostream &os, const std::string &name,
-                     const slalom::Shape &s) {
+void printDefinition(std::ostream& os,
+                     const std::string& name,
+                     const slalom::Shape& s) {
   const AccelDesigner ad(s.dddth_max, s.ddth_max, s.dth_max, 0, 0, s.total.th);
   const auto t_total =
       ad.t_end() + (s.straight_prev + s.straight_post) / s.v_ref;
   const auto sf = std::setfill(' ');
   os << "/* " << name << " T:" << t_total << "*/" << std::endl;
   os << "ctrl::slalom::Shape(";
-  for (const auto &p : {s.total, s.curve})
+  for (const auto& p : {s.total, s.curve})
     os << "ctrl::Pose(" << std::setw(8) << sf << p.x << ", " << std::setw(8)
        << sf << p.y << ", " << std::setw(9) << sf << p.th << "), ";
   os << std::setw(8) << sf << s.straight_prev << ", " << std::setw(8) << sf
@@ -48,19 +49,20 @@ void printDefinition(std::ostream &os, const std::string &name,
 }
 
 void printDefinitions() {
-  for (const auto &[name, shape] : shapes)
+  for (const auto& [name, shape] : shapes)
     printDefinition(std::cout, name, shape);
   std::cout << std::endl;
 }
 
-void printCsv(const std::string &filebase, const slalom::Shape &ss,
+void printCsv(const std::string& filebase,
+              const slalom::Shape& ss,
               const float th_start = 0) {
   auto st = slalom::Trajectory(ss);
   const float v = 600;
   State s;
   st.reset(v, th_start, ss.straight_prev / v);
   const float Ts = 1e-5f;
-  const auto printCSV = [](std::ostream &os, const float t, const State &s) {
+  const auto printCSV = [](std::ostream& os, const float t, const State& s) {
     os << t;
     os << "," << s.dddq.th;
     os << "," << s.ddq.th;
@@ -105,7 +107,7 @@ void printTrajectory() {
 }
 
 void printTable() {
-  for (const auto &[name, shape] : shapes) {
+  for (const auto& [name, shape] : shapes) {
     std::cout << "|" << name;
     std::cout << "|" << shape.total.th / float(M_PI) * 180;
     std::cout << "|(" << shape.total.x << "," << shape.total.y << ")";

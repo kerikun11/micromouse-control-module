@@ -1,9 +1,9 @@
 /**
  * @file ctrl.cpp
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief this files defines a python module implemented in C++
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-06-11
- * @copyright Copyright (c) 2020 Ryotaro Onuki
+ * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
  */
 #include <ctrl/accel_designer.h>
 #include <ctrl/slalom.h>
@@ -37,7 +37,7 @@ PYBIND11_MODULE(ctrl, m) {
       .def("t_3", &AccelCurve::t_3)
       .def("getTimeStamp", &AccelCurve::getTimeStamp)
       .def("__str__",
-           [](const AccelCurve &obj) {
+           [](const AccelCurve& obj) {
              std::stringstream ss;
              ss << obj;
              return ss.str();
@@ -51,7 +51,7 @@ PYBIND11_MODULE(ctrl, m) {
            py::arg("j_max"), py::arg("a_max"), py::arg("v_max"),
            py::arg("v_start"), py::arg("v_target"), py::arg("dist"),
            py::arg("x_start") = float(0), py::arg("t_start") = float(0))
-      .def("reset", &AccelDesigner::reset, //
+      .def("reset", &AccelDesigner::reset,  //
            py::arg("j_max"), py::arg("a_max"), py::arg("v_max"),
            py::arg("v_start"), py::arg("v_target"), py::arg("dist"),
            py::arg("x_start") = float(0), py::arg("t_start") = float(0))
@@ -68,7 +68,7 @@ PYBIND11_MODULE(ctrl, m) {
       .def("t_3", &AccelDesigner::t_3)
       .def("getTimeStamp", &AccelDesigner::getTimeStamp)
       .def("__str__",
-           [](const AccelDesigner &obj) {
+           [](const AccelDesigner& obj) {
              std::stringstream ss;
              ss << obj;
              return ss.str();
@@ -91,7 +91,7 @@ PYBIND11_MODULE(ctrl, m) {
       .def(py::self + py::self)
       .def(py::self - py::self)
       .def("__str__",
-           [](const Pose &obj) {
+           [](const Pose& obj) {
              std::stringstream ss;
              ss << obj;
              return ss.str();
@@ -116,7 +116,7 @@ PYBIND11_MODULE(ctrl, m) {
       .def_readwrite("dth_max", &slalom::Shape::dth_max)
       .def_static("integrate", &slalom::Shape::integrate)
       .def("__str__",
-           [](const slalom::Shape &obj) {
+           [](const slalom::Shape& obj) {
              std::stringstream ss;
              ss << obj;
              return ss.str();
@@ -134,7 +134,7 @@ PYBIND11_MODULE(ctrl, m) {
       ;
 
   py::class_<slalom::Trajectory>(m, "Trajectory")
-      .def(py::init<slalom::Shape &, bool>(), py::arg("shape"),
+      .def(py::init<slalom::Shape&, bool>(), py::arg("shape"),
            py::arg("mirror_x") = false)
       .def("reset", &slalom::Trajectory::reset)
       .def("update", &slalom::Trajectory::update, py::arg("state"),

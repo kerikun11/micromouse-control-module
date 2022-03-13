@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief This file evaluates the performance of acceleration curves.
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
  */
 #include <ctrl/accel_designer.h>
@@ -15,8 +15,14 @@ ctrl::AccelDesigner ad;
 ctrl::AccelCurve ac;
 std::ofstream of("continuous.csv");
 
-void test(const float jm, const float am, const float vm, const float vs,
-          const float vt, const float d, const float xs, const float ts) {
+void test(const float jm,
+          const float am,
+          const float vm,
+          const float vs,
+          const float vt,
+          const float d,
+          const float xs,
+          const float ts) {
   ad.reset(jm, am, vm, vs, vt, d, xs, ts);
   ad.printCsv(of);
   // std::cout << ad << std::endl;

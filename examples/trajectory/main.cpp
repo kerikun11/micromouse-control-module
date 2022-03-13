@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief trajectory tracking
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
  */
 #include <ctrl/straight.h>
@@ -13,12 +13,13 @@
 #include <iostream>
 
 std::ofstream of("trajectory.csv");
-std::ostream &os = of;
+std::ostream& os = of;
 
 using namespace ctrl;
 
-void printCsv(const float t, const State &s,
-              const TrajectoryTracker::Result &ref) {
+void printCsv(const float t,
+              const State& s,
+              const TrajectoryTracker::Result& ref) {
   os << t;
   os << "," << s.dddq.th;
   os << "," << s.ddq.th;

@@ -6,7 +6,7 @@
 using namespace ctrl;
 
 class AccelCurveTest : public AccelCurve {
-public:
+ public:
   void test(const float jm, const float am, const float vs, const float ve) {
     reset(jm, am, vs, ve);
     const auto vm = std::max(std::abs(vs), std::abs(ve));
@@ -66,7 +66,7 @@ TEST(AccelCurve, GivenConstraints) {
       {100, 10, 0, 1}, {100, 10, 0, 2}, {100, 10, 1, 2},
       {100, 10, 2, 1}, {100, 10, 2, 0}, {100, 10, 1, 0},
   };
-  for (const auto &ps : params) {
+  for (const auto& ps : params) {
     act.test(ps[0], ps[1], +ps[2], +ps[3]);
     act.test(ps[0], ps[1], -ps[2], -ps[3]);
   }
