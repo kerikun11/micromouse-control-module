@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief slalom trajectory generation example
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
  */
 #include <ctrl/slalom.h>
@@ -14,14 +14,15 @@
 
 using namespace ctrl;
 
-void printCsv(const std::string &filebase, const slalom::Shape &ss,
+void printCsv(const std::string& filebase,
+              const slalom::Shape& ss,
               const float th_start = 0) {
   auto st = slalom::Trajectory(ss);
   const float v = ss.v_ref;
   State s;
   st.reset(v, th_start, ss.straight_prev / v);
   const float Ts = st.getTimeCurve() * 1e-5f;
-  const auto printCSV = [](std::ostream &os, const float t, const State &s) {
+  const auto printCSV = [](std::ostream& os, const float t, const State& s) {
     os << t;
     os << "," << s.dddq.th;
     os << "," << s.ddq.th;

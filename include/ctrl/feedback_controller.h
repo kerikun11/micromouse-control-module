@@ -1,7 +1,7 @@
 /**
  * @file feedback_controller.h
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief フィードバック制御器クラスを保持するファイル
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
  */
 #pragma once
@@ -15,8 +15,9 @@ namespace ctrl {
  * @brief 1次フィードフォワード補償付きフィードバック制御器クラス
  * @tparam T 状態変数の型
  */
-template <typename T> class FeedbackController {
-public:
+template <typename T>
+class FeedbackController {
+ public:
   /**
    * @brief フィードフォワード成分に使用する1次モデル
    *
@@ -52,18 +53,21 @@ public:
     T u;   /**< 成分の総和 */
   };
 
-public:
+ public:
   /**
    * @brief コンストラクタ
    *
    * @param M フィードフォワードモデル
    * @param G フィードバックゲイン
    */
-  FeedbackController(const Model &M, const Gain &G) : M(M), G(G) { reset(); }
+  FeedbackController(const Model& M, const Gain& G) : M(M), G(G) { reset(); }
   /**
    * @brief 積分項をリセットする関数
    */
-  void reset() { e_int = T(); }
+  void reset() {
+    e_int = T();
+    bd = Breakdown();
+  }
   /**
    * @brief 状態を更新して，次の制御入力を得る関数
    *
@@ -74,7 +78,10 @@ public:
    * @param Ts 離散時間周期
    * @return T u 次ステップでの制御入力
    */
-  const T &update(const T &r, const T &y, const T &dr, const T &dy,
+  const T& update(const T& r,
+                  const T& y,
+                  const T& dr,
+                  const T& dy,
                   const float Ts) {
     /* feedforward signal */
     bd.ff = (M.T1 * dr + r) / M.K1;
@@ -93,33 +100,33 @@ public:
   /**
    * @brief エラー積分値を取得
    */
-  const T &getErrorIntegral() const { return e_int; }
+  const T& getErrorIntegral() const { return e_int; }
   /**
    * @brief フィードフォワードモデルを取得する関数
    */
-  const Model &getModel() const { return M; }
+  const Model& getModel() const { return M; }
   /**
    * @brief フィードフォワードモデルを設定する関数
    */
-  void setModel(const Model &model) { M = model; }
+  void setModel(const Model& model) { M = model; }
   /**
    * @brief フィードバックゲインを取得する関数
    */
-  const Gain &getGain() const { return G; }
+  const Gain& getGain() const { return G; }
   /**
    * @brief フィードバックゲインを設定する関数
    */
-  void setGain(const Gain &gain) { G = gain; }
+  void setGain(const Gain& gain) { G = gain; }
   /**
    * @brief 制御入力の内訳を取得する関数
    */
-  const Breakdown &getBreakdown() const { return bd; }
+  const Breakdown& getBreakdown() const { return bd; }
 
-protected:
+ protected:
   Model M;      /**< @brief フィードフォワードモデル */
   Gain G;       /**< @brief フィードバックゲイン */
   Breakdown bd; /**< @brief 制御入力の計算内訳 */
   T e_int;      /**< @brief 追従誤差の積分値 */
 };
 
-}; // namespace ctrl
+};  // namespace ctrl

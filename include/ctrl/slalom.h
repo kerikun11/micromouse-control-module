@@ -1,7 +1,7 @@
 /**
  * @file slalom.h
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 拘束条件からスラロームを軌道生成するライブラリ
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
  */
 #pragma once
@@ -53,16 +53,26 @@ struct Shape {
   float ddth_max;      /**< @brief 最大角加速度の大きさ [rad/s/s] */
   float dth_max;       /**< @brief 最大角速度の大きさ [rad/s] */
 
-public:
+ public:
   /**
    * @brief 生成済みスラローム形状を単に代入するコンストラクタ
    */
-  Shape(const Pose &total, const Pose &curve, float straight_prev,
-        const float straight_post, const float v_ref, const float dddth_max,
-        const float ddth_max, const float dth_max)
-      : total(total), curve(curve), straight_prev(straight_prev),
-        straight_post(straight_post), v_ref(v_ref), dddth_max(dddth_max),
-        ddth_max(ddth_max), dth_max(dth_max) {}
+  Shape(const Pose& total,
+        const Pose& curve,
+        float straight_prev,
+        const float straight_post,
+        const float v_ref,
+        const float dddth_max,
+        const float ddth_max,
+        const float dth_max)
+      : total(total),
+        curve(curve),
+        straight_prev(straight_prev),
+        straight_post(straight_post),
+        v_ref(v_ref),
+        dddth_max(dddth_max),
+        ddth_max(ddth_max),
+        dth_max(dth_max) {}
   /**
    * @brief 拘束条件からスラローム形状を生成するコンストラクタ
    *
@@ -75,11 +85,15 @@ public:
    * @param ddth_max 最大角加速度の大きさ [rad/s/s]
    * @param dth_max 最大角速度の大きさ [rad/s]
    */
-  Shape(const Pose &total, const float y_curve_end, const float x_adv = 0,
+  Shape(const Pose& total,
+        const float y_curve_end,
+        const float x_adv = 0,
         const float dddth_max = dddth_max_default,
         const float ddth_max = ddth_max_default,
         const float dth_max = dth_max_default)
-      : total(total), dddth_max(dddth_max), ddth_max(ddth_max),
+      : total(total),
+        dddth_max(dddth_max),
+        ddth_max(ddth_max),
         dth_max(dth_max) {
     /* 生成準備 */
     const float Ts = 1.5e-3f; /*< シミュレーションの積分周期 */
@@ -94,7 +108,7 @@ public:
       float t = 0;
       while (t + Ts < ad.t_end())
         integrate(ad, s, v, t, Ts), t += Ts;
-      integrate(ad, s, v, t, ad.t_end() - t); //< 残りの半端分を積分
+      integrate(ad, s, v, t, ad.t_end() - t);  //< 残りの半端分を積分
       /* 結果を用いて更新 */
       v *= y_curve_end / s.q.y;
     }
@@ -124,8 +138,12 @@ public:
    * @param Ts 積分時間 [s]
    * @param k_slip スリップ角定数
    */
-  static void integrate(const AccelDesigner &ad, State &s, const float v,
-                        const float t, const float Ts, const float k_slip = 0) {
+  static void integrate(const AccelDesigner& ad,
+                        State& s,
+                        const float v,
+                        const float t,
+                        const float Ts,
+                        const float k_slip = 0) {
     /* Calculation */
     const std::array<float, 3> th{{ad.x(t), ad.x(t + Ts / 2), ad.x(t + Ts)}};
     const std::array<float, 3> w{{ad.v(t), ad.v(t + Ts / 2), ad.v(t + Ts)}};
@@ -154,7 +172,7 @@ public:
   /**
    * @brief 情報の表示
    */
-  friend std::ostream &operator<<(std::ostream &os, const Shape &obj) {
+  friend std::ostream& operator<<(std::ostream& os, const Shape& obj) {
     os << "Slalom Shape" << std::endl;
     os << "\ttotal:\t" << obj.total << std::endl;
     os << "\tcurve:\t" << obj.curve << std::endl;
@@ -174,14 +192,14 @@ public:
  * スラローム形状 Shape と並進速度をもとに，各時刻における位置や速度を提供する．
  */
 class Trajectory {
-public:
+ public:
   /**
    * @brief コンストラクタ
    *
    * @param shape スラローム形状
    * @param mirror_x スラローム形状を$x$軸反転(進行方向に対して左右反転)する
    */
-  Trajectory(const Shape &shape, const bool mirror_x = false) : shape(shape) {
+  Trajectory(const Shape& shape, const bool mirror_x = false) : shape(shape) {
     if (mirror_x) {
       this->shape.curve = shape.curve.mirror_x();
       this->shape.total = shape.total.mirror_x();
@@ -194,7 +212,8 @@ public:
    * @param th_start 初期姿勢 [rad] (オプション)
    * @param t_start 初期時刻 [s] (オプション)
    */
-  void reset(const float velocity, const float th_start = 0,
+  void reset(const float velocity,
+             const float th_start = 0,
              const float t_start = 0) {
     this->velocity = velocity;
     const float gain = velocity / shape.v_ref;
@@ -209,7 +228,9 @@ public:
    * @param Ts 積分時間 [s]
    * @param k_slip スリップ角の比例定数
    */
-  void update(State &state, const float t, const float Ts,
+  void update(State& state,
+              const float t,
+              const float Ts,
               const float k_slip = 0) const {
     return Shape::integrate(ad, state, velocity, t, Ts, k_slip);
   }
@@ -224,17 +245,17 @@ public:
   /**
    * @brief スラローム形状を取得
    */
-  const Shape &getShape() const { return shape; }
+  const Shape& getShape() const { return shape; }
   /**
    * @brief 角速度設計器を取得
    */
-  const AccelDesigner &getAccelDesigner() const { return ad; }
+  const AccelDesigner& getAccelDesigner() const { return ad; }
 
-protected:
+ protected:
   Shape shape;      /**< @brief スラロームの形状 */
   AccelDesigner ad; /**< @brief 角速度用の曲線加速生成器 */
   float velocity;   /**< @brief 並進速度 */
 };
 
-} // namespace slalom
-} // namespace ctrl
+}  // namespace slalom
+}  // namespace ctrl

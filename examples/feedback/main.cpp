@@ -19,10 +19,10 @@ int main(void) {
   /* Control */
   feedback_controller.reset();
   for (float t = 0; t < trajectory.t_end(); t += Ts) {
-    const float r = trajectory.v(t);  //< reference of output
-    const float y = trajectory.v(t);  //< measurement output
-    const float dr = trajectory.a(t); //< differential of reference of output
-    const float dy = trajectory.a(t); //< differential of measurement output
+    const float r = trajectory.v(t);   //< reference of output
+    const float y = trajectory.v(t);   //< measurement output
+    const float dr = trajectory.a(t);  //< differential of reference of output
+    const float dy = trajectory.a(t);  //< differential of measurement output
     const float u = feedback_controller.update(r, y, dr, dy, Ts);
     /* apply control input u here */
     /* csv output */

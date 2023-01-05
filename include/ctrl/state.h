@@ -1,7 +1,7 @@
 /**
  * @file state.h
- * @author Ryotaro Onuki (kerikun11+github@gmail.com)
  * @brief 軌道制御の状態変数
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
  */
 #pragma once
@@ -23,4 +23,4 @@ struct State {
   Pose dddq;
 };
 
-}; // namespace ctrl
+};  // namespace ctrl
