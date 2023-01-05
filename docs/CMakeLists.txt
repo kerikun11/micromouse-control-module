@@ -22,7 +22,7 @@ set(DOXYGEN_CREATE_SUBDIRS YES) # to resolve src code link
 find_package(Git)
 if(GIT_FOUND)
   execute_process(
-    COMMAND ${GIT_EXECUTABLE} describe --tags --dirty
+    COMMAND ${GIT_EXECUTABLE} describe --always --tags --dirty
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     OUTPUT_VARIABLE GIT_DESCRIBE_VERSION
     RESULT_VARIABLE GIT_DESCRIBE_RESULT

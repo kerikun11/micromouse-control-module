@@ -7,31 +7,21 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v2
         with:
           submodules: true
           fetch-depth: 0 # for use of git describe
 
       - name: Install Packages
-        run: sudo apt install -y gcc g++ make cmake graphviz
+        run: sudo apt install -y gcc g++ make cmake graphviz doxygen git
 
-      - name: Install Specific Version of Doxygen
-        env:
-          DOXYGEN_VERSION: 1.9.1
-        run: |
-          sudo apt install -y curl make libclang-9-dev libclang-cpp9
-          cd /tmp
-          curl -L https://doxygen.nl/files/doxygen-$DOXYGEN_VERSION.linux.bin.tar.gz | tar xz
-          cd doxygen-$DOXYGEN_VERSION
-          sudo make -j$(nproc) install
-
-      - name: Build
+      - name: Build Documentation
         run: mkdir build && cd build && cmake .. && make docs
 
-      - name: Deploy
+      - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
