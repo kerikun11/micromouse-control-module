@@ -87,7 +87,7 @@ PYBIND11_MODULE(ctrl, m) {
       .def("rotate", &Pose::rotate)
       .def("homogeneous", &Pose::homogeneous)
       .def(py::self += py::self)
-      .def(py::self -= py::self)
+      .def(py::self -= py::self)  // cppcheck-suppress duplicateExpression
       .def(py::self + py::self)
       .def(py::self - py::self)
       .def("__str__",
