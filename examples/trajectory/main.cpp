@@ -17,8 +17,7 @@ std::ostream& os = of;
 
 using namespace ctrl;
 
-void printCsv(const float t,
-              const State& s,
+void printCsv(const float t, const State& s,
               const TrajectoryTracker::Result& ref) {
   os << t;
   os << "," << s.dddq.th;

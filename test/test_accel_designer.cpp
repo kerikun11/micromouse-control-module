@@ -1,6 +1,5 @@
-#include <gtest/gtest.h>
-
 #include <ctrl/accel_designer.h>
+#include <gtest/gtest.h>
 
 #include <random>
 
@@ -8,14 +7,8 @@ using namespace ctrl;
 
 class AccelDesignerTest : public AccelDesigner {
  public:
-  void test(const float jm,
-            const float am,
-            const float vm,
-            const float vs,
-            const float vt,
-            const float d,
-            const float xs,
-            const float ts) {
+  void test(const float jm, const float am, const float vm, const float vs,
+            const float vt, const float d, const float xs, const float ts) {
     reset(jm, am, vm, vs, vt, d, xs, ts);
     /* error tolerance */
     const float e = 1e-5f;

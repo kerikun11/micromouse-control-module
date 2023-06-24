@@ -78,10 +78,7 @@ class FeedbackController {
    * @param Ts 離散時間周期
    * @return T u 次ステップでの制御入力
    */
-  const T& update(const T& r,
-                  const T& y,
-                  const T& dr,
-                  const T& dy,
+  const T& update(const T& r, const T& y, const T& dr, const T& dy,
                   const float Ts) {
     /* feedforward signal */
     bd.ff = (M.T1 * dr + r) / M.K1;

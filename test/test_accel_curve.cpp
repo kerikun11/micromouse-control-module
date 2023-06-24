@@ -1,6 +1,6 @@
+#include <ctrl/accel_curve.h>
 #include <gtest/gtest.h>
 
-#include <ctrl/accel_curve.h>
 #include <random>
 
 using namespace ctrl;

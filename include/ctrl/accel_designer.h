@@ -7,12 +7,12 @@
  */
 #pragma once
 
-#include "accel_curve.h"
-
 #include <algorithm>  //< for std::max, std::min
 #include <array>
 #include <iostream>  //< for std::cout
 #include <ostream>
+
+#include "accel_curve.h"
 
 /**
  * @brief 制御関係の名前空間
@@ -42,14 +42,9 @@ class AccelDesigner {
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  AccelDesigner(const float j_max,
-                const float a_max,
-                const float v_max,
-                const float v_start,
-                const float v_target,
-                const float dist,
-                const float x_start = 0,
-                const float t_start = 0) {
+  AccelDesigner(const float j_max, const float a_max, const float v_max,
+                const float v_start, const float v_target, const float dist,
+                const float x_start = 0, const float t_start = 0) {
     reset(j_max, a_max, v_max, v_start, v_target, dist, x_start, t_start);
   }
   /**
@@ -69,14 +64,9 @@ class AccelDesigner {
    * @param x_start   始点位置 [m] (オプション)
    * @param t_start   始点時刻 [s] (オプション)
    */
-  void reset(const float j_max,
-             const float a_max,
-             const float v_max,
-             const float v_start,
-             const float v_target,
-             const float dist,
-             const float x_start = 0,
-             const float t_start = 0) {
+  void reset(const float j_max, const float a_max, const float v_max,
+             const float v_start, const float v_target, const float dist,
+             const float x_start = 0, const float t_start = 0) {
     /* 目標速度に到達可能か，走行距離から終点速度を決定していく */
     auto v_end = v_target; /*< 仮代入 */
     /* 移動距離の拘束により，目標速度に達し得ない場合の処理 */
@@ -108,8 +98,7 @@ class AccelDesigner {
       dc.reset(j_max, a_max, v_sat, v_end);    //< 減速
     }
     /* t23 = nan 回避; vs = ve = d = 0 のときに発生 */
-    if (std::abs(v_sat) < std::numeric_limits<float>::epsilon())
-      v_sat = 1;
+    if (std::abs(v_sat) < std::numeric_limits<float>::epsilon()) v_sat = 1;
     /* 各定数の算出 */
     const auto t23 = (dist - ac.x_end() - dc.x_end()) / v_sat;
     x0 = x_start;

@@ -14,8 +14,7 @@
 
 using namespace ctrl;
 
-void printCsv(const std::string& filebase,
-              const slalom::Shape& ss,
+void printCsv(const std::string& filebase, const slalom::Shape& ss,
               const float th_start = 0) {
   auto st = slalom::Trajectory(ss);
   const float v = ss.v_ref;

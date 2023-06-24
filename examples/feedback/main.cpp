@@ -1,7 +1,7 @@
-#include <fstream>
-
 #include <ctrl/accel_designer.h>
 #include <ctrl/feedback_controller.h>
+
+#include <fstream>
 
 std::ofstream csv("main.csv");
 

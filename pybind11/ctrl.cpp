@@ -7,7 +7,6 @@
  */
 #include <ctrl/accel_designer.h>
 #include <ctrl/slalom.h>
-
 #include <pybind11/operators.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>

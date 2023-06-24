@@ -6,13 +6,13 @@
  */
 #pragma once
 
-#include "accel_designer.h"
-#include "pose.h"
-#include "state.h"
-
 #include <array>
 #include <cmath>
 #include <ostream>
+
+#include "accel_designer.h"
+#include "pose.h"
+#include "state.h"
 
 /**
  * @brief 制御関係の名前空間
@@ -57,14 +57,9 @@ struct Shape {
   /**
    * @brief 生成済みスラローム形状を単に代入するコンストラクタ
    */
-  Shape(const Pose& total,
-        const Pose& curve,
-        float straight_prev,
-        const float straight_post,
-        const float v_ref,
-        const float dddth_max,
-        const float ddth_max,
-        const float dth_max)
+  Shape(const Pose& total, const Pose& curve, float straight_prev,
+        const float straight_post, const float v_ref, const float dddth_max,
+        const float ddth_max, const float dth_max)
       : total(total),
         curve(curve),
         straight_prev(straight_prev),
@@ -85,9 +80,7 @@ struct Shape {
    * @param ddth_max 最大角加速度の大きさ [rad/s/s]
    * @param dth_max 最大角速度の大きさ [rad/s]
    */
-  Shape(const Pose& total,
-        const float y_curve_end,
-        const float x_adv = 0,
+  Shape(const Pose& total, const float y_curve_end, const float x_adv = 0,
         const float dddth_max = dddth_max_default,
         const float ddth_max = ddth_max_default,
         const float dth_max = dth_max_default)
@@ -106,8 +99,7 @@ struct Shape {
       s.q.x = s.q.y = 0;
       /* シミュレーション */
       float t = 0;
-      while (t + Ts < ad.t_end())
-        integrate(ad, s, v, t, Ts), t += Ts;
+      while (t + Ts < ad.t_end()) integrate(ad, s, v, t, Ts), t += Ts;
       integrate(ad, s, v, t, ad.t_end() - t);  //< 残りの半端分を積分
       /* 結果を用いて更新 */
       v *= y_curve_end / s.q.y;
@@ -138,12 +130,8 @@ struct Shape {
    * @param Ts 積分時間 [s]
    * @param k_slip スリップ角定数
    */
-  static void integrate(const AccelDesigner& ad,
-                        State& s,
-                        const float v,
-                        const float t,
-                        const float Ts,
-                        const float k_slip = 0) {
+  static void integrate(const AccelDesigner& ad, State& s, const float v,
+                        const float t, const float Ts, const float k_slip = 0) {
     /* Calculation */
     const std::array<float, 3> th{{ad.x(t), ad.x(t + Ts / 2), ad.x(t + Ts)}};
     const std::array<float, 3> w{{ad.v(t), ad.v(t + Ts / 2), ad.v(t + Ts)}};
@@ -212,8 +200,7 @@ class Trajectory {
    * @param th_start 初期姿勢 [rad] (オプション)
    * @param t_start 初期時刻 [s] (オプション)
    */
-  void reset(const float velocity,
-             const float th_start = 0,
+  void reset(const float velocity, const float th_start = 0,
              const float t_start = 0) {
     this->velocity = velocity;
     const float gain = velocity / shape.v_ref;
@@ -228,9 +215,7 @@ class Trajectory {
    * @param Ts 積分時間 [s]
    * @param k_slip スリップ角の比例定数
    */
-  void update(State& state,
-              const float t,
-              const float Ts,
+  void update(State& state, const float t, const float Ts,
               const float k_slip = 0) const {
     return Shape::integrate(ad, state, velocity, t, Ts, k_slip);
   }

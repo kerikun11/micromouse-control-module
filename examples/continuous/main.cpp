@@ -15,14 +15,8 @@ ctrl::AccelDesigner ad;
 ctrl::AccelCurve ac;
 std::ofstream of("continuous.csv");
 
-void test(const float jm,
-          const float am,
-          const float vm,
-          const float vs,
-          const float vt,
-          const float d,
-          const float xs,
-          const float ts) {
+void test(const float jm, const float am, const float vm, const float vs,
+          const float vt, const float d, const float xs, const float ts) {
   ad.reset(jm, am, vm, vs, vt, d, xs, ts);
   ad.printCsv(of);
   // std::cout << ad << std::endl;

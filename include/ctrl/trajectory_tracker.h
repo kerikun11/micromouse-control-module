@@ -80,9 +80,7 @@ class TrajectoryTracker {
    * @param ref_s 目標状態
    * @return const Result 制御入力
    */
-  const Result update(const Pose& est_q,
-                      const Polar& est_v,
-                      const Polar& est_a,
+  const Result update(const Pose& est_q, const Polar& est_v, const Polar& est_a,
                       const State& ref_s) {
     return update(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq,
                   ref_s.dddq);
@@ -99,13 +97,9 @@ class TrajectoryTracker {
    * @param ref_dddq 目標躍度
    * @return const Result 制御入力
    */
-  const Result update(const Pose& est_q,
-                      const Polar& est_v,
-                      const Polar& est_a,
-                      const Pose& ref_q,
-                      const Pose& ref_dq,
-                      const Pose& ref_ddq,
-                      const Pose& ref_dddq) {
+  const Result update(const Pose& est_q, const Polar& est_v, const Polar& est_a,
+                      const Pose& ref_q, const Pose& ref_dq,
+                      const Pose& ref_ddq, const Pose& ref_dddq) {
     /* Prepare Variable */
     const float x = est_q.x;
     const float y = est_q.y;

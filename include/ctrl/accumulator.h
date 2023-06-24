@@ -39,8 +39,7 @@ class Accumulator {
    * @param value 代入する値
    */
   void clear(const T& value = T()) {
-    for (int i = 0; i < S; i++)
-      buffer[i] = value;
+    for (int i = 0; i < S; i++) buffer[i] = value;
   }
   /**
    * @brief 最新のデータを追加する関数

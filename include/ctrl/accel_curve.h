@@ -70,9 +70,7 @@ class AccelCurve {
    * @param v_start 始点速度 [m/s]
    * @param v_end   終点速度 [m/s]
    */
-  AccelCurve(const float j_max,
-             const float a_max,
-             const float v_start,
+  AccelCurve(const float j_max, const float a_max, const float v_start,
              const float v_end) {
     reset(j_max, a_max, v_start, v_end);
   }
@@ -91,9 +89,7 @@ class AccelCurve {
    * @param v_start 始点速度 [m/s]
    * @param v_end   終点速度 [m/s]
    */
-  void reset(const float j_max,
-             const float a_max,
-             const float v_start,
+  void reset(const float j_max, const float a_max, const float v_start,
              const float v_end) {
     /* 符号付きで代入 */
     am = (v_end > v_start) ? a_max : -a_max;  //< 最大加速度の符号を決定
@@ -246,10 +242,8 @@ class AccelCurve {
    * @param d     走行距離 [m]
    * @return ve   終点速度 [m/s]
    */
-  static float calcReachableVelocityEnd(const float j_max,
-                                        const float a_max,
-                                        const float vs,
-                                        const float vt,
+  static float calcReachableVelocityEnd(const float j_max, const float a_max,
+                                        const float vs, const float vt,
                                         const float d) {
     /* 速度が曲線となる部分の時間を決定 */
     const auto tc = a_max / j_max;
@@ -302,10 +296,8 @@ class AccelCurve {
    * @param d     走行距離 [m]
    * @return vm   最大速度 [m/s]
    */
-  static float calcReachableVelocityMax(const float j_max,
-                                        const float a_max,
-                                        const float vs,
-                                        const float ve,
+  static float calcReachableVelocityMax(const float j_max, const float a_max,
+                                        const float vs, const float ve,
                                         const float d) {
     /* 速度が曲線となる部分の時間を決定 */
     const auto tc = a_max / j_max;
