@@ -6,7 +6,7 @@
  * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
  */
 #include <ctrl/accel_designer.h>
-#include <ctrl/slalom.h>
+#include <ctrl/slalom/trajectory.h>
 #include <pybind11/operators.h>
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>

@@ -6,8 +6,8 @@
  */
 #pragma once
 
-#include "accel_designer.h"
-#include "state.h"
+#include <ctrl/accel_designer.h>
+#include <ctrl/state.h>
 
 /**
  * @brief 制御関係の名前空間

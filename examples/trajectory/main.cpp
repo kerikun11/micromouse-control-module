@@ -4,7 +4,7 @@
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
  */
-#include <ctrl/straight.h>
+#include <ctrl/straight/trajectory.h>
 #include <ctrl/trajectory_tracker.h>
 
 #include <chrono>
