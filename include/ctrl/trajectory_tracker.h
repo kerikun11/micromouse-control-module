@@ -3,6 +3,7 @@
  * @brief 独立2輪車の線形化フィードバック軌道追従コントローラ
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2019-03-31
+ * @copyright Copyright 2019 <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -34,8 +35,8 @@ class TrajectoryTracker {
   struct Gain {
     float zeta = 1.0f;
     float omega_n = 15.0f;
-    float low_zeta = 1.0f; /*< zeta \in [0,1] */
-    float low_b = 1e-3f;   /*< b > 0 */
+    float low_zeta = 1.0f;  //< zeta \in [0,1]
+    float low_b = 1e-3f;    //< b > 0
   };
   /**
    * @brief 計算結果を格納する構造体
@@ -49,7 +50,7 @@ class TrajectoryTracker {
   /**
    * @brief 自作の sinc 関数 sinc(x) := sin(x) / x
    *
-   * @param x
+   * @param[in] x
    * @return sinc(x)
    */
   static constexpr float sinc(const float x) {
@@ -62,27 +63,25 @@ class TrajectoryTracker {
   /**
    * @brief コンストラクタ
    *
-   * @param gain 軌道追従フィードバックゲイン
+   * @param[in] gain 軌道追従フィードバックゲイン
    */
   TrajectoryTracker(const Gain& gain) : gain(gain) {}
   /**
    * @brief 状態の初期化
    *
-   * @param vs 初期並進速度
+   * @param[in] vs 初期並進速度
    */
   void reset(const float vs = 0) { xi = vs; }
   /**
    * @brief 制御入力の計算
    *
-   * @param est_q 推定位置
-   * @param est_v 推定速度
-   * @param est_a 推定加速度
-   * @param ref_s 目標状態
-   * @return const Result 制御入力
+   * @param[in] est_q 推定位置
+   * @param[in] est_v 推定速度
+   * @param[in] est_a 推定加速度
+   * @param[in] ref_s 目標状態
+   * @return 制御入力
    */
-  const Result update(const Pose& est_q,
-                      const Polar& est_v,
-                      const Polar& est_a,
+  const Result update(const Pose& est_q, const Polar& est_v, const Polar& est_a,
                       const State& ref_s) {
     return update(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq,
                   ref_s.dddq);
@@ -90,22 +89,18 @@ class TrajectoryTracker {
   /**
    * @brief 制御入力の計算
    *
-   * @param est_q 推定位置
-   * @param est_v 推定速度
-   * @param est_a 推定加速度
-   * @param ref_q 目標位置
-   * @param ref_dq 目標速度
-   * @param ref_ddq 目標加速度
-   * @param ref_dddq 目標躍度
-   * @return const Result 制御入力
+   * @param[in] est_q 推定位置
+   * @param[in] est_v 推定速度
+   * @param[in] est_a 推定加速度
+   * @param[in] ref_q 目標位置
+   * @param[in] ref_dq 目標速度
+   * @param[in] ref_ddq 目標加速度
+   * @param[in] ref_dddq 目標躍度
+   * @return 制御入力
    */
-  const Result update(const Pose& est_q,
-                      const Polar& est_v,
-                      const Polar& est_a,
-                      const Pose& ref_q,
-                      const Pose& ref_dq,
-                      const Pose& ref_ddq,
-                      const Pose& ref_dddq) {
+  const Result update(const Pose& est_q, const Polar& est_v, const Polar& est_a,
+                      const Pose& ref_q, const Pose& ref_dq,
+                      const Pose& ref_ddq, const Pose& ref_dddq) {
     /* Prepare Variable */
     const float x = est_q.x;
     const float y = est_q.y;
@@ -177,7 +172,7 @@ class TrajectoryTracker {
 
  protected:
   float xi;  /**< @brief 補助状態変数 */
-  Gain gain; /**< フィードバックゲイン */
+  Gain gain; /**< @brief フィードバックゲイン */
 };
 
 }  // namespace ctrl

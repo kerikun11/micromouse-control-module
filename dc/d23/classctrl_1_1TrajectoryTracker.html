@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.2.2</span>
+   &#160;<span id="projectnumber">v1.3.0</span>
    </div>
   </td>
  </tr>
@@ -139,7 +139,9 @@ Protected Attributes</h2></td></tr>
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a></td></tr>
 <tr class="memdesc:a448be733897440c2706de700e978ef0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">補助状態変数 <br /></td></tr>
 <tr class="separator:a448be733897440c2706de700e978ef0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a95bfcfdc5dba1a19299f30ab048f37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d67/structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a></td></tr>
+<tr class="memitem:a6a95bfcfdc5dba1a19299f30ab048f37"><td class="memItemLeft" align="right" valign="top"><a id="a6a95bfcfdc5dba1a19299f30ab048f37"></a>
+<a class="el" href="../../db/d67/structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a></td></tr>
+<tr class="memdesc:a6a95bfcfdc5dba1a19299f30ab048f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードバックゲイン <br /></td></tr>
 <tr class="separator:a6a95bfcfdc5dba1a19299f30ab048f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -172,7 +174,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../
 <p>コンストラクタ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gain</td><td>軌道追従フィードバックゲイン </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>軌道追従フィードバックゲイン </td></tr>
   </table>
   </dd>
 </dl>
@@ -207,7 +209,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../
 <p>状態の初期化 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">vs</td><td>初期並進速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vs</td><td>初期並進速度 </td></tr>
   </table>
   </dd>
 </dl>
@@ -241,7 +243,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../
 <p>自作の sinc 関数 sinc(x) := sin(x) / x </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td></td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -316,17 +318,17 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../
 <p>制御入力の計算 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">est_q</td><td>推定位置 </td></tr>
-    <tr><td class="paramname">est_v</td><td>推定速度 </td></tr>
-    <tr><td class="paramname">est_a</td><td>推定加速度 </td></tr>
-    <tr><td class="paramname">ref_q</td><td>目標位置 </td></tr>
-    <tr><td class="paramname">ref_dq</td><td>目標速度 </td></tr>
-    <tr><td class="paramname">ref_ddq</td><td>目標加速度 </td></tr>
-    <tr><td class="paramname">ref_dddq</td><td>目標躍度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_q</td><td>推定位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_v</td><td>推定速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_a</td><td>推定加速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_q</td><td>目標位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_dq</td><td>目標速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_ddq</td><td>目標加速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_dddq</td><td>目標躍度 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>const <a class="el" href="../../d8/d91/structctrl_1_1TrajectoryTracker_1_1Result.html" title="計算結果を格納する構造体">Result</a> 制御入力 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>制御入力 </dd></dl>
 
 </div>
 </div>
@@ -379,38 +381,14 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../
 <p>制御入力の計算 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">est_q</td><td>推定位置 </td></tr>
-    <tr><td class="paramname">est_v</td><td>推定速度 </td></tr>
-    <tr><td class="paramname">est_a</td><td>推定加速度 </td></tr>
-    <tr><td class="paramname">ref_s</td><td>目標状態 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_q</td><td>推定位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_v</td><td>推定速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_a</td><td>推定加速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_s</td><td>目標状態 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>const <a class="el" href="../../d8/d91/structctrl_1_1TrajectoryTracker_1_1Result.html" title="計算結果を格納する構造体">Result</a> 制御入力 </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a6a95bfcfdc5dba1a19299f30ab048f37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a95bfcfdc5dba1a19299f30ab048f37">&#9670;&nbsp;</a></span>gain</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/d67/structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a> ctrl::TrajectoryTracker::gain</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>フィードバックゲイン </p>
+<dl class="section return"><dt>Returns</dt><dd>制御入力 </dd></dl>
 
 </div>
 </div>

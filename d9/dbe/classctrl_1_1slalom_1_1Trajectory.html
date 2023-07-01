@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.2.2</span>
+   &#160;<span id="projectnumber">v1.3.0</span>
    </div>
   </td>
  </tr>
@@ -78,7 +78,7 @@ $(function() {
 <p><a class="el" href="../../d9/dbe/classctrl_1_1slalom_1_1Trajectory.html" title="slalom::Trajectory スラローム軌道を生成するクラス">slalom::Trajectory</a> スラローム軌道を生成するクラス  
  <a href="../../d9/dbe/classctrl_1_1slalom_1_1Trajectory.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="../../d1/dad/slalom_8h_source.html">slalom.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="../../d1/d15/slalom_2trajectory_8h_source.html">trajectory.h</a>&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for ctrl::slalom::Trajectory:</div>
 <div class="dyncontent">
@@ -176,8 +176,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../
 <p>コンストラクタ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">shape</td><td>スラローム形状 </td></tr>
-    <tr><td class="paramname">mirror_x</td><td>スラローム形状を$x$軸反転(進行方向に対して左右反転)する </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">shape</td><td>スラローム形状 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mirror_x</td><td>スラローム形状を$x$軸反転(進行方向に対して左右反転)する </td></tr>
   </table>
   </dd>
 </dl>
@@ -286,10 +286,10 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../
 <p>軌道の更新 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>次の時刻に更新する現在状態 </td></tr>
-    <tr><td class="paramname">t</td><td>現在時刻 [s] </td></tr>
-    <tr><td class="paramname">Ts</td><td>積分時間 [s] </td></tr>
-    <tr><td class="paramname">k_slip</td><td>スリップ角の比例定数 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">state</td><td>次の時刻に更新する現在状態 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>現在時刻 [s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Ts</td><td>積分時間 [s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">k_slip</td><td>スリップ角の比例定数 </td></tr>
   </table>
   </dd>
 </dl>
@@ -297,7 +297,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>ctrl/<a class="el" href="../../d1/dad/slalom_8h_source.html">slalom.h</a></li>
+<li>ctrl/slalom/<a class="el" href="../../d1/d15/slalom_2trajectory_8h_source.html">trajectory.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

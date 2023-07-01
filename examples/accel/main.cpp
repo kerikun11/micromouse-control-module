@@ -3,6 +3,7 @@
  * @brief This file evaluates the performance of acceleration curves.
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
 #define CTRL_LOG_LEVEL CTRL_LOG_LEVEL_INFO
 #include <ctrl/accel_designer.h>
@@ -16,7 +17,7 @@ void printCsv(const std::string& filebase, const ctrl::AccelDesigner& ad) {
   ctrl_logi << ad << std::endl;
   const float Ts = 1e-4f;
   std::ofstream of;
-  const auto ticks = ad.getTimeStamp();
+  const auto ticks = ad.getTimeStamps();
   float t = 0;
   for (size_t i = 0; i < ticks.size(); ++i) {
     of = std::ofstream(filebase + "_" + std::to_string(i) + ".csv");

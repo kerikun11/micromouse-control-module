@@ -3,8 +3,9 @@
  * @brief slalom trajectory generation example
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
-#include <ctrl/slalom.h>
+#include <ctrl/slalom/trajectory.h>
 
 #include <cmath>
 #include <fstream>
@@ -14,8 +15,7 @@
 
 using namespace ctrl;
 
-void printCsv(const std::string& filebase,
-              const slalom::Shape& ss,
+void printCsv(const std::string& filebase, const slalom::Shape& ss,
               const float th_start = 0) {
   auto st = slalom::Trajectory(ss);
   const float v = ss.v_ref;

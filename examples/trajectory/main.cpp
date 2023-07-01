@@ -3,8 +3,9 @@
  * @brief trajectory tracking
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
-#include <ctrl/straight.h>
+#include <ctrl/straight/trajectory.h>
 #include <ctrl/trajectory_tracker.h>
 
 #include <chrono>
@@ -17,8 +18,7 @@ std::ostream& os = of;
 
 using namespace ctrl;
 
-void printCsv(const float t,
-              const State& s,
+void printCsv(const float t, const State& s,
               const TrajectoryTracker::Result& ref) {
   os << t;
   os << "," << s.dddq.th;

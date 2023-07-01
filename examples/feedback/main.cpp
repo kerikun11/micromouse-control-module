@@ -1,7 +1,14 @@
-#include <fstream>
-
+/**
+ * @file main.cpp
+ * @brief Feedback Controller Example
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
+ * @date 2023-07-01
+ * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
+ */
 #include <ctrl/accel_designer.h>
 #include <ctrl/feedback_controller.h>
+
+#include <fstream>
 
 std::ofstream csv("main.csv");
 

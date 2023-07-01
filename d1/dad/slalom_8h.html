@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MicroMouse Control Module: ctrl/slalom.h File Reference</title>
+<title>MicroMouse Control Module: ctrl/slalom/slalom.h File Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.2.2</span>
+   &#160;<span id="projectnumber">v1.3.0</span>
    </div>
   </td>
  </tr>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="../../dir_60c668f4b51723b2f4c482e06fdf6f37.html">ctrl</a></li>  </ul>
+<li class="navelem"><a class="el" href="../../dir_60c668f4b51723b2f4c482e06fdf6f37.html">ctrl</a></li><li class="navelem"><a class="el" href="../../dir_32f9f8e03cf25b09ae242dba7348f09f.html">slalom</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -77,27 +77,37 @@ $(function() {
 
 <p>拘束条件からスラロームを軌道生成するライブラリ  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="../../d4/d21/accel__designer_8h_source.html">accel_designer.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../d7/def/pose_8h_source.html">pose.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="../../db/d3b/state_8h_source.html">state.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="../../d4/d21/accel__designer_8h_source.html">ctrl/accel_designer.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../d7/def/pose_8h_source.html">ctrl/pose.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="../../db/d3b/state_8h_source.html">ctrl/state.h</a>&gt;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;ostream&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for slalom.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d8/db4/slalom_8h__incl.png" border="0" usemap="#actrl_2slalom_8h" alt=""/></div>
-<map name="actrl_2slalom_8h" id="actrl_2slalom_8h">
-<area shape="rect" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="105,5,208,32"/>
-<area shape="rect" href="../../d4/d21/accel__designer_8h.html" title="距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル" alt="" coords="307,80,438,107"/>
-<area shape="rect" title=" " alt="" coords="551,229,607,256"/>
-<area shape="rect" title=" " alt="" coords="80,229,142,256"/>
-<area shape="rect" title=" " alt="" coords="185,229,261,256"/>
-<area shape="rect" href="../../d7/def/pose_8h.html" title="平面上の位置姿勢の座標もつファイル．" alt="" coords="78,155,144,181"/>
-<area shape="rect" href="../../db/d3b/state_8h.html" title="軌道制御の状態変数" alt="" coords="27,80,94,107"/>
-<area shape="rect" href="../../d8/d9a/accel__curve_8h.html" title="躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する" alt="" coords="270,155,381,181"/>
-<area shape="rect" title=" " alt="" coords="295,229,375,256"/>
-<area shape="rect" title=" " alt="" coords="456,155,542,181"/>
+<div class="center"><img src="../../d8/db4/slalom_8h__incl.png" border="0" usemap="#actrl_2slalom_2slalom_8h" alt=""/></div>
+<map name="actrl_2slalom_2slalom_8h" id="actrl_2slalom_2slalom_8h">
+<area shape="rect" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="467,5,618,32"/>
+<area shape="rect" href="../../d4/d21/accel__designer_8h.html" title="距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル" alt="" coords="213,80,368,107"/>
+<area shape="rect" title=" " alt="" coords="118,229,174,256"/>
+<area shape="rect" title=" " alt="" coords="360,229,436,256"/>
+<area shape="rect" title=" " alt="" coords="568,229,631,256"/>
+<area shape="rect" href="../../d7/def/pose_8h.html" title="平面上の位置姿勢の座標もつファイル．" alt="" coords="554,155,645,181"/>
+<area shape="rect" href="../../db/d3b/state_8h.html" title="軌道制御の状態変数" alt="" coords="606,80,698,107"/>
+<area shape="rect" title=" " alt="" coords="24,155,109,181"/>
+<area shape="rect" title=" " alt="" coords="234,229,314,256"/>
+<area shape="rect" title=" " alt="" coords="421,155,480,181"/>
+<area shape="rect" href="../../d8/d9a/accel__curve_8h.html" title="躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する" alt="" coords="235,155,346,181"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d0/dc3/slalom_8h__dep__incl.png" border="0" usemap="#actrl_2slalom_2slalom_8hdep" alt=""/></div>
+<map name="actrl_2slalom_2slalom_8hdep" id="actrl_2slalom_2slalom_8hdep">
+<area shape="rect" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="14,5,165,32"/>
+<area shape="rect" href="../../d1/d15/slalom_2trajectory_8h.html" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="5,80,173,107"/>
 </map>
 </div>
 </div>
@@ -107,9 +117,6 @@ Include dependency graph for slalom.h:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d14/structctrl_1_1slalom_1_1Shape.html">ctrl::slalom::Shape</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d7/d14/structctrl_1_1slalom_1_1Shape.html" title="slalom::Shape スラロームの形状を表す構造体">slalom::Shape</a> スラロームの形状を表す構造体  <a href="../../d7/d14/structctrl_1_1slalom_1_1Shape.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/dbe/classctrl_1_1slalom_1_1Trajectory.html">ctrl::slalom::Trajectory</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d9/dbe/classctrl_1_1slalom_1_1Trajectory.html" title="slalom::Trajectory スラローム軌道を生成するクラス">slalom::Trajectory</a> スラローム軌道を生成するクラス  <a href="../../d9/dbe/classctrl_1_1slalom_1_1Trajectory.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -140,6 +147,7 @@ static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a cla
 <div class="textblock"><p>拘束条件からスラロームを軌道生成するライブラリ </p>
 <dl class="section author"><dt>Author</dt><dd>Ryotaro Onuki <a href="#" onclick="location.href='mai'+'lto:'+'ker'+'ik'+'un1'+'1+'+'git'+'hu'+'b@g'+'ma'+'il.'+'co'+'m'; return false;">kerik<span style="display: none;">.nosp@m.</span>un11<span style="display: none;">.nosp@m.</span>+gith<span style="display: none;">.nosp@m.</span>ub@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a> </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020-04-19 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright 2020 <a href="#" onclick="location.href='mai'+'lto:'+'ker'+'ik'+'un1'+'1+'+'git'+'hu'+'b@g'+'ma'+'il.'+'co'+'m'; return false;">kerik<span style="display: none;">.nosp@m.</span>un11<span style="display: none;">.nosp@m.</span>+gith<span style="display: none;">.nosp@m.</span>ub@g<span style="display: none;">.nosp@m.</span>mail.<span style="display: none;">.nosp@m.</span>com</a> </dd></dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

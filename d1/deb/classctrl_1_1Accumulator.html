@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.2.2</span>
+   &#160;<span id="projectnumber">v1.3.0</span>
    </div>
   </td>
  </tr>
@@ -148,7 +148,7 @@ template&lt;typename T , std::size_t S&gt; </div>
 <p>コンストラクタ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>バッファ内の全データに代入する初期値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>バッファ内の全データに代入する初期値 </td></tr>
   </table>
   </dd>
 </dl>
@@ -185,11 +185,11 @@ template&lt;typename T , std::size_t S&gt; </div>
 <p>直近 n 個の平均を取得する関数 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">n</td><td>平均個数 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>平均個数 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>const T 平均値 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>平均値 </dd></dl>
 
 </div>
 </div>
@@ -222,7 +222,7 @@ template&lt;typename T , std::size_t S&gt; </div>
 <p>バッファをクリアする関数 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">value</td><td>代入する値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>代入する値 </td></tr>
   </table>
   </dd>
 </dl>
@@ -256,14 +256,13 @@ template&lt;typename T , std::size_t S&gt; </div>
 </div><div class="memdoc">
 
 <p>直近 index 番目の値を取得するオペレータ </p>
-<p>[0] 番目が最新のデータ，[<a class="el" href="../../d1/deb/classctrl_1_1Accumulator.html#a95a2a5e1190de4193288c0d547e53b63" title="リングバッファのサイズを返す関数">size()</a> - 1] 番目が最古のデータ</p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>[0] 番目が最新のデータ，[<a class="el" href="../../d1/deb/classctrl_1_1Accumulator.html#a95a2a5e1190de4193288c0d547e53b63" title="リングバッファのサイズを返す関数">size()</a> - 1] 番目が最古のデータ </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>直近何番目のデータかを指すインデックス </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">index</td><td>直近何番目のデータかを指すインデックス </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>const T&amp; </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>直近 index 番目のデータ </dd></dl>
 
 </div>
 </div>

@@ -3,8 +3,9 @@
  * @brief This file generates slalom shapes for each turn of the micromouse.
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
-#include <ctrl/slalom.h>
+#include <ctrl/slalom/trajectory.h>
 
 #include <filesystem>
 #include <fstream>
@@ -28,8 +29,7 @@ std::vector<std::pair<std::string, slalom::Shape>> shapes = {{
     {"SS_FS90", slalom::Shape(Pose(45, 45, pi / 2), 44)},
 }};
 
-void printDefinition(std::ostream& os,
-                     const std::string& name,
+void printDefinition(std::ostream& os, const std::string& name,
                      const slalom::Shape& s) {
   const AccelDesigner ad(s.dddth_max, s.ddth_max, s.dth_max, 0, 0, s.total.th);
   const auto t_total =
@@ -54,8 +54,7 @@ void printDefinitions() {
   std::cout << std::endl;
 }
 
-void printCsv(const std::string& filebase,
-              const slalom::Shape& ss,
+void printCsv(const std::string& filebase, const slalom::Shape& ss,
               const float th_start = 0) {
   auto st = slalom::Trajectory(ss);
   const float v = 600;
@@ -89,8 +88,7 @@ void printCsv(const std::string& filebase,
   float t = 0;
   for (size_t i = 0; i < ticks.size(); ++i) {
     of = std::ofstream(filebase + "_" + std::to_string(i) + ".csv");
-    while (t < ticks[i])
-      st.update(s, t, Ts), printCSV(of, t, s), t += Ts;
+    while (t < ticks[i]) st.update(s, t, Ts), printCSV(of, t, s), t += Ts;
   }
 }
 
@@ -109,7 +107,7 @@ void printTrajectory() {
 void printTable() {
   for (const auto& [name, shape] : shapes) {
     std::cout << "|" << name;
-    std::cout << "|" << shape.total.th / float(M_PI) * 180;
+    std::cout << "|" << shape.total.th / static_cast<float>(M_PI) * 180;
     std::cout << "|(" << shape.total.x << "," << shape.total.y << ")";
     std::cout << "|(" << shape.curve.x << "," << shape.curve.y << ")";
     std::cout << "|" << shape.v_ref;

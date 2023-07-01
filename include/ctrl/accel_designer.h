@@ -3,16 +3,18 @@
  * @brief 距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  */
 #pragma once
 
-#include "accel_curve.h"
-
 #include <algorithm>  //< for std::max, std::min
 #include <array>
 #include <iostream>  //< for std::cout
+#include <limits>    //< for std::numeric_limits
 #include <ostream>
+
+#include "accel_curve.h"
 
 /**
  * @brief 制御関係の名前空間
@@ -33,23 +35,18 @@ class AccelDesigner {
   /**
    * @brief 初期化付きコンストラクタ
    *
-   * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
-   * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_max     最大速度の大きさ [m/s]，正であること
-   * @param v_start   始点速度 [m/s]
-   * @param v_target  目標速度 [m/s]
-   * @param dist      移動距離 [m]
-   * @param x_start   始点位置 [m] (オプション)
-   * @param t_start   始点時刻 [s] (オプション)
+   * @param[in] j_max     最大躍度の大きさ [m/s/s/s]，正であること
+   * @param[in] a_max     最大加速度の大きさ [m/s/s], 正であること
+   * @param[in] v_max     最大速度の大きさ [m/s]，正であること
+   * @param[in] v_start   始点速度 [m/s]
+   * @param[in] v_target  目標速度 [m/s]
+   * @param[in] dist      移動距離 [m]
+   * @param[in] x_start   始点位置 [m] (オプション)
+   * @param[in] t_start   始点時刻 [s] (オプション)
    */
-  AccelDesigner(const float j_max,
-                const float a_max,
-                const float v_max,
-                const float v_start,
-                const float v_target,
-                const float dist,
-                const float x_start = 0,
-                const float t_start = 0) {
+  AccelDesigner(const float j_max, const float a_max, const float v_max,
+                const float v_start, const float v_target, const float dist,
+                const float x_start = 0, const float t_start = 0) {
     reset(j_max, a_max, v_max, v_start, v_target, dist, x_start, t_start);
   }
   /**
@@ -58,27 +55,22 @@ class AccelDesigner {
   AccelDesigner() { t0 = t1 = t2 = t3 = x0 = x3 = 0; }
   /**
    * @brief 引数の拘束条件から曲線を生成する．
-   * この関数によって，すべての変数が初期化される．(漏れはない)
+   * @details この関数によってもれなくすべての変数が初期化される．
    *
-   * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
-   * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_max     最大速度の大きさ [m/s]，正であること
-   * @param v_start   始点速度 [m/s]
-   * @param v_target  目標速度 [m/s]
-   * @param dist      移動距離 [m]
-   * @param x_start   始点位置 [m] (オプション)
-   * @param t_start   始点時刻 [s] (オプション)
+   * @param[in] j_max     最大躍度の大きさ [m/s/s/s]，正であること
+   * @param[in] a_max     最大加速度の大きさ [m/s/s], 正であること
+   * @param[in] v_max     最大速度の大きさ [m/s]，正であること
+   * @param[in] v_start   始点速度 [m/s]
+   * @param[in] v_target  目標速度 [m/s]
+   * @param[in] dist      移動距離 [m]
+   * @param[in] x_start   始点位置 [m] (オプション)
+   * @param[in] t_start   始点時刻 [s] (オプション)
    */
-  void reset(const float j_max,
-             const float a_max,
-             const float v_max,
-             const float v_start,
-             const float v_target,
-             const float dist,
-             const float x_start = 0,
-             const float t_start = 0) {
+  void reset(const float j_max, const float a_max, const float v_max,
+             const float v_start, const float v_target, const float dist,
+             const float x_start = 0, const float t_start = 0) {
     /* 目標速度に到達可能か，走行距離から終点速度を決定していく */
-    auto v_end = v_target; /*< 仮代入 */
+    auto v_end = v_target;  //< 仮代入
     /* 移動距離の拘束により，目標速度に達し得ない場合の処理 */
     const auto dist_min = AccelCurve::calcDistanceFromVelocityStartToEnd(
         j_max, a_max, v_start, v_end);
@@ -108,8 +100,7 @@ class AccelDesigner {
       dc.reset(j_max, a_max, v_sat, v_end);    //< 減速
     }
     /* t23 = nan 回避; vs = ve = d = 0 のときに発生 */
-    if (std::abs(v_sat) < std::numeric_limits<float>::epsilon())
-      v_sat = 1;
+    if (std::abs(v_sat) < std::numeric_limits<float>::epsilon()) v_sat = 1;
     /* 各定数の算出 */
     const auto t23 = (dist - ac.x_end() - dc.x_end()) / v_sat;
     x0 = x_start;
@@ -120,7 +111,7 @@ class AccelDesigner {
     t3 = t0 + ac.t_end() + t23 + dc.t_end();  //< 曲線減速終了の時刻
 #if 0
     /* 出力のチェック */
-    const auto e = 0.01f; //< 数値誤差分
+    const auto e = 0.01f;  //< 数値誤差分
     bool show_info = false;
     /* 飽和速度時間 */
     if (t23 < 0) {
@@ -146,27 +137,31 @@ class AccelDesigner {
     /* 入力情報の表示 */
     if (show_info) {
       ctrl_loge << "Constraints:"
-           << "\tj_max: " << j_max << "\ta_max: " << a_max
-           << "\tv_max: " << v_max << "\tv_start: " << v_start
-           << "\tv_target: " << v_target << "\tdist: " << dist << std::endl;
-      ctrl_loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_max << ", "
-           << v_start << ", " << v_target << ", " << dist << ");" << std::endl;
+                << "\tj_max: " << j_max << "\ta_max: " << a_max
+                << "\tv_max: " << v_max << "\tv_start: " << v_start
+                << "\tv_target: " << v_target << "\tdist: " << dist
+                << std::endl;
+      ctrl_loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_max
+                << ", " << v_start << ", " << v_target << ", " << dist << ");"
+                << std::endl;
       /* 表示 */
       ctrl_loge << "Time Stamp: "
-           << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
-           << "\tt3: " << t3 << std::endl;
+                << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
+                << "\tt3: " << t3 << std::endl;
       ctrl_loge << "Position:   "
-           << "\tx0: " << x0 << "\tx1: " << x0 + ac.x_end()
-           << "\tx2: " << x0 + (dist - dc.x_end()) << "\tx3: " << x3
-           << std::endl;
+                << "\tx0: " << x0 << "\tx1: " << x0 + ac.x_end()
+                << "\tx2: " << x0 + (dist - dc.x_end()) << "\tx3: " << x3
+                << std::endl;
       ctrl_loge << "Velocity:   "
-           << "\tv0: " << v_start << "\tv1: " << v(t1) << "\tv2: " << v(t2)
-           << "\tv3: " << v_end << std::endl;
+                << "\tv0: " << v_start << "\tv1: " << v(t1) << "\tv2: " << v(t2)
+                << "\tv3: " << v_end << std::endl;
     }
 #endif
   }
   /**
-   * @brief 時刻 t [s] における躍度 j [m/s/s/s]
+   * @brief 任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数
+   * @param[in] 時刻 t [s]
+   * @return 躍度 [m/s/s/s]
    */
   float j(const float t) const {
     if (t < t2)
@@ -175,7 +170,9 @@ class AccelDesigner {
       return dc.j(t - t2);
   }
   /**
-   * @brief 時刻 t [s] における加速度 a [m/s/s]
+   * @brief 任意の時刻 t [s] における加速度 a [m/s/s] を返す関数
+   * @param[in] 時刻 t [s]
+   * @return 加速度 [m/s/s]
    */
   float a(const float t) const {
     if (t < t2)
@@ -184,7 +181,9 @@ class AccelDesigner {
       return dc.a(t - t2);
   }
   /**
-   * @brief 時刻 t [s] における速度 v [m/s]
+   * @brief 任意の時刻 t [s] における速度 v [m/s] を返す関数
+   * @param[in] 時刻 t [s]
+   * @return 速度 [m/s]
    */
   float v(const float t) const {
     if (t < t2)
@@ -193,7 +192,9 @@ class AccelDesigner {
       return dc.v(t - t2);
   }
   /**
-   * @brief 時刻 t [s] における位置 x [m]
+   * @brief 任意の時刻 t [s] における位置 x [m] を返す関数
+   * @param[in] 時刻 t [s]
+   * @return 位置 [m]
    */
   float x(const float t) const {
     if (t < t2)
@@ -214,12 +215,36 @@ class AccelDesigner {
    */
   float x_end() const { return x3; }
   /**
-   * @brief 境界の時刻 [s]
+   * @brief 曲線加速の開始時刻 [s]
    */
   float t_0() const { return t0; }
+  /**
+   * @brief 最高速度に達する時刻 [s]
+   */
   float t_1() const { return t1; }
+  /**
+   * @brief 曲線減速の開始時刻 [s]
+   */
   float t_2() const { return t2; }
+  /**
+   * @brief 曲線減速の終了時刻 [s]
+   */
   float t_3() const { return t3; }
+  /**
+   * @brief 曲線加速の境界のタイムスタンプを取得
+   */
+  const std::array<float, 8> getTimeStamps() const {
+    return {{
+        t0 + ac.t_0(),
+        t0 + ac.t_1(),
+        t0 + ac.t_2(),
+        t0 + ac.t_3(),
+        t2 + dc.t_0(),
+        t2 + dc.t_1(),
+        t2 + dc.t_2(),
+        t2 + dc.t_3(),
+    }};
+  }
   /**
    * @brief stdout に軌道のcsvを出力する関数．
    */
@@ -248,21 +273,6 @@ class AccelDesigner {
     os << "\tt2: " << obj.t2;
     os << "\tt3: " << obj.t3;
     return os;
-  }
-  /**
-   * @brief 境界のタイムスタンプを取得
-   */
-  const std::array<float, 8> getTimeStamp() const {
-    return {{
-        t0 + ac.t_0(),
-        t0 + ac.t_1(),
-        t0 + ac.t_2(),
-        t0 + ac.t_3(),
-        t2 + dc.t_0(),
-        t2 + dc.t_1(),
-        t2 + dc.t_2(),
-        t2 + dc.t_3(),
-    }};
   }
 
  protected:

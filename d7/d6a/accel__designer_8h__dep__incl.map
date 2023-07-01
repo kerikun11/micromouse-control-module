@@ -1,5 +1,6 @@
 <map id="ctrl/accel_designer.h" name="ctrl/accel_designer.h">
-<area shape="rect" id="node1" title="距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル" alt="" coords="45,5,199,32"/>
-<area shape="rect" id="node2" href="$d1/dad/slalom_8h.html" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="5,80,108,107"/>
-<area shape="rect" id="node3" href="$dc/d45/straight_8h.html" title="直線軌道を生成する" alt="" coords="133,80,242,107"/>
+<area shape="rect" id="node1" title="距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル" alt="" coords="105,5,260,32"/>
+<area shape="rect" id="node2" href="$d1/dad/slalom_8h.html" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="14,80,165,107"/>
+<area shape="rect" id="node4" href="$d6/ded/straight_2trajectory_8h.html" title="直線軌道を生成する" alt="" coords="189,80,363,107"/>
+<area shape="rect" id="node3" href="$d1/d15/slalom_2trajectory_8h.html" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="5,155,173,181"/>
 </map>

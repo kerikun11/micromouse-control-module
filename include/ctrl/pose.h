@@ -3,6 +3,7 @@
  * @brief 平面上の位置姿勢の座標もつファイル．
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -20,7 +21,7 @@ struct Pose {
   float th; /**< @brief theta 成分 [rad] */
 
  public:
-  Pose(const float x = 0, const float y = 0, const float th = 0)
+  constexpr Pose(const float x = 0, const float y = 0, const float th = 0)
       : x(x), y(y), th(th) {}
   void clear() { x = y = th = 0; }
   Pose mirror_x() const { return Pose(x, -y, -th); }

@@ -3,6 +3,7 @@
  * @brief リングバッファにより一定数のデータを蓄積するクラスを定義
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2019-02-02
+ * @copyright Copyright 2019 <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -12,7 +13,6 @@ namespace ctrl {
 
 /**
  * @brief データの蓄積器
- *
  * @tparam T データの型
  * @tparam S 蓄積するデータの数
  */
@@ -21,8 +21,7 @@ class Accumulator {
  public:
   /**
    * @brief コンストラクタ
-   *
-   * @param value バッファ内の全データに代入する初期値
+   * @param[in] value バッファ内の全データに代入する初期値
    */
   Accumulator(const T& value = T()) {
     buffer = new T[S];
@@ -35,12 +34,10 @@ class Accumulator {
   ~Accumulator() { delete[] buffer; }
   /**
    * @brief バッファをクリアする関数
-   *
-   * @param value 代入する値
+   * @param[in] value 代入する値
    */
   void clear(const T& value = T()) {
-    for (int i = 0; i < S; i++)
-      buffer[i] = value;
+    for (int i = 0; i < S; i++) buffer[i] = value;
   }
   /**
    * @brief 最新のデータを追加する関数
@@ -51,25 +48,23 @@ class Accumulator {
   }
   /**
    * @brief 直近 index 番目の値を取得するオペレータ
-   *
-   * [0] 番目が最新のデータ，[size() - 1] 番目が最古のデータ
-   *
-   * @param index 直近何番目のデータかを指すインデックス
-   * @return const T&
+   * @details [0] 番目が最新のデータ，[size() - 1] 番目が最古のデータ
+   * @param[in] index 直近何番目のデータかを指すインデックス
+   * @return 直近 index 番目のデータ
    */
   const T& operator[](const std::size_t index) const {
-    return buffer[((int)S + head - index) % S];
+    return buffer[(S + head - index) % S];
   }
   /**
    * @brief 直近 n 個の平均を取得する関数
    *
-   * @param n 平均個数
-   * @return const T 平均値
+   * @param[in] n 平均個数
+   * @return 平均値
    */
   const T average(const int n = S) const {
     T sum = T();
     for (int i = 0; i < n; i++) {
-      sum += buffer[((int)S + head - i) % S];
+      sum += buffer[(S + head - i) % S];
     }
     return sum / n;
   }

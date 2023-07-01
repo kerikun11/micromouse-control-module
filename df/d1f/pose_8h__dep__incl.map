@@ -1,7 +1,8 @@
 <map id="ctrl/pose.h" name="ctrl/pose.h">
-<area shape="rect" id="node1" title="平面上の位置姿勢の座標もつファイル．" alt="" coords="142,5,233,32"/>
-<area shape="rect" id="node2" href="$d1/dad/slalom_8h.html" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="5,155,108,181"/>
-<area shape="rect" id="node3" href="$db/d3b/state_8h.html" title="軌道制御の状態変数" alt="" coords="141,80,233,107"/>
-<area shape="rect" id="node5" href="$d8/d9d/trajectory__tracker_8h.html" title="独立2輪車の線形化フィードバック軌道追従コントローラ" alt="" coords="266,155,439,181"/>
-<area shape="rect" id="node4" href="$dc/d45/straight_8h.html" title="直線軌道を生成する" alt="" coords="133,155,242,181"/>
+<area shape="rect" id="node1" title="平面上の位置姿勢の座標もつファイル．" alt="" coords="231,5,321,32"/>
+<area shape="rect" id="node2" href="$d1/dad/slalom_8h.html" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="14,155,165,181"/>
+<area shape="rect" id="node4" href="$db/d3b/state_8h.html" title="軌道制御の状態変数" alt="" coords="230,80,322,107"/>
+<area shape="rect" id="node6" href="$d8/d9d/trajectory__tracker_8h.html" title="独立2輪車の線形化フィードバック軌道追従コントローラ" alt="" coords="388,155,561,181"/>
+<area shape="rect" id="node3" href="$d1/d15/slalom_2trajectory_8h.html" title="拘束条件からスラロームを軌道生成するライブラリ" alt="" coords="5,229,173,256"/>
+<area shape="rect" id="node5" href="$d6/ded/straight_2trajectory_8h.html" title="直線軌道を生成する" alt="" coords="189,155,363,181"/>
 </map>

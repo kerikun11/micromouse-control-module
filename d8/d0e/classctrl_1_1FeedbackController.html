@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.2.2</span>
+   &#160;<span id="projectnumber">v1.3.0</span>
    </div>
   </td>
  </tr>
@@ -211,8 +211,8 @@ template&lt;typename T &gt; </div>
 <p>コンストラクタ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">M</td><td>フィードフォワードモデル </td></tr>
-    <tr><td class="paramname">G</td><td>フィードバックゲイン </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">M</td><td>フィードフォワードモデル </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">G</td><td>フィードバックゲイン </td></tr>
   </table>
   </dd>
 </dl>
@@ -277,15 +277,15 @@ template&lt;typename T &gt; </div>
 <p>状態を更新して，次の制御入力を得る関数 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">r</td><td>目標値 </td></tr>
-    <tr><td class="paramname">y</td><td>観測値 </td></tr>
-    <tr><td class="paramname">dr</td><td>目標値の微分 </td></tr>
-    <tr><td class="paramname">dy</td><td>観測値の微分 </td></tr>
-    <tr><td class="paramname">Ts</td><td>離散時間周期 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">r</td><td>目標値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>観測値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dr</td><td>目標値の微分 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dy</td><td>観測値の微分 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Ts</td><td>離散時間周期 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>T u 次ステップでの制御入力 </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>次ステップでの制御入力 </dd></dl>
 
 </div>
 </div>

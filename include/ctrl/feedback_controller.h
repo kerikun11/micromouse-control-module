@@ -3,6 +3,7 @@
  * @brief フィードバック制御器クラスを保持するファイル
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -57,8 +58,8 @@ class FeedbackController {
   /**
    * @brief コンストラクタ
    *
-   * @param M フィードフォワードモデル
-   * @param G フィードバックゲイン
+   * @param[in] M フィードフォワードモデル
+   * @param[in] G フィードバックゲイン
    */
   FeedbackController(const Model& M, const Gain& G) : M(M), G(G) { reset(); }
   /**
@@ -71,17 +72,14 @@ class FeedbackController {
   /**
    * @brief 状態を更新して，次の制御入力を得る関数
    *
-   * @param r 目標値
-   * @param y 観測値
-   * @param dr 目標値の微分
-   * @param dy 観測値の微分
-   * @param Ts 離散時間周期
-   * @return T u 次ステップでの制御入力
+   * @param[in] r 目標値
+   * @param[in] y 観測値
+   * @param[in] dr 目標値の微分
+   * @param[in] dy 観測値の微分
+   * @param[in] Ts 離散時間周期
+   * @return 次ステップでの制御入力
    */
-  const T& update(const T& r,
-                  const T& y,
-                  const T& dr,
-                  const T& dy,
+  const T& update(const T& r, const T& y, const T& dr, const T& dy,
                   const float Ts) {
     /* feedforward signal */
     bd.ff = (M.T1 * dr + r) / M.K1;
