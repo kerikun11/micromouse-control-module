@@ -3,7 +3,7 @@
  * @brief trajectory tracking
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
- * @copyright Copyright 2020 <kerikun11+github@gmail.com>
+ * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
  */
 #include <ctrl/straight/trajectory.h>
 #include <ctrl/trajectory_tracker.h>

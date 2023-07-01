@@ -3,7 +3,7 @@
  * @brief 軌道制御の状態変数
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
- * @copyright Copyright 2020 <kerikun11+github@gmail.com>
+ * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -18,10 +18,10 @@ namespace ctrl {
  * @brief 軌道制御の状態変数
  */
 struct State {
-  Pose q;
-  Pose dq;
-  Pose ddq;
-  Pose dddq;
+  Pose q;     //**< @brief 位置
+  Pose dq;    //**< @brief 速度
+  Pose ddq;   //**< @brief 加速度
+  Pose dddq;  //**< @brief 躍度
 };
 
 };  // namespace ctrl

@@ -3,7 +3,7 @@
  * @brief 躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
- * @copyright Copyright 2020 <kerikun11+github@gmail.com>
+ * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
  * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  */
 #pragma once
@@ -64,8 +64,7 @@ namespace ctrl {
 class AccelCurve {
  public:
   /**
-   * @brief 初期化付きのコンストラクタ．
-   *
+   * @brief 初期化付きのコンストラクタ
    * @param[in] j_max   最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max   最大加速度の大きさ [m/s/s], 正であること
    * @param[in] v_start 始点速度 [m/s]
@@ -76,15 +75,15 @@ class AccelCurve {
     reset(j_max, a_max, v_start, v_end);
   }
   /**
-   * @brief 空のコンストラクタ．あとで reset() により初期化すること．
+   * @brief とりあえずインスタンス化を行う空のコンストラクタ
+   * @details あとで reset() により初期化すること．
    */
   AccelCurve() {
     jm = am = t0 = t1 = t2 = t3 = v0 = v1 = v2 = v3 = x0 = x1 = x2 = x3 = 0;
   }
   /**
-   * @brief 引数の拘束条件から曲線を生成する．
+   * @brief 引数の拘束条件から曲線を生成する関数
    * @details この関数によってもれなくすべての変数が初期化される．
-   *
    * @param[in] j_max   最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max   最大加速度の大きさ [m/s/s], 正であること
    * @param[in] v_start 始点速度 [m/s]
@@ -254,7 +253,6 @@ class AccelCurve {
  public:
   /**
    * @brief 走行距離から達しうる終点速度を算出する関数
-   *
    * @param[in] j_max 最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max 最大加速度の大きさ [m/s/s], 正であること
    * @param[in] vs    始点速度 [m/s]
@@ -308,7 +306,6 @@ class AccelCurve {
   }
   /**
    * @brief 走行距離から達しうる最大速度を算出する関数
-   *
    * @param[in] j_max 最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max 最大加速度の大きさ [m/s/s], 正であること
    * @param[in] vs    始点速度 [m/s]
@@ -339,7 +336,6 @@ class AccelCurve {
   }
   /**
    * @brief 速度差から変位を算出する関数
-   *
    * @param[in] j_max   最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max   最大加速度の大きさ [m/s/s], 正であること
    * @param[in] v_start 始点速度 [m/s]

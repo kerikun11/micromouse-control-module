@@ -3,7 +3,7 @@
  * @brief リングバッファにより一定数のデータを蓄積するクラスを定義
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2019-02-02
- * @copyright Copyright 2019 <kerikun11+github@gmail.com>
+ * @copyright Copyright 2019 Ryotaro Onuki <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -57,7 +57,6 @@ class Accumulator {
   }
   /**
    * @brief 直近 n 個の平均を取得する関数
-   *
    * @param[in] n 平均個数
    * @return 平均値
    */

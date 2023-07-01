@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.3.0</span>
+   &#160;<span id="projectnumber">v1.3.1</span>
    </div>
   </td>
  </tr>
@@ -90,10 +90,10 @@ $(function() {
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">float</span> low_b = 1e-3f;    <span class="comment">//&lt; b &gt; 0</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  };</div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d8/d91/structctrl_1_1TrajectoryTracker_1_1Result.html">   44</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="../../d8/d91/structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a> {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">float</span> v;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">float</span> w;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">float</span> dv;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">float</span> dw;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">float</span> v;   <span class="comment">//**&lt; @brief 並進速度 [m/s]</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">float</span> w;   <span class="comment">//**&lt; @brief 角速度 [rad/s]</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">float</span> dv;  <span class="comment">//**&lt; @brief 並進加速度 [m/s/s]</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">float</span> dw;  <span class="comment">//**&lt; @brief 角加速度 [rad/s/s]</span></div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  };</div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">   56</a></span>&#160;  <span class="keyword">static</span> constexpr <span class="keywordtype">float</span> <a class="code" href="../../dc/d23/classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">sinc</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> x) {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> xx = x * x;</div>
