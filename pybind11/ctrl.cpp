@@ -49,11 +49,11 @@ PYBIND11_MODULE(ctrl, m) {
       .def(py::init<float, float, float, float, float, float, float, float>(),
            py::arg("j_max"), py::arg("a_max"), py::arg("v_max"),
            py::arg("v_start"), py::arg("v_target"), py::arg("dist"),
-           py::arg("x_start") = float(0), py::arg("t_start") = float(0))
+           py::arg("x_start") = 0.0f, py::arg("t_start") = 0.0f)
       .def("reset", &AccelDesigner::reset,  //
            py::arg("j_max"), py::arg("a_max"), py::arg("v_max"),
            py::arg("v_start"), py::arg("v_target"), py::arg("dist"),
-           py::arg("x_start") = float(0), py::arg("t_start") = float(0))
+           py::arg("x_start") = 0.0f, py::arg("t_start") = 0.0f)
       .def("j", &AccelDesigner::j)
       .def("a", &AccelDesigner::a)
       .def("v", &AccelDesigner::v)

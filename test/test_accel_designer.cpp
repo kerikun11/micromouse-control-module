@@ -1,3 +1,10 @@
+/**
+ * @file test_accel_designer.cpp
+ * @brief Unit Test for AccelDesigner
+ * @author Ryotaro Onuki <kerikun11+github@gmail.com>
+ * @date 2023-07-01
+ * @copyright Copyright 2023 Ryotaro Onuki <kerikun11+github@gmail.com>
+ */
 #include <ctrl/accel_designer.h>
 #include <gtest/gtest.h>
 

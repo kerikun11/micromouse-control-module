@@ -3,6 +3,7 @@
  * @brief This file generates slalom shapes for each turn of the micromouse.
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
 #include <ctrl/slalom/trajectory.h>
 
@@ -106,7 +107,7 @@ void printTrajectory() {
 void printTable() {
   for (const auto& [name, shape] : shapes) {
     std::cout << "|" << name;
-    std::cout << "|" << shape.total.th / float(M_PI) * 180;
+    std::cout << "|" << shape.total.th / static_cast<float>(M_PI) * 180;
     std::cout << "|(" << shape.total.x << "," << shape.total.y << ")";
     std::cout << "|(" << shape.curve.x << "," << shape.curve.y << ")";
     std::cout << "|" << shape.v_ref;

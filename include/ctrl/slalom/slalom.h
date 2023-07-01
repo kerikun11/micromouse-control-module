@@ -3,6 +3,7 @@
  * @brief 拘束条件からスラロームを軌道生成するライブラリ
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -89,9 +90,9 @@ struct Shape {
         ddth_max(ddth_max),
         dth_max(dth_max) {
     /* 生成準備 */
-    const float Ts = 1.5e-3f; /*< シミュレーションの積分周期 */
-    float v = 600.0f;         /*< 初期値 */
-    State s;                  /*< シミュレーションの状態 */
+    const float Ts = 1.5e-3f;  //< シミュレーションの積分周期
+    float v = 600.0f;          //< 初期値
+    State s;                   //< シミュレーションの状態
     AccelDesigner ad;
     ad.reset(dddth_max, ddth_max, dth_max, 0, 0, total.th);
     /* 複数回行って精度を高める */

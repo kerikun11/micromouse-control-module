@@ -44,3 +44,17 @@ endif()
 if(BUILD_EXAMPLES)
   add_subdirectory(examples)
 endif()
+
+## cpplint
+add_custom_target(cpplint
+  COMMAND cpplint --quiet --recursive --exclude=build .
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  USES_TERMINAL
+)
+
+## cppcheck
+add_custom_target(cppcheck
+  COMMAND cppcheck --quiet --enable=all --inline-suppr --suppressions-list=cppcheck-suppressions.txt -i build --platform=unix32 --std=c++17 .
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  USES_TERMINAL
+)

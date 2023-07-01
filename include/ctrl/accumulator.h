@@ -3,6 +3,7 @@
  * @brief リングバッファにより一定数のデータを蓄積するクラスを定義
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2019-02-02
+ * @copyright Copyright 2019 <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -57,7 +58,7 @@ class Accumulator {
    * @return const T&
    */
   const T& operator[](const std::size_t index) const {
-    return buffer[((int)S + head - index) % S];
+    return buffer[((S + head - index) % S];
   }
   /**
    * @brief 直近 n 個の平均を取得する関数
@@ -68,7 +69,7 @@ class Accumulator {
   const T average(const int n = S) const {
     T sum = T();
     for (int i = 0; i < n; i++) {
-      sum += buffer[((int)S + head - i) % S];
+      sum += buffer[(S + head - i) % S];
     }
     return sum / n;
   }

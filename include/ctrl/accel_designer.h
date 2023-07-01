@@ -3,6 +3,7 @@
  * @brief 距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  */
 #pragma once
@@ -10,6 +11,7 @@
 #include <algorithm>  //< for std::max, std::min
 #include <array>
 #include <iostream>  //< for std::cout
+#include <limits>    //< for std::numeric_limits
 #include <ostream>
 
 #include "accel_curve.h"
@@ -68,7 +70,7 @@ class AccelDesigner {
              const float v_start, const float v_target, const float dist,
              const float x_start = 0, const float t_start = 0) {
     /* 目標速度に到達可能か，走行距離から終点速度を決定していく */
-    auto v_end = v_target; /*< 仮代入 */
+    auto v_end = v_target;  //< 仮代入
     /* 移動距離の拘束により，目標速度に達し得ない場合の処理 */
     const auto dist_min = AccelCurve::calcDistanceFromVelocityStartToEnd(
         j_max, a_max, v_start, v_end);
@@ -109,7 +111,7 @@ class AccelDesigner {
     t3 = t0 + ac.t_end() + t23 + dc.t_end();  //< 曲線減速終了の時刻
 #if 0
     /* 出力のチェック */
-    const auto e = 0.01f; //< 数値誤差分
+    const auto e = 0.01f;  //< 数値誤差分
     bool show_info = false;
     /* 飽和速度時間 */
     if (t23 < 0) {
@@ -135,22 +137,24 @@ class AccelDesigner {
     /* 入力情報の表示 */
     if (show_info) {
       ctrl_loge << "Constraints:"
-           << "\tj_max: " << j_max << "\ta_max: " << a_max
-           << "\tv_max: " << v_max << "\tv_start: " << v_start
-           << "\tv_target: " << v_target << "\tdist: " << dist << std::endl;
-      ctrl_loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_max << ", "
-           << v_start << ", " << v_target << ", " << dist << ");" << std::endl;
+                << "\tj_max: " << j_max << "\ta_max: " << a_max
+                << "\tv_max: " << v_max << "\tv_start: " << v_start
+                << "\tv_target: " << v_target << "\tdist: " << dist
+                << std::endl;
+      ctrl_loge << "ad.reset(" << j_max << ", " << a_max << ", " << v_max
+                << ", " << v_start << ", " << v_target << ", " << dist << ");"
+                << std::endl;
       /* 表示 */
       ctrl_loge << "Time Stamp: "
-           << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
-           << "\tt3: " << t3 << std::endl;
+                << "\tt0: " << t0 << "\tt1: " << t1 << "\tt2: " << t2
+                << "\tt3: " << t3 << std::endl;
       ctrl_loge << "Position:   "
-           << "\tx0: " << x0 << "\tx1: " << x0 + ac.x_end()
-           << "\tx2: " << x0 + (dist - dc.x_end()) << "\tx3: " << x3
-           << std::endl;
+                << "\tx0: " << x0 << "\tx1: " << x0 + ac.x_end()
+                << "\tx2: " << x0 + (dist - dc.x_end()) << "\tx3: " << x3
+                << std::endl;
       ctrl_loge << "Velocity:   "
-           << "\tv0: " << v_start << "\tv1: " << v(t1) << "\tv2: " << v(t2)
-           << "\tv3: " << v_end << std::endl;
+                << "\tv0: " << v_start << "\tv1: " << v(t1) << "\tv2: " << v(t2)
+                << "\tv3: " << v_end << std::endl;
     }
 #endif
   }

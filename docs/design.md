@@ -198,7 +198,7 @@ protected:
  * @brief 位置姿勢の座標
  */
 struct Pose {
-  float x, y, th; /*< (x, y, theta) 成分 */
+  float x, y, th;  //< (x, y, theta) 成分
 };
 ```
 

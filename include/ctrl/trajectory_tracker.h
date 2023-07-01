@@ -3,6 +3,7 @@
  * @brief 独立2輪車の線形化フィードバック軌道追従コントローラ
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2019-03-31
+ * @copyright Copyright 2019 <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -34,8 +35,8 @@ class TrajectoryTracker {
   struct Gain {
     float zeta = 1.0f;
     float omega_n = 15.0f;
-    float low_zeta = 1.0f; /*< zeta \in [0,1] */
-    float low_b = 1e-3f;   /*< b > 0 */
+    float low_zeta = 1.0f;  //< zeta \in [0,1]
+    float low_b = 1e-3f;    //< b > 0
   };
   /**
    * @brief 計算結果を格納する構造体

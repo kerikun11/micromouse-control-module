@@ -1,8 +1,9 @@
 /**
- * @file straight.h
+ * @file trajectory.h
  * @brief 直線軌道を生成する
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
 #pragma once
 

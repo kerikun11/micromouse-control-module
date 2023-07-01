@@ -3,6 +3,7 @@
  * @brief 躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  */
 #pragma once
@@ -301,7 +302,7 @@ class AccelCurve {
                                         const float d) {
     /* 速度が曲線となる部分の時間を決定 */
     const auto tc = a_max / j_max;
-    const auto am = (d > 0) ? a_max : -a_max; /*< 加速方向は移動方向に依存 */
+    const auto am = (d > 0) ? a_max : -a_max;  //< 加速方向は移動方向に依存
     /* 2次方程式の解の公式を解く */
     const auto amtc = am * tc;
     const auto D = amtc * amtc - 2 * (vs + ve) * amtc + 4 * am * d +

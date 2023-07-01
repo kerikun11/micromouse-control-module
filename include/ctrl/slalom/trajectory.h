@@ -1,8 +1,9 @@
 /**
- * @file slalom.h
+ * @file trajectory.h
  * @brief 拘束条件からスラロームを軌道生成するライブラリ
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
+ * @copyright Copyright 2020 <kerikun11+github@gmail.com>
  */
 #pragma once
 
