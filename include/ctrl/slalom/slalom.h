@@ -41,7 +41,8 @@ static constexpr float dth_max_default = 3 * M_PI;
 /**
  * @brief slalom::Shape スラロームの形状を表す構造体
  *
- * メンバー変数は互いに依存して決定されるので，個別に数値を変更することは許されない，
+ * メンバー変数は互いに依存して決定されているので，
+ * 個別に数値を変更することは許されない．
  * スラローム軌道を得るには slalom::Trajectory を用いる．
  */
 struct Shape {
@@ -56,30 +57,16 @@ struct Shape {
 
  public:
   /**
-   * @brief 生成済みスラローム形状を単に代入するコンストラクタ
-   */
-  Shape(const Pose& total, const Pose& curve, float straight_prev,
-        const float straight_post, const float v_ref, const float dddth_max,
-        const float ddth_max, const float dth_max)
-      : total(total),
-        curve(curve),
-        straight_prev(straight_prev),
-        straight_post(straight_post),
-        v_ref(v_ref),
-        dddth_max(dddth_max),
-        ddth_max(ddth_max),
-        dth_max(dth_max) {}
-  /**
    * @brief 拘束条件からスラローム形状を生成するコンストラクタ
    *
-   * @param total 前後の直線を含めた移動位置姿勢
-   * @param y_curve_end y軸方向(進行方向に垂直な方向)の移動距離，
-   * カーブの大きさを決めるもので，設計パラメータとなる
-   * @param x_adv x軸方向(進行方向)の前後の直線の長さ．180度ターンなどでは
-   * y_curve_end で調節できないので，例外的にこの値で調節する．
-   * @param dddth_max 最大角躍度の大きさ [rad/s/s/s]
-   * @param ddth_max 最大角加速度の大きさ [rad/s/s]
-   * @param dth_max 最大角速度の大きさ [rad/s]
+   * @param[in] total 前後の直線を含めた移動位置姿勢 [m, m, rad]
+   * @param[in] y_curve_end y軸方向(進行方向に垂直な方向)の移動距離 [m]．
+   * カーブの大きさを決めるもので，形状の設計パラメータとなる
+   * @param[in] x_adv x軸方向(進行方向)の前後の直線の長さ [m]．
+   * 180度ターンの場合のみで使用．
+   * @param[in] dddth_max 最大角躍度の大きさ [rad/s/s/s]
+   * @param[in] ddth_max 最大角加速度の大きさ [rad/s/s]
+   * @param[in] dth_max 最大角速度の大きさ [rad/s]
    */
   Shape(const Pose& total, const float y_curve_end, const float x_adv = 0,
         const float dddth_max = dddth_max_default,
@@ -122,14 +109,37 @@ struct Shape {
     }
   }
   /**
+   * @brief 生成済みスラローム形状を単に代入するコンストラクタ
+   *
+   * @param[in] total 前後の直線を含めた移動位置姿勢 [m, m, rad]
+   * @param[in] curve 曲線部分の変位 [m, m, rad]
+   * @param[in] straight_prev 曲線前の直線の長さ [m]
+   * @param[in] straight_post 曲線後の直線の長さ [m]
+   * @param[in] v_ref 基準並進速度 [m/s]
+   * @param[in] dddth_max 最大角躍度の大きさ [rad/s/s/s]
+   * @param[in] ddth_max 最大角加速度の大きさ [rad/s/s]
+   * @param[in] dth_max 最大角速度の大きさ [rad/s]
+   */
+  Shape(const Pose& total, const Pose& curve, float straight_prev,
+        const float straight_post, const float v_ref, const float dddth_max,
+        const float ddth_max, const float dth_max)
+      : total(total),
+        curve(curve),
+        straight_prev(straight_prev),
+        straight_post(straight_post),
+        v_ref(v_ref),
+        dddth_max(dddth_max),
+        ddth_max(ddth_max),
+        dth_max(dth_max) {}
+  /**
    * @brief 軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．
    *
-   * @param ad 角速度分布
-   * @param s 状態変数
-   * @param v 並進速度 [m/s]
-   * @param t 時刻 [s]
-   * @param Ts 積分時間 [s]
-   * @param k_slip スリップ角定数
+   * @param[in] ad 角速度分布
+   * @param[inout] s 状態変数
+   * @param[in] v 並進速度 [m/s]
+   * @param[in] t 時刻 [s]
+   * @param[in] Ts 積分時間 [s]
+   * @param[in] k_slip スリップ角定数
    */
   static void integrate(const AccelDesigner& ad, State& s, const float v,
                         const float t, const float Ts, const float k_slip = 0) {

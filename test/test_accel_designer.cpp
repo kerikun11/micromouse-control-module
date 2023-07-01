@@ -27,7 +27,7 @@ class AccelDesignerTest : public AccelDesigner {
     /* velocity */
     EXPECT_FLOAT_EQ(v(t0), vs);
     EXPECT_GE(std::abs(vs - vt), std::abs(vs - v_end()));
-    for (const auto& t : getTimeStamp())
+    for (const auto& t : getTimeStamps())
       EXPECT_LE(std::abs(v(t)), std::max({vm, std::abs(vs), std::abs(vt)}));
     /* distance */
     EXPECT_NEAR(d, x3 - x0, std::abs(d) * e);

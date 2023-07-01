@@ -20,7 +20,7 @@ def plot_accel_designer():
     titles = ['Jerk', 'Acceleration', 'Velocity', 'Position']
     ylabels = ['j [m/s/s/s]', 'a [m/s/s]', 'v [m/s]', 'p [m]']
 
-    time_stamps = ad.getTimeStamp()
+    time_stamps = ad.getTimeStamps()
     for i in range(len(time_stamps)-1):
         t = np.arange(time_stamps[i], time_stamps[i+1], 1e-3)
         j = np.array([ad.j(tt) for tt in t])
@@ -57,7 +57,7 @@ def plot_slalom():
     ylabels = ['zeta [rad/s/s/s]', 'alpha [rad/s/s]',
                'omega [rad/s]', 'theta [rad]']
 
-    time_stamps = list(ad.getTimeStamp())
+    time_stamps = list(ad.getTimeStamps())
     time_stamps.insert(0, 0)
     time_stamps.append(time_stamps[-1]+shape.straight_post / v)
     for i in range(len(time_stamps)-1):

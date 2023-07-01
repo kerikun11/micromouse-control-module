@@ -35,14 +35,14 @@ class AccelDesigner {
   /**
    * @brief 初期化付きコンストラクタ
    *
-   * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
-   * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_max     最大速度の大きさ [m/s]，正であること
-   * @param v_start   始点速度 [m/s]
-   * @param v_target  目標速度 [m/s]
-   * @param dist      移動距離 [m]
-   * @param x_start   始点位置 [m] (オプション)
-   * @param t_start   始点時刻 [s] (オプション)
+   * @param[in] j_max     最大躍度の大きさ [m/s/s/s]，正であること
+   * @param[in] a_max     最大加速度の大きさ [m/s/s], 正であること
+   * @param[in] v_max     最大速度の大きさ [m/s]，正であること
+   * @param[in] v_start   始点速度 [m/s]
+   * @param[in] v_target  目標速度 [m/s]
+   * @param[in] dist      移動距離 [m]
+   * @param[in] x_start   始点位置 [m] (オプション)
+   * @param[in] t_start   始点時刻 [s] (オプション)
    */
   AccelDesigner(const float j_max, const float a_max, const float v_max,
                 const float v_start, const float v_target, const float dist,
@@ -55,16 +55,16 @@ class AccelDesigner {
   AccelDesigner() { t0 = t1 = t2 = t3 = x0 = x3 = 0; }
   /**
    * @brief 引数の拘束条件から曲線を生成する．
-   * この関数によって，すべての変数が初期化される．(漏れはない)
+   * @details この関数によってもれなくすべての変数が初期化される．
    *
-   * @param j_max     最大躍度の大きさ [m/s/s/s]，正であること
-   * @param a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param v_max     最大速度の大きさ [m/s]，正であること
-   * @param v_start   始点速度 [m/s]
-   * @param v_target  目標速度 [m/s]
-   * @param dist      移動距離 [m]
-   * @param x_start   始点位置 [m] (オプション)
-   * @param t_start   始点時刻 [s] (オプション)
+   * @param[in] j_max     最大躍度の大きさ [m/s/s/s]，正であること
+   * @param[in] a_max     最大加速度の大きさ [m/s/s], 正であること
+   * @param[in] v_max     最大速度の大きさ [m/s]，正であること
+   * @param[in] v_start   始点速度 [m/s]
+   * @param[in] v_target  目標速度 [m/s]
+   * @param[in] dist      移動距離 [m]
+   * @param[in] x_start   始点位置 [m] (オプション)
+   * @param[in] t_start   始点時刻 [s] (オプション)
    */
   void reset(const float j_max, const float a_max, const float v_max,
              const float v_start, const float v_target, const float dist,
@@ -159,7 +159,9 @@ class AccelDesigner {
 #endif
   }
   /**
-   * @brief 時刻 t [s] における躍度 j [m/s/s/s]
+   * @brief 任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数
+   * @param[in] 時刻 t [s]
+   * @return 躍度 [m/s/s/s]
    */
   float j(const float t) const {
     if (t < t2)
@@ -168,7 +170,9 @@ class AccelDesigner {
       return dc.j(t - t2);
   }
   /**
-   * @brief 時刻 t [s] における加速度 a [m/s/s]
+   * @brief 任意の時刻 t [s] における加速度 a [m/s/s] を返す関数
+   * @param[in] 時刻 t [s]
+   * @return 加速度 [m/s/s]
    */
   float a(const float t) const {
     if (t < t2)
@@ -177,7 +181,9 @@ class AccelDesigner {
       return dc.a(t - t2);
   }
   /**
-   * @brief 時刻 t [s] における速度 v [m/s]
+   * @brief 任意の時刻 t [s] における速度 v [m/s] を返す関数
+   * @param[in] 時刻 t [s]
+   * @return 速度 [m/s]
    */
   float v(const float t) const {
     if (t < t2)
@@ -186,7 +192,9 @@ class AccelDesigner {
       return dc.v(t - t2);
   }
   /**
-   * @brief 時刻 t [s] における位置 x [m]
+   * @brief 任意の時刻 t [s] における位置 x [m] を返す関数
+   * @param[in] 時刻 t [s]
+   * @return 位置 [m]
    */
   float x(const float t) const {
     if (t < t2)
@@ -207,12 +215,36 @@ class AccelDesigner {
    */
   float x_end() const { return x3; }
   /**
-   * @brief 境界の時刻 [s]
+   * @brief 曲線加速の開始時刻 [s]
    */
   float t_0() const { return t0; }
+  /**
+   * @brief 最高速度に達する時刻 [s]
+   */
   float t_1() const { return t1; }
+  /**
+   * @brief 曲線減速の開始時刻 [s]
+   */
   float t_2() const { return t2; }
+  /**
+   * @brief 曲線減速の終了時刻 [s]
+   */
   float t_3() const { return t3; }
+  /**
+   * @brief 曲線加速の境界のタイムスタンプを取得
+   */
+  const std::array<float, 8> getTimeStamps() const {
+    return {{
+        t0 + ac.t_0(),
+        t0 + ac.t_1(),
+        t0 + ac.t_2(),
+        t0 + ac.t_3(),
+        t2 + dc.t_0(),
+        t2 + dc.t_1(),
+        t2 + dc.t_2(),
+        t2 + dc.t_3(),
+    }};
+  }
   /**
    * @brief stdout に軌道のcsvを出力する関数．
    */
@@ -241,21 +273,6 @@ class AccelDesigner {
     os << "\tt2: " << obj.t2;
     os << "\tt3: " << obj.t3;
     return os;
-  }
-  /**
-   * @brief 境界のタイムスタンプを取得
-   */
-  const std::array<float, 8> getTimeStamp() const {
-    return {{
-        t0 + ac.t_0(),
-        t0 + ac.t_1(),
-        t0 + ac.t_2(),
-        t0 + ac.t_3(),
-        t2 + dc.t_0(),
-        t2 + dc.t_1(),
-        t2 + dc.t_2(),
-        t2 + dc.t_3(),
-    }};
   }
 
  protected:

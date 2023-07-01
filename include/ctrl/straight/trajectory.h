@@ -35,8 +35,8 @@ class Trajectory : public AccelDesigner {
   /**
    * @brief 状態の更新
    *
-   * @param s 状態変数
-   * @param t 現在時刻
+   * @param[out] s 状態変数
+   * @param[in] t 現在時刻
    */
   void update(struct State& s, const float t) const {
     s.q = Pose(x(t), 0, 0);

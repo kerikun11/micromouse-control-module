@@ -15,7 +15,7 @@ def plot_accel_designer(ad):
     titles = ['Jerk', 'Acceleration', 'Velocity', 'Position']
     ylabels = ['j [m/s/s/s]', 'a [m/s/s]', 'v [m/s]', 'p [m]']
 
-    time_stamps = ad.getTimeStamp()
+    time_stamps = ad.getTimeStamps()
     dt = (time_stamps[-1] - time_stamps[0]) * 1e-4
     for i in range(len(time_stamps)-1):
         t = np.arange(time_stamps[i]+dt, time_stamps[i+1], dt)

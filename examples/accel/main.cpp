@@ -17,7 +17,7 @@ void printCsv(const std::string& filebase, const ctrl::AccelDesigner& ad) {
   ctrl_logi << ad << std::endl;
   const float Ts = 1e-4f;
   std::ofstream of;
-  const auto ticks = ad.getTimeStamp();
+  const auto ticks = ad.getTimeStamps();
   float t = 0;
   for (size_t i = 0; i < ticks.size(); ++i) {
     of = std::ofstream(filebase + "_" + std::to_string(i) + ".csv");

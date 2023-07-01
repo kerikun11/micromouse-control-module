@@ -29,8 +29,8 @@ class Trajectory {
   /**
    * @brief コンストラクタ
    *
-   * @param shape スラローム形状
-   * @param mirror_x スラローム形状を$x$軸反転(進行方向に対して左右反転)する
+   * @param[in] shape スラローム形状
+   * @param[in] mirror_x スラローム形状を$x$軸反転(進行方向に対して左右反転)する
    */
   Trajectory(const Shape& shape, const bool mirror_x = false) : shape(shape) {
     if (mirror_x) {
@@ -55,10 +55,10 @@ class Trajectory {
   /**
    * @brief 軌道の更新
    *
-   * @param state 次の時刻に更新する現在状態
-   * @param t 現在時刻 [s]
-   * @param Ts 積分時間 [s]
-   * @param k_slip スリップ角の比例定数
+   * @param[inout] state 次の時刻に更新する現在状態
+   * @param[in] t 現在時刻 [s]
+   * @param[in] Ts 積分時間 [s]
+   * @param[in] k_slip スリップ角の比例定数
    */
   void update(State& state, const float t, const float Ts,
               const float k_slip = 0) const {

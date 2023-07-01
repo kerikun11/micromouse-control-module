@@ -50,7 +50,7 @@ class TrajectoryTracker {
   /**
    * @brief 自作の sinc 関数 sinc(x) := sin(x) / x
    *
-   * @param x
+   * @param[in] x
    * @return sinc(x)
    */
   static constexpr float sinc(const float x) {
@@ -63,23 +63,23 @@ class TrajectoryTracker {
   /**
    * @brief コンストラクタ
    *
-   * @param gain 軌道追従フィードバックゲイン
+   * @param[in] gain 軌道追従フィードバックゲイン
    */
   TrajectoryTracker(const Gain& gain) : gain(gain) {}
   /**
    * @brief 状態の初期化
    *
-   * @param vs 初期並進速度
+   * @param[in] vs 初期並進速度
    */
   void reset(const float vs = 0) { xi = vs; }
   /**
    * @brief 制御入力の計算
    *
-   * @param est_q 推定位置
-   * @param est_v 推定速度
-   * @param est_a 推定加速度
-   * @param ref_s 目標状態
-   * @return const Result 制御入力
+   * @param[in] est_q 推定位置
+   * @param[in] est_v 推定速度
+   * @param[in] est_a 推定加速度
+   * @param[in] ref_s 目標状態
+   * @return 制御入力
    */
   const Result update(const Pose& est_q, const Polar& est_v, const Polar& est_a,
                       const State& ref_s) {
@@ -89,14 +89,14 @@ class TrajectoryTracker {
   /**
    * @brief 制御入力の計算
    *
-   * @param est_q 推定位置
-   * @param est_v 推定速度
-   * @param est_a 推定加速度
-   * @param ref_q 目標位置
-   * @param ref_dq 目標速度
-   * @param ref_ddq 目標加速度
-   * @param ref_dddq 目標躍度
-   * @return const Result 制御入力
+   * @param[in] est_q 推定位置
+   * @param[in] est_v 推定速度
+   * @param[in] est_a 推定加速度
+   * @param[in] ref_q 目標位置
+   * @param[in] ref_dq 目標速度
+   * @param[in] ref_ddq 目標加速度
+   * @param[in] ref_dddq 目標躍度
+   * @return 制御入力
    */
   const Result update(const Pose& est_q, const Polar& est_v, const Polar& est_a,
                       const Pose& ref_q, const Pose& ref_dq,
@@ -172,7 +172,7 @@ class TrajectoryTracker {
 
  protected:
   float xi;  /**< @brief 補助状態変数 */
-  Gain gain; /**< フィードバックゲイン */
+  Gain gain; /**< @brief フィードバックゲイン */
 };
 
 }  // namespace ctrl
