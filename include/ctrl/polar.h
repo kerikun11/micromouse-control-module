@@ -3,7 +3,7 @@
  * @brief 並進と回転の座標を管理するクラスをもつファイル
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
- * @copyright Copyright 2020 <kerikun11+github@gmail.com>
+ * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
  */
 #pragma once
 

@@ -3,7 +3,7 @@
  * @brief 距離の拘束を満たす加減速走行軌道を生成するクラスを保持するファイル
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
- * @copyright Copyright 2020 <kerikun11+github@gmail.com>
+ * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
  * @see https://www.kerislab.jp/posts/2018-04-29-accel-designer4/
  */
 #pragma once
@@ -54,9 +54,9 @@ class AccelDesigner {
    */
   AccelDesigner() { t0 = t1 = t2 = t3 = x0 = x3 = 0; }
   /**
-   * @brief 引数の拘束条件から曲線を生成する．
-   * @details この関数によってもれなくすべての変数が初期化される．
+   * @brief 引数の拘束条件から曲線を生成する関数
    *
+   * @details この関数によってもれなくすべての変数が初期化される．
    * @param[in] j_max     最大躍度の大きさ [m/s/s/s]，正であること
    * @param[in] a_max     最大加速度の大きさ [m/s/s], 正であること
    * @param[in] v_max     最大速度の大きさ [m/s]，正であること

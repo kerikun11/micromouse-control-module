@@ -3,7 +3,7 @@
  * @brief This file evaluates the performance of acceleration curves.
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-05-04
- * @copyright Copyright 2020 <kerikun11+github@gmail.com>
+ * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
  */
 #define CTRL_LOG_LEVEL CTRL_LOG_LEVEL_INFO
 #include <ctrl/accel_designer.h>

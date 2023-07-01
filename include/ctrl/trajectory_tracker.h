@@ -3,7 +3,7 @@
  * @brief 独立2輪車の線形化フィードバック軌道追従コントローラ
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2019-03-31
- * @copyright Copyright 2019 <kerikun11+github@gmail.com>
+ * @copyright Copyright 2019 Ryotaro Onuki <kerikun11+github@gmail.com>
  */
 #pragma once
 
@@ -42,10 +42,10 @@ class TrajectoryTracker {
    * @brief 計算結果を格納する構造体
    */
   struct Result {
-    float v;
-    float w;
-    float dv;
-    float dw;
+    float v;   //**< @brief 並進速度 [m/s]
+    float w;   //**< @brief 角速度 [rad/s]
+    float dv;  //**< @brief 並進加速度 [m/s/s]
+    float dw;  //**< @brief 角加速度 [rad/s/s]
   };
   /**
    * @brief 自作の sinc 関数 sinc(x) := sin(x) / x
