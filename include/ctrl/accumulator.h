@@ -58,7 +58,7 @@ class Accumulator {
    * @return const T&
    */
   const T& operator[](const std::size_t index) const {
-    return buffer[((S + head - index) % S];
+    return buffer[(S + head - index) % S];
   }
   /**
    * @brief 直近 n 個の平均を取得する関数
