@@ -49,15 +49,19 @@ void printCsv(const std::string& filebase, const slalom::Shape& ss,
   float t = 0;
   for (size_t i = 0; i < ticks.size(); ++i) {
     of = std::ofstream(filebase + "_" + std::to_string(i) + ".csv");
+    // const float k_slip = 2e-5f;
+    const float k_slip = 0;
     while (t < ticks[i])
-      st.update(s, t, Ts, 2e-5f), printCSV(of, t, s), t += Ts;
+      st.update(s, t, Ts, k_slip), printCSV(of, t, s), t += Ts;
   }
 }
 
 int main(void) {
-  // static auto ss = slalom::Shape(Pose(45, 45, M_PI / 2), 40);
-  // static auto ss = slalom::Shape(Pose(90, 90, M_PI / 2), 75);
-  static auto ss = slalom::Shape(Pose(0, 90, M_PI), 90, 10);
+  const float PI = M_PI;
+  auto ss = slalom::Shape(Pose(45, 45, PI / 2), 40);  //< S90
+  // auto ss = slalom::Shape(Pose(90, 45, PI / 4), 30);      //< F45
+  // auto ss = slalom::Shape(Pose(45, 90, PI * 3 / 4), 80);  //< F135
+  // auto ss = slalom::Shape(Pose(0, 90, PI), 90, 24);       //< F180
   std::cout << ss;
   const AccelDesigner ad(ss.dddth_max, ss.ddth_max, ss.dth_max, 0, 0,
                          ss.curve.th);

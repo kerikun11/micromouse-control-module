@@ -85,7 +85,7 @@ cd build
 # 初期化 (Makefile の生成); MSYS2 の場合 -G"MSYS Makefiles" オプションを付加
 cmake .. ${MSYSTEM:+-G"MSYS Makefiles"}
 # ビルド
-make
+make all
 ```
 
 以降、コマンド `make` は、この `build` ディレクトリで実行すること。
@@ -94,22 +94,24 @@ make
 
 ## 曲線加速軌道の生成とプロット
 
-[examples/accel/main.cpp](/examples/accel/main.cpp) の実行
+`examples/accel/main.cpp` の実行
 
 ```sh
-# 軌道 (accel_x.csv) の生成とプロット
-make accel accel_plot
+# 軌道 (accel_*.csv) の生成とプロット
+make accel
+make accel_plot
 ```
 
 --------------------------------------------------------------------------------
 
 ### スラローム軌道の生成とプロット
 
-[examples/slalom/main.cpp](/examples/slalom/main.cpp) の実行
+`examples/slalom/main.cpp` の実行
 
 ```sh
-# スラローム軌道 (slalom_x.csv) の生成とプロット
-make slalom slalom_plot
+# スラローム軌道 (slalom_*.csv) の生成とプロット
+make slalom
+make slalom_plot
 ```
 
 --------------------------------------------------------------------------------
@@ -120,10 +122,9 @@ C++で実装されたPythonモジュール `ctrl` を使用してプロットす
 
 ```sh
 # Python モジュール ctrl の生成とプロットスクリプトの実行
-make ctrl pybind11_plot # calls ./pybind11/plot.py
+make ctrl
+make pybind11_plot # calls ./pybind11/plot.py
 ```
-
-詳しくは[こちら](/pybind11)
 
 --------------------------------------------------------------------------------
 
@@ -134,15 +135,16 @@ make ctrl pybind11_plot # calls ./pybind11/plot.py
 ```sh
 # ドキュメントの自動生成
 make docs
-# ブラウザで開く (open コマンドは環境依存)
-open docs/html/index.html
+# 必要に応じてウェブサーバーを立ち上げる
+python3 -m http.server -d docs/html 8080
+# ブラウザで http://localhost:8080 にアクセスする
 ```
 
 上記コマンドにより `build/docs/html/index.html` にリファレンスが生成される。
 
 --------------------------------------------------------------------------------
 
-### ユニットテスト
+### 単体検証とカバレッジ
 
 [GoogleTest](https://github.com/google/googletest) によるユニットテストと [LCOV](https://github.com/linux-test-project/lcov) によるカバレッジテストを実行する
 
@@ -153,8 +155,9 @@ make lcov_init
 make test_run
 # カバレッジ結果の収集
 make lcov
-# ブラウザでカバレッジ結果をみる (open コマンドは環境依存)
-open test/html/index.html
+# 必要に応じてウェブサーバーを立ち上げる
+python3 -m http.server -d test/html 8080
+# ブラウザで http://localhost:8080 にアクセスする
 ```
 
 上記コマンドにより `build/test/html/index.html` にカバレッジ結果が生成される。
