@@ -1,6 +1,6 @@
 <map id="ctrl::slalom::Shape::Shape" name="ctrl::slalom::Shape::Shape">
 <area shape="rect" id="node1" title="拘束条件からスラローム形状を生成するコンストラクタ" alt="" coords="5,325,148,366"/>
-<area shape="rect" id="node2" href="$structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190" title="軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．" alt="" coords="197,99,339,141"/>
+<area shape="rect" id="node2" href="$structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190" title="軌道の積分を行う関数。ルンゲクッタ法を使用して数値積分を行う。" alt="" coords="197,99,339,141"/>
 <area shape="rect" id="node12" href="$classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc" title="引数の拘束条件から曲線を生成する関数" alt="" coords="196,325,340,366"/>
 <area shape="rect" id="node20" href="$classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f" title="終点時刻 [s]" alt="" coords="196,390,340,431"/>
 <area shape="rect" id="node3" href="$classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="421,107,581,133"/>

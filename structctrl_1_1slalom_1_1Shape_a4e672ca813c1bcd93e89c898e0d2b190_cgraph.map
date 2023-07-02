@@ -1,5 +1,5 @@
 <map id="ctrl::slalom::Shape::integrate" name="ctrl::slalom::Shape::integrate">
-<area shape="rect" id="node1" title="軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．" alt="" coords="5,74,148,115"/>
+<area shape="rect" id="node1" title="軌道の積分を行う関数。ルンゲクッタ法を使用して数値積分を行う。" alt="" coords="5,74,148,115"/>
 <area shape="rect" id="node2" href="$classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="196,5,356,32"/>
 <area shape="rect" id="node4" href="$classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="198,56,354,83"/>
 <area shape="rect" id="node6" href="$classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="196,107,356,133"/>

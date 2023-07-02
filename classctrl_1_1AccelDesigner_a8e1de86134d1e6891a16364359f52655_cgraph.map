@@ -1,5 +1,5 @@
 <map id="ctrl::AccelDesigner::printCsv" name="ctrl::AccelDesigner::printCsv">
-<area shape="rect" id="node1" title="std::ostream に軌道のcsvを出力する関数．" alt="" coords="5,107,149,149"/>
+<area shape="rect" id="node1" title="std::ostream に軌道のcsvを出力する関数。" alt="" coords="5,107,149,149"/>
 <area shape="rect" id="node2" href="$classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="197,5,357,32"/>
 <area shape="rect" id="node4" href="$classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="199,56,355,83"/>
 <area shape="rect" id="node6" href="$classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f" title="終点時刻 [s]" alt="" coords="205,107,349,149"/>

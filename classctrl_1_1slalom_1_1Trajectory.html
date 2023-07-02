@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.3.2</span>
+   &#160;<span id="projectnumber">v1.3.2-2-ge2c6882</span>
    </div>
   </td>
  </tr>
@@ -130,7 +130,7 @@ ctrl::slalom::Trajectory 連携図</div>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p><a class="el" href="classctrl_1_1slalom_1_1Trajectory.html" title="slalom::Trajectory スラローム軌道を生成するクラス">slalom::Trajectory</a> スラローム軌道を生成するクラス </p>
-<p>スラローム形状 <a class="el" href="structctrl_1_1slalom_1_1Shape.html" title="slalom::Shape スラロームの形状を表す構造体">Shape</a> と並進速度をもとに，各時刻における位置や速度を提供する． </p>
+<p>スラローム形状 <a class="el" href="structctrl_1_1slalom_1_1Shape.html" title="slalom::Shape スラロームの形状を表す構造体">Shape</a> と並進速度をもとに、各時刻における位置や速度を提供する。 </p>
 </div><h2 class="groupheader">構築子と解体子</h2>
 <a id="a7e641265c69482a7ba28ac22683a8d6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e641265c69482a7ba28ac22683a8d6b">&#9670;&nbsp;</a></span>Trajectory()</h2>
@@ -465,14 +465,14 @@ ctrl::slalom::Trajectory 連携図</div>
 <div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                            {</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">Shape::integrate</a>(<a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a4c36cfd1e4fd67c788b9f9e8cb0c4420">ad</a>, state, <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">velocity</a>, t, Ts, k_slip);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
-<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a4e672ca813c1bcd93e89c898e0d2b190"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">ctrl::slalom::Shape::integrate</a></div><div class="ttdeci">static void integrate(const AccelDesigner &amp;ad, State &amp;s, const float v, const float t, const float Ts, const float k_slip=0)</div><div class="ttdoc">軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．</div><div class="ttdef"><b>Definition:</b> slalom.h:144</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a4e672ca813c1bcd93e89c898e0d2b190"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">ctrl::slalom::Shape::integrate</a></div><div class="ttdeci">static void integrate(const AccelDesigner &amp;ad, State &amp;s, const float v, const float t, const float Ts, const float k_slip=0)</div><div class="ttdoc">軌道の積分を行う関数。ルンゲクッタ法を使用して数値積分を行う。</div><div class="ttdef"><b>Definition:</b> slalom.h:144</div></div>
 </div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="classctrl_1_1slalom_1_1Trajectory_aef5cabb9cff7bd405b3cd8a70879112a_cgraph.png" border="0" usemap="#aclassctrl_1_1slalom_1_1Trajectory_aef5cabb9cff7bd405b3cd8a70879112a_cgraph" alt=""/></div>
 <map name="aclassctrl_1_1slalom_1_1Trajectory_aef5cabb9cff7bd405b3cd8a70879112a_cgraph" id="aclassctrl_1_1slalom_1_1Trajectory_aef5cabb9cff7bd405b3cd8a70879112a_cgraph">
 <area shape="rect" title="軌道の更新" alt="" coords="5,74,172,115"/>
-<area shape="rect" href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190" title="軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．" alt="" coords="220,74,363,115"/>
+<area shape="rect" href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190" title="軌道の積分を行う関数。ルンゲクッタ法を使用して数値積分を行う。" alt="" coords="220,74,363,115"/>
 <area shape="rect" href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="411,5,571,32"/>
 <area shape="rect" href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="413,56,569,83"/>
 <area shape="rect" href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="411,107,571,133"/>

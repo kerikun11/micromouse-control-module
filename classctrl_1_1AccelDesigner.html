@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.3.2</span>
+   &#160;<span id="projectnumber">v1.3.2-2-ge2c6882</span>
    </div>
   </td>
  </tr>
@@ -147,10 +147,10 @@ ctrl::AccelDesigner 連携図</div>
 <tr class="memdesc:a8fdecf1aa412ce06e70faa37f4938677"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線加速の境界のタイムスタンプを取得  <a href="classctrl_1_1AccelDesigner.html#a8fdecf1aa412ce06e70faa37f4938677">[詳解]</a><br /></td></tr>
 <tr class="separator:a8fdecf1aa412ce06e70faa37f4938677"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5090712be32c106e518dc8ed1ec863f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a5090712be32c106e518dc8ed1ec863f6">printCsv</a> (const float t_interval=1e-3f) const</td></tr>
-<tr class="memdesc:a5090712be32c106e518dc8ed1ec863f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">stdout に軌道のcsvを出力する関数．  <a href="classctrl_1_1AccelDesigner.html#a5090712be32c106e518dc8ed1ec863f6">[詳解]</a><br /></td></tr>
+<tr class="memdesc:a5090712be32c106e518dc8ed1ec863f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">stdout に軌道のcsvを出力する関数。  <a href="classctrl_1_1AccelDesigner.html#a5090712be32c106e518dc8ed1ec863f6">[詳解]</a><br /></td></tr>
 <tr class="separator:a5090712be32c106e518dc8ed1ec863f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e1de86134d1e6891a16364359f52655"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a8e1de86134d1e6891a16364359f52655">printCsv</a> (std::ostream &amp;os, const float t_interval=1e-3f) const</td></tr>
-<tr class="memdesc:a8e1de86134d1e6891a16364359f52655"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::ostream に軌道のcsvを出力する関数．  <a href="classctrl_1_1AccelDesigner.html#a8e1de86134d1e6891a16364359f52655">[詳解]</a><br /></td></tr>
+<tr class="memdesc:a8e1de86134d1e6891a16364359f52655"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::ostream に軌道のcsvを出力する関数。  <a href="classctrl_1_1AccelDesigner.html#a8e1de86134d1e6891a16364359f52655">[詳解]</a><br /></td></tr>
 <tr class="separator:a8e1de86134d1e6891a16364359f52655"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -186,7 +186,7 @@ ctrl::AccelDesigner 連携図</div>
 <div class="textblock"><p>拘束条件を満たす曲線加減速の軌道を生成するクラス </p>
 <ul>
 <li>目標速度や移動距離などの拘束条件を満たす曲線加速軌道を生成する</li>
-<li>任意の時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$ を返す連続な関数を提供する</li>
+<li>任意の時刻 $t$ における躍度 $j(t)$、加速度 $a(t)$、速度 $v(t)$、位置 $x(t)$ を返す連続な関数を提供する</li>
 <li>最大加速度 $a_{\max}$ と始点速度 $v_s$ など拘束次第では目標速度 $v_t$ に達することができない場合があるので注意する </li>
 </ul>
 </div><h2 class="groupheader">構築子と解体子</h2>
@@ -263,9 +263,9 @@ ctrl::AccelDesigner 連携図</div>
 <p>初期化付きコンストラクタ </p>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s]，正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s]、正であること </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">a_max</td><td>最大加速度の大きさ [m/s/s], 正であること </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">v_max</td><td>最大速度の大きさ [m/s]，正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_max</td><td>最大速度の大きさ [m/s]、正であること </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">v_start</td><td>始点速度 [m/s] </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">v_target</td><td>目標速度 [m/s] </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">dist</td><td>移動距離 [m] </td></tr>
@@ -325,7 +325,7 @@ ctrl::AccelDesigner 連携図</div>
 </div><div class="memdoc">
 
 <p>とりあえずインスタンス化を行う空のコンストラクタ </p>
-<dl class="section attention"><dt>注意</dt><dd>別途 <a class="el" href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc" title="引数の拘束条件から曲線を生成する関数">reset()</a> により初期化すること． </dd></dl>
+<dl class="section attention"><dt>注意</dt><dd>別途 <a class="el" href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc" title="引数の拘束条件から曲線を生成する関数">reset()</a> により初期化すること。 </dd></dl>
 <div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{ <a class="code" href="classctrl_1_1AccelDesigner.html#a6c901078907df2fb03875f7acf0f28ce">t0</a> = <a class="code" href="classctrl_1_1AccelDesigner.html#ad7a35df461d0e9f13cc5259b1d26050c">t1</a> = <a class="code" href="classctrl_1_1AccelDesigner.html#ad5fa7a5fdb6af631a2b2bdef05bb8d82">t2</a> = <a class="code" href="classctrl_1_1AccelDesigner.html#a27b1a5d3f86d55f19ee4f4fe98505165">t3</a> = <a class="code" href="classctrl_1_1AccelDesigner.html#ac2d68261a258e44ec0299d8907ec2859">x0</a> = <a class="code" href="classctrl_1_1AccelDesigner.html#a4cdeb5cefe5ad7d591082f3934f695ae">x3</a> = 0; }</div>
 <div class="ttc" id="aclassctrl_1_1AccelDesigner_html_a27b1a5d3f86d55f19ee4f4fe98505165"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#a27b1a5d3f86d55f19ee4f4fe98505165">ctrl::AccelDesigner::t3</a></div><div class="ttdeci">float t3</div><div class="ttdoc">境界点の時刻 [s]</div><div class="ttdef"><b>Definition:</b> accel_designer.h:280</div></div>
 <div class="ttc" id="aclassctrl_1_1AccelDesigner_html_a4cdeb5cefe5ad7d591082f3934f695ae"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#a4cdeb5cefe5ad7d591082f3934f695ae">ctrl::AccelDesigner::x3</a></div><div class="ttdeci">float x3</div><div class="ttdoc">境界点の位置 [m]</div><div class="ttdef"><b>Definition:</b> accel_designer.h:281</div></div>
@@ -520,11 +520,11 @@ ctrl::AccelDesigner 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p>stdout に軌道のcsvを出力する関数． </p>
+<p>stdout に軌道のcsvを出力する関数。 </p>
 <div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                                                      {</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="classctrl_1_1AccelDesigner.html#a5090712be32c106e518dc8ed1ec863f6">printCsv</a>(std::cout, t_interval);</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  }</div>
-<div class="ttc" id="aclassctrl_1_1AccelDesigner_html_a5090712be32c106e518dc8ed1ec863f6"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#a5090712be32c106e518dc8ed1ec863f6">ctrl::AccelDesigner::printCsv</a></div><div class="ttdeci">void printCsv(const float t_interval=1e-3f) const</div><div class="ttdoc">stdout に軌道のcsvを出力する関数．</div><div class="ttdef"><b>Definition:</b> accel_designer.h:252</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelDesigner_html_a5090712be32c106e518dc8ed1ec863f6"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#a5090712be32c106e518dc8ed1ec863f6">ctrl::AccelDesigner::printCsv</a></div><div class="ttdeci">void printCsv(const float t_interval=1e-3f) const</div><div class="ttdoc">stdout に軌道のcsvを出力する関数。</div><div class="ttdef"><b>Definition:</b> accel_designer.h:252</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -562,7 +562,7 @@ ctrl::AccelDesigner 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p>std::ostream に軌道のcsvを出力する関数． </p>
+<p>std::ostream に軌道のcsvを出力する関数。 </p>
 <div class="fragment"><div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                                                                      {</div>
 <div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">float</span> t = <a class="code" href="classctrl_1_1AccelDesigner.html#a6c901078907df2fb03875f7acf0f28ce">t0</a>; t &lt; <a class="code" href="classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f">t_end</a>(); t += t_interval)</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      os &lt;&lt; t &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code" href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718">j</a>(t) &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code" href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8">a</a>(t) &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code" href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b">v</a>(t) &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code" href="classctrl_1_1AccelDesigner.html#a5bc18aab62a53e6c25e4ebfb12cf0df3">x</a>(t)</div>
@@ -578,7 +578,7 @@ ctrl::AccelDesigner 連携図</div>
 <div class="dyncontent">
 <div class="center"><img src="classctrl_1_1AccelDesigner_a8e1de86134d1e6891a16364359f52655_cgraph.png" border="0" usemap="#aclassctrl_1_1AccelDesigner_a8e1de86134d1e6891a16364359f52655_cgraph" alt=""/></div>
 <map name="aclassctrl_1_1AccelDesigner_a8e1de86134d1e6891a16364359f52655_cgraph" id="aclassctrl_1_1AccelDesigner_a8e1de86134d1e6891a16364359f52655_cgraph">
-<area shape="rect" title="std::ostream に軌道のcsvを出力する関数．" alt="" coords="5,107,149,149"/>
+<area shape="rect" title="std::ostream に軌道のcsvを出力する関数。" alt="" coords="5,107,149,149"/>
 <area shape="rect" href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="197,5,357,32"/>
 <area shape="rect" href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="199,56,355,83"/>
 <area shape="rect" href="classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f" title="終点時刻 [s]" alt="" coords="205,107,349,149"/>
@@ -665,11 +665,11 @@ ctrl::AccelDesigner 連携図</div>
 </div><div class="memdoc">
 
 <p>引数の拘束条件から曲線を生成する関数 </p>
-<p>この関数によってもれなくすべての変数が初期化される． </p><dl class="params"><dt>引数</dt><dd>
+<p>この関数によってもれなくすべての変数が初期化される。 </p><dl class="params"><dt>引数</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s]，正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s]、正であること </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">a_max</td><td>最大加速度の大きさ [m/s/s], 正であること </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">v_max</td><td>最大速度の大きさ [m/s]，正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_max</td><td>最大速度の大きさ [m/s]、正であること </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">v_start</td><td>始点速度 [m/s] </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">v_target</td><td>目標速度 [m/s] </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">dist</td><td>移動距離 [m] </td></tr>
@@ -679,14 +679,14 @@ ctrl::AccelDesigner 連携図</div>
   </dd>
 </dl>
 <div class="fragment"><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                                               {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">/* 目標速度に到達可能か，走行距離から終点速度を決定していく */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">/* 目標速度に到達可能か、走行距離から終点速度を決定していく */</span></div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">auto</span> <a class="code" href="classctrl_1_1AccelDesigner.html#a008143ca17f0676dd54255601702f5ef">v_end</a> = v_target;  <span class="comment">//&lt; 仮代入</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">/* 移動距離の拘束により，目標速度に達し得ない場合の処理 */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">/* 移動距離の拘束により、目標速度に達し得ない場合の処理 */</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> dist_min = <a class="code" href="classctrl_1_1AccelCurve.html#afe9b6204f40c2bfcdbc78a622856e52d">AccelCurve::calcDistanceFromVelocityStartToEnd</a>(</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        j_max, a_max, v_start, <a class="code" href="classctrl_1_1AccelDesigner.html#a008143ca17f0676dd54255601702f5ef">v_end</a>);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">if</span> (std::abs(dist) &lt; std::abs(dist_min)) {</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <a class="code" href="accel__curve_8h.html#a0e76eb7f641be745466d7ddab3ce0a4a">ctrl_logd</a> &lt;&lt; <span class="stringliteral">&quot;vs -&gt; ve != vt&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="comment">/* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="comment">/* 目標速度$v_t$に向かい、走行距離$d$で到達し得る終点速度$v_e$を算出 */</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <a class="code" href="classctrl_1_1AccelDesigner.html#a008143ca17f0676dd54255601702f5ef">v_end</a> = <a class="code" href="classctrl_1_1AccelCurve.html#adf43c07687d201eff50f2ce72cb00170">AccelCurve::calcReachableVelocityEnd</a>(j_max, a_max, v_start,</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                                   v_target, dist);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>

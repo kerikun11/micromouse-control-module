@@ -1,6 +1,6 @@
 <map id="ctrl::slalom::Trajectory::update" name="ctrl::slalom::Trajectory::update">
 <area shape="rect" id="node1" title="軌道の更新" alt="" coords="5,74,172,115"/>
-<area shape="rect" id="node2" href="$structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190" title="軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．" alt="" coords="220,74,363,115"/>
+<area shape="rect" id="node2" href="$structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190" title="軌道の積分を行う関数。ルンゲクッタ法を使用して数値積分を行う。" alt="" coords="220,74,363,115"/>
 <area shape="rect" id="node3" href="$classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="411,5,571,32"/>
 <area shape="rect" id="node5" href="$classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="413,56,569,83"/>
 <area shape="rect" id="node7" href="$classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="411,107,571,133"/>

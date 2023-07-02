@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">MicroMouse Control Module
-   &#160;<span id="projectnumber">v1.3.2</span>
+   &#160;<span id="projectnumber">v1.3.2-2-ge2c6882</span>
    </div>
   </td>
  </tr>
@@ -66,7 +66,7 @@ $(function() {
 <div class="title">コンピュータでの使用例 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>コマンドラインでの使用例を示す．</p>
+<div class="textblock"><p>コマンドラインでの使用例を示す。</p>
 <hr  />
 <h1><a class="anchor" id="autotoc_md2"></a>
 動作確認済みの環境</h1>
@@ -148,8 +148,8 @@ $(function() {
 </div><!-- fragment --><hr  />
 <h1><a class="anchor" id="autotoc_md8"></a>
 リポジトリの取得</h1>
-<p>このリポジトリは <a href="https://cmake.org/">CMake</a> プロジェクトになっている．</p>
-<p>はじめに以下のコマンドで初期化する．</p>
+<p>このリポジトリは <a href="https://cmake.org/">CMake</a> プロジェクトになっている。</p>
+<p>はじめに以下のコマンドで初期化する。</p>
 <div class="fragment"><div class="line"># GitHub から clone</div>
 <div class="line">git clone https://github.com/kerikun11/micromouse-control-module.git</div>
 <div class="line"># 移動</div>
@@ -160,39 +160,42 @@ $(function() {
 <div class="line"># 初期化 (Makefile の生成); MSYS2 の場合 -G&quot;MSYS Makefiles&quot; オプションを付加</div>
 <div class="line">cmake .. ${MSYSTEM:+-G&quot;MSYS Makefiles&quot;}</div>
 <div class="line"># ビルド</div>
-<div class="line">make</div>
-</div><!-- fragment --><p>以降，コマンド <code>make</code> は，この <code>build</code> ディレクトリで実行すること．</p>
+<div class="line">make all</div>
+</div><!-- fragment --><p>以降、コマンド <code>make</code> は、この <code>build</code> ディレクトリで実行すること。</p>
 <hr  />
 <h1><a class="anchor" id="autotoc_md10"></a>
 曲線加速軌道の生成とプロット</h1>
-<p><a href="/examples/accel/main.cpp">examples/accel/main.cpp</a> の実行</p>
-<div class="fragment"><div class="line"># 軌道 (accel_x.csv) の生成とプロット</div>
-<div class="line">make accel accel_plot</div>
+<p><code>examples/accel/main.cpp</code> の実行</p>
+<div class="fragment"><div class="line"># 軌道 (accel_*.csv) の生成とプロット</div>
+<div class="line">make accel</div>
+<div class="line">make accel_plot</div>
 </div><!-- fragment --><hr  />
 <h2><a class="anchor" id="autotoc_md12"></a>
 スラローム軌道の生成とプロット</h2>
-<p><a href="/examples/slalom/main.cpp">examples/slalom/main.cpp</a> の実行</p>
-<div class="fragment"><div class="line"># スラローム軌道 (slalom_x.csv) の生成とプロット</div>
-<div class="line">make slalom slalom_plot</div>
+<p><code>examples/slalom/main.cpp</code> の実行</p>
+<div class="fragment"><div class="line"># スラローム軌道 (slalom_*.csv) の生成とプロット</div>
+<div class="line">make slalom</div>
+<div class="line">make slalom_plot</div>
 </div><!-- fragment --><hr  />
 <h1><a class="anchor" id="autotoc_md14"></a>
 Pythonモジュールの生成とプロットスクリプトの実行</h1>
-<p>C++で実装されたPythonモジュール <code>ctrl</code> を使用してプロットする．</p>
+<p>C++で実装されたPythonモジュール <code>ctrl</code> を使用してプロットする。</p>
 <div class="fragment"><div class="line"># Python モジュール ctrl の生成とプロットスクリプトの実行</div>
-<div class="line">make ctrl pybind11_plot # calls ./pybind11/plot.py</div>
-</div><!-- fragment --><p>詳しくは<a href="/pybind11">こちら</a></p>
-<hr  />
+<div class="line">make ctrl</div>
+<div class="line">make pybind11_plot # calls ./pybind11/plot.py</div>
+</div><!-- fragment --><hr  />
 <h1><a class="anchor" id="autotoc_md16"></a>
 リファレンスの生成</h1>
-<p>コード中のコメントは <a href="http://www.doxygen.jp/">Doxygen</a> に準拠しているので，API リファレンスを自動生成することができる．</p>
+<p>コード中のコメントは <a href="http://www.doxygen.jp/">Doxygen</a> に準拠しているので、API リファレンスを自動生成することができる。</p>
 <div class="fragment"><div class="line"># ドキュメントの自動生成</div>
 <div class="line">make docs</div>
-<div class="line"># ブラウザで開く (open コマンドは環境依存)</div>
-<div class="line">open docs/html/index.html</div>
-</div><!-- fragment --><p>上記コマンドにより <code>build/docs/html/index.html</code> にリファレンスが生成される．</p>
+<div class="line"># 必要に応じてウェブサーバーを立ち上げる</div>
+<div class="line">python3 -m http.server -d docs/html 8080</div>
+<div class="line"># ブラウザで http://localhost:8080 にアクセスする</div>
+</div><!-- fragment --><p>上記コマンドにより <code>build/docs/html/index.html</code> にリファレンスが生成される。</p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md18"></a>
-ユニットテスト</h2>
+単体検証とカバレッジ</h2>
 <p><a href="https://github.com/google/googletest">GoogleTest</a> によるユニットテストと <a href="https://github.com/linux-test-project/lcov">LCOV</a> によるカバレッジテストを実行する</p>
 <div class="fragment"><div class="line"># カバレッジ結果の初期化</div>
 <div class="line">make lcov_init</div>
@@ -200,9 +203,10 @@ Pythonモジュールの生成とプロットスクリプトの実行</h1>
 <div class="line">make test_run</div>
 <div class="line"># カバレッジ結果の収集</div>
 <div class="line">make lcov</div>
-<div class="line"># ブラウザでカバレッジ結果をみる (open コマンドは環境依存)</div>
-<div class="line">open test/html/index.html</div>
-</div><!-- fragment --><p>上記コマンドにより <code>build/test/html/index.html</code> にカバレッジ結果が生成される． </p>
+<div class="line"># 必要に応じてウェブサーバーを立ち上げる</div>
+<div class="line">python3 -m http.server -d test/html 8080</div>
+<div class="line"># ブラウザで http://localhost:8080 にアクセスする</div>
+</div><!-- fragment --><p>上記コマンドにより <code>build/test/html/index.html</code> にカバレッジ結果が生成される。 </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->
