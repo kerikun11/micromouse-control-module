@@ -22,7 +22,7 @@ class FeedbackController {
   /**
    * @brief フィードフォワード成分に使用する1次モデル
    *
-   * 使用しない場合は， $ K_1 = 1,~ T_1 = 0 $ に設定すること．
+   * 使用しない場合は、 $ K_1 = 1,~ T_1 = 0 $ に設定すること。
    * 伝達関数 $ y(s) = \\frac{K_1}{T_1s+1} u(s) $
    */
   struct Model {
@@ -31,10 +31,10 @@ class FeedbackController {
   };
   /**
    * @brief フィードバック成分に使用するPIDゲイン
-   *        使用しない成分は，0に設定すること．
+   *        使用しない成分は、0に設定すること。
    *
    * 伝達関数 $ u(s) = K_p e(s) + K_i / s e(s) + K_d s e(s) $,
-   * ただし，$ e(s) := r(s) - y(s) $
+   * ただし、$ e(s) := r(s) - y(s) $
    */
   struct Gain {
     T Kp; /**< @brief フィードバック比例ゲイン */
@@ -42,8 +42,8 @@ class FeedbackController {
     T Kd; /**< @brief フィードバック微分ゲイン */
   };
   /**
-   * @brief 制御入力の成分内訳．
-   * @details ゲインチューニングの際に可視化するために使用する．
+   * @brief 制御入力の成分内訳。
+   * @details ゲインチューニングの際に可視化するために使用する。
    */
   struct Breakdown {
     T ff;  /**< @brief フィードフォワード成分 */
@@ -70,7 +70,7 @@ class FeedbackController {
     bd = Breakdown();
   }
   /**
-   * @brief 状態を更新して，次の制御入力を得る関数
+   * @brief 状態を更新して、次の制御入力を得る関数
    *
    * @param[in] r 目標値
    * @param[in] y 観測値

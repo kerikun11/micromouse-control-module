@@ -1,6 +1,6 @@
 # コンピュータでの使用例
 
-コマンドラインでの使用例を示す．
+コマンドラインでの使用例を示す。
 
 --------------------------------------------------------------------------------
 
@@ -70,9 +70,9 @@ pacman -S --needed git make \
 
 ## リポジトリの取得
 
-このリポジトリは [CMake](https://cmake.org/) プロジェクトになっている．
+このリポジトリは [CMake](https://cmake.org/) プロジェクトになっている。
 
-はじめに以下のコマンドで初期化する．
+はじめに以下のコマンドで初期化する。
 
 ```sh
 # GitHub から clone
@@ -88,7 +88,7 @@ cmake .. ${MSYSTEM:+-G"MSYS Makefiles"}
 make
 ```
 
-以降，コマンド `make` は，この `build` ディレクトリで実行すること．
+以降、コマンド `make` は、この `build` ディレクトリで実行すること。
 
 --------------------------------------------------------------------------------
 
@@ -116,7 +116,7 @@ make slalom slalom_plot
 
 ## Pythonモジュールの生成とプロットスクリプトの実行
 
-C++で実装されたPythonモジュール `ctrl` を使用してプロットする．
+C++で実装されたPythonモジュール `ctrl` を使用してプロットする。
 
 ```sh
 # Python モジュール ctrl の生成とプロットスクリプトの実行
@@ -129,7 +129,7 @@ make ctrl pybind11_plot # calls ./pybind11/plot.py
 
 ## リファレンスの生成
 
-コード中のコメントは [Doxygen](http://www.doxygen.jp/) に準拠しているので，API リファレンスを自動生成することができる．
+コード中のコメントは [Doxygen](http://www.doxygen.jp/) に準拠しているので、API リファレンスを自動生成することができる。
 
 ```sh
 # ドキュメントの自動生成
@@ -138,7 +138,7 @@ make docs
 open docs/html/index.html
 ```
 
-上記コマンドにより `build/docs/html/index.html` にリファレンスが生成される．
+上記コマンドにより `build/docs/html/index.html` にリファレンスが生成される。
 
 --------------------------------------------------------------------------------
 
@@ -157,4 +157,4 @@ make lcov
 open test/html/index.html
 ```
 
-上記コマンドにより `build/test/html/index.html` にカバレッジ結果が生成される．
+上記コマンドにより `build/test/html/index.html` にカバレッジ結果が生成される。

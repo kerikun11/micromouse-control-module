@@ -1,6 +1,6 @@
 /**
  * @file accel_curve.h
- * @brief 躍度0次，加速度1次，速度2次，位置3次関数により，滑らかな加速を実現する
+ * @brief 躍度0次、加速度1次、速度2次、位置3次関数により、滑らかな加速を実現する
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
  * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
@@ -59,7 +59,7 @@ namespace ctrl {
  * - 引数の拘束に従って加速曲線を生成する
  * - 始点速度と終点速度を滑らかにつなぐ
  * - 移動距離の拘束はない
- * - 始点速度および終点速度は，正でも負でも可
+ * - 始点速度および終点速度は、正でも負でも可
  */
 class AccelCurve {
  public:
@@ -76,14 +76,14 @@ class AccelCurve {
   }
   /**
    * @brief とりあえずインスタンス化を行う空のコンストラクタ
-   * @attention 別途 reset() により初期化すること．
+   * @attention 別途 reset() により初期化すること。
    */
   AccelCurve() {
     jm = am = t0 = t1 = t2 = t3 = v0 = v1 = v2 = v3 = x0 = x1 = x2 = x3 = 0;
   }
   /**
    * @brief 引数の拘束条件から曲線を生成する関数
-   * @details この関数によってもれなくすべての変数が初期化される．
+   * @details この関数によってもれなくすべての変数が初期化される。
    * @param[in] j_max   最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max   最大加速度の大きさ [m/s/s], 正であること
    * @param[in] v_start 始点速度 [m/s]
@@ -283,20 +283,20 @@ class AccelCurve {
       return (-amtc + (d > 0 ? sqrtD : -sqrtD)) / 2;
     }
     /* 曲線・曲線 (走行距離が短すぎる) */
-    /* 3次方程式を解いて，終点速度を算出;
-     * 簡単のため，値を一度すべて正に変換して，計算結果に符号を付与して返送 */
+    /* 3次方程式を解いて、終点速度を算出;
+     * 簡単のため、値を一度すべて正に変換して、計算結果に符号を付与して返送 */
     const auto a = std::abs(vs);
     const auto b = (d > 0 ? 1 : -1) * jm * d * d;
     const auto aaa_27 = a * a * a / 27;
     const auto cr = 8 * aaa_27 + b / 2;
     const auto ci_b = 8 * aaa_27 / b + 1.0f / 4;
     if (ci_b >= 0) {
-      /* ルートの中が非負のとき，3乗根により解を求める */
+      /* ルートの中が非負のとき、3乗根により解を求める */
       ctrl_logd << "v: curve - curve (accel)" << std::endl;
       const auto c = std::cbrt(cr + std::abs(b) * std::sqrt(ci_b));
       return (d > 0 ? 1 : -1) * (c + 4 * a * a / c / 9 - a / 3);
     } else {
-      /* ルートの中が負のとき，極座標変換して解を求める */
+      /* ルートの中が負のとき、極座標変換して解を求める */
       ctrl_logd << "v: curve - curve (decel)" << std::endl;
       const auto ci = std::abs(b) * std::sqrt(-ci_b);
       const auto r = std::hypot(cr, ci);  //< = sqrt(cr^2 + ci^2)

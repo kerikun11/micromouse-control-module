@@ -28,8 +28,8 @@ namespace straight {
 class Trajectory : public AccelDesigner {
  public:
   /**
-   * @brief 空のコンストラクタ．
-   * 基底クラスの AccelDesigner::reset() により初期化すること．
+   * @brief 空のコンストラクタ。
+   * 基底クラスの AccelDesigner::reset() により初期化すること。
    */
   Trajectory() {}
   /**

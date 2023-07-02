@@ -48,7 +48,7 @@ class Accumulator {
   }
   /**
    * @brief 直近 index 番目の値を取得するオペレータ
-   * @details [0] 番目が最新のデータ，[size() - 1] 番目が最古のデータ
+   * @details [0] 番目が最新のデータ、[size() - 1] 番目が最古のデータ
    * @param[in] index 直近何番目のデータかを指すインデックス
    * @return 直近 index 番目のデータ
    */

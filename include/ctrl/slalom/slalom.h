@@ -41,9 +41,9 @@ static constexpr float dth_max_default = 3 * M_PI;
 /**
  * @brief slalom::Shape スラロームの形状を表す構造体
  *
- * メンバー変数は互いに依存して決定されているので，
- * 個別に数値を変更することは許されない．
- * スラローム軌道を得るには slalom::Trajectory を用いる．
+ * メンバー変数は互いに依存して決定されているので、
+ * 個別に数値を変更することは許されない。
+ * スラローム軌道を得るには slalom::Trajectory を用いる。
  */
 struct Shape {
   Pose total; /**< @brief 前後の直線を含めた移動位置姿勢 */
@@ -60,10 +60,10 @@ struct Shape {
    * @brief 拘束条件からスラローム形状を生成するコンストラクタ
    *
    * @param[in] total 前後の直線を含めた移動位置姿勢 [m, m, rad]
-   * @param[in] y_curve_end y軸方向(進行方向に垂直な方向)の移動距離 [m]．
-   * カーブの大きさを決めるもので，形状の設計パラメータとなる
-   * @param[in] x_adv x軸方向(進行方向)の前後の直線の長さ [m]．
-   * 180度ターンの場合のみで使用．
+   * @param[in] y_curve_end y軸方向(進行方向に垂直な方向)の移動距離 [m]。
+   * カーブの大きさを決めるもので、形状の設計パラメータとなる
+   * @param[in] x_adv x軸方向(進行方向)の前後の直線の長さ [m]。
+   * 180度ターンの場合のみで使用。
    * @param[in] dddth_max 最大角躍度の大きさ [rad/s/s/s]
    * @param[in] ddth_max 最大角加速度の大きさ [rad/s/s]
    * @param[in] dth_max 最大角速度の大きさ [rad/s]
@@ -132,7 +132,7 @@ struct Shape {
         ddth_max(ddth_max),
         dth_max(dth_max) {}
   /**
-   * @brief 軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．
+   * @brief 軌道の積分を行う関数。ルンゲクッタ法を使用して数値積分を行う。
    *
    * @param[in] ad 角速度分布
    * @param[inout] s 状態変数

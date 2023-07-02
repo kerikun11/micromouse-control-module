@@ -25,7 +25,7 @@ namespace ctrl {
  * @brief 拘束条件を満たす曲線加減速の軌道を生成するクラス
  *
  * - 目標速度や移動距離などの拘束条件を満たす曲線加速軌道を生成する
- * - 任意の時刻 $t$ における躍度 $j(t)$，加速度 $a(t)$，速度 $v(t)$，位置 $x(t)$
+ * - 任意の時刻 $t$ における躍度 $j(t)$、加速度 $a(t)$、速度 $v(t)$、位置 $x(t)$
  * を返す連続な関数を提供する
  * - 最大加速度 $a_{\\max}$ と始点速度 $v_s$
  * など拘束次第では目標速度 $v_t$ に達することができない場合があるので注意する
@@ -35,9 +35,9 @@ class AccelDesigner {
   /**
    * @brief 初期化付きコンストラクタ
    *
-   * @param[in] j_max     最大躍度の大きさ [m/s/s/s]，正であること
+   * @param[in] j_max     最大躍度の大きさ [m/s/s/s]、正であること
    * @param[in] a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param[in] v_max     最大速度の大きさ [m/s]，正であること
+   * @param[in] v_max     最大速度の大きさ [m/s]、正であること
    * @param[in] v_start   始点速度 [m/s]
    * @param[in] v_target  目標速度 [m/s]
    * @param[in] dist      移動距離 [m]
@@ -51,16 +51,16 @@ class AccelDesigner {
   }
   /**
    * @brief とりあえずインスタンス化を行う空のコンストラクタ
-   * @attention 別途 reset() により初期化すること．
+   * @attention 別途 reset() により初期化すること。
    */
   AccelDesigner() { t0 = t1 = t2 = t3 = x0 = x3 = 0; }
   /**
    * @brief 引数の拘束条件から曲線を生成する関数
    *
-   * @details この関数によってもれなくすべての変数が初期化される．
-   * @param[in] j_max     最大躍度の大きさ [m/s/s/s]，正であること
+   * @details この関数によってもれなくすべての変数が初期化される。
+   * @param[in] j_max     最大躍度の大きさ [m/s/s/s]、正であること
    * @param[in] a_max     最大加速度の大きさ [m/s/s], 正であること
-   * @param[in] v_max     最大速度の大きさ [m/s]，正であること
+   * @param[in] v_max     最大速度の大きさ [m/s]、正であること
    * @param[in] v_start   始点速度 [m/s]
    * @param[in] v_target  目標速度 [m/s]
    * @param[in] dist      移動距離 [m]
@@ -70,14 +70,14 @@ class AccelDesigner {
   void reset(const float j_max, const float a_max, const float v_max,
              const float v_start, const float v_target, const float dist,
              const float x_start = 0, const float t_start = 0) {
-    /* 目標速度に到達可能か，走行距離から終点速度を決定していく */
+    /* 目標速度に到達可能か、走行距離から終点速度を決定していく */
     auto v_end = v_target;  //< 仮代入
-    /* 移動距離の拘束により，目標速度に達し得ない場合の処理 */
+    /* 移動距離の拘束により、目標速度に達し得ない場合の処理 */
     const auto dist_min = AccelCurve::calcDistanceFromVelocityStartToEnd(
         j_max, a_max, v_start, v_end);
     if (std::abs(dist) < std::abs(dist_min)) {
       ctrl_logd << "vs -> ve != vt" << std::endl;
-      /* 目標速度$v_t$に向かい，走行距離$d$で到達し得る終点速度$v_e$を算出 */
+      /* 目標速度$v_t$に向かい、走行距離$d$で到達し得る終点速度$v_e$を算出 */
       v_end = AccelCurve::calcReachableVelocityEnd(j_max, a_max, v_start,
                                                    v_target, dist);
     }
@@ -247,13 +247,13 @@ class AccelDesigner {
     }};
   }
   /**
-   * @brief stdout に軌道のcsvを出力する関数．
+   * @brief stdout に軌道のcsvを出力する関数。
    */
   void printCsv(const float t_interval = 1e-3f) const {
     printCsv(std::cout, t_interval);
   }
   /**
-   * @brief std::ostream に軌道のcsvを出力する関数．
+   * @brief std::ostream に軌道のcsvを出力する関数。
    */
   void printCsv(std::ostream& os, const float t_interval = 1e-3f) const {
     for (float t = t0; t < t_end(); t += t_interval)

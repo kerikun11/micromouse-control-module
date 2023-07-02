@@ -22,7 +22,7 @@ namespace slalom {
 /**
  * @brief slalom::Trajectory スラローム軌道を生成するクラス
  *
- * スラローム形状 Shape と並進速度をもとに，各時刻における位置や速度を提供する．
+ * スラローム形状 Shape と並進速度をもとに、各時刻における位置や速度を提供する。
  */
 class Trajectory {
  public:

@@ -1,6 +1,6 @@
 /**
  * @file pose.h
- * @brief 平面上の位置姿勢の座標もつファイル．
+ * @brief 平面上の位置姿勢の座標もつファイル。
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2020-04-19
  * @copyright Copyright 2020 Ryotaro Onuki <kerikun11+github@gmail.com>
