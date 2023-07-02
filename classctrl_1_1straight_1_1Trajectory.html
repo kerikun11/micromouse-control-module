@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl::straight::Trajectory クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacectrl.html">ctrl</a></li><li class="navelem"><a class="el" href="namespacectrl_1_1straight.html">straight</a></li><li class="navelem"><a class="el" href="classctrl_1_1straight_1_1Trajectory.html">Trajectory</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="classctrl_1_1straight_1_1Trajectory-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">ctrl::straight::Trajectory クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="classctrl_1_1straight_1_1Trajectory.html" title="straight::Trajectory 直線の軌道生成器">straight::Trajectory</a> 直線の軌道生成器  
+ <a href="classctrl_1_1straight_1_1Trajectory.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="straight_2trajectory_8h_source.html">trajectory.h</a>&gt;</code></p>
+<div class="dynheader">
+ctrl::straight::Trajectory の継承関係図</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1straight_1_1Trajectory__inherit__graph.png" border="0" usemap="#actrl_1_1straight_1_1Trajectory_inherit__map" alt="Inheritance graph"/></div>
+<map name="actrl_1_1straight_1_1Trajectory_inherit__map" id="actrl_1_1straight_1_1Trajectory_inherit__map">
+<area shape="rect" title="straight::Trajectory 直線の軌道生成器" alt="" coords="5,80,179,107"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html" title="拘束条件を満たす曲線加減速の軌道を生成するクラス" alt="" coords="20,5,164,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<div class="dynheader">
+ctrl::straight::Trajectory 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1straight_1_1Trajectory__coll__graph.png" border="0" usemap="#actrl_1_1straight_1_1Trajectory_coll__map" alt="Collaboration graph"/></div>
+<map name="actrl_1_1straight_1_1Trajectory_coll__map" id="actrl_1_1straight_1_1Trajectory_coll__map">
+<area shape="rect" title="straight::Trajectory 直線の軌道生成器" alt="" coords="5,185,179,212"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html" title="拘束条件を満たす曲線加減速の軌道を生成するクラス" alt="" coords="20,109,164,136"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html" title="走行距離拘束のない曲線加速の軌道を生成するクラス" alt="" coords="30,5,154,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:acf3df4b0da22e808b07f454af4e097bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1straight_1_1Trajectory.html#acf3df4b0da22e808b07f454af4e097bb">Trajectory</a> ()</td></tr>
+<tr class="memdesc:acf3df4b0da22e808b07f454af4e097bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">空のコンストラクタ． 基底クラスの <a class="el" href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc" title="引数の拘束条件から曲線を生成する関数">AccelDesigner::reset()</a> により初期化すること．  <a href="classctrl_1_1straight_1_1Trajectory.html#acf3df4b0da22e808b07f454af4e097bb">[詳解]</a><br /></td></tr>
+<tr class="separator:acf3df4b0da22e808b07f454af4e097bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3c82b5ea48e6dc293eda9f5d6c8ab47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1straight_1_1Trajectory.html#ac3c82b5ea48e6dc293eda9f5d6c8ab47">update</a> (struct <a class="el" href="structctrl_1_1State.html">State</a> &amp;s, const float t) const</td></tr>
+<tr class="memdesc:ac3c82b5ea48e6dc293eda9f5d6c8ab47"><td class="mdescLeft">&#160;</td><td class="mdescRight">状態の更新  <a href="classctrl_1_1straight_1_1Trajectory.html#ac3c82b5ea48e6dc293eda9f5d6c8ab47">[詳解]</a><br /></td></tr>
+<tr class="separator:ac3c82b5ea48e6dc293eda9f5d6c8ab47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classctrl_1_1AccelDesigner"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classctrl_1_1AccelDesigner')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="classctrl_1_1AccelDesigner.html">ctrl::AccelDesigner</a> に属する継承公開メンバ関数</td></tr>
+<tr class="memitem:ab97f559efff2e6e65949589293f93fcf inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#ab97f559efff2e6e65949589293f93fcf">AccelDesigner</a> (const float j_max, const float a_max, const float v_max, const float v_start, const float v_target, const float dist, const float x_start=0, const float t_start=0)</td></tr>
+<tr class="memdesc:ab97f559efff2e6e65949589293f93fcf inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化付きコンストラクタ  <a href="classctrl_1_1AccelDesigner.html#ab97f559efff2e6e65949589293f93fcf">[詳解]</a><br /></td></tr>
+<tr class="separator:ab97f559efff2e6e65949589293f93fcf inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46c724e72e2f74b6bff7b589e9447523 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a46c724e72e2f74b6bff7b589e9447523">AccelDesigner</a> ()</td></tr>
+<tr class="memdesc:a46c724e72e2f74b6bff7b589e9447523 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">とりあえずインスタンス化を行う空のコンストラクタ  <a href="classctrl_1_1AccelDesigner.html#a46c724e72e2f74b6bff7b589e9447523">[詳解]</a><br /></td></tr>
+<tr class="separator:a46c724e72e2f74b6bff7b589e9447523 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affa3c260a6201c94cdd2fcc404ead6bc inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc">reset</a> (const float j_max, const float a_max, const float v_max, const float v_start, const float v_target, const float dist, const float x_start=0, const float t_start=0)</td></tr>
+<tr class="memdesc:affa3c260a6201c94cdd2fcc404ead6bc inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数の拘束条件から曲線を生成する関数  <a href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc">[詳解]</a><br /></td></tr>
+<tr class="separator:affa3c260a6201c94cdd2fcc404ead6bc inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17cd65047bfa6194dfd9f09d8ddbc718 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718">j</a> (const float t) const</td></tr>
+<tr class="memdesc:a17cd65047bfa6194dfd9f09d8ddbc718 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数  <a href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718">[詳解]</a><br /></td></tr>
+<tr class="separator:a17cd65047bfa6194dfd9f09d8ddbc718 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347ebd61df9a073daa90afd8f35095d8 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8">a</a> (const float t) const</td></tr>
+<tr class="memdesc:a347ebd61df9a073daa90afd8f35095d8 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意の時刻 t [s] における加速度 a [m/s/s] を返す関数  <a href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8">[詳解]</a><br /></td></tr>
+<tr class="separator:a347ebd61df9a073daa90afd8f35095d8 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae56d526db41028a05bb9c1aabe99079b inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b">v</a> (const float t) const</td></tr>
+<tr class="memdesc:ae56d526db41028a05bb9c1aabe99079b inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意の時刻 t [s] における速度 v [m/s] を返す関数  <a href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b">[詳解]</a><br /></td></tr>
+<tr class="separator:ae56d526db41028a05bb9c1aabe99079b inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bc18aab62a53e6c25e4ebfb12cf0df3 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a5bc18aab62a53e6c25e4ebfb12cf0df3">x</a> (const float t) const</td></tr>
+<tr class="memdesc:a5bc18aab62a53e6c25e4ebfb12cf0df3 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意の時刻 t [s] における位置 x [m] を返す関数  <a href="classctrl_1_1AccelDesigner.html#a5bc18aab62a53e6c25e4ebfb12cf0df3">[詳解]</a><br /></td></tr>
+<tr class="separator:a5bc18aab62a53e6c25e4ebfb12cf0df3 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4016d1ec34a8dba19ab565878938ac3f inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f">t_end</a> () const</td></tr>
+<tr class="memdesc:a4016d1ec34a8dba19ab565878938ac3f inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">終点時刻 [s]  <a href="classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f">[詳解]</a><br /></td></tr>
+<tr class="separator:a4016d1ec34a8dba19ab565878938ac3f inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a008143ca17f0676dd54255601702f5ef inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a008143ca17f0676dd54255601702f5ef">v_end</a> () const</td></tr>
+<tr class="memdesc:a008143ca17f0676dd54255601702f5ef inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">終点速度 [m/s]  <a href="classctrl_1_1AccelDesigner.html#a008143ca17f0676dd54255601702f5ef">[詳解]</a><br /></td></tr>
+<tr class="separator:a008143ca17f0676dd54255601702f5ef inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50356c39ea5eece62a5ba11c02bc8e51 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a50356c39ea5eece62a5ba11c02bc8e51">x_end</a> () const</td></tr>
+<tr class="memdesc:a50356c39ea5eece62a5ba11c02bc8e51 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">終点位置 [m]  <a href="classctrl_1_1AccelDesigner.html#a50356c39ea5eece62a5ba11c02bc8e51">[詳解]</a><br /></td></tr>
+<tr class="separator:a50356c39ea5eece62a5ba11c02bc8e51 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd96747e503de7936f09d7e5a66e95c7 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#abd96747e503de7936f09d7e5a66e95c7">t_0</a> () const</td></tr>
+<tr class="memdesc:abd96747e503de7936f09d7e5a66e95c7 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線加速の開始時刻 [s]  <a href="classctrl_1_1AccelDesigner.html#abd96747e503de7936f09d7e5a66e95c7">[詳解]</a><br /></td></tr>
+<tr class="separator:abd96747e503de7936f09d7e5a66e95c7 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e8408520cd6909049ad150cf4eea2db inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a6e8408520cd6909049ad150cf4eea2db">t_1</a> () const</td></tr>
+<tr class="memdesc:a6e8408520cd6909049ad150cf4eea2db inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">最高速度に達する時刻 [s]  <a href="classctrl_1_1AccelDesigner.html#a6e8408520cd6909049ad150cf4eea2db">[詳解]</a><br /></td></tr>
+<tr class="separator:a6e8408520cd6909049ad150cf4eea2db inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ccf369ea5b6adbc94c27f6be4d9aa76 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a2ccf369ea5b6adbc94c27f6be4d9aa76">t_2</a> () const</td></tr>
+<tr class="memdesc:a2ccf369ea5b6adbc94c27f6be4d9aa76 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線減速の開始時刻 [s]  <a href="classctrl_1_1AccelDesigner.html#a2ccf369ea5b6adbc94c27f6be4d9aa76">[詳解]</a><br /></td></tr>
+<tr class="separator:a2ccf369ea5b6adbc94c27f6be4d9aa76 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c1ca41b6649598198d3e02d15615f76 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a4c1ca41b6649598198d3e02d15615f76">t_3</a> () const</td></tr>
+<tr class="memdesc:a4c1ca41b6649598198d3e02d15615f76 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線減速の終了時刻 [s]  <a href="classctrl_1_1AccelDesigner.html#a4c1ca41b6649598198d3e02d15615f76">[詳解]</a><br /></td></tr>
+<tr class="separator:a4c1ca41b6649598198d3e02d15615f76 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fdecf1aa412ce06e70faa37f4938677 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">const std::array&lt; float, 8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a8fdecf1aa412ce06e70faa37f4938677">getTimeStamps</a> () const</td></tr>
+<tr class="memdesc:a8fdecf1aa412ce06e70faa37f4938677 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線加速の境界のタイムスタンプを取得  <a href="classctrl_1_1AccelDesigner.html#a8fdecf1aa412ce06e70faa37f4938677">[詳解]</a><br /></td></tr>
+<tr class="separator:a8fdecf1aa412ce06e70faa37f4938677 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5090712be32c106e518dc8ed1ec863f6 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a5090712be32c106e518dc8ed1ec863f6">printCsv</a> (const float t_interval=1e-3f) const</td></tr>
+<tr class="memdesc:a5090712be32c106e518dc8ed1ec863f6 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">stdout に軌道のcsvを出力する関数．  <a href="classctrl_1_1AccelDesigner.html#a5090712be32c106e518dc8ed1ec863f6">[詳解]</a><br /></td></tr>
+<tr class="separator:a5090712be32c106e518dc8ed1ec863f6 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e1de86134d1e6891a16364359f52655 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a8e1de86134d1e6891a16364359f52655">printCsv</a> (std::ostream &amp;os, const float t_interval=1e-3f) const</td></tr>
+<tr class="memdesc:a8e1de86134d1e6891a16364359f52655 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::ostream に軌道のcsvを出力する関数．  <a href="classctrl_1_1AccelDesigner.html#a8e1de86134d1e6891a16364359f52655">[詳解]</a><br /></td></tr>
+<tr class="separator:a8e1de86134d1e6891a16364359f52655 inherit pub_methods_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
+その他の継承メンバ</h2></td></tr>
+<tr class="inherit_header pro_attribs_classctrl_1_1AccelDesigner"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classctrl_1_1AccelDesigner')"><img src="closed.png" alt="-"/>&#160;基底クラス <a class="el" href="classctrl_1_1AccelDesigner.html">ctrl::AccelDesigner</a> に属する継承限定公開変数類</td></tr>
+<tr class="memitem:a6c901078907df2fb03875f7acf0f28ce inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a6c901078907df2fb03875f7acf0f28ce">t0</a></td></tr>
+<tr class="separator:a6c901078907df2fb03875f7acf0f28ce inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7a35df461d0e9f13cc5259b1d26050c inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#ad7a35df461d0e9f13cc5259b1d26050c">t1</a></td></tr>
+<tr class="separator:ad7a35df461d0e9f13cc5259b1d26050c inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5fa7a5fdb6af631a2b2bdef05bb8d82 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#ad5fa7a5fdb6af631a2b2bdef05bb8d82">t2</a></td></tr>
+<tr class="separator:ad5fa7a5fdb6af631a2b2bdef05bb8d82 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27b1a5d3f86d55f19ee4f4fe98505165 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a27b1a5d3f86d55f19ee4f4fe98505165">t3</a></td></tr>
+<tr class="memdesc:a27b1a5d3f86d55f19ee4f4fe98505165 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">境界点の時刻 [s]  <a href="classctrl_1_1AccelDesigner.html#a27b1a5d3f86d55f19ee4f4fe98505165">[詳解]</a><br /></td></tr>
+<tr class="separator:a27b1a5d3f86d55f19ee4f4fe98505165 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2d68261a258e44ec0299d8907ec2859 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#ac2d68261a258e44ec0299d8907ec2859">x0</a></td></tr>
+<tr class="separator:ac2d68261a258e44ec0299d8907ec2859 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cdeb5cefe5ad7d591082f3934f695ae inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a4cdeb5cefe5ad7d591082f3934f695ae">x3</a></td></tr>
+<tr class="memdesc:a4cdeb5cefe5ad7d591082f3934f695ae inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">境界点の位置 [m]  <a href="classctrl_1_1AccelDesigner.html#a4cdeb5cefe5ad7d591082f3934f695ae">[詳解]</a><br /></td></tr>
+<tr class="separator:a4cdeb5cefe5ad7d591082f3934f695ae inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accaf5474b8ba194e4a874c722b1638f3 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classctrl_1_1AccelCurve.html">AccelCurve</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#accaf5474b8ba194e4a874c722b1638f3">ac</a></td></tr>
+<tr class="memdesc:accaf5474b8ba194e4a874c722b1638f3 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線加速用オブジェクト  <a href="classctrl_1_1AccelDesigner.html#accaf5474b8ba194e4a874c722b1638f3">[詳解]</a><br /></td></tr>
+<tr class="separator:accaf5474b8ba194e4a874c722b1638f3 inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15dadd3d769423b22e11f053e7a44c4a inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classctrl_1_1AccelCurve.html">AccelCurve</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelDesigner.html#a15dadd3d769423b22e11f053e7a44c4a">dc</a></td></tr>
+<tr class="memdesc:a15dadd3d769423b22e11f053e7a44c4a inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線減速用オブジェクト  <a href="classctrl_1_1AccelDesigner.html#a15dadd3d769423b22e11f053e7a44c4a">[詳解]</a><br /></td></tr>
+<tr class="separator:a15dadd3d769423b22e11f053e7a44c4a inherit pro_attribs_classctrl_1_1AccelDesigner"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p><a class="el" href="classctrl_1_1straight_1_1Trajectory.html" title="straight::Trajectory 直線の軌道生成器">straight::Trajectory</a> 直線の軌道生成器 </p>
+<p><a class="el" href="classctrl_1_1TrajectoryTracker.html" title="独立2輪車の軌道追従フィードバック制御器">ctrl::TrajectoryTracker</a> のために用意されたクラス </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="acf3df4b0da22e808b07f454af4e097bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf3df4b0da22e808b07f454af4e097bb">&#9670;&nbsp;</a></span>Trajectory()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctrl::straight::Trajectory::Trajectory </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>空のコンストラクタ． 基底クラスの <a class="el" href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc" title="引数の拘束条件から曲線を生成する関数">AccelDesigner::reset()</a> により初期化すること． </p>
+<div class="fragment"><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="ac3c82b5ea48e6dc293eda9f5d6c8ab47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3c82b5ea48e6dc293eda9f5d6c8ab47">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ctrl::straight::Trajectory::update </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structctrl_1_1State.html">State</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>状態の更新 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">s</td><td>状態変数 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>現在時刻 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                                                    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    s.q = Pose(<a class="code" href="classctrl_1_1AccelDesigner.html#a5bc18aab62a53e6c25e4ebfb12cf0df3">x</a>(t), 0, 0);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    s.dq = Pose(<a class="code" href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b">v</a>(t), 0, 0);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    s.ddq = Pose(<a class="code" href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8">a</a>(t), 0, 0);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    s.dddq = Pose(<a class="code" href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718">j</a>(t), 0, 0);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  }</div>
+<div class="ttc" id="aclassctrl_1_1AccelDesigner_html_a17cd65047bfa6194dfd9f09d8ddbc718"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718">ctrl::AccelDesigner::j</a></div><div class="ttdeci">float j(const float t) const</div><div class="ttdoc">任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数</div><div class="ttdef"><b>Definition:</b> accel_designer.h:167</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelDesigner_html_a347ebd61df9a073daa90afd8f35095d8"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8">ctrl::AccelDesigner::a</a></div><div class="ttdeci">float a(const float t) const</div><div class="ttdoc">任意の時刻 t [s] における加速度 a [m/s/s] を返す関数</div><div class="ttdef"><b>Definition:</b> accel_designer.h:178</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelDesigner_html_a5bc18aab62a53e6c25e4ebfb12cf0df3"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#a5bc18aab62a53e6c25e4ebfb12cf0df3">ctrl::AccelDesigner::x</a></div><div class="ttdeci">float x(const float t) const</div><div class="ttdoc">任意の時刻 t [s] における位置 x [m] を返す関数</div><div class="ttdef"><b>Definition:</b> accel_designer.h:200</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelDesigner_html_ae56d526db41028a05bb9c1aabe99079b"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b">ctrl::AccelDesigner::v</a></div><div class="ttdeci">float v(const float t) const</div><div class="ttdoc">任意の時刻 t [s] における速度 v [m/s] を返す関数</div><div class="ttdef"><b>Definition:</b> accel_designer.h:189</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1straight_1_1Trajectory_ac3c82b5ea48e6dc293eda9f5d6c8ab47_cgraph.png" border="0" usemap="#aclassctrl_1_1straight_1_1Trajectory_ac3c82b5ea48e6dc293eda9f5d6c8ab47_cgraph" alt=""/></div>
+<map name="aclassctrl_1_1straight_1_1Trajectory_ac3c82b5ea48e6dc293eda9f5d6c8ab47_cgraph" id="aclassctrl_1_1straight_1_1Trajectory_ac3c82b5ea48e6dc293eda9f5d6c8ab47_cgraph">
+<area shape="rect" title="状態の更新" alt="" coords="5,74,179,115"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="227,5,387,32"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="229,56,385,83"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="227,107,387,133"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a5bc18aab62a53e6c25e4ebfb12cf0df3" title="任意の時刻 t [s] における位置 x [m] を返す関数" alt="" coords="227,157,387,184"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="450,5,590,32"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ad137862ec428ec89d4fdbda323265c65" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="452,56,588,83"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="450,107,590,133"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ab761cd51f88088d15431b6999a055e3b" title="任意の時刻 t [s] における位置 x [m] を返す関数" alt="" coords="450,157,590,184"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#aa9d3f42f4a47ed867575e823faefb300" title="終点位置 [m]" alt="" coords="435,208,605,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>ctrl/straight/<a class="el" href="straight_2trajectory_8h_source.html">trajectory.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

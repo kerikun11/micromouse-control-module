@@ -1,0 +1,4 @@
+<map id="ctrl::AccelDesigner::a" name="ctrl::AccelDesigner::a">
+<area shape="rect" id="node1" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="5,5,165,32"/>
+<area shape="rect" id="node2" href="$classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="213,5,353,32"/>
+</map>

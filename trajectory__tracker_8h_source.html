@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl/trajectory_tracker.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_60c668f4b51723b2f4c482e06fdf6f37.html">ctrl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">trajectory_tracker.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="trajectory__tracker_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="polar_8h.html">polar.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pose_8h.html">pose.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="state_8h.html">state.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacectrl.html">ctrl</a> {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classctrl_1_1TrajectoryTracker.html">TrajectoryTracker</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">   29</a></span>&#160;  <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">kIntegrationPeriodDefault</a> = 1e-3f;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a2bc5174b98964dcc2b250e74c5b4b4ef">   33</a></span>&#160;  <span class="keyword">static</span> constexpr <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a2bc5174b98964dcc2b250e74c5b4b4ef">kXiThresholdDefault</a> = 150.0f;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">   37</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#acb9ea488d407569f32afe4f34fc2414b">   38</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#acb9ea488d407569f32afe4f34fc2414b">zeta</a> = 1.0f;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#ac697b878fabba5549fc585558fc8aa9c">   39</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#ac697b878fabba5549fc585558fc8aa9c">omega_n</a> = 15.0f;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a46e8cb222e099f4511bcdc7bdc0f03c1">   40</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a46e8cb222e099f4511bcdc7bdc0f03c1">low_zeta</a> = 1.0f;  <span class="comment">//&lt; zeta \in [0,1]</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a28efbe7c12da57f32681557848630933">   41</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a28efbe7c12da57f32681557848630933">low_b</a> = 1e-3f;    <span class="comment">//&lt; b &gt; 0</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  };</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Result.html">   46</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Result.html#acd39e0b4030a4301f4a290167c84f3fc">   47</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#acd39e0b4030a4301f4a290167c84f3fc">v</a>;   <span class="comment">//**&lt; @brief 並進速度 [mm/s]</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a6a4dc43bf4cfb95c06c1cad7524ed356">   48</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a6a4dc43bf4cfb95c06c1cad7524ed356">w</a>;   <span class="comment">//**&lt; @brief 角速度 [rad/s]</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a7f62d41d5b7b5654868309bdf8ee0394">   49</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a7f62d41d5b7b5654868309bdf8ee0394">dv</a>;  <span class="comment">//**&lt; @brief 並進加速度 [mm/s/s]</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a19aede9c22f88efc2b03e3ca8003416a">   50</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a19aede9c22f88efc2b03e3ca8003416a">dw</a>;  <span class="comment">//**&lt; @brief 角加速度 [rad/s/s]</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  };</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">   58</a></span>&#160;  <span class="keyword">static</span> constexpr <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">sinc</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> x) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> xx = x * x;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> xxxx = xx * xx;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a2b34f49628394d5313c38fd6eeee0a06">   71</a></span>&#160;  <a class="code" href="classctrl_1_1TrajectoryTracker.html#a2b34f49628394d5313c38fd6eeee0a06">TrajectoryTracker</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a>&amp; <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a> = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a2bc5174b98964dcc2b250e74c5b4b4ef">kXiThresholdDefault</a>)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      : <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>(<a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>), <a class="code" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a>(<a class="code" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a>) {}</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a651ed72d050a7567f2dee2493d0272e0">   79</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a651ed72d050a7567f2dee2493d0272e0">reset</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> vs = 0) { <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a> = vs; }</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d">   90</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d">update</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html">Pose</a>&amp; est_q, <span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; est_v, <span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; est_a,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                      <span class="keyword">const</span> <a class="code" href="structctrl_1_1State.html">State</a>&amp; ref_s,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                      <span class="keyword">const</span> <span class="keywordtype">float</span> Ts = <a class="code" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">kIntegrationPeriodDefault</a>) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d">update</a>(est_q, est_v, est_a, ref_s.<a class="code" href="structctrl_1_1State.html#a2609c4d8a826b35c2bf7a3c9116c9e1b">q</a>, ref_s.<a class="code" href="structctrl_1_1State.html#a1d926aa6858f73f48eed190779f5bef5">dq</a>, ref_s.<a class="code" href="structctrl_1_1State.html#a89517fab8d93b69326294c3a88dd2d43">ddq</a>, ref_s.<a class="code" href="structctrl_1_1State.html#a2c63dbc1f4d8f642a88e5cd5f5bd931f">dddq</a>,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                  Ts);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a9781a0c4c3b71ba0466686dd6db63bef">  109</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a9781a0c4c3b71ba0466686dd6db63bef">update</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html">Pose</a>&amp; est_q, <span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; est_v, <span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; est_a,</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                      <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html">Pose</a>&amp; ref_q, <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html">Pose</a>&amp; ref_dq,</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                      <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html">Pose</a>&amp; ref_ddq, <span class="keyword">const</span> <a class="code" href="structctrl_1_1Pose.html">Pose</a>&amp; ref_dddq,</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                      <span class="keyword">const</span> <span class="keywordtype">float</span> Ts = <a class="code" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">kIntegrationPeriodDefault</a>) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">/* Prepare Variable */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> x = est_q.<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> y = est_q.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> theta = est_q.<a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> cos_theta = std::cos(theta);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> sin_theta = std::sin(theta);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dx = est_v.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> * cos_theta;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dy = est_v.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> * sin_theta;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ddx = est_a.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> * cos_theta;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ddy = est_a.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> * sin_theta;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">/* Feedback Gain Design */</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> zeta = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#acb9ea488d407569f32afe4f34fc2414b">zeta</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> omega_n = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#ac697b878fabba5549fc585558fc8aa9c">omega_n</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> kx = omega_n * omega_n;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> kdx = 2 * zeta * omega_n;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ky = kx;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> kdy = kdx;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment">/* Determine Reference */</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dddx_r = ref_dddq.<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dddy_r = ref_dddq.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ddx_r = ref_ddq.<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ddy_r = ref_ddq.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dx_r = ref_dq.<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dy_r = ref_dq.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> x_r = ref_q.<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a>;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> y_r = ref_q.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> th_r = ref_q.<a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> cos_th_r = std::cos(th_r);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> sin_th_r = std::sin(th_r);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> u1 = ddx_r + kdx * (dx_r - dx) + kx * (x_r - x);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> u2 = ddy_r + kdy * (dy_r - dy) + ky * (y_r - y);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> du1 = dddx_r + kdx * (ddx_r - ddx) + kx * (dx_r - dx);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> du2 = dddy_r + kdy * (ddy_r - ddy) + ky * (dy_r - dy);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> d_xi = u1 * cos_th_r + u2 * sin_th_r;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">/* integral the state(s) */</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a> += d_xi * Ts;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="comment">/* determine the output signal */</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a> res;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span> (std::abs(<a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>) &lt; <a class="code" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a>) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> b = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a28efbe7c12da57f32681557848630933">low_b</a>;        <span class="comment">//&lt; b &gt; 0</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> zeta = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a46e8cb222e099f4511bcdc7bdc0f03c1">low_zeta</a>;  <span class="comment">//&lt; zeta \in [0,1]</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> v_d = ref_dq.<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> * cos_th_r + ref_dq.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> * sin_th_r;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> w_d = ref_dq.<a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> k2 = b;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> k3 = k1;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> v = v_d * std::cos(th_r - theta) +</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                     k1 * (cos_theta * (x_r - x) + sin_theta * (y_r - y));</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> w = w_d +</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                     k2 * v_d * <a class="code" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">sinc</a>(th_r - theta) *</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                         (-sin_theta * (x_r - x) + cos_theta * (y_r - y)) +</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                     k3 * (th_r - theta);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#acd39e0b4030a4301f4a290167c84f3fc">v</a> = v;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a6a4dc43bf4cfb95c06c1cad7524ed356">w</a> = w;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a7f62d41d5b7b5654868309bdf8ee0394">dv</a> = ref_ddq.<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> * cos_th_r + ref_ddq.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> * sin_th_r;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a19aede9c22f88efc2b03e3ca8003416a">dw</a> = ref_ddq.<a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="comment">// res.v = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <span class="comment">// res.w = red_dq.th;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      <span class="comment">// res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="comment">// res.dw = ref_ddq.th;</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#acd39e0b4030a4301f4a290167c84f3fc">v</a> = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a7f62d41d5b7b5654868309bdf8ee0394">dv</a> = d_xi;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a6a4dc43bf4cfb95c06c1cad7524ed356">w</a> = (u2 * cos_th_r - u1 * sin_th_r) / <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a19aede9c22f88efc2b03e3ca8003416a">dw</a> = -(2 * d_xi * res.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Result.html#a6a4dc43bf4cfb95c06c1cad7524ed356">w</a> + du1 * sin_th_r - du2 * cos_th_r) / <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">  183</a></span>&#160;  <a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>;          </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">  184</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>;           </div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">  185</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a>; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;};</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}  <span class="comment">// namespace ctrl</span></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html">ctrl::TrajectoryTracker</a></div><div class="ttdoc">独立2輪車の軌道追従フィードバック制御器</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:24</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a088bc05a02fa50faf0377d54ff6e80da"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">ctrl::TrajectoryTracker::xi_threshold</a></div><div class="ttdeci">float xi_threshold</div><div class="ttdoc">制御則を切り替える閾値</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:185</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a2b34f49628394d5313c38fd6eeee0a06"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a2b34f49628394d5313c38fd6eeee0a06">ctrl::TrajectoryTracker::TrajectoryTracker</a></div><div class="ttdeci">TrajectoryTracker(const Gain &amp;gain, const float xi_threshold=kXiThresholdDefault)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:71</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a2bc5174b98964dcc2b250e74c5b4b4ef"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a2bc5174b98964dcc2b250e74c5b4b4ef">ctrl::TrajectoryTracker::kXiThresholdDefault</a></div><div class="ttdeci">static constexpr const float kXiThresholdDefault</div><div class="ttdoc">制御則の切り替え閾値のデフォルト値 [mm/s]</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:33</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a33d049bc83cd303ec45a924aba713c2d"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d">ctrl::TrajectoryTracker::update</a></div><div class="ttdeci">const Result update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const State &amp;ref_s, const float Ts=kIntegrationPeriodDefault)</div><div class="ttdoc">制御入力の計算</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:90</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a448be733897440c2706de700e978ef0e"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">ctrl::TrajectoryTracker::xi</a></div><div class="ttdeci">float xi</div><div class="ttdoc">補助状態変数</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:184</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a651ed72d050a7567f2dee2493d0272e0"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a651ed72d050a7567f2dee2493d0272e0">ctrl::TrajectoryTracker::reset</a></div><div class="ttdeci">void reset(const float vs=0)</div><div class="ttdoc">状態の初期化</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:79</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a686dedb83d169045dfbe3a2c31f31985"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">ctrl::TrajectoryTracker::sinc</a></div><div class="ttdeci">static constexpr float sinc(const float x)</div><div class="ttdoc">自作の sinc 関数 sinc(x) := sin(x) / x</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:58</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a6a95bfcfdc5dba1a19299f30ab048f37"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">ctrl::TrajectoryTracker::gain</a></div><div class="ttdeci">Gain gain</div><div class="ttdoc">フィードバックゲイン</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:183</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a9781a0c4c3b71ba0466686dd6db63bef"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a9781a0c4c3b71ba0466686dd6db63bef">ctrl::TrajectoryTracker::update</a></div><div class="ttdeci">const Result update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const Pose &amp;ref_q, const Pose &amp;ref_dq, const Pose &amp;ref_ddq, const Pose &amp;ref_dddq, const float Ts=kIntegrationPeriodDefault)</div><div class="ttdoc">制御入力の計算</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:109</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_ac2f315d6bfd8306fc26f22e4a7185c64"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">ctrl::TrajectoryTracker::kIntegrationPeriodDefault</a></div><div class="ttdeci">static constexpr const float kIntegrationPeriodDefault</div><div class="ttdoc">制御周期（積分周期）のデフォルト値 [s]</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:29</div></div>
+<div class="ttc" id="anamespacectrl_html"><div class="ttname"><a href="namespacectrl.html">ctrl</a></div><div class="ttdoc">制御関係の名前空間</div><div class="ttdef"><b>Definition:</b> accel_curve.h:54</div></div>
+<div class="ttc" id="apolar_8h_html"><div class="ttname"><a href="polar_8h.html">polar.h</a></div><div class="ttdoc">並進と回転の座標を管理するクラスをもつファイル</div></div>
+<div class="ttc" id="apose_8h_html"><div class="ttname"><a href="pose_8h.html">pose.h</a></div><div class="ttdoc">平面上の位置姿勢の座標もつファイル．</div></div>
+<div class="ttc" id="astate_8h_html"><div class="ttname"><a href="state_8h.html">state.h</a></div><div class="ttdoc">軌道制御の状態変数</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html"><div class="ttname"><a href="structctrl_1_1Polar.html">ctrl::Polar</a></div><div class="ttdoc">並進と回転の座標</div><div class="ttdef"><b>Definition:</b> polar.h:17</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a93a9e17c305c87df369bd58b26aad025"><div class="ttname"><a href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">ctrl::Polar::tra</a></div><div class="ttdeci">float tra</div><div class="ttdef"><b>Definition:</b> polar.h:18</div></div>
+<div class="ttc" id="astructctrl_1_1Pose_html"><div class="ttname"><a href="structctrl_1_1Pose.html">ctrl::Pose</a></div><div class="ttdoc">位置姿勢の座標</div><div class="ttdef"><b>Definition:</b> pose.h:18</div></div>
+<div class="ttc" id="astructctrl_1_1Pose_html_a24c74beee36f9b2a6398bd49aa0c3c29"><div class="ttname"><a href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">ctrl::Pose::y</a></div><div class="ttdeci">float y</div><div class="ttdoc">y 成分 [m]</div><div class="ttdef"><b>Definition:</b> pose.h:20</div></div>
+<div class="ttc" id="astructctrl_1_1Pose_html_a8832a75bbc82da843bcbeb1b98866fad"><div class="ttname"><a href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">ctrl::Pose::x</a></div><div class="ttdeci">float x</div><div class="ttdoc">x 成分 [m]</div><div class="ttdef"><b>Definition:</b> pose.h:19</div></div>
+<div class="ttc" id="astructctrl_1_1Pose_html_af5ecc24a587a445314a8ea35cbc33e42"><div class="ttname"><a href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">ctrl::Pose::th</a></div><div class="ttdeci">float th</div><div class="ttdoc">theta 成分 [rad]</div><div class="ttdef"><b>Definition:</b> pose.h:21</div></div>
+<div class="ttc" id="astructctrl_1_1State_html"><div class="ttname"><a href="structctrl_1_1State.html">ctrl::State</a></div><div class="ttdoc">軌道制御の状態変数</div><div class="ttdef"><b>Definition:</b> state.h:20</div></div>
+<div class="ttc" id="astructctrl_1_1State_html_a1d926aa6858f73f48eed190779f5bef5"><div class="ttname"><a href="structctrl_1_1State.html#a1d926aa6858f73f48eed190779f5bef5">ctrl::State::dq</a></div><div class="ttdeci">Pose dq</div><div class="ttdef"><b>Definition:</b> state.h:22</div></div>
+<div class="ttc" id="astructctrl_1_1State_html_a2609c4d8a826b35c2bf7a3c9116c9e1b"><div class="ttname"><a href="structctrl_1_1State.html#a2609c4d8a826b35c2bf7a3c9116c9e1b">ctrl::State::q</a></div><div class="ttdeci">Pose q</div><div class="ttdef"><b>Definition:</b> state.h:21</div></div>
+<div class="ttc" id="astructctrl_1_1State_html_a2c63dbc1f4d8f642a88e5cd5f5bd931f"><div class="ttname"><a href="structctrl_1_1State.html#a2c63dbc1f4d8f642a88e5cd5f5bd931f">ctrl::State::dddq</a></div><div class="ttdeci">Pose dddq</div><div class="ttdef"><b>Definition:</b> state.h:24</div></div>
+<div class="ttc" id="astructctrl_1_1State_html_a89517fab8d93b69326294c3a88dd2d43"><div class="ttname"><a href="structctrl_1_1State.html#a89517fab8d93b69326294c3a88dd2d43">ctrl::State::ddq</a></div><div class="ttdeci">Pose ddq</div><div class="ttdef"><b>Definition:</b> state.h:23</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html">ctrl::TrajectoryTracker::Gain</a></div><div class="ttdoc">フィードバックゲインを格納する構造体</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:37</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html_a28efbe7c12da57f32681557848630933"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a28efbe7c12da57f32681557848630933">ctrl::TrajectoryTracker::Gain::low_b</a></div><div class="ttdeci">float low_b</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:41</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html_a46e8cb222e099f4511bcdc7bdc0f03c1"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a46e8cb222e099f4511bcdc7bdc0f03c1">ctrl::TrajectoryTracker::Gain::low_zeta</a></div><div class="ttdeci">float low_zeta</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:40</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html_ac697b878fabba5549fc585558fc8aa9c"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#ac697b878fabba5549fc585558fc8aa9c">ctrl::TrajectoryTracker::Gain::omega_n</a></div><div class="ttdeci">float omega_n</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:39</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html_acb9ea488d407569f32afe4f34fc2414b"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#acb9ea488d407569f32afe4f34fc2414b">ctrl::TrajectoryTracker::Gain::zeta</a></div><div class="ttdeci">float zeta</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:38</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Result_html"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Result.html">ctrl::TrajectoryTracker::Result</a></div><div class="ttdoc">計算結果を格納する構造体</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:46</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Result_html_a19aede9c22f88efc2b03e3ca8003416a"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Result.html#a19aede9c22f88efc2b03e3ca8003416a">ctrl::TrajectoryTracker::Result::dw</a></div><div class="ttdeci">float dw</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:50</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Result_html_a6a4dc43bf4cfb95c06c1cad7524ed356"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Result.html#a6a4dc43bf4cfb95c06c1cad7524ed356">ctrl::TrajectoryTracker::Result::w</a></div><div class="ttdeci">float w</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:48</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Result_html_a7f62d41d5b7b5654868309bdf8ee0394"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Result.html#a7f62d41d5b7b5654868309bdf8ee0394">ctrl::TrajectoryTracker::Result::dv</a></div><div class="ttdeci">float dv</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:49</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Result_html_acd39e0b4030a4301f4a290167c84f3fc"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Result.html#acd39e0b4030a4301f4a290167c84f3fc">ctrl::TrajectoryTracker::Result::v</a></div><div class="ttdeci">float v</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:47</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

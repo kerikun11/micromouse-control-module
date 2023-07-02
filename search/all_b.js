@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['operator_3c_3c_59',['operator&lt;&lt;',['../da/d97/classctrl_1_1AccelCurve.html#a890cb8fafdcc5e96c71efe23aa36d115',1,'ctrl::AccelCurve::operator&lt;&lt;()'],['../d3/dee/classctrl_1_1AccelDesigner.html#a4eae63324970a0dd8e2b733a0c451188',1,'ctrl::AccelDesigner::operator&lt;&lt;()'],['../d7/d14/structctrl_1_1slalom_1_1Shape.html#a53e6cf75e11287ba85dd609bb19c1e16',1,'ctrl::slalom::Shape::operator&lt;&lt;()']]],
-  ['operator_5b_5d_60',['operator[]',['../d1/deb/classctrl_1_1Accumulator.html#a33b64901270afd6c26a88ffc633905ca',1,'ctrl::Accumulator']]]
+  ['low_5fb_74',['low_b',['../structctrl_1_1TrajectoryTracker_1_1Gain.html#a28efbe7c12da57f32681557848630933',1,'ctrl::TrajectoryTracker::Gain']]],
+  ['low_5fzeta_75',['low_zeta',['../structctrl_1_1TrajectoryTracker_1_1Gain.html#a46e8cb222e099f4511bcdc7bdc0f03c1',1,'ctrl::TrajectoryTracker::Gain']]]
 ];

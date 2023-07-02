@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl/accumulator.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_60c668f4b51723b2f4c482e06fdf6f37.html">ctrl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">accumulator.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="accumulator_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;new&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacectrl.html">ctrl</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, std::<span class="keywordtype">size_t</span> S&gt;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classctrl_1_1Accumulator.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="classctrl_1_1Accumulator.html">Accumulator</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classctrl_1_1Accumulator.html#a2e68aa9b62846724eaf68b6392c73730">   26</a></span>&#160;  <a class="code" href="classctrl_1_1Accumulator.html#a2e68aa9b62846724eaf68b6392c73730">Accumulator</a>(<span class="keyword">const</span> T&amp; value = T()) {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    buffer = <span class="keyword">new</span> T[S];</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    head = 0;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classctrl_1_1Accumulator.html#af069e1f4652565df0a63f26efd7137fa">clear</a>(value);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  }</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classctrl_1_1Accumulator.html#a7865662752ee891284a59b9b15ef04e4">   34</a></span>&#160;  <a class="code" href="classctrl_1_1Accumulator.html#a7865662752ee891284a59b9b15ef04e4">~Accumulator</a>() { <span class="keyword">delete</span>[] buffer; }</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classctrl_1_1Accumulator.html#af069e1f4652565df0a63f26efd7137fa">   39</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classctrl_1_1Accumulator.html#af069e1f4652565df0a63f26efd7137fa">clear</a>(<span class="keyword">const</span> T&amp; value = T()) {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; S; i++) buffer[i] = value;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  }</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classctrl_1_1Accumulator.html#ab358eff9ee8b04a6427c6dfbfd7b5de6">   45</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classctrl_1_1Accumulator.html#ab358eff9ee8b04a6427c6dfbfd7b5de6">push</a>(<span class="keyword">const</span> T&amp; value) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    head = (head + 1) % S;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    buffer[head] = value;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classctrl_1_1Accumulator.html#a33b64901270afd6c26a88ffc633905ca">   55</a></span>&#160;  <span class="keyword">const</span> T&amp; <a class="code" href="classctrl_1_1Accumulator.html#a33b64901270afd6c26a88ffc633905ca">operator[]</a>(<span class="keyword">const</span> std::size_t index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> buffer[(S + head - index) % S];</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  }</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classctrl_1_1Accumulator.html#aafc53c60c9dc08d513d8dfcd95f0ad07">   63</a></span>&#160;  <span class="keyword">const</span> T <a class="code" href="classctrl_1_1Accumulator.html#aafc53c60c9dc08d513d8dfcd95f0ad07">average</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> n = S)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    T sum = T();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; n; i++) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      sum += buffer[(S + head - i) % S];</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">return</span> sum / n;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classctrl_1_1Accumulator.html#a95a2a5e1190de4193288c0d547e53b63">   73</a></span>&#160;  std::size_t <a class="code" href="classctrl_1_1Accumulator.html#a95a2a5e1190de4193288c0d547e53b63">size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> S; }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  T* buffer; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  std::size_t head; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}  <span class="comment">// namespace ctrl</span></div>
+<div class="ttc" id="aclassctrl_1_1Accumulator_html"><div class="ttname"><a href="classctrl_1_1Accumulator.html">ctrl::Accumulator</a></div><div class="ttdoc">データの蓄積器</div><div class="ttdef"><b>Definition:</b> accumulator.h:20</div></div>
+<div class="ttc" id="aclassctrl_1_1Accumulator_html_a2e68aa9b62846724eaf68b6392c73730"><div class="ttname"><a href="classctrl_1_1Accumulator.html#a2e68aa9b62846724eaf68b6392c73730">ctrl::Accumulator::Accumulator</a></div><div class="ttdeci">Accumulator(const T &amp;value=T())</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> accumulator.h:26</div></div>
+<div class="ttc" id="aclassctrl_1_1Accumulator_html_a33b64901270afd6c26a88ffc633905ca"><div class="ttname"><a href="classctrl_1_1Accumulator.html#a33b64901270afd6c26a88ffc633905ca">ctrl::Accumulator::operator[]</a></div><div class="ttdeci">const T &amp; operator[](const std::size_t index) const</div><div class="ttdoc">直近 index 番目の値を取得するオペレータ</div><div class="ttdef"><b>Definition:</b> accumulator.h:55</div></div>
+<div class="ttc" id="aclassctrl_1_1Accumulator_html_a7865662752ee891284a59b9b15ef04e4"><div class="ttname"><a href="classctrl_1_1Accumulator.html#a7865662752ee891284a59b9b15ef04e4">ctrl::Accumulator::~Accumulator</a></div><div class="ttdeci">~Accumulator()</div><div class="ttdoc">デストラクタ</div><div class="ttdef"><b>Definition:</b> accumulator.h:34</div></div>
+<div class="ttc" id="aclassctrl_1_1Accumulator_html_a95a2a5e1190de4193288c0d547e53b63"><div class="ttname"><a href="classctrl_1_1Accumulator.html#a95a2a5e1190de4193288c0d547e53b63">ctrl::Accumulator::size</a></div><div class="ttdeci">std::size_t size() const</div><div class="ttdoc">リングバッファのサイズを返す関数</div><div class="ttdef"><b>Definition:</b> accumulator.h:73</div></div>
+<div class="ttc" id="aclassctrl_1_1Accumulator_html_aafc53c60c9dc08d513d8dfcd95f0ad07"><div class="ttname"><a href="classctrl_1_1Accumulator.html#aafc53c60c9dc08d513d8dfcd95f0ad07">ctrl::Accumulator::average</a></div><div class="ttdeci">const T average(const int n=S) const</div><div class="ttdoc">直近 n 個の平均を取得する関数</div><div class="ttdef"><b>Definition:</b> accumulator.h:63</div></div>
+<div class="ttc" id="aclassctrl_1_1Accumulator_html_ab358eff9ee8b04a6427c6dfbfd7b5de6"><div class="ttname"><a href="classctrl_1_1Accumulator.html#ab358eff9ee8b04a6427c6dfbfd7b5de6">ctrl::Accumulator::push</a></div><div class="ttdeci">void push(const T &amp;value)</div><div class="ttdoc">最新のデータを追加する関数</div><div class="ttdef"><b>Definition:</b> accumulator.h:45</div></div>
+<div class="ttc" id="aclassctrl_1_1Accumulator_html_af069e1f4652565df0a63f26efd7137fa"><div class="ttname"><a href="classctrl_1_1Accumulator.html#af069e1f4652565df0a63f26efd7137fa">ctrl::Accumulator::clear</a></div><div class="ttdeci">void clear(const T &amp;value=T())</div><div class="ttdoc">バッファをクリアする関数</div><div class="ttdef"><b>Definition:</b> accumulator.h:39</div></div>
+<div class="ttc" id="anamespacectrl_html"><div class="ttname"><a href="namespacectrl.html">ctrl</a></div><div class="ttdoc">制御関係の名前空間</div><div class="ttdef"><b>Definition:</b> accel_curve.h:54</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

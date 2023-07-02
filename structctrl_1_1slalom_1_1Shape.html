@@ -1,0 +1,695 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl::slalom::Shape 構造体</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacectrl.html">ctrl</a></li><li class="navelem"><a class="el" href="namespacectrl_1_1slalom.html">slalom</a></li><li class="navelem"><a class="el" href="structctrl_1_1slalom_1_1Shape.html">Shape</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#pub-attribs">公開変数類</a> &#124;
+<a href="#friends">フレンド</a> &#124;
+<a href="structctrl_1_1slalom_1_1Shape-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">ctrl::slalom::Shape 構造体</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><a class="el" href="structctrl_1_1slalom_1_1Shape.html" title="slalom::Shape スラロームの形状を表す構造体">slalom::Shape</a> スラロームの形状を表す構造体  
+ <a href="structctrl_1_1slalom_1_1Shape.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="slalom_8h_source.html">slalom.h</a>&gt;</code></p>
+<div class="dynheader">
+ctrl::slalom::Shape 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="structctrl_1_1slalom_1_1Shape__coll__graph.png" border="0" usemap="#actrl_1_1slalom_1_1Shape_coll__map" alt="Collaboration graph"/></div>
+<map name="actrl_1_1slalom_1_1Shape_coll__map" id="actrl_1_1slalom_1_1Shape_coll__map">
+<area shape="rect" title="slalom::Shape スラロームの形状を表す構造体" alt="" coords="5,109,148,136"/>
+<area shape="rect" href="structctrl_1_1Pose.html" title="位置姿勢の座標" alt="" coords="35,5,118,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ac43ab46adeb941620cbfe76f24eabf0f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#ac43ab46adeb941620cbfe76f24eabf0f">Shape</a> (const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;<a class="el" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>, const float y_curve_end, const float x_adv=0, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>=<a class="el" href="namespacectrl_1_1slalom.html#ad496c6da347d422db6ba81dcf3594340">dddth_max_default</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>=<a class="el" href="namespacectrl_1_1slalom.html#ae514b790138ab71bd3a6304ac9a30b49">ddth_max_default</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>=<a class="el" href="namespacectrl_1_1slalom.html#a0ed5cbe6df55f3c0bab36edd3e36910c">dth_max_default</a>)</td></tr>
+<tr class="memdesc:ac43ab46adeb941620cbfe76f24eabf0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">拘束条件からスラローム形状を生成するコンストラクタ  <a href="structctrl_1_1slalom_1_1Shape.html#ac43ab46adeb941620cbfe76f24eabf0f">[詳解]</a><br /></td></tr>
+<tr class="separator:ac43ab46adeb941620cbfe76f24eabf0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee98096d360bd8afb49b65c90026a075"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#aee98096d360bd8afb49b65c90026a075">Shape</a> (const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;<a class="el" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>, const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;<a class="el" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a>, float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">straight_prev</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">straight_post</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">v_ref</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>, const float <a class="el" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>)</td></tr>
+<tr class="memdesc:aee98096d360bd8afb49b65c90026a075"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成済みスラローム形状を単に代入するコンストラクタ  <a href="structctrl_1_1slalom_1_1Shape.html#aee98096d360bd8afb49b65c90026a075">[詳解]</a><br /></td></tr>
+<tr class="separator:aee98096d360bd8afb49b65c90026a075"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:a4e672ca813c1bcd93e89c898e0d2b190"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">integrate</a> (const <a class="el" href="classctrl_1_1AccelDesigner.html">AccelDesigner</a> &amp;ad, <a class="el" href="structctrl_1_1State.html">State</a> &amp;s, const float v, const float t, const float Ts, const float k_slip=0)</td></tr>
+<tr class="memdesc:a4e672ca813c1bcd93e89c898e0d2b190"><td class="mdescLeft">&#160;</td><td class="mdescRight">軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．  <a href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">[詳解]</a><br /></td></tr>
+<tr class="separator:a4e672ca813c1bcd93e89c898e0d2b190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+公開変数類</h2></td></tr>
+<tr class="memitem:a1338f9b449607c48ad0643298b3d1f72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structctrl_1_1Pose.html">Pose</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a></td></tr>
+<tr class="memdesc:a1338f9b449607c48ad0643298b3d1f72"><td class="mdescLeft">&#160;</td><td class="mdescRight">前後の直線を含めた移動位置姿勢  <a href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">[詳解]</a><br /></td></tr>
+<tr class="separator:a1338f9b449607c48ad0643298b3d1f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a434e6d1806c9bb2055ba3fbf2b6923b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structctrl_1_1Pose.html">Pose</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a></td></tr>
+<tr class="memdesc:a434e6d1806c9bb2055ba3fbf2b6923b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">カーブ部分の移動位置姿勢  <a href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">[詳解]</a><br /></td></tr>
+<tr class="separator:a434e6d1806c9bb2055ba3fbf2b6923b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f20e0f6214c6eb0a7736d27088eea08"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">straight_prev</a></td></tr>
+<tr class="memdesc:a9f20e0f6214c6eb0a7736d27088eea08"><td class="mdescLeft">&#160;</td><td class="mdescRight">カーブ前の直線の距離 [m]  <a href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">[詳解]</a><br /></td></tr>
+<tr class="separator:a9f20e0f6214c6eb0a7736d27088eea08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa53747854f2c8be0baa78bbc0bf2400e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">straight_post</a></td></tr>
+<tr class="memdesc:aa53747854f2c8be0baa78bbc0bf2400e"><td class="mdescLeft">&#160;</td><td class="mdescRight">カーブ後の直線の距離 [m]  <a href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">[詳解]</a><br /></td></tr>
+<tr class="separator:aa53747854f2c8be0baa78bbc0bf2400e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00d724e99a96480c5bd87adf2c650595"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">v_ref</a></td></tr>
+<tr class="memdesc:a00d724e99a96480c5bd87adf2c650595"><td class="mdescLeft">&#160;</td><td class="mdescRight">カーブ部分の基準速度 [m/s]  <a href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">[詳解]</a><br /></td></tr>
+<tr class="separator:a00d724e99a96480c5bd87adf2c650595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5121d4d518f300fb6f9563e5abb9258a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a></td></tr>
+<tr class="memdesc:a5121d4d518f300fb6f9563e5abb9258a"><td class="mdescLeft">&#160;</td><td class="mdescRight">最大角躍度の大きさ [rad/s/s/s]  <a href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">[詳解]</a><br /></td></tr>
+<tr class="separator:a5121d4d518f300fb6f9563e5abb9258a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d848c8190f92d54415367257cf42d7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a></td></tr>
+<tr class="memdesc:a81d848c8190f92d54415367257cf42d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">最大角加速度の大きさ [rad/s/s]  <a href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">[詳解]</a><br /></td></tr>
+<tr class="separator:a81d848c8190f92d54415367257cf42d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae046e2a6e626fe462791e5962d5014b0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a></td></tr>
+<tr class="memdesc:ae046e2a6e626fe462791e5962d5014b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">最大角速度の大きさ [rad/s]  <a href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">[詳解]</a><br /></td></tr>
+<tr class="separator:ae046e2a6e626fe462791e5962d5014b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+フレンド</h2></td></tr>
+<tr class="memitem:a53e6cf75e11287ba85dd609bb19c1e16"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1slalom_1_1Shape.html#a53e6cf75e11287ba85dd609bb19c1e16">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="structctrl_1_1slalom_1_1Shape.html">Shape</a> &amp;obj)</td></tr>
+<tr class="memdesc:a53e6cf75e11287ba85dd609bb19c1e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">情報の表示  <a href="structctrl_1_1slalom_1_1Shape.html#a53e6cf75e11287ba85dd609bb19c1e16">[詳解]</a><br /></td></tr>
+<tr class="separator:a53e6cf75e11287ba85dd609bb19c1e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p><a class="el" href="structctrl_1_1slalom_1_1Shape.html" title="slalom::Shape スラロームの形状を表す構造体">slalom::Shape</a> スラロームの形状を表す構造体 </p>
+<p>メンバー変数は互いに依存して決定されているので， 個別に数値を変更することは許されない． スラローム軌道を得るには <a class="el" href="classctrl_1_1slalom_1_1Trajectory.html" title="slalom::Trajectory スラローム軌道を生成するクラス">slalom::Trajectory</a> を用いる． </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="ac43ab46adeb941620cbfe76f24eabf0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac43ab46adeb941620cbfe76f24eabf0f">&#9670;&nbsp;</a></span>Shape() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctrl::slalom::Shape::Shape </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>total</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>y_curve_end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x_adv</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>dddth_max</em> = <code><a class="el" href="namespacectrl_1_1slalom.html#ad496c6da347d422db6ba81dcf3594340">dddth_max_default</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>ddth_max</em> = <code><a class="el" href="namespacectrl_1_1slalom.html#ae514b790138ab71bd3a6304ac9a30b49">ddth_max_default</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>dth_max</em> = <code><a class="el" href="namespacectrl_1_1slalom.html#a0ed5cbe6df55f3c0bab36edd3e36910c">dth_max_default</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>拘束条件からスラローム形状を生成するコンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">total</td><td>前後の直線を含めた移動位置姿勢 [m, m, rad] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y_curve_end</td><td>y軸方向(進行方向に垂直な方向)の移動距離 [m]． カーブの大きさを決めるもので，形状の設計パラメータとなる </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">x_adv</td><td>x軸方向(進行方向)の前後の直線の長さ [m]． 180度ターンの場合のみで使用． </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dddth_max</td><td>最大角躍度の大きさ [rad/s/s/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ddth_max</td><td>最大角加速度の大きさ [rad/s/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dth_max</td><td>最大角速度の大きさ [rad/s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      : <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>),</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>),</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>),</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">/* 生成準備 */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> Ts = 1.5e-3f;  <span class="comment">//&lt; シミュレーションの積分周期</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">float</span> v = 600.0f;          <span class="comment">//&lt; 初期値</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    State s;                   <span class="comment">//&lt; シミュレーションの状態</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    AccelDesigner ad;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    ad.reset(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>, <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>, <a class="code" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>, 0, 0, <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>.<a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">/* 複数回行って精度を高める */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; ++i) {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      s.q.x = s.q.y = 0;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      <span class="comment">/* シミュレーション */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="keywordtype">float</span> t = 0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="keywordflow">while</span> (t + Ts &lt; ad.t_end()) <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">integrate</a>(ad, s, v, t, Ts), t += Ts;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">integrate</a>(ad, s, v, t, ad.t_end() - t);  <span class="comment">//&lt; 残りの半端分を積分</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="comment">/* 結果を用いて更新 */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      v *= y_curve_end / s.q.y;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a> = s.q;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">v_ref</a> = v;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> sin_th = std::sin(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>.<a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> cos_th = std::cos(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>.<a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">/* 前後の直線の長さを決定 */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">if</span> (std::abs(sin_th) &lt; 1e-3f) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="comment">/* 180度ターン */</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">straight_prev</a> = x_adv;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <a class="code" href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">straight_post</a> = x_adv;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a> = <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      <span class="comment">/* 180度ターン以外 */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">straight_prev</a> = <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>.<a class="code" href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">x</a> - s.q.x - cos_th / sin_th * (<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> - s.q.y);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <a class="code" href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">straight_post</a> = 1 / sin_th * (<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>.<a class="code" href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">y</a> - s.q.y);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  }</div>
+<div class="ttc" id="astructctrl_1_1Pose_html_a24c74beee36f9b2a6398bd49aa0c3c29"><div class="ttname"><a href="structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29">ctrl::Pose::y</a></div><div class="ttdeci">float y</div><div class="ttdoc">y 成分 [m]</div><div class="ttdef"><b>Definition:</b> pose.h:20</div></div>
+<div class="ttc" id="astructctrl_1_1Pose_html_a8832a75bbc82da843bcbeb1b98866fad"><div class="ttname"><a href="structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad">ctrl::Pose::x</a></div><div class="ttdeci">float x</div><div class="ttdoc">x 成分 [m]</div><div class="ttdef"><b>Definition:</b> pose.h:19</div></div>
+<div class="ttc" id="astructctrl_1_1Pose_html_af5ecc24a587a445314a8ea35cbc33e42"><div class="ttname"><a href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">ctrl::Pose::th</a></div><div class="ttdeci">float th</div><div class="ttdoc">theta 成分 [rad]</div><div class="ttdef"><b>Definition:</b> pose.h:21</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a00d724e99a96480c5bd87adf2c650595"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">ctrl::slalom::Shape::v_ref</a></div><div class="ttdeci">float v_ref</div><div class="ttdoc">カーブ部分の基準速度 [m/s]</div><div class="ttdef"><b>Definition:</b> slalom.h:53</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a1338f9b449607c48ad0643298b3d1f72"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">ctrl::slalom::Shape::total</a></div><div class="ttdeci">Pose total</div><div class="ttdoc">前後の直線を含めた移動位置姿勢</div><div class="ttdef"><b>Definition:</b> slalom.h:49</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a434e6d1806c9bb2055ba3fbf2b6923b0"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">ctrl::slalom::Shape::curve</a></div><div class="ttdeci">Pose curve</div><div class="ttdoc">カーブ部分の移動位置姿勢</div><div class="ttdef"><b>Definition:</b> slalom.h:50</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a4e672ca813c1bcd93e89c898e0d2b190"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">ctrl::slalom::Shape::integrate</a></div><div class="ttdeci">static void integrate(const AccelDesigner &amp;ad, State &amp;s, const float v, const float t, const float Ts, const float k_slip=0)</div><div class="ttdoc">軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．</div><div class="ttdef"><b>Definition:</b> slalom.h:144</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a5121d4d518f300fb6f9563e5abb9258a"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">ctrl::slalom::Shape::dddth_max</a></div><div class="ttdeci">float dddth_max</div><div class="ttdoc">最大角躍度の大きさ [rad/s/s/s]</div><div class="ttdef"><b>Definition:</b> slalom.h:54</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a81d848c8190f92d54415367257cf42d7"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ctrl::slalom::Shape::ddth_max</a></div><div class="ttdeci">float ddth_max</div><div class="ttdoc">最大角加速度の大きさ [rad/s/s]</div><div class="ttdef"><b>Definition:</b> slalom.h:55</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a9f20e0f6214c6eb0a7736d27088eea08"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">ctrl::slalom::Shape::straight_prev</a></div><div class="ttdeci">float straight_prev</div><div class="ttdoc">カーブ前の直線の距離 [m]</div><div class="ttdef"><b>Definition:</b> slalom.h:51</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_aa53747854f2c8be0baa78bbc0bf2400e"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">ctrl::slalom::Shape::straight_post</a></div><div class="ttdeci">float straight_post</div><div class="ttdoc">カーブ後の直線の距離 [m]</div><div class="ttdef"><b>Definition:</b> slalom.h:52</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_ae046e2a6e626fe462791e5962d5014b0"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">ctrl::slalom::Shape::dth_max</a></div><div class="ttdeci">float dth_max</div><div class="ttdoc">最大角速度の大きさ [rad/s]</div><div class="ttdef"><b>Definition:</b> slalom.h:56</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="structctrl_1_1slalom_1_1Shape_ac43ab46adeb941620cbfe76f24eabf0f_cgraph.png" border="0" usemap="#astructctrl_1_1slalom_1_1Shape_ac43ab46adeb941620cbfe76f24eabf0f_cgraph" alt=""/></div>
+<map name="astructctrl_1_1slalom_1_1Shape_ac43ab46adeb941620cbfe76f24eabf0f_cgraph" id="astructctrl_1_1slalom_1_1Shape_ac43ab46adeb941620cbfe76f24eabf0f_cgraph">
+<area shape="rect" title="拘束条件からスラローム形状を生成するコンストラクタ" alt="" coords="5,325,148,366"/>
+<area shape="rect" href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190" title="軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．" alt="" coords="197,99,339,141"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc" title="引数の拘束条件から曲線を生成する関数" alt="" coords="196,325,340,366"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f" title="終点時刻 [s]" alt="" coords="196,390,340,431"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="421,107,581,133"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="423,5,579,32"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="421,208,581,235"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a5bc18aab62a53e6c25e4ebfb12cf0df3" title="任意の時刻 t [s] における位置 x [m] を返す関数" alt="" coords="421,56,581,83"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="678,263,818,289"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ad137862ec428ec89d4fdbda323265c65" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="680,5,816,32"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="678,208,818,235"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ab761cd51f88088d15431b6999a055e3b" title="任意の時刻 t [s] における位置 x [m] を返す関数" alt="" coords="678,56,818,83"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#aa9d3f42f4a47ed867575e823faefb300" title="終点位置 [m]" alt="" coords="663,132,833,159"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#afe9b6204f40c2bfcdbc78a622856e52d" title="速度差の拘束から達しうる変位を算出する関数" alt="" coords="394,493,609,534"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#adf43c07687d201eff50f2ce72cb00170" title="走行距離の拘束から達しうる終点速度を算出する関数" alt="" coords="388,259,615,301"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#a4e7e0e94ff792f8917a80f67779e2dac" title="走行距離の拘束から達しうる最大速度を算出する関数" alt="" coords="388,558,615,599"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8" title="引数の拘束条件から曲線を生成する関数" alt="" coords="419,441,584,468"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#abf2cd866d84dd84f0abc0698f7c0b7a2" title="終点時刻 [s]" alt="" coords="417,391,585,417"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a008143ca17f0676dd54255601702f5ef" title="終点速度 [m/s]" alt="" coords="429,325,573,366"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d" title="終点速度 [m/s]" alt="" coords="663,441,833,468"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aee98096d360bd8afb49b65c90026a075"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee98096d360bd8afb49b65c90026a075">&#9670;&nbsp;</a></span>Shape() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctrl::slalom::Shape::Shape </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>total</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>curve</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>straight_prev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>straight_post</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>v_ref</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>dddth_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>ddth_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>dth_max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>生成済みスラローム形状を単に代入するコンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">total</td><td>前後の直線を含めた移動位置姿勢 [m, m, rad] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">curve</td><td>曲線部分の変位 [m, m, rad] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">straight_prev</td><td>曲線前の直線の長さ [m] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">straight_post</td><td>曲線後の直線の長さ [m] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_ref</td><td>基準並進速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dddth_max</td><td>最大角躍度の大きさ [rad/s/s/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ddth_max</td><td>最大角加速度の大きさ [rad/s/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dth_max</td><td>最大角速度の大きさ [rad/s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      : <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>),</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a>),</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">straight_prev</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08">straight_prev</a>),</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">straight_post</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e">straight_post</a>),</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">v_ref</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">v_ref</a>),</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>),</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>),</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>(<a class="code" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>) {}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a4e672ca813c1bcd93e89c898e0d2b190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e672ca813c1bcd93e89c898e0d2b190">&#9670;&nbsp;</a></span>integrate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ctrl::slalom::Shape::integrate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classctrl_1_1AccelDesigner.html">AccelDesigner</a> &amp;&#160;</td>
+          <td class="paramname"><em>ad</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structctrl_1_1State.html">State</a> &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>Ts</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>k_slip</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う． </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ad</td><td>角速度分布 </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">s</td><td>状態変数 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v</td><td>並進速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">t</td><td>時刻 [s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Ts</td><td>積分時間 [s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">k_slip</td><td>スリップ角定数 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                                                               {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">/* Calculation */</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keyword">const</span> std::array&lt;float, 3&gt; th{{ad.x(t), ad.x(t + Ts / 2), ad.x(t + Ts)}};</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keyword">const</span> std::array&lt;float, 3&gt; w{{ad.v(t), ad.v(t + Ts / 2), ad.v(t + Ts)}};</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    std::array&lt;float, 3&gt; cos_th;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    std::array&lt;float, 3&gt; sin_th;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 3; ++i) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> th_slip = std::atan(-k_slip * v * w[i]);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      cos_th[i] = std::cos(th[i] + th_slip);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      sin_th[i] = std::sin(th[i] + th_slip);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">/* Runge-Kutta Integral */</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    s.q.x += v * Ts * (cos_th[0] + 4 * cos_th[1] + cos_th[2]) / 6;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    s.q.y += v * Ts * (sin_th[0] + 4 * sin_th[1] + sin_th[2]) / 6;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">/* Result */</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    s.dq.x = v * cos_th[2];</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    s.dq.y = v * sin_th[2];</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    s.q.th = ad.x(t + Ts);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    s.dq.th = ad.v(t + Ts);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    s.ddq.th = ad.a(t + Ts);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    s.dddq.th = ad.j(t + Ts);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    s.ddq.x = -s.dq.y * s.dq.th;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    s.ddq.y = +s.dq.x * s.dq.th;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    s.dddq.x = -s.ddq.y * s.dq.th - s.dq.y * s.ddq.th;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    s.dddq.y = +s.ddq.x * s.dq.th + s.dq.x * s.ddq.th;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  }</div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="structctrl_1_1slalom_1_1Shape_a4e672ca813c1bcd93e89c898e0d2b190_cgraph.png" border="0" usemap="#astructctrl_1_1slalom_1_1Shape_a4e672ca813c1bcd93e89c898e0d2b190_cgraph" alt=""/></div>
+<map name="astructctrl_1_1slalom_1_1Shape_a4e672ca813c1bcd93e89c898e0d2b190_cgraph" id="astructctrl_1_1slalom_1_1Shape_a4e672ca813c1bcd93e89c898e0d2b190_cgraph">
+<area shape="rect" title="軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．" alt="" coords="5,74,148,115"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a347ebd61df9a073daa90afd8f35095d8" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="196,5,356,32"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a17cd65047bfa6194dfd9f09d8ddbc718" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="198,56,354,83"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#ae56d526db41028a05bb9c1aabe99079b" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="196,107,356,133"/>
+<area shape="rect" href="classctrl_1_1AccelDesigner.html#a5bc18aab62a53e6c25e4ebfb12cf0df3" title="任意の時刻 t [s] における位置 x [m] を返す関数" alt="" coords="196,157,356,184"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="419,5,559,32"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ad137862ec428ec89d4fdbda323265c65" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="421,56,557,83"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="419,107,559,133"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ab761cd51f88088d15431b6999a055e3b" title="任意の時刻 t [s] における位置 x [m] を返す関数" alt="" coords="419,157,559,184"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#aa9d3f42f4a47ed867575e823faefb300" title="終点位置 [m]" alt="" coords="404,208,575,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">フレンドと関連関数の詳解</h2>
+<a id="a53e6cf75e11287ba85dd609bb19c1e16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53e6cf75e11287ba85dd609bb19c1e16">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1slalom_1_1Shape.html">Shape</a> &amp;&#160;</td>
+          <td class="paramname"><em>obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>情報の表示 </p>
+<div class="fragment"><div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                                                  {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;Slalom Shape&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\ttotal:\t&quot;</span> &lt;&lt; obj.total &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tcurve:\t&quot;</span> &lt;&lt; obj.curve &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tv_ref:\t&quot;</span> &lt;&lt; obj.v_ref &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tstraight_prev:\t&quot;</span> &lt;&lt; obj.straight_prev &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tstraight_post:\t&quot;</span> &lt;&lt; obj.straight_post &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keyword">auto</span> end = Pose(obj.straight_prev) + obj.curve +</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;               Pose(obj.straight_post).rotate(obj.curve.th);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tintegral error:\t&quot;</span> &lt;&lt; obj.total - end &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a434e6d1806c9bb2055ba3fbf2b6923b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a434e6d1806c9bb2055ba3fbf2b6923b0">&#9670;&nbsp;</a></span>curve</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structctrl_1_1Pose.html">Pose</a> ctrl::slalom::Shape::curve</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>カーブ部分の移動位置姿勢 </p>
+
+</div>
+</div>
+<a id="a5121d4d518f300fb6f9563e5abb9258a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5121d4d518f300fb6f9563e5abb9258a">&#9670;&nbsp;</a></span>dddth_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::slalom::Shape::dddth_max</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最大角躍度の大きさ [rad/s/s/s] </p>
+
+</div>
+</div>
+<a id="a81d848c8190f92d54415367257cf42d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81d848c8190f92d54415367257cf42d7">&#9670;&nbsp;</a></span>ddth_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::slalom::Shape::ddth_max</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最大角加速度の大きさ [rad/s/s] </p>
+
+</div>
+</div>
+<a id="ae046e2a6e626fe462791e5962d5014b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae046e2a6e626fe462791e5962d5014b0">&#9670;&nbsp;</a></span>dth_max</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::slalom::Shape::dth_max</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>最大角速度の大きさ [rad/s] </p>
+
+</div>
+</div>
+<a id="aa53747854f2c8be0baa78bbc0bf2400e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa53747854f2c8be0baa78bbc0bf2400e">&#9670;&nbsp;</a></span>straight_post</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::slalom::Shape::straight_post</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>カーブ後の直線の距離 [m] </p>
+
+</div>
+</div>
+<a id="a9f20e0f6214c6eb0a7736d27088eea08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f20e0f6214c6eb0a7736d27088eea08">&#9670;&nbsp;</a></span>straight_prev</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::slalom::Shape::straight_prev</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>カーブ前の直線の距離 [m] </p>
+
+</div>
+</div>
+<a id="a1338f9b449607c48ad0643298b3d1f72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1338f9b449607c48ad0643298b3d1f72">&#9670;&nbsp;</a></span>total</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structctrl_1_1Pose.html">Pose</a> ctrl::slalom::Shape::total</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>前後の直線を含めた移動位置姿勢 </p>
+
+</div>
+</div>
+<a id="a00d724e99a96480c5bd87adf2c650595"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00d724e99a96480c5bd87adf2c650595">&#9670;&nbsp;</a></span>v_ref</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::slalom::Shape::v_ref</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>カーブ部分の基準速度 [m/s] </p>
+
+</div>
+</div>
+<hr/>この構造体詳解は次のファイルから抽出されました:<ul>
+<li>ctrl/slalom/<a class="el" href="slalom_8h_source.html">slalom.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

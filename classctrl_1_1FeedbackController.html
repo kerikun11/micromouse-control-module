@@ -1,0 +1,651 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl::FeedbackController&lt; T &gt; クラステンプレート</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacectrl.html">ctrl</a></li><li class="navelem"><a class="el" href="classctrl_1_1FeedbackController.html">FeedbackController</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="classctrl_1_1FeedbackController-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">ctrl::FeedbackController&lt; T &gt; クラステンプレート</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>1次フィードフォワード補償付きフィードバック制御器クラス  
+ <a href="classctrl_1_1FeedbackController.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="feedback__controller_8h_source.html">feedback_controller.h</a>&gt;</code></p>
+<div class="dynheader">
+ctrl::FeedbackController&lt; T &gt; 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1FeedbackController__coll__graph.png" border="0" usemap="#actrl_1_1FeedbackController_3_01T_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="actrl_1_1FeedbackController_3_01T_01_4_coll__map" id="actrl_1_1FeedbackController_3_01T_01_4_coll__map">
+<area shape="rect" title="1次フィードフォワード補償付きフィードバック制御器クラス" alt="" coords="252,78,467,105"/>
+<area shape="rect" href="structctrl_1_1FeedbackController_1_1Breakdown.html" title="制御入力の成分内訳．" alt="" coords="5,5,183,47"/>
+<area shape="rect" href="structctrl_1_1FeedbackController_1_1Gain.html" title="フィードバック成分に使用するPIDゲイン 使用しない成分は，0に設定すること．" alt="" coords="5,71,183,112"/>
+<area shape="rect" href="structctrl_1_1FeedbackController_1_1Model.html" title="フィードフォワード成分に使用する1次モデル" alt="" coords="5,136,183,177"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1FeedbackController_1_1Breakdown.html">Breakdown</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">制御入力の成分内訳．  <a href="structctrl_1_1FeedbackController_1_1Breakdown.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードバック成分に使用するPIDゲイン 使用しない成分は，0に設定すること．  <a href="structctrl_1_1FeedbackController_1_1Gain.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードフォワード成分に使用する1次モデル  <a href="structctrl_1_1FeedbackController_1_1Model.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ab0dc8a3b788ba69f5af6c1ce8dd4a2b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#ab0dc8a3b788ba69f5af6c1ce8dd4a2b7">FeedbackController</a> (const <a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a> &amp;<a class="el" href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">M</a>, const <a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a> &amp;<a class="el" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a>)</td></tr>
+<tr class="memdesc:ab0dc8a3b788ba69f5af6c1ce8dd4a2b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classctrl_1_1FeedbackController.html#ab0dc8a3b788ba69f5af6c1ce8dd4a2b7">[詳解]</a><br /></td></tr>
+<tr class="separator:ab0dc8a3b788ba69f5af6c1ce8dd4a2b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af24fe8168e772be04cf11b6a723cddad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#af24fe8168e772be04cf11b6a723cddad">reset</a> ()</td></tr>
+<tr class="memdesc:af24fe8168e772be04cf11b6a723cddad"><td class="mdescLeft">&#160;</td><td class="mdescRight">積分項をリセットする関数  <a href="classctrl_1_1FeedbackController.html#af24fe8168e772be04cf11b6a723cddad">[詳解]</a><br /></td></tr>
+<tr class="separator:af24fe8168e772be04cf11b6a723cddad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a432aaadc727ba1dac60cb0cbb26c3d"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#a4a432aaadc727ba1dac60cb0cbb26c3d">update</a> (const T &amp;r, const T &amp;y, const T &amp;dr, const T &amp;dy, const float Ts)</td></tr>
+<tr class="memdesc:a4a432aaadc727ba1dac60cb0cbb26c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">状態を更新して，次の制御入力を得る関数  <a href="classctrl_1_1FeedbackController.html#a4a432aaadc727ba1dac60cb0cbb26c3d">[詳解]</a><br /></td></tr>
+<tr class="separator:a4a432aaadc727ba1dac60cb0cbb26c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f1c5dd3621f3d5f1d1b40341375a648"><td class="memItemLeft" align="right" valign="top">const T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#a0f1c5dd3621f3d5f1d1b40341375a648">getErrorIntegral</a> () const</td></tr>
+<tr class="memdesc:a0f1c5dd3621f3d5f1d1b40341375a648"><td class="mdescLeft">&#160;</td><td class="mdescRight">エラー積分値を取得  <a href="classctrl_1_1FeedbackController.html#a0f1c5dd3621f3d5f1d1b40341375a648">[詳解]</a><br /></td></tr>
+<tr class="separator:a0f1c5dd3621f3d5f1d1b40341375a648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c86973db40474811636370484d260f6"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#a9c86973db40474811636370484d260f6">getModel</a> () const</td></tr>
+<tr class="memdesc:a9c86973db40474811636370484d260f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードフォワードモデルを取得する関数  <a href="classctrl_1_1FeedbackController.html#a9c86973db40474811636370484d260f6">[詳解]</a><br /></td></tr>
+<tr class="separator:a9c86973db40474811636370484d260f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab2b73d399a8a4075ae9ccabd18e7552a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#ab2b73d399a8a4075ae9ccabd18e7552a">setModel</a> (const <a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a> &amp;model)</td></tr>
+<tr class="memdesc:ab2b73d399a8a4075ae9ccabd18e7552a"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードフォワードモデルを設定する関数  <a href="classctrl_1_1FeedbackController.html#ab2b73d399a8a4075ae9ccabd18e7552a">[詳解]</a><br /></td></tr>
+<tr class="separator:ab2b73d399a8a4075ae9ccabd18e7552a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0f942359717a25a216db353384b35ab"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#ac0f942359717a25a216db353384b35ab">getGain</a> () const</td></tr>
+<tr class="memdesc:ac0f942359717a25a216db353384b35ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードバックゲインを取得する関数  <a href="classctrl_1_1FeedbackController.html#ac0f942359717a25a216db353384b35ab">[詳解]</a><br /></td></tr>
+<tr class="separator:ac0f942359717a25a216db353384b35ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77cd33c48e10301129887def316f6ba5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#a77cd33c48e10301129887def316f6ba5">setGain</a> (const <a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a> &amp;gain)</td></tr>
+<tr class="memdesc:a77cd33c48e10301129887def316f6ba5"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードバックゲインを設定する関数  <a href="classctrl_1_1FeedbackController.html#a77cd33c48e10301129887def316f6ba5">[詳解]</a><br /></td></tr>
+<tr class="separator:a77cd33c48e10301129887def316f6ba5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ec9edd80049eb54f968dba31a06830c"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structctrl_1_1FeedbackController_1_1Breakdown.html">Breakdown</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#a7ec9edd80049eb54f968dba31a06830c">getBreakdown</a> () const</td></tr>
+<tr class="memdesc:a7ec9edd80049eb54f968dba31a06830c"><td class="mdescLeft">&#160;</td><td class="mdescRight">制御入力の内訳を取得する関数  <a href="classctrl_1_1FeedbackController.html#a7ec9edd80049eb54f968dba31a06830c">[詳解]</a><br /></td></tr>
+<tr class="separator:a7ec9edd80049eb54f968dba31a06830c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:ae69e20388a049d8ac3420ca48a0165ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">M</a></td></tr>
+<tr class="memdesc:ae69e20388a049d8ac3420ca48a0165ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードフォワードモデル  <a href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">[詳解]</a><br /></td></tr>
+<tr class="separator:ae69e20388a049d8ac3420ca48a0165ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf44b7af01318f313c6e2672412dcae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a></td></tr>
+<tr class="memdesc:aeaf44b7af01318f313c6e2672412dcae"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードバックゲイン  <a href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">[詳解]</a><br /></td></tr>
+<tr class="separator:aeaf44b7af01318f313c6e2672412dcae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a636d572fff512149607f2c7ec9a424c0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structctrl_1_1FeedbackController_1_1Breakdown.html">Breakdown</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a></td></tr>
+<tr class="memdesc:a636d572fff512149607f2c7ec9a424c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">制御入力の計算内訳  <a href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">[詳解]</a><br /></td></tr>
+<tr class="separator:a636d572fff512149607f2c7ec9a424c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a8b876e281faa80ba3dba357a4774f7"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1FeedbackController.html#a2a8b876e281faa80ba3dba357a4774f7">e_int</a></td></tr>
+<tr class="memdesc:a2a8b876e281faa80ba3dba357a4774f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">追従誤差の積分値  <a href="classctrl_1_1FeedbackController.html#a2a8b876e281faa80ba3dba357a4774f7">[詳解]</a><br /></td></tr>
+<tr class="separator:a2a8b876e281faa80ba3dba357a4774f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><h3>template&lt;typename T&gt;<br />
+class ctrl::FeedbackController&lt; T &gt;</h3>
+
+<p>1次フィードフォワード補償付きフィードバック制御器クラス </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>状態変数の型 </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="ab0dc8a3b788ba69f5af6c1ce8dd4a2b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0dc8a3b788ba69f5af6c1ce8dd4a2b7">&#9670;&nbsp;</a></span>FeedbackController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::<a class="el" href="classctrl_1_1FeedbackController.html">FeedbackController</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a> &amp;&#160;</td>
+          <td class="paramname"><em>M</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a> &amp;&#160;</td>
+          <td class="paramname"><em>G</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">M</td><td>フィードフォワードモデル </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">G</td><td>フィードバックゲイン </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;: <a class="code" href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">M</a>(<a class="code" href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">M</a>), <a class="code" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a>(<a class="code" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a>) { <a class="code" href="classctrl_1_1FeedbackController.html#af24fe8168e772be04cf11b6a723cddad">reset</a>(); }</div>
+<div class="ttc" id="aclassctrl_1_1FeedbackController_html_ae69e20388a049d8ac3420ca48a0165ea"><div class="ttname"><a href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">ctrl::FeedbackController::M</a></div><div class="ttdeci">Model M</div><div class="ttdoc">フィードフォワードモデル</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:124</div></div>
+<div class="ttc" id="aclassctrl_1_1FeedbackController_html_aeaf44b7af01318f313c6e2672412dcae"><div class="ttname"><a href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">ctrl::FeedbackController::G</a></div><div class="ttdeci">Gain G</div><div class="ttdoc">フィードバックゲイン</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:125</div></div>
+<div class="ttc" id="aclassctrl_1_1FeedbackController_html_af24fe8168e772be04cf11b6a723cddad"><div class="ttname"><a href="classctrl_1_1FeedbackController.html#af24fe8168e772be04cf11b6a723cddad">ctrl::FeedbackController::reset</a></div><div class="ttdeci">void reset()</div><div class="ttdoc">積分項をリセットする関数</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:68</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1FeedbackController_ab0dc8a3b788ba69f5af6c1ce8dd4a2b7_cgraph.png" border="0" usemap="#aclassctrl_1_1FeedbackController_ab0dc8a3b788ba69f5af6c1ce8dd4a2b7_cgraph" alt=""/></div>
+<map name="aclassctrl_1_1FeedbackController_ab0dc8a3b788ba69f5af6c1ce8dd4a2b7_cgraph" id="aclassctrl_1_1FeedbackController_ab0dc8a3b788ba69f5af6c1ce8dd4a2b7_cgraph">
+<area shape="rect" title="コンストラクタ" alt="" coords="5,5,183,47"/>
+<area shape="rect" href="classctrl_1_1FeedbackController.html#af24fe8168e772be04cf11b6a723cddad" title="積分項をリセットする関数" alt="" coords="231,5,408,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a7ec9edd80049eb54f968dba31a06830c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ec9edd80049eb54f968dba31a06830c">&#9670;&nbsp;</a></span>getBreakdown()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structctrl_1_1FeedbackController_1_1Breakdown.html">Breakdown</a>&amp; <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::getBreakdown </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>制御入力の内訳を取得する関数 </p>
+<div class="fragment"><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>; }</div>
+<div class="ttc" id="aclassctrl_1_1FeedbackController_html_a636d572fff512149607f2c7ec9a424c0"><div class="ttname"><a href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">ctrl::FeedbackController::bd</a></div><div class="ttdeci">Breakdown bd</div><div class="ttdoc">制御入力の計算内訳</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:126</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0f1c5dd3621f3d5f1d1b40341375a648"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f1c5dd3621f3d5f1d1b40341375a648">&#9670;&nbsp;</a></span>getErrorIntegral()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T&amp; <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::getErrorIntegral </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>エラー積分値を取得 </p>
+<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1FeedbackController.html#a2a8b876e281faa80ba3dba357a4774f7">e_int</a>; }</div>
+<div class="ttc" id="aclassctrl_1_1FeedbackController_html_a2a8b876e281faa80ba3dba357a4774f7"><div class="ttname"><a href="classctrl_1_1FeedbackController.html#a2a8b876e281faa80ba3dba357a4774f7">ctrl::FeedbackController::e_int</a></div><div class="ttdeci">T e_int</div><div class="ttdoc">追従誤差の積分値</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:127</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac0f942359717a25a216db353384b35ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0f942359717a25a216db353384b35ab">&#9670;&nbsp;</a></span>getGain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a>&amp; <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::getGain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フィードバックゲインを取得する関数 </p>
+<div class="fragment"><div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9c86973db40474811636370484d260f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c86973db40474811636370484d260f6">&#9670;&nbsp;</a></span>getModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a>&amp; <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::getModel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フィードフォワードモデルを取得する関数 </p>
+<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">M</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af24fe8168e772be04cf11b6a723cddad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af24fe8168e772be04cf11b6a723cddad">&#9670;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>積分項をリセットする関数 </p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;               {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a2a8b876e281faa80ba3dba357a4774f7">e_int</a> = T();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a> = Breakdown();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a77cd33c48e10301129887def316f6ba5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77cd33c48e10301129887def316f6ba5">&#9670;&nbsp;</a></span>setGain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::setGain </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a> &amp;&#160;</td>
+          <td class="paramname"><em>gain</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フィードバックゲインを設定する関数 </p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{ <a class="code" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a> = gain; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab2b73d399a8a4075ae9ccabd18e7552a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2b73d399a8a4075ae9ccabd18e7552a">&#9670;&nbsp;</a></span>setModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::setModel </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a> &amp;&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フィードフォワードモデルを設定する関数 </p>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;{ <a class="code" href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">M</a> = model; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4a432aaadc727ba1dac60cb0cbb26c3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a432aaadc727ba1dac60cb0cbb26c3d">&#9670;&nbsp;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const T&amp; <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::update </td>
+          <td>(</td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>r</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>dr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&#160;</td>
+          <td class="paramname"><em>dy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>Ts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>状態を更新して，次の制御入力を得る関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">r</td><td>目標値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>観測値 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dr</td><td>目標値の微分 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">dy</td><td>観測値の微分 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Ts</td><td>離散時間周期 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>次ステップでの制御入力 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                  {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">/* feedforward signal */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#a85b4c606aef2ab3168bbdaadcb6bedf6">ff</a> = (<a class="code" href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">M</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Model.html#a9c6284a6433f26cf4fd3f92c2f68c2e5">T1</a> * dr + r) / <a class="code" href="classctrl_1_1FeedbackController.html#ae69e20388a049d8ac3420ca48a0165ea">M</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Model.html#a0f5577bdfae344609b70f087941ed31c">K1</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">/* feedback signal */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#ad73976713e8cfe485bdf5609b6bae504">fbp</a> = <a class="code" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Gain.html#add40a4834fb545408c2e4542f9dddd3e">Kp</a> * (r - y);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#a5789e56a50e2da298c0bf331a100a3dd">fbi</a> = <a class="code" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Gain.html#af09def0903f43fbe62599e8dfc9187a9">Ki</a> * <a class="code" href="classctrl_1_1FeedbackController.html#a2a8b876e281faa80ba3dba357a4774f7">e_int</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#aa27b36981b762394a67b3a3926d74cd7">fbd</a> = <a class="code" href="classctrl_1_1FeedbackController.html#aeaf44b7af01318f313c6e2672412dcae">G</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Gain.html#af61b825819700c3690c2ef128f71575f">Kd</a> * (dr - dy);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#a897232027c505c85a15a64ceb19d0c74">fb</a> = <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#ad73976713e8cfe485bdf5609b6bae504">fbp</a> + <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#a5789e56a50e2da298c0bf331a100a3dd">fbi</a> + <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#aa27b36981b762394a67b3a3926d74cd7">fbd</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">/* calculate control input value */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#a94b32630c0389e36a99cb1e2c76c20ef">u</a> = <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#a85b4c606aef2ab3168bbdaadcb6bedf6">ff</a> + <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#a897232027c505c85a15a64ceb19d0c74">fb</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">/* integrate error */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="classctrl_1_1FeedbackController.html#a2a8b876e281faa80ba3dba357a4774f7">e_int</a> += (r - y) * Ts;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">/* complete */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1FeedbackController.html#a636d572fff512149607f2c7ec9a424c0">bd</a>.<a class="code" href="structctrl_1_1FeedbackController_1_1Breakdown.html#a94b32630c0389e36a99cb1e2c76c20ef">u</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  }</div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Breakdown_html_a5789e56a50e2da298c0bf331a100a3dd"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Breakdown.html#a5789e56a50e2da298c0bf331a100a3dd">ctrl::FeedbackController::Breakdown::fbi</a></div><div class="ttdeci">T fbi</div><div class="ttdoc">フィードバック成分のうち積分成分</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:52</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Breakdown_html_a85b4c606aef2ab3168bbdaadcb6bedf6"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Breakdown.html#a85b4c606aef2ab3168bbdaadcb6bedf6">ctrl::FeedbackController::Breakdown::ff</a></div><div class="ttdeci">T ff</div><div class="ttdoc">フィードフォワード成分</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:49</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Breakdown_html_a897232027c505c85a15a64ceb19d0c74"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Breakdown.html#a897232027c505c85a15a64ceb19d0c74">ctrl::FeedbackController::Breakdown::fb</a></div><div class="ttdeci">T fb</div><div class="ttdoc">フィードバック成分</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:50</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Breakdown_html_a94b32630c0389e36a99cb1e2c76c20ef"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Breakdown.html#a94b32630c0389e36a99cb1e2c76c20ef">ctrl::FeedbackController::Breakdown::u</a></div><div class="ttdeci">T u</div><div class="ttdoc">成分の総和</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:54</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Breakdown_html_aa27b36981b762394a67b3a3926d74cd7"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Breakdown.html#aa27b36981b762394a67b3a3926d74cd7">ctrl::FeedbackController::Breakdown::fbd</a></div><div class="ttdeci">T fbd</div><div class="ttdoc">フィードバック成分のうち微分成分</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:53</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Breakdown_html_ad73976713e8cfe485bdf5609b6bae504"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Breakdown.html#ad73976713e8cfe485bdf5609b6bae504">ctrl::FeedbackController::Breakdown::fbp</a></div><div class="ttdeci">T fbp</div><div class="ttdoc">フィードバック成分のうち比例成分</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:51</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Gain_html_add40a4834fb545408c2e4542f9dddd3e"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Gain.html#add40a4834fb545408c2e4542f9dddd3e">ctrl::FeedbackController::Gain::Kp</a></div><div class="ttdeci">T Kp</div><div class="ttdoc">フィードバック比例ゲイン</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:40</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Gain_html_af09def0903f43fbe62599e8dfc9187a9"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Gain.html#af09def0903f43fbe62599e8dfc9187a9">ctrl::FeedbackController::Gain::Ki</a></div><div class="ttdeci">T Ki</div><div class="ttdoc">フィードバック積分ゲイン</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:41</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Gain_html_af61b825819700c3690c2ef128f71575f"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Gain.html#af61b825819700c3690c2ef128f71575f">ctrl::FeedbackController::Gain::Kd</a></div><div class="ttdeci">T Kd</div><div class="ttdoc">フィードバック微分ゲイン</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:42</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Model_html_a0f5577bdfae344609b70f087941ed31c"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Model.html#a0f5577bdfae344609b70f087941ed31c">ctrl::FeedbackController::Model::K1</a></div><div class="ttdeci">T K1</div><div class="ttdoc">1次モデルの定常ゲイン (使用しない場合は 1 とすること)</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:29</div></div>
+<div class="ttc" id="astructctrl_1_1FeedbackController_1_1Model_html_a9c6284a6433f26cf4fd3f92c2f68c2e5"><div class="ttname"><a href="structctrl_1_1FeedbackController_1_1Model.html#a9c6284a6433f26cf4fd3f92c2f68c2e5">ctrl::FeedbackController::Model::T1</a></div><div class="ttdeci">T T1</div><div class="ttdoc">1次モデルの時定数 (使用しない場合は 0 とすること)</div><div class="ttdef"><b>Definition:</b> feedback_controller.h:30</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a636d572fff512149607f2c7ec9a424c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a636d572fff512149607f2c7ec9a424c0">&#9670;&nbsp;</a></span>bd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structctrl_1_1FeedbackController_1_1Breakdown.html">Breakdown</a> <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::bd</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>制御入力の計算内訳 </p>
+
+</div>
+</div>
+<a id="a2a8b876e281faa80ba3dba357a4774f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a8b876e281faa80ba3dba357a4774f7">&#9670;&nbsp;</a></span>e_int</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::e_int</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>追従誤差の積分値 </p>
+
+</div>
+</div>
+<a id="aeaf44b7af01318f313c6e2672412dcae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf44b7af01318f313c6e2672412dcae">&#9670;&nbsp;</a></span>G</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structctrl_1_1FeedbackController_1_1Gain.html">Gain</a> <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::G</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フィードバックゲイン </p>
+
+</div>
+</div>
+<a id="ae69e20388a049d8ac3420ca48a0165ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae69e20388a049d8ac3420ca48a0165ea">&#9670;&nbsp;</a></span>M</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structctrl_1_1FeedbackController_1_1Model.html">Model</a> <a class="el" href="classctrl_1_1FeedbackController.html">ctrl::FeedbackController</a>&lt; T &gt;::M</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フィードフォワードモデル </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>ctrl/<a class="el" href="feedback__controller_8h_source.html">feedback_controller.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

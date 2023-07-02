@@ -1,0 +1,7 @@
+<map id="ctrl::AccelDesigner::getTimeStamps" name="ctrl::AccelDesigner::getTimeStamps">
+<area shape="rect" id="node1" title="曲線加速の境界のタイムスタンプを取得" alt="" coords="5,74,149,115"/>
+<area shape="rect" id="node2" href="$classctrl_1_1AccelCurve.html#af9188276fd6b3bb1ef67077e17b69216" title="曲線加速の開始時刻 [s]" alt="" coords="197,5,349,32"/>
+<area shape="rect" id="node3" href="$classctrl_1_1AccelCurve.html#a9b82e5bce39f0af5cf7d0f952454a3f5" title="等加速度直線運動の開始時刻 [s]" alt="" coords="197,56,349,83"/>
+<area shape="rect" id="node4" href="$classctrl_1_1AccelCurve.html#a39cf88afd6be6f92a3442674b941a50b" title="等加速度直線運動の終了時刻 [s]" alt="" coords="197,107,349,133"/>
+<area shape="rect" id="node5" href="$classctrl_1_1AccelCurve.html#a715c71d64f80ed1827581ee782e4d5bc" title="曲線加速の終了時刻 [s]" alt="" coords="197,157,349,184"/>
+</map>

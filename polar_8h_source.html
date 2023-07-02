@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl/polar.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_60c668f4b51723b2f4c482e06fdf6f37.html">ctrl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">polar.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="polar_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;ostream&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacectrl.html">ctrl</a> {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html">   17</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structctrl_1_1Polar.html">Polar</a> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">   18</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>;  <span class="comment">//&lt; translation [m]</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">   19</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>;  <span class="comment">//&lt; rotation [rad]</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#ac5589c0d721468961515a40242e5ae4d">   22</a></span>&#160;  constexpr <a class="code" href="structctrl_1_1Polar.html#ac5589c0d721468961515a40242e5ae4d">Polar</a>() : <a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>(0), <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>(0) {}</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#ac99f2d80012ae2efcb122593171fa49f">   23</a></span>&#160;  constexpr <a class="code" href="structctrl_1_1Polar.html#ac99f2d80012ae2efcb122593171fa49f">Polar</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>, <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>) : <a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>(<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>), <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>(<a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>) {}</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#add5fe62316b51da11d66f1c2c461d162">   24</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="structctrl_1_1Polar.html#add5fe62316b51da11d66f1c2c461d162">clear</a>() { <a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> = <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> = 0; }</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a38bf101eba16dc2ebb7dac964767a8e4">   25</a></span>&#160;  <span class="keyword">auto</span>&amp; <a class="code" href="structctrl_1_1Polar.html#a38bf101eba16dc2ebb7dac964767a8e4">operator+=</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; o) { <span class="keywordflow">return</span> <a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> += o.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>, <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> += o.<a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>, *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a3255f6966d65ef18e6a4238534bd9dbc">   26</a></span>&#160;  <span class="keyword">auto</span>&amp; <a class="code" href="structctrl_1_1Polar.html#a3255f6966d65ef18e6a4238534bd9dbc">operator-=</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; o) { <span class="keywordflow">return</span> <a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> -= o.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>, <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> -= o.<a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>, *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a9fd27aff6c92e186a7de8ea1e0289ad8">   27</a></span>&#160;  <a class="code" href="structctrl_1_1Polar.html">Polar</a> <a class="code" href="structctrl_1_1Polar.html#a9fd27aff6c92e186a7de8ea1e0289ad8">operator+</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; o)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> {<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> + o.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>, <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> + o.<a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>}; }</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a00ab9a41fe348fc97ef313cc6d0120a9">   28</a></span>&#160;  <a class="code" href="structctrl_1_1Polar.html">Polar</a> <a class="code" href="structctrl_1_1Polar.html#a00ab9a41fe348fc97ef313cc6d0120a9">operator-</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; o)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> {<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> - o.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>, <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> - o.<a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>}; }</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a295d475ef6cc02a1f0631a4776d431e5">   29</a></span>&#160;  <a class="code" href="structctrl_1_1Polar.html">Polar</a> <a class="code" href="structctrl_1_1Polar.html#a295d475ef6cc02a1f0631a4776d431e5">operator*</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; o)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> {<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> * o.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>, <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> * o.<a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>}; }</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#ac3019d8d6c03d84748524cd04bbc0122">   30</a></span>&#160;  <a class="code" href="structctrl_1_1Polar.html">Polar</a> <a class="code" href="structctrl_1_1Polar.html#ac3019d8d6c03d84748524cd04bbc0122">operator/</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; o)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> {<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> / o.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a>, <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> / o.<a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a>}; }</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#aa1a0857dd273c88cfb0c6a155abbe0df">   31</a></span>&#160;  <a class="code" href="structctrl_1_1Polar.html">Polar</a> <a class="code" href="structctrl_1_1Polar.html#aa1a0857dd273c88cfb0c6a155abbe0df">operator*</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> k)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> {<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> * k, <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> * k}; }</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a3a2a146d508cd515a647b65820431ae4">   32</a></span>&#160;  <a class="code" href="structctrl_1_1Polar.html">Polar</a> <a class="code" href="structctrl_1_1Polar.html#a3a2a146d508cd515a647b65820431ae4">operator/</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> k)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> {<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> / k, <a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> / k}; }</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structctrl_1_1Polar.html#a10fb8119dac480d31da3fafcc73ba285">   33</a></span>&#160;  <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="structctrl_1_1Polar.html#a10fb8119dac480d31da3fafcc73ba285">operator&lt;&lt;</a>(std::ostream&amp; os, <span class="keyword">const</span> <a class="code" href="structctrl_1_1Polar.html">Polar</a>&amp; o) {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> os &lt;&lt; <span class="stringliteral">&quot;(&quot;</span> &lt;&lt; o.<a class="code" href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">tra</a> &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; o.<a class="code" href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">rot</a> &lt;&lt; <span class="stringliteral">&quot;)&quot;</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}  <span class="comment">// namespace ctrl</span></div>
+<div class="ttc" id="anamespacectrl_html"><div class="ttname"><a href="namespacectrl.html">ctrl</a></div><div class="ttdoc">制御関係の名前空間</div><div class="ttdef"><b>Definition:</b> accel_curve.h:54</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html"><div class="ttname"><a href="structctrl_1_1Polar.html">ctrl::Polar</a></div><div class="ttdoc">並進と回転の座標</div><div class="ttdef"><b>Definition:</b> polar.h:17</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a00ab9a41fe348fc97ef313cc6d0120a9"><div class="ttname"><a href="structctrl_1_1Polar.html#a00ab9a41fe348fc97ef313cc6d0120a9">ctrl::Polar::operator-</a></div><div class="ttdeci">Polar operator-(const Polar &amp;o) const</div><div class="ttdef"><b>Definition:</b> polar.h:28</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a10fb8119dac480d31da3fafcc73ba285"><div class="ttname"><a href="structctrl_1_1Polar.html#a10fb8119dac480d31da3fafcc73ba285">ctrl::Polar::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const Polar &amp;o)</div><div class="ttdef"><b>Definition:</b> polar.h:33</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a295d475ef6cc02a1f0631a4776d431e5"><div class="ttname"><a href="structctrl_1_1Polar.html#a295d475ef6cc02a1f0631a4776d431e5">ctrl::Polar::operator*</a></div><div class="ttdeci">Polar operator*(const Polar &amp;o) const</div><div class="ttdef"><b>Definition:</b> polar.h:29</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a3255f6966d65ef18e6a4238534bd9dbc"><div class="ttname"><a href="structctrl_1_1Polar.html#a3255f6966d65ef18e6a4238534bd9dbc">ctrl::Polar::operator-=</a></div><div class="ttdeci">auto &amp; operator-=(const Polar &amp;o)</div><div class="ttdef"><b>Definition:</b> polar.h:26</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a3474e070d6b8e285ff7289413cd51f58"><div class="ttname"><a href="structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58">ctrl::Polar::rot</a></div><div class="ttdeci">float rot</div><div class="ttdef"><b>Definition:</b> polar.h:19</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a38bf101eba16dc2ebb7dac964767a8e4"><div class="ttname"><a href="structctrl_1_1Polar.html#a38bf101eba16dc2ebb7dac964767a8e4">ctrl::Polar::operator+=</a></div><div class="ttdeci">auto &amp; operator+=(const Polar &amp;o)</div><div class="ttdef"><b>Definition:</b> polar.h:25</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a3a2a146d508cd515a647b65820431ae4"><div class="ttname"><a href="structctrl_1_1Polar.html#a3a2a146d508cd515a647b65820431ae4">ctrl::Polar::operator/</a></div><div class="ttdeci">Polar operator/(const float k) const</div><div class="ttdef"><b>Definition:</b> polar.h:32</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a93a9e17c305c87df369bd58b26aad025"><div class="ttname"><a href="structctrl_1_1Polar.html#a93a9e17c305c87df369bd58b26aad025">ctrl::Polar::tra</a></div><div class="ttdeci">float tra</div><div class="ttdef"><b>Definition:</b> polar.h:18</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_a9fd27aff6c92e186a7de8ea1e0289ad8"><div class="ttname"><a href="structctrl_1_1Polar.html#a9fd27aff6c92e186a7de8ea1e0289ad8">ctrl::Polar::operator+</a></div><div class="ttdeci">Polar operator+(const Polar &amp;o) const</div><div class="ttdef"><b>Definition:</b> polar.h:27</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_aa1a0857dd273c88cfb0c6a155abbe0df"><div class="ttname"><a href="structctrl_1_1Polar.html#aa1a0857dd273c88cfb0c6a155abbe0df">ctrl::Polar::operator*</a></div><div class="ttdeci">Polar operator*(const float k) const</div><div class="ttdef"><b>Definition:</b> polar.h:31</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_ac3019d8d6c03d84748524cd04bbc0122"><div class="ttname"><a href="structctrl_1_1Polar.html#ac3019d8d6c03d84748524cd04bbc0122">ctrl::Polar::operator/</a></div><div class="ttdeci">Polar operator/(const Polar &amp;o) const</div><div class="ttdef"><b>Definition:</b> polar.h:30</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_ac5589c0d721468961515a40242e5ae4d"><div class="ttname"><a href="structctrl_1_1Polar.html#ac5589c0d721468961515a40242e5ae4d">ctrl::Polar::Polar</a></div><div class="ttdeci">constexpr Polar()</div><div class="ttdef"><b>Definition:</b> polar.h:22</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_ac99f2d80012ae2efcb122593171fa49f"><div class="ttname"><a href="structctrl_1_1Polar.html#ac99f2d80012ae2efcb122593171fa49f">ctrl::Polar::Polar</a></div><div class="ttdeci">constexpr Polar(const float tra, const float rot)</div><div class="ttdef"><b>Definition:</b> polar.h:23</div></div>
+<div class="ttc" id="astructctrl_1_1Polar_html_add5fe62316b51da11d66f1c2c461d162"><div class="ttname"><a href="structctrl_1_1Polar.html#add5fe62316b51da11d66f1c2c461d162">ctrl::Polar::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdef"><b>Definition:</b> polar.h:24</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

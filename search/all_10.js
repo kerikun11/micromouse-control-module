@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['u_94',['u',['../d1/d73/structctrl_1_1FeedbackController_1_1Breakdown.html#a94b32630c0389e36a99cb1e2c76c20ef',1,'ctrl::FeedbackController::Breakdown']]],
-  ['update_95',['update',['../d8/d0e/classctrl_1_1FeedbackController.html#a4a432aaadc727ba1dac60cb0cbb26c3d',1,'ctrl::FeedbackController::update()'],['../d9/dbe/classctrl_1_1slalom_1_1Trajectory.html#aef5cabb9cff7bd405b3cd8a70879112a',1,'ctrl::slalom::Trajectory::update()'],['../d9/d60/classctrl_1_1straight_1_1Trajectory.html#ac3c82b5ea48e6dc293eda9f5d6c8ab47',1,'ctrl::straight::Trajectory::update()'],['../dc/d23/classctrl_1_1TrajectoryTracker.html#adffafc25d4560bc9304086b515a8ac79',1,'ctrl::TrajectoryTracker::update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const State &amp;ref_s)'],['../dc/d23/classctrl_1_1TrajectoryTracker.html#a84986b8320998b312029d3888c5e4f72',1,'ctrl::TrajectoryTracker::update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const Pose &amp;ref_q, const Pose &amp;ref_dq, const Pose &amp;ref_ddq, const Pose &amp;ref_dddq)']]]
+  ['readme_2emd_96',['README.md',['../README_8md.html',1,'']]],
+  ['reset_97',['reset',['../classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8',1,'ctrl::AccelCurve::reset()'],['../classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc',1,'ctrl::AccelDesigner::reset()'],['../classctrl_1_1FeedbackController.html#af24fe8168e772be04cf11b6a723cddad',1,'ctrl::FeedbackController::reset()'],['../classctrl_1_1slalom_1_1Trajectory.html#a4f8cfb2453f73fc27cb5708a2741a54a',1,'ctrl::slalom::Trajectory::reset()'],['../classctrl_1_1TrajectoryTracker.html#a651ed72d050a7567f2dee2493d0272e0',1,'ctrl::TrajectoryTracker::reset(const float vs=0)']]],
+  ['result_98',['Result',['../structctrl_1_1TrajectoryTracker_1_1Result.html',1,'ctrl::TrajectoryTracker']]],
+  ['rot_99',['rot',['../structctrl_1_1Polar.html#a3474e070d6b8e285ff7289413cd51f58',1,'ctrl::Polar']]],
+  ['rotate_100',['rotate',['../structctrl_1_1Pose.html#a42bc82044e1a7951c4a056cbe178f278',1,'ctrl::Pose']]]
 ];

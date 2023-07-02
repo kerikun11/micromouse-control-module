@@ -1,4 +1,0 @@
-<map id="ctrl::slalom::Shape" name="ctrl::slalom::Shape">
-<area shape="rect" id="node1" title="slalom::Shape スラロームの形状を表す構造体" alt="" coords="5,109,148,136"/>
-<area shape="rect" id="node2" href="$d3/d14/structctrl_1_1Pose.html" title="位置姿勢の座標" alt="" coords="35,5,118,32"/>
-</map>

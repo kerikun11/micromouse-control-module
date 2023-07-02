@@ -1,0 +1,1565 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl::AccelCurve クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacectrl.html">ctrl</a></li><li class="navelem"><a class="el" href="classctrl_1_1AccelCurve.html">AccelCurve</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="#friends">フレンド</a> &#124;
+<a href="classctrl_1_1AccelCurve-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">ctrl::AccelCurve クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>走行距離拘束のない曲線加速の軌道を生成するクラス  
+ <a href="classctrl_1_1AccelCurve.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="accel__curve_8h_source.html">accel_curve.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ae65a21577962c2e0e1113c0fb0c5505e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ae65a21577962c2e0e1113c0fb0c5505e">AccelCurve</a> (const float j_max, const float a_max, const float v_start, const float <a class="el" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a>)</td></tr>
+<tr class="memdesc:ae65a21577962c2e0e1113c0fb0c5505e"><td class="mdescLeft">&#160;</td><td class="mdescRight">初期化付きのコンストラクタ  <a href="classctrl_1_1AccelCurve.html#ae65a21577962c2e0e1113c0fb0c5505e">[詳解]</a><br /></td></tr>
+<tr class="separator:ae65a21577962c2e0e1113c0fb0c5505e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9d8af975d3afdb4e0979048003987ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ac9d8af975d3afdb4e0979048003987ed">AccelCurve</a> ()</td></tr>
+<tr class="memdesc:ac9d8af975d3afdb4e0979048003987ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">とりあえずインスタンス化を行う空のコンストラクタ  <a href="classctrl_1_1AccelCurve.html#ac9d8af975d3afdb4e0979048003987ed">[詳解]</a><br /></td></tr>
+<tr class="separator:ac9d8af975d3afdb4e0979048003987ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab97fadb44bc1606c4ae5ab495e3a6ec8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8">reset</a> (const float j_max, const float a_max, const float v_start, const float <a class="el" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a>)</td></tr>
+<tr class="memdesc:ab97fadb44bc1606c4ae5ab495e3a6ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">引数の拘束条件から曲線を生成する関数  <a href="classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8">[詳解]</a><br /></td></tr>
+<tr class="separator:ab97fadb44bc1606c4ae5ab495e3a6ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad137862ec428ec89d4fdbda323265c65"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ad137862ec428ec89d4fdbda323265c65">j</a> (const float t) const</td></tr>
+<tr class="memdesc:ad137862ec428ec89d4fdbda323265c65"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数  <a href="classctrl_1_1AccelCurve.html#ad137862ec428ec89d4fdbda323265c65">[詳解]</a><br /></td></tr>
+<tr class="separator:ad137862ec428ec89d4fdbda323265c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b3a641b8186c429dfd3690d108e2507"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> (const float t) const</td></tr>
+<tr class="memdesc:a1b3a641b8186c429dfd3690d108e2507"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意の時刻 t [s] における加速度 a [m/s/s] を返す関数  <a href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">[詳解]</a><br /></td></tr>
+<tr class="separator:a1b3a641b8186c429dfd3690d108e2507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4d9fd2b336b215dc2d63836b0d98abf"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf">v</a> (const float t) const</td></tr>
+<tr class="memdesc:ad4d9fd2b336b215dc2d63836b0d98abf"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意の時刻 t [s] における速度 v [m/s] を返す関数  <a href="classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf">[詳解]</a><br /></td></tr>
+<tr class="separator:ad4d9fd2b336b215dc2d63836b0d98abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab761cd51f88088d15431b6999a055e3b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ab761cd51f88088d15431b6999a055e3b">x</a> (const float t) const</td></tr>
+<tr class="memdesc:ab761cd51f88088d15431b6999a055e3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">任意の時刻 t [s] における位置 x [m] を返す関数  <a href="classctrl_1_1AccelCurve.html#ab761cd51f88088d15431b6999a055e3b">[詳解]</a><br /></td></tr>
+<tr class="separator:ab761cd51f88088d15431b6999a055e3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf2cd866d84dd84f0abc0698f7c0b7a2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#abf2cd866d84dd84f0abc0698f7c0b7a2">t_end</a> () const</td></tr>
+<tr class="memdesc:abf2cd866d84dd84f0abc0698f7c0b7a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">終点時刻 [s]  <a href="classctrl_1_1AccelCurve.html#abf2cd866d84dd84f0abc0698f7c0b7a2">[詳解]</a><br /></td></tr>
+<tr class="separator:abf2cd866d84dd84f0abc0698f7c0b7a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af73825bac09e7f049919931538e0dc2d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a> () const</td></tr>
+<tr class="memdesc:af73825bac09e7f049919931538e0dc2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">終点速度 [m/s]  <a href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">[詳解]</a><br /></td></tr>
+<tr class="separator:af73825bac09e7f049919931538e0dc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9d3f42f4a47ed867575e823faefb300"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#aa9d3f42f4a47ed867575e823faefb300">x_end</a> () const</td></tr>
+<tr class="memdesc:aa9d3f42f4a47ed867575e823faefb300"><td class="mdescLeft">&#160;</td><td class="mdescRight">終点位置 [m]  <a href="classctrl_1_1AccelCurve.html#aa9d3f42f4a47ed867575e823faefb300">[詳解]</a><br /></td></tr>
+<tr class="separator:aa9d3f42f4a47ed867575e823faefb300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9188276fd6b3bb1ef67077e17b69216"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#af9188276fd6b3bb1ef67077e17b69216">t_0</a> () const</td></tr>
+<tr class="memdesc:af9188276fd6b3bb1ef67077e17b69216"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線加速の開始時刻 [s]  <a href="classctrl_1_1AccelCurve.html#af9188276fd6b3bb1ef67077e17b69216">[詳解]</a><br /></td></tr>
+<tr class="separator:af9188276fd6b3bb1ef67077e17b69216"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b82e5bce39f0af5cf7d0f952454a3f5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a9b82e5bce39f0af5cf7d0f952454a3f5">t_1</a> () const</td></tr>
+<tr class="memdesc:a9b82e5bce39f0af5cf7d0f952454a3f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">等加速度直線運動の開始時刻 [s]  <a href="classctrl_1_1AccelCurve.html#a9b82e5bce39f0af5cf7d0f952454a3f5">[詳解]</a><br /></td></tr>
+<tr class="separator:a9b82e5bce39f0af5cf7d0f952454a3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39cf88afd6be6f92a3442674b941a50b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a39cf88afd6be6f92a3442674b941a50b">t_2</a> () const</td></tr>
+<tr class="memdesc:a39cf88afd6be6f92a3442674b941a50b"><td class="mdescLeft">&#160;</td><td class="mdescRight">等加速度直線運動の終了時刻 [s]  <a href="classctrl_1_1AccelCurve.html#a39cf88afd6be6f92a3442674b941a50b">[詳解]</a><br /></td></tr>
+<tr class="separator:a39cf88afd6be6f92a3442674b941a50b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a715c71d64f80ed1827581ee782e4d5bc"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a715c71d64f80ed1827581ee782e4d5bc">t_3</a> () const</td></tr>
+<tr class="memdesc:a715c71d64f80ed1827581ee782e4d5bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">曲線加速の終了時刻 [s]  <a href="classctrl_1_1AccelCurve.html#a715c71d64f80ed1827581ee782e4d5bc">[詳解]</a><br /></td></tr>
+<tr class="separator:a715c71d64f80ed1827581ee782e4d5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0afbd006c12c3e1a8cbae361cbb70f7"><td class="memItemLeft" align="right" valign="top">const std::array&lt; float, 4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ad0afbd006c12c3e1a8cbae361cbb70f7">getTimeStamps</a> () const</td></tr>
+<tr class="memdesc:ad0afbd006c12c3e1a8cbae361cbb70f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">境界のタイムスタンプをまとめて取得する関数  <a href="classctrl_1_1AccelCurve.html#ad0afbd006c12c3e1a8cbae361cbb70f7">[詳解]</a><br /></td></tr>
+<tr class="separator:ad0afbd006c12c3e1a8cbae361cbb70f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6d6c0546e644f73107fc2d128a40051"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ab6d6c0546e644f73107fc2d128a40051">printCsv</a> (std::ostream &amp;os, const float t_interval=1e-3f) const</td></tr>
+<tr class="memdesc:ab6d6c0546e644f73107fc2d128a40051"><td class="mdescLeft">&#160;</td><td class="mdescRight">std::ostream に軌道のcsvを出力する関数  <a href="classctrl_1_1AccelCurve.html#ab6d6c0546e644f73107fc2d128a40051">[詳解]</a><br /></td></tr>
+<tr class="separator:ab6d6c0546e644f73107fc2d128a40051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:adf43c07687d201eff50f2ce72cb00170"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#adf43c07687d201eff50f2ce72cb00170">calcReachableVelocityEnd</a> (const float j_max, const float a_max, const float vs, const float vt, const float d)</td></tr>
+<tr class="memdesc:adf43c07687d201eff50f2ce72cb00170"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行距離の拘束から達しうる終点速度を算出する関数  <a href="classctrl_1_1AccelCurve.html#adf43c07687d201eff50f2ce72cb00170">[詳解]</a><br /></td></tr>
+<tr class="separator:adf43c07687d201eff50f2ce72cb00170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e7e0e94ff792f8917a80f67779e2dac"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a4e7e0e94ff792f8917a80f67779e2dac">calcReachableVelocityMax</a> (const float j_max, const float a_max, const float vs, const float ve, const float d)</td></tr>
+<tr class="memdesc:a4e7e0e94ff792f8917a80f67779e2dac"><td class="mdescLeft">&#160;</td><td class="mdescRight">走行距離の拘束から達しうる最大速度を算出する関数  <a href="classctrl_1_1AccelCurve.html#a4e7e0e94ff792f8917a80f67779e2dac">[詳解]</a><br /></td></tr>
+<tr class="separator:a4e7e0e94ff792f8917a80f67779e2dac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe9b6204f40c2bfcdbc78a622856e52d"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#afe9b6204f40c2bfcdbc78a622856e52d">calcDistanceFromVelocityStartToEnd</a> (const float j_max, const float a_max, const float v_start, const float <a class="el" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a>)</td></tr>
+<tr class="memdesc:afe9b6204f40c2bfcdbc78a622856e52d"><td class="mdescLeft">&#160;</td><td class="mdescRight">速度差の拘束から達しうる変位を算出する関数  <a href="classctrl_1_1AccelCurve.html#afe9b6204f40c2bfcdbc78a622856e52d">[詳解]</a><br /></td></tr>
+<tr class="separator:afe9b6204f40c2bfcdbc78a622856e52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:aa40f8dd8a49ecd8c301a396feaa752ea"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a></td></tr>
+<tr class="memdesc:aa40f8dd8a49ecd8c301a396feaa752ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">躍度定数 [m/s/s/s]  <a href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">[詳解]</a><br /></td></tr>
+<tr class="separator:aa40f8dd8a49ecd8c301a396feaa752ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ae269b0d420532ee42fd29fcced22de"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a></td></tr>
+<tr class="memdesc:a0ae269b0d420532ee42fd29fcced22de"><td class="mdescLeft">&#160;</td><td class="mdescRight">加速度定数 [m/s/s]  <a href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">[詳解]</a><br /></td></tr>
+<tr class="separator:a0ae269b0d420532ee42fd29fcced22de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afec0e015c170016288269ba559c17f7c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a></td></tr>
+<tr class="separator:afec0e015c170016288269ba559c17f7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f2abf5505ba4f9b6926b1438fd5bbbe"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a></td></tr>
+<tr class="separator:a2f2abf5505ba4f9b6926b1438fd5bbbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a225fbdce193c4a7228692ddcf73bd7a5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a></td></tr>
+<tr class="separator:a225fbdce193c4a7228692ddcf73bd7a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abac5acfdaa9b6188379b3354f87077e2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a></td></tr>
+<tr class="memdesc:abac5acfdaa9b6188379b3354f87077e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">時刻定数 [s]  <a href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">[詳解]</a><br /></td></tr>
+<tr class="separator:abac5acfdaa9b6188379b3354f87077e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9877ad9aa656ad74a3ca7a65207cc1d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a></td></tr>
+<tr class="separator:ae9877ad9aa656ad74a3ca7a65207cc1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fc333258045f78a665ef1966b5b8fa2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a></td></tr>
+<tr class="separator:a7fc333258045f78a665ef1966b5b8fa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37a66908fd4c7d38762255bb09e10ba"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ab37a66908fd4c7d38762255bb09e10ba">v2</a></td></tr>
+<tr class="separator:ab37a66908fd4c7d38762255bb09e10ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c451f3199b3113b85f53cb064546e3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a></td></tr>
+<tr class="memdesc:ad2c451f3199b3113b85f53cb064546e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">速度定数 [m/s]  <a href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">[詳解]</a><br /></td></tr>
+<tr class="separator:ad2c451f3199b3113b85f53cb064546e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3efb6ee4a7ad047d7b2d7ac7b080bc7c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a></td></tr>
+<tr class="separator:a3efb6ee4a7ad047d7b2d7ac7b080bc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4f548814d42880bb4d31261bd3fcb0a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#af4f548814d42880bb4d31261bd3fcb0a">x1</a></td></tr>
+<tr class="separator:af4f548814d42880bb4d31261bd3fcb0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af215ce99dac4cf5d0fb5dd18c5216ee0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#af215ce99dac4cf5d0fb5dd18c5216ee0">x2</a></td></tr>
+<tr class="separator:af215ce99dac4cf5d0fb5dd18c5216ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0091a0442cd827c582bccffe9739f957"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">x3</a></td></tr>
+<tr class="memdesc:a0091a0442cd827c582bccffe9739f957"><td class="mdescLeft">&#160;</td><td class="mdescRight">位置定数 [m]  <a href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">[詳解]</a><br /></td></tr>
+<tr class="separator:a0091a0442cd827c582bccffe9739f957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+フレンド</h2></td></tr>
+<tr class="memitem:a890cb8fafdcc5e96c71efe23aa36d115"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1AccelCurve.html#a890cb8fafdcc5e96c71efe23aa36d115">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classctrl_1_1AccelCurve.html">AccelCurve</a> &amp;obj)</td></tr>
+<tr class="memdesc:a890cb8fafdcc5e96c71efe23aa36d115"><td class="mdescLeft">&#160;</td><td class="mdescRight">情報の表示  <a href="classctrl_1_1AccelCurve.html#a890cb8fafdcc5e96c71efe23aa36d115">[詳解]</a><br /></td></tr>
+<tr class="separator:a890cb8fafdcc5e96c71efe23aa36d115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>走行距離拘束のない曲線加速の軌道を生成するクラス </p>
+<ul>
+<li>引数の拘束に従って加速曲線を生成する</li>
+<li>始点速度と終点速度を滑らかにつなぐ</li>
+<li>移動距離の拘束はない</li>
+<li>始点速度および終点速度は，正でも負でも可 </li>
+</ul>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="ae65a21577962c2e0e1113c0fb0c5505e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae65a21577962c2e0e1113c0fb0c5505e">&#9670;&nbsp;</a></span>AccelCurve() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctrl::AccelCurve::AccelCurve </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>j_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>a_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>v_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>v_end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>初期化付きのコンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a_max</td><td>最大加速度の大きさ [m/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_start</td><td>始点速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_end</td><td>終点速度 [m/s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8">reset</a>(j_max, a_max, v_start, <a class="code" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  }</div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_ab97fadb44bc1606c4ae5ab495e3a6ec8"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8">ctrl::AccelCurve::reset</a></div><div class="ttdeci">void reset(const float j_max, const float a_max, const float v_start, const float v_end)</div><div class="ttdoc">引数の拘束条件から曲線を生成する関数</div><div class="ttdef"><b>Definition:</b> accel_curve.h:92</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_af73825bac09e7f049919931538e0dc2d"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">ctrl::AccelCurve::v_end</a></div><div class="ttdeci">float v_end() const</div><div class="ttdoc">終点速度 [m/s]</div><div class="ttdef"><b>Definition:</b> accel_curve.h:202</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1AccelCurve_ae65a21577962c2e0e1113c0fb0c5505e_cgraph.png" border="0" usemap="#aclassctrl_1_1AccelCurve_ae65a21577962c2e0e1113c0fb0c5505e_cgraph" alt=""/></div>
+<map name="aclassctrl_1_1AccelCurve_ae65a21577962c2e0e1113c0fb0c5505e_cgraph" id="aclassctrl_1_1AccelCurve_ae65a21577962c2e0e1113c0fb0c5505e_cgraph">
+<area shape="rect" title="初期化付きのコンストラクタ" alt="" coords="5,31,211,57"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8" title="引数の拘束条件から曲線を生成する関数" alt="" coords="259,5,424,32"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d" title="終点速度 [m/s]" alt="" coords="472,31,643,57"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac9d8af975d3afdb4e0979048003987ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9d8af975d3afdb4e0979048003987ed">&#9670;&nbsp;</a></span>AccelCurve() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctrl::AccelCurve::AccelCurve </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>とりあえずインスタンス化を行う空のコンストラクタ </p>
+<dl class="section attention"><dt>注意</dt><dd>別途 <a class="el" href="classctrl_1_1AccelCurve.html#ab97fadb44bc1606c4ae5ab495e3a6ec8" title="引数の拘束条件から曲線を生成する関数">reset()</a> により初期化すること． </dd></dl>
+<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;               {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> = <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a> = <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a> = <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#ab37a66908fd4c7d38762255bb09e10ba">v2</a> = <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a> = <a class="code" href="classctrl_1_1AccelCurve.html#af4f548814d42880bb4d31261bd3fcb0a">x1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#af215ce99dac4cf5d0fb5dd18c5216ee0">x2</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">x3</a> = 0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  }</div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_a0091a0442cd827c582bccffe9739f957"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">ctrl::AccelCurve::x3</a></div><div class="ttdeci">float x3</div><div class="ttdoc">位置定数 [m]</div><div class="ttdef"><b>Definition:</b> accel_curve.h:369</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_a0ae269b0d420532ee42fd29fcced22de"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">ctrl::AccelCurve::am</a></div><div class="ttdeci">float am</div><div class="ttdoc">加速度定数 [m/s/s]</div><div class="ttdef"><b>Definition:</b> accel_curve.h:366</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_a225fbdce193c4a7228692ddcf73bd7a5"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">ctrl::AccelCurve::t2</a></div><div class="ttdeci">float t2</div><div class="ttdef"><b>Definition:</b> accel_curve.h:367</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_a2f2abf5505ba4f9b6926b1438fd5bbbe"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">ctrl::AccelCurve::t1</a></div><div class="ttdeci">float t1</div><div class="ttdef"><b>Definition:</b> accel_curve.h:367</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_a3efb6ee4a7ad047d7b2d7ac7b080bc7c"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">ctrl::AccelCurve::x0</a></div><div class="ttdeci">float x0</div><div class="ttdef"><b>Definition:</b> accel_curve.h:369</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_a7fc333258045f78a665ef1966b5b8fa2"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">ctrl::AccelCurve::v1</a></div><div class="ttdeci">float v1</div><div class="ttdef"><b>Definition:</b> accel_curve.h:368</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_aa40f8dd8a49ecd8c301a396feaa752ea"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">ctrl::AccelCurve::jm</a></div><div class="ttdeci">float jm</div><div class="ttdoc">躍度定数 [m/s/s/s]</div><div class="ttdef"><b>Definition:</b> accel_curve.h:365</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_ab37a66908fd4c7d38762255bb09e10ba"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#ab37a66908fd4c7d38762255bb09e10ba">ctrl::AccelCurve::v2</a></div><div class="ttdeci">float v2</div><div class="ttdef"><b>Definition:</b> accel_curve.h:368</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_abac5acfdaa9b6188379b3354f87077e2"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">ctrl::AccelCurve::t3</a></div><div class="ttdeci">float t3</div><div class="ttdoc">時刻定数 [s]</div><div class="ttdef"><b>Definition:</b> accel_curve.h:367</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_ad2c451f3199b3113b85f53cb064546e3"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">ctrl::AccelCurve::v3</a></div><div class="ttdeci">float v3</div><div class="ttdoc">速度定数 [m/s]</div><div class="ttdef"><b>Definition:</b> accel_curve.h:368</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_ae9877ad9aa656ad74a3ca7a65207cc1d"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">ctrl::AccelCurve::v0</a></div><div class="ttdeci">float v0</div><div class="ttdef"><b>Definition:</b> accel_curve.h:368</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_af215ce99dac4cf5d0fb5dd18c5216ee0"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#af215ce99dac4cf5d0fb5dd18c5216ee0">ctrl::AccelCurve::x2</a></div><div class="ttdeci">float x2</div><div class="ttdef"><b>Definition:</b> accel_curve.h:369</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_af4f548814d42880bb4d31261bd3fcb0a"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#af4f548814d42880bb4d31261bd3fcb0a">ctrl::AccelCurve::x1</a></div><div class="ttdeci">float x1</div><div class="ttdef"><b>Definition:</b> accel_curve.h:369</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_afec0e015c170016288269ba559c17f7c"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">ctrl::AccelCurve::t0</a></div><div class="ttdeci">float t0</div><div class="ttdef"><b>Definition:</b> accel_curve.h:367</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a1b3a641b8186c429dfd3690d108e2507"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b3a641b8186c429dfd3690d108e2507">&#9670;&nbsp;</a></span>a()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::a </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>任意の時刻 t [s] における加速度 a [m/s/s] を返す関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">時刻</td><td>t [s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>加速度 [m/s/s] </dd></dl>
+<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                               {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>)</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;      <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> * (t - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a>)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      <span class="keywordflow">return</span> -<a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> * (t - <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="afe9b6204f40c2bfcdbc78a622856e52d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe9b6204f40c2bfcdbc78a622856e52d">&#9670;&nbsp;</a></span>calcDistanceFromVelocityStartToEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float ctrl::AccelCurve::calcDistanceFromVelocityStartToEnd </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>j_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>a_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>v_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>v_end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>速度差の拘束から達しうる変位を算出する関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a_max</td><td>最大加速度の大きさ [m/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_start</td><td>始点速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_end</td><td>終点速度 [m/s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>d 変位 [m] </dd></dl>
+<div class="fragment"><div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                                                                     {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="comment">/* キャッシュ */</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> ve_minus_vs = <a class="code" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a> - v_start;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="comment">/* 符号付きで代入 */</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> = (ve_minus_vs &gt; 0) ? a_max : -a_max;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> = (ve_minus_vs &gt; 0) ? j_max : -j_max;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="comment">/* 速度が曲線となる部分の時間を決定 */</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> tc = a_max / j_max;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="comment">/* 等加速度直線運動の時間を決定 */</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> tm = ve_minus_vs / <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> - tc;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="comment">/* 始点から終点までの時間を決定 */</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> t_all =</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        (tm &gt; 0) ? (tc + tm + tc) : (2 * std::sqrt(ve_minus_vs / <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a>));</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="keywordflow">return</span> (v_start + <a class="code" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a>) / 2 * t_all;  <span class="comment">//&lt; 速度グラフの面積により</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  }</div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1AccelCurve_afe9b6204f40c2bfcdbc78a622856e52d_cgraph.png" border="0" usemap="#aclassctrl_1_1AccelCurve_afe9b6204f40c2bfcdbc78a622856e52d_cgraph" alt=""/></div>
+<map name="aclassctrl_1_1AccelCurve_afe9b6204f40c2bfcdbc78a622856e52d_cgraph" id="aclassctrl_1_1AccelCurve_afe9b6204f40c2bfcdbc78a622856e52d_cgraph">
+<area shape="rect" title="速度差の拘束から達しうる変位を算出する関数" alt="" coords="5,5,220,47"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d" title="終点速度 [m/s]" alt="" coords="268,13,439,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adf43c07687d201eff50f2ce72cb00170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf43c07687d201eff50f2ce72cb00170">&#9670;&nbsp;</a></span>calcReachableVelocityEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float ctrl::AccelCurve::calcReachableVelocityEnd </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>j_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>a_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>vs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>vt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>走行距離の拘束から達しうる終点速度を算出する関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a_max</td><td>最大加速度の大きさ [m/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vs</td><td>始点速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vt</td><td>目標速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">d</td><td>走行距離 [m] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>ve 終点速度 [m/s] </dd></dl>
+<div class="fragment"><div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                                       {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="comment">/* 速度が曲線となる部分の時間を決定 */</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> tc = a_max / j_max;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="comment">/* 最大加速度の符号を決定 */</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> = (vt &gt; vs) ? a_max : -a_max;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> = (vt &gt; vs) ? j_max : -j_max;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="comment">/* 等加速度直線運動の有無で分岐 */</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> d_triangle = (vs + <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * tc / 2) * tc;  <span class="comment">//&lt; distance @ tm == 0</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> v_triangle = <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> / <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * d - vs;         <span class="comment">//&lt; v_end @ tm == 0</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="comment">// ctrl_logd &lt;&lt; &quot;d_tri: &quot; &lt;&lt; d_triangle &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="comment">// ctrl_logd &lt;&lt; &quot;v_tri: &quot; &lt;&lt; v_triangle &lt;&lt; std::endl;</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordflow">if</span> (d * v_triangle &gt; 0 &amp;&amp; std::abs(d) &gt; std::abs(d_triangle)) {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;      <span class="comment">/* 曲線・直線・曲線 */</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <a class="code" href="accel__curve_8h.html#a0e76eb7f641be745466d7ddab3ce0a4a">ctrl_logd</a> &lt;&lt; <span class="stringliteral">&quot;v: curve - straight - curve&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      <span class="comment">/* 2次方程式の解の公式を解く */</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> amtc = <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * tc;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> D = amtc * amtc - 4 * (amtc * vs - vs * vs - 2 * <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * d);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> sqrtD = std::sqrt(D);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      <span class="keywordflow">return</span> (-amtc + (d &gt; 0 ? sqrtD : -sqrtD)) / 2;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="comment">/* 曲線・曲線 (走行距離が短すぎる) */</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="comment">/* 3次方程式を解いて，終点速度を算出;</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">     * 簡単のため，値を一度すべて正に変換して，計算結果に符号を付与して返送 */</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> = std::abs(vs);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> b = (d &gt; 0 ? 1 : -1) * <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> * d * d;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> aaa_27 = <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> * <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> * <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> / 27;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> cr = 8 * aaa_27 + b / 2;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> ci_b = 8 * aaa_27 / b + 1.0f / 4;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">if</span> (ci_b &gt;= 0) {</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;      <span class="comment">/* ルートの中が非負のとき，3乗根により解を求める */</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;      <a class="code" href="accel__curve_8h.html#a0e76eb7f641be745466d7ddab3ce0a4a">ctrl_logd</a> &lt;&lt; <span class="stringliteral">&quot;v: curve - curve (accel)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> c = std::cbrt(cr + std::abs(b) * std::sqrt(ci_b));</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;      <span class="keywordflow">return</span> (d &gt; 0 ? 1 : -1) * (c + 4 * <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> * <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> / c / 9 - <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> / 3);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;      <span class="comment">/* ルートの中が負のとき，極座標変換して解を求める */</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;      <a class="code" href="accel__curve_8h.html#a0e76eb7f641be745466d7ddab3ce0a4a">ctrl_logd</a> &lt;&lt; <span class="stringliteral">&quot;v: curve - curve (decel)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> ci = std::abs(b) * std::sqrt(-ci_b);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> r = std::hypot(cr, ci);  <span class="comment">//&lt; = sqrt(cr^2 + ci^2)</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> th = std::atan2(ci, cr);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;      <span class="keywordflow">return</span> (d &gt; 0 ? 1 : -1) * (2 * std::cbrt(r) * std::cos(th / 3) - <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a> / 3);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  }</div>
+<div class="ttc" id="aaccel__curve_8h_html_a0e76eb7f641be745466d7ddab3ce0a4a"><div class="ttname"><a href="accel__curve_8h.html#a0e76eb7f641be745466d7ddab3ce0a4a">ctrl_logd</a></div><div class="ttdeci">#define ctrl_logd</div><div class="ttdef"><b>Definition:</b> accel_curve.h:48</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_a1b3a641b8186c429dfd3690d108e2507"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">ctrl::AccelCurve::a</a></div><div class="ttdeci">float a(const float t) const</div><div class="ttdoc">任意の時刻 t [s] における加速度 a [m/s/s] を返す関数</div><div class="ttdef"><b>Definition:</b> accel_curve.h:149</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1AccelCurve_adf43c07687d201eff50f2ce72cb00170_cgraph.png" border="0" usemap="#aclassctrl_1_1AccelCurve_adf43c07687d201eff50f2ce72cb00170_cgraph" alt=""/></div>
+<map name="aclassctrl_1_1AccelCurve_adf43c07687d201eff50f2ce72cb00170_cgraph" id="aclassctrl_1_1AccelCurve_adf43c07687d201eff50f2ce72cb00170_cgraph">
+<area shape="rect" title="走行距離の拘束から達しうる終点速度を算出する関数" alt="" coords="5,5,232,47"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="280,13,420,39"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4e7e0e94ff792f8917a80f67779e2dac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e7e0e94ff792f8917a80f67779e2dac">&#9670;&nbsp;</a></span>calcReachableVelocityMax()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static float ctrl::AccelCurve::calcReachableVelocityMax </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>j_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>a_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>vs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>ve</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>走行距離の拘束から達しうる最大速度を算出する関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a_max</td><td>最大加速度の大きさ [m/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">vs</td><td>始点速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ve</td><td>終点速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">d</td><td>走行距離 [m] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>vm 最大速度 [m/s] </dd></dl>
+<div class="fragment"><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                                                       {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="comment">/* 速度が曲線となる部分の時間を決定 */</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> tc = a_max / j_max;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> = (d &gt; 0) ? a_max : -a_max;  <span class="comment">//&lt; 加速方向は移動方向に依存</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="comment">/* 2次方程式の解の公式を解く */</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> amtc = <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * tc;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> D = amtc * amtc - 2 * (vs + ve) * amtc + 4 * <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * d +</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                   2 * (vs * vs + ve * ve);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">if</span> (D &lt; 0) {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;      <span class="comment">/* 拘束条件がおかしい */</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;      <a class="code" href="accel__curve_8h.html#a4a2a559eff68b46832734415ffdc472f">ctrl_loge</a> &lt;&lt; <span class="stringliteral">&quot;Error! D = &quot;</span> &lt;&lt; D &lt;&lt; <span class="stringliteral">&quot; &lt; 0&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;      <span class="comment">/* 入力のチェック */</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;      <span class="keywordflow">if</span> (vs * ve &lt; 0)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <a class="code" href="accel__curve_8h.html#a4a2a559eff68b46832734415ffdc472f">ctrl_loge</a> &lt;&lt; <span class="stringliteral">&quot;Invalid Input! vs: &quot;</span> &lt;&lt; vs &lt;&lt; <span class="stringliteral">&quot;, ve: &quot;</span> &lt;&lt; ve &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;      <span class="keywordflow">return</span> vs;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> sqrtD = std::sqrt(D);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordflow">return</span> (-amtc + (d &gt; 0 ? sqrtD : -sqrtD)) / 2;  <span class="comment">//&lt; 2次方程式の解</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  }</div>
+<div class="ttc" id="aaccel__curve_8h_html_a4a2a559eff68b46832734415ffdc472f"><div class="ttname"><a href="accel__curve_8h.html#a4a2a559eff68b46832734415ffdc472f">ctrl_loge</a></div><div class="ttdeci">#define ctrl_loge</div><div class="ttdef"><b>Definition:</b> accel_curve.h:28</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad0afbd006c12c3e1a8cbae361cbb70f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0afbd006c12c3e1a8cbae361cbb70f7">&#9670;&nbsp;</a></span>getTimeStamps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::array&lt;float, 4&gt; ctrl::AccelCurve::getTimeStamps </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>境界のタイムスタンプをまとめて取得する関数 </p>
+<div class="fragment"><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                                                 {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="keywordflow">return</span> {{<a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>, <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>, <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a>, <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>}};</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad137862ec428ec89d4fdbda323265c65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad137862ec428ec89d4fdbda323265c65">&#9670;&nbsp;</a></span>j()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::j </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">時刻</td><td>t [s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>躍度 [m/s/s/s] </dd></dl>
+<div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                               {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a>;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a>)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;      <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;      <span class="keywordflow">return</span> -<a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;      <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab6d6c0546e644f73107fc2d128a40051"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6d6c0546e644f73107fc2d128a40051">&#9670;&nbsp;</a></span>printCsv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ctrl::AccelCurve::printCsv </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>t_interval</em> = <code>1e-3f</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>std::ostream に軌道のcsvを出力する関数 </p>
+<div class="fragment"><div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                                                                      {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">float</span> t = <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>; t &lt; <a class="code" href="classctrl_1_1AccelCurve.html#abf2cd866d84dd84f0abc0698f7c0b7a2">t_end</a>(); t += t_interval) {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      os &lt;&lt; t &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code" href="classctrl_1_1AccelCurve.html#ad137862ec428ec89d4fdbda323265c65">j</a>(t) &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507">a</a>(t) &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code" href="classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf">v</a>(t) &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; <a class="code" href="classctrl_1_1AccelCurve.html#ab761cd51f88088d15431b6999a055e3b">x</a>(t)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;         &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  }</div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_ab761cd51f88088d15431b6999a055e3b"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#ab761cd51f88088d15431b6999a055e3b">ctrl::AccelCurve::x</a></div><div class="ttdeci">float x(const float t) const</div><div class="ttdoc">任意の時刻 t [s] における位置 x [m] を返す関数</div><div class="ttdef"><b>Definition:</b> accel_curve.h:183</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_abf2cd866d84dd84f0abc0698f7c0b7a2"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#abf2cd866d84dd84f0abc0698f7c0b7a2">ctrl::AccelCurve::t_end</a></div><div class="ttdeci">float t_end() const</div><div class="ttdoc">終点時刻 [s]</div><div class="ttdef"><b>Definition:</b> accel_curve.h:198</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_ad137862ec428ec89d4fdbda323265c65"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#ad137862ec428ec89d4fdbda323265c65">ctrl::AccelCurve::j</a></div><div class="ttdeci">float j(const float t) const</div><div class="ttdoc">任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数</div><div class="ttdef"><b>Definition:</b> accel_curve.h:132</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelCurve_html_ad4d9fd2b336b215dc2d63836b0d98abf"><div class="ttname"><a href="classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf">ctrl::AccelCurve::v</a></div><div class="ttdeci">float v(const float t) const</div><div class="ttdoc">任意の時刻 t [s] における速度 v [m/s] を返す関数</div><div class="ttdef"><b>Definition:</b> accel_curve.h:166</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1AccelCurve_ab6d6c0546e644f73107fc2d128a40051_cgraph.png" border="0" usemap="#aclassctrl_1_1AccelCurve_ab6d6c0546e644f73107fc2d128a40051_cgraph" alt=""/></div>
+<map name="aclassctrl_1_1AccelCurve_ab6d6c0546e644f73107fc2d128a40051_cgraph" id="aclassctrl_1_1AccelCurve_ab6d6c0546e644f73107fc2d128a40051_cgraph">
+<area shape="rect" title="std::ostream に軌道のcsvを出力する関数" alt="" coords="5,107,192,133"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#a1b3a641b8186c429dfd3690d108e2507" title="任意の時刻 t [s] における加速度 a [m/s/s] を返す関数" alt="" coords="254,5,394,32"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ad137862ec428ec89d4fdbda323265c65" title="任意の時刻 t [s] における躍度 j [m/s/s/s] を返す関数" alt="" coords="256,56,392,83"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#abf2cd866d84dd84f0abc0698f7c0b7a2" title="終点時刻 [s]" alt="" coords="240,107,408,133"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ad4d9fd2b336b215dc2d63836b0d98abf" title="任意の時刻 t [s] における速度 v [m/s] を返す関数" alt="" coords="254,157,394,184"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#ab761cd51f88088d15431b6999a055e3b" title="任意の時刻 t [s] における位置 x [m] を返す関数" alt="" coords="254,208,394,235"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab97fadb44bc1606c4ae5ab495e3a6ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab97fadb44bc1606c4ae5ab495e3a6ec8">&#9670;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ctrl::AccelCurve::reset </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>j_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>a_max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>v_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>v_end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>引数の拘束条件から曲線を生成する関数 </p>
+<p>この関数によってもれなくすべての変数が初期化される． </p><dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">j_max</td><td>最大躍度の大きさ [m/s/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">a_max</td><td>最大加速度の大きさ [m/s/s], 正であること </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_start</td><td>始点速度 [m/s] </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v_end</td><td>終点速度 [m/s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                                {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">/* 符号付きで代入 */</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> = (<a class="code" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a> &gt; v_start) ? a_max : -a_max;  <span class="comment">//&lt; 最大加速度の符号を決定</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> = (<a class="code" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a> &gt; v_start) ? j_max : -j_max;  <span class="comment">//&lt; 最大躍度の符号を決定</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">/* 初期値と最終値を代入 */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> = v_start;  <span class="comment">//&lt; 代入</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a> = <a class="code" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d">v_end</a>;    <span class="comment">//&lt; 代入</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a> = 0;        <span class="comment">//&lt; ここでは初期値をゼロとする</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <a class="code" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a> = 0;        <span class="comment">//&lt; ここでは初期値はゼロとする</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">/* 速度が曲線となる部分の時間を決定 */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> tc = a_max / j_max;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">/* 等加速度直線運動の時間を決定 */</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> tm = (<a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a> - <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a>) / <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> - tc;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">/* 等加速度直線運動の有無で分岐 */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (tm &gt; 0) {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      <span class="comment">/* 速度: 曲線 -&gt; 直線 -&gt; 曲線 */</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a> + tc;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a> + tm;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a> + tc;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> + <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * tc / 2;                 <span class="comment">//&lt; v(t) を積分</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#ab37a66908fd4c7d38762255bb09e10ba">v2</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> + <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * tm;                     <span class="comment">//&lt; v(t) を積分</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#af4f548814d42880bb4d31261bd3fcb0a">x1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a> + <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> * tc + <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * tc * tc / 6;  <span class="comment">//&lt; x(t) を積分</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#af215ce99dac4cf5d0fb5dd18c5216ee0">x2</a> = <a class="code" href="classctrl_1_1AccelCurve.html#af4f548814d42880bb4d31261bd3fcb0a">x1</a> + <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> * tm;                     <span class="comment">//&lt; x(t) を積分</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">x3</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a> + (<a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> + <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a>) / 2 * (<a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a> - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>);  <span class="comment">//&lt; v(t) グラフの台形の面積より</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      <span class="comment">/* 速度: 曲線 -&gt; 曲線 */</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> tcp = std::sqrt((<a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a> - <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a>) / <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a>);  <span class="comment">//&lt; 変曲までの時間</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a> = <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a> + tcp;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a> + tcp;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#ab37a66908fd4c7d38762255bb09e10ba">v2</a> = (<a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> + <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a>) / 2;  <span class="comment">//&lt; 対称性より中点となる</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#af4f548814d42880bb4d31261bd3fcb0a">x1</a> = <a class="code" href="classctrl_1_1AccelCurve.html#af215ce99dac4cf5d0fb5dd18c5216ee0">x2</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a> + <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> * tcp + <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> * tcp * tcp * tcp / 6;  <span class="comment">//&lt; x(t) を積分</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;      <a class="code" href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">x3</a> = <a class="code" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a> + 2 * <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> * tcp;  <span class="comment">//&lt; 速度 v(t) グラフの面積より</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  }</div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1AccelCurve_ab97fadb44bc1606c4ae5ab495e3a6ec8_cgraph.png" border="0" usemap="#aclassctrl_1_1AccelCurve_ab97fadb44bc1606c4ae5ab495e3a6ec8_cgraph" alt=""/></div>
+<map name="aclassctrl_1_1AccelCurve_ab97fadb44bc1606c4ae5ab495e3a6ec8_cgraph" id="aclassctrl_1_1AccelCurve_ab97fadb44bc1606c4ae5ab495e3a6ec8_cgraph">
+<area shape="rect" title="引数の拘束条件から曲線を生成する関数" alt="" coords="5,5,171,32"/>
+<area shape="rect" href="classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d" title="終点速度 [m/s]" alt="" coords="219,5,389,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af9188276fd6b3bb1ef67077e17b69216"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9188276fd6b3bb1ef67077e17b69216">&#9670;&nbsp;</a></span>t_0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t_0 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>曲線加速の開始時刻 [s] </p>
+<div class="fragment"><div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9b82e5bce39f0af5cf7d0f952454a3f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b82e5bce39f0af5cf7d0f952454a3f5">&#9670;&nbsp;</a></span>t_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t_1 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>等加速度直線運動の開始時刻 [s] </p>
+<div class="fragment"><div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a39cf88afd6be6f92a3442674b941a50b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39cf88afd6be6f92a3442674b941a50b">&#9670;&nbsp;</a></span>t_2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t_2 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>等加速度直線運動の終了時刻 [s] </p>
+<div class="fragment"><div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a715c71d64f80ed1827581ee782e4d5bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a715c71d64f80ed1827581ee782e4d5bc">&#9670;&nbsp;</a></span>t_3()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t_3 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>曲線加速の終了時刻 [s] </p>
+<div class="fragment"><div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abf2cd866d84dd84f0abc0698f7c0b7a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf2cd866d84dd84f0abc0698f7c0b7a2">&#9670;&nbsp;</a></span>t_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>終点時刻 [s] </p>
+<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad4d9fd2b336b215dc2d63836b0d98abf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4d9fd2b336b215dc2d63836b0d98abf">&#9670;&nbsp;</a></span>v()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::v </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>任意の時刻 t [s] における速度 v [m/s] を返す関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">時刻</td><td>t [s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>速度 [m/s] </dd></dl>
+<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                               {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> + <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> / 2 * (t - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>) * (t - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a>)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> + <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> * (t - <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a> - <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> / 2 * (t - <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>) * (t - <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af73825bac09e7f049919931538e0dc2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af73825bac09e7f049919931538e0dc2d">&#9670;&nbsp;</a></span>v_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::v_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>終点速度 [m/s] </p>
+<div class="fragment"><div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab761cd51f88088d15431b6999a055e3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab761cd51f88088d15431b6999a055e3b">&#9670;&nbsp;</a></span>x()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::x </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>任意の時刻 t [s] における位置 x [m] を返す関数 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">時刻</td><td>t [s] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>位置 [m] </dd></dl>
+<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                               {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a> + <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> * (t - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">x0</a> + <a class="code" href="classctrl_1_1AccelCurve.html#ae9877ad9aa656ad74a3ca7a65207cc1d">v0</a> * (t - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>) + <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> / 6 * (t - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>) * (t - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>) * (t - <a class="code" href="classctrl_1_1AccelCurve.html#afec0e015c170016288269ba559c17f7c">t0</a>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#a225fbdce193c4a7228692ddcf73bd7a5">t2</a>)</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#af4f548814d42880bb4d31261bd3fcb0a">x1</a> + <a class="code" href="classctrl_1_1AccelCurve.html#a7fc333258045f78a665ef1966b5b8fa2">v1</a> * (t - <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>) + <a class="code" href="classctrl_1_1AccelCurve.html#a0ae269b0d420532ee42fd29fcced22de">am</a> / 2 * (t - <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>) * (t - <a class="code" href="classctrl_1_1AccelCurve.html#a2f2abf5505ba4f9b6926b1438fd5bbbe">t1</a>);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (t &lt;= <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">x3</a> + <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a> * (t - <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>) - <a class="code" href="classctrl_1_1AccelCurve.html#aa40f8dd8a49ecd8c301a396feaa752ea">jm</a> / 6 * (t - <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>) * (t - <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>) * (t - <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">x3</a> + <a class="code" href="classctrl_1_1AccelCurve.html#ad2c451f3199b3113b85f53cb064546e3">v3</a> * (t - <a class="code" href="classctrl_1_1AccelCurve.html#abac5acfdaa9b6188379b3354f87077e2">t3</a>);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa9d3f42f4a47ed867575e823faefb300"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9d3f42f4a47ed867575e823faefb300">&#9670;&nbsp;</a></span>x_end()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::x_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>終点位置 [m] </p>
+<div class="fragment"><div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957">x3</a>; }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">フレンドと関連関数の詳解</h2>
+<a id="a890cb8fafdcc5e96c71efe23aa36d115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890cb8fafdcc5e96c71efe23aa36d115">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classctrl_1_1AccelCurve.html">AccelCurve</a> &amp;&#160;</td>
+          <td class="paramname"><em>obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>情報の表示 </p>
+<div class="fragment"><div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                                                                       {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;AccelCurve &quot;</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tvs: &quot;</span> &lt;&lt; obj.v0;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tve: &quot;</span> &lt;&lt; obj.v3;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tt0: &quot;</span> &lt;&lt; obj.t0;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tt1: &quot;</span> &lt;&lt; obj.t1;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tt2: &quot;</span> &lt;&lt; obj.t2;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\tt3: &quot;</span> &lt;&lt; obj.t3;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    os &lt;&lt; <span class="stringliteral">&quot;\td: &quot;</span> &lt;&lt; obj.x3 - obj.x0;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">return</span> os;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a0ae269b0d420532ee42fd29fcced22de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ae269b0d420532ee42fd29fcced22de">&#9670;&nbsp;</a></span>am</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::am</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>加速度定数 [m/s/s] </p>
+
+</div>
+</div>
+<a id="aa40f8dd8a49ecd8c301a396feaa752ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa40f8dd8a49ecd8c301a396feaa752ea">&#9670;&nbsp;</a></span>jm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::jm</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>躍度定数 [m/s/s/s] </p>
+
+</div>
+</div>
+<a id="afec0e015c170016288269ba559c17f7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afec0e015c170016288269ba559c17f7c">&#9670;&nbsp;</a></span>t0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f2abf5505ba4f9b6926b1438fd5bbbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f2abf5505ba4f9b6926b1438fd5bbbe">&#9670;&nbsp;</a></span>t1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a225fbdce193c4a7228692ddcf73bd7a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a225fbdce193c4a7228692ddcf73bd7a5">&#9670;&nbsp;</a></span>t2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abac5acfdaa9b6188379b3354f87077e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abac5acfdaa9b6188379b3354f87077e2">&#9670;&nbsp;</a></span>t3</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::t3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>時刻定数 [s] </p>
+
+</div>
+</div>
+<a id="ae9877ad9aa656ad74a3ca7a65207cc1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9877ad9aa656ad74a3ca7a65207cc1d">&#9670;&nbsp;</a></span>v0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::v0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7fc333258045f78a665ef1966b5b8fa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fc333258045f78a665ef1966b5b8fa2">&#9670;&nbsp;</a></span>v1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::v1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab37a66908fd4c7d38762255bb09e10ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37a66908fd4c7d38762255bb09e10ba">&#9670;&nbsp;</a></span>v2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::v2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2c451f3199b3113b85f53cb064546e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2c451f3199b3113b85f53cb064546e3">&#9670;&nbsp;</a></span>v3</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::v3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>速度定数 [m/s] </p>
+
+</div>
+</div>
+<a id="a3efb6ee4a7ad047d7b2d7ac7b080bc7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3efb6ee4a7ad047d7b2d7ac7b080bc7c">&#9670;&nbsp;</a></span>x0</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::x0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af4f548814d42880bb4d31261bd3fcb0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4f548814d42880bb4d31261bd3fcb0a">&#9670;&nbsp;</a></span>x1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::x1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af215ce99dac4cf5d0fb5dd18c5216ee0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af215ce99dac4cf5d0fb5dd18c5216ee0">&#9670;&nbsp;</a></span>x2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::x2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0091a0442cd827c582bccffe9739f957"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0091a0442cd827c582bccffe9739f957">&#9670;&nbsp;</a></span>x3</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::AccelCurve::x3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>位置定数 [m] </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>ctrl/<a class="el" href="accel__curve_8h_source.html">accel_curve.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

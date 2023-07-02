@@ -1,0 +1,4 @@
+<map id="ctrl::AccelCurve::calcDistanceFromVelocityStartToEnd" name="ctrl::AccelCurve::calcDistanceFromVelocityStartToEnd">
+<area shape="rect" id="node1" title="速度差の拘束から達しうる変位を算出する関数" alt="" coords="5,5,220,47"/>
+<area shape="rect" id="node2" href="$classctrl_1_1AccelCurve.html#af73825bac09e7f049919931538e0dc2d" title="終点速度 [m/s]" alt="" coords="268,13,439,39"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="ctrl::TrajectoryTracker::update" name="ctrl::TrajectoryTracker::update">
+<area shape="rect" id="node1" title="制御入力の計算" alt="" coords="5,5,167,47"/>
+<area shape="rect" id="node2" href="$classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985" title="自作の sinc 関数 sinc(x) := sin(x) / x" alt="" coords="215,5,376,47"/>
+</map>

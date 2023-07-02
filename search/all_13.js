@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['y_106',['y',['../d3/d14/structctrl_1_1Pose.html#a24c74beee36f9b2a6398bd49aa0c3c29',1,'ctrl::Pose']]]
+  ['u_131',['u',['../structctrl_1_1FeedbackController_1_1Breakdown.html#a94b32630c0389e36a99cb1e2c76c20ef',1,'ctrl::FeedbackController::Breakdown']]],
+  ['update_132',['update',['../classctrl_1_1FeedbackController.html#a4a432aaadc727ba1dac60cb0cbb26c3d',1,'ctrl::FeedbackController::update()'],['../classctrl_1_1slalom_1_1Trajectory.html#aef5cabb9cff7bd405b3cd8a70879112a',1,'ctrl::slalom::Trajectory::update()'],['../classctrl_1_1straight_1_1Trajectory.html#ac3c82b5ea48e6dc293eda9f5d6c8ab47',1,'ctrl::straight::Trajectory::update()'],['../classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d',1,'ctrl::TrajectoryTracker::update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const State &amp;ref_s, const float Ts=kIntegrationPeriodDefault)'],['../classctrl_1_1TrajectoryTracker.html#a9781a0c4c3b71ba0466686dd6db63bef',1,'ctrl::TrajectoryTracker::update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const Pose &amp;ref_q, const Pose &amp;ref_dq, const Pose &amp;ref_ddq, const Pose &amp;ref_dddq, const float Ts=kIntegrationPeriodDefault)']]]
 ];

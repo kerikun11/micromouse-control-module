@@ -1,0 +1,647 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl::TrajectoryTracker クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacectrl.html">ctrl</a></li><li class="navelem"><a class="el" href="classctrl_1_1TrajectoryTracker.html">TrajectoryTracker</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#pub-static-attribs">静的公開変数類</a> &#124;
+<a href="#pro-attribs">限定公開変数類</a> &#124;
+<a href="classctrl_1_1TrajectoryTracker-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">ctrl::TrajectoryTracker クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>独立2輪車の軌道追従フィードバック制御器  
+ <a href="classctrl_1_1TrajectoryTracker.html#details">[詳解]</a></p>
+
+<p><code>#include &lt;<a class="el" href="trajectory__tracker_8h_source.html">trajectory_tracker.h</a>&gt;</code></p>
+<div class="dynheader">
+ctrl::TrajectoryTracker 連携図</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1TrajectoryTracker__coll__graph.png" border="0" usemap="#actrl_1_1TrajectoryTracker_coll__map" alt="Collaboration graph"/></div>
+<map name="actrl_1_1TrajectoryTracker_coll__map" id="actrl_1_1TrajectoryTracker_coll__map">
+<area shape="rect" title="独立2輪車の軌道追従フィードバック制御器" alt="" coords="5,109,167,136"/>
+<area shape="rect" href="structctrl_1_1TrajectoryTracker_1_1Gain.html" title="フィードバックゲインを格納する構造体" alt="" coords="5,5,167,47"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">凡例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+クラス</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードバックゲインを格納する構造体  <a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">計算結果を格納する構造体  <a href="structctrl_1_1TrajectoryTracker_1_1Result.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a2b34f49628394d5313c38fd6eeee0a06"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a2b34f49628394d5313c38fd6eeee0a06">TrajectoryTracker</a> (const <a class="el" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a> &amp;<a class="el" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>, const float <a class="el" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a>=<a class="el" href="classctrl_1_1TrajectoryTracker.html#a2bc5174b98964dcc2b250e74c5b4b4ef">kXiThresholdDefault</a>)</td></tr>
+<tr class="memdesc:a2b34f49628394d5313c38fd6eeee0a06"><td class="mdescLeft">&#160;</td><td class="mdescRight">コンストラクタ  <a href="classctrl_1_1TrajectoryTracker.html#a2b34f49628394d5313c38fd6eeee0a06">[詳解]</a><br /></td></tr>
+<tr class="separator:a2b34f49628394d5313c38fd6eeee0a06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651ed72d050a7567f2dee2493d0272e0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a651ed72d050a7567f2dee2493d0272e0">reset</a> (const float vs=0)</td></tr>
+<tr class="memdesc:a651ed72d050a7567f2dee2493d0272e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">状態の初期化  <a href="classctrl_1_1TrajectoryTracker.html#a651ed72d050a7567f2dee2493d0272e0">[詳解]</a><br /></td></tr>
+<tr class="separator:a651ed72d050a7567f2dee2493d0272e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d049bc83cd303ec45a924aba713c2d"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d">update</a> (const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;est_q, const <a class="el" href="structctrl_1_1Polar.html">Polar</a> &amp;est_v, const <a class="el" href="structctrl_1_1Polar.html">Polar</a> &amp;est_a, const <a class="el" href="structctrl_1_1State.html">State</a> &amp;ref_s, const float Ts=<a class="el" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">kIntegrationPeriodDefault</a>)</td></tr>
+<tr class="memdesc:a33d049bc83cd303ec45a924aba713c2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">制御入力の計算  <a href="classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d">[詳解]</a><br /></td></tr>
+<tr class="separator:a33d049bc83cd303ec45a924aba713c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9781a0c4c3b71ba0466686dd6db63bef"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a9781a0c4c3b71ba0466686dd6db63bef">update</a> (const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;est_q, const <a class="el" href="structctrl_1_1Polar.html">Polar</a> &amp;est_v, const <a class="el" href="structctrl_1_1Polar.html">Polar</a> &amp;est_a, const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;ref_q, const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;ref_dq, const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;ref_ddq, const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;ref_dddq, const float Ts=<a class="el" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">kIntegrationPeriodDefault</a>)</td></tr>
+<tr class="memdesc:a9781a0c4c3b71ba0466686dd6db63bef"><td class="mdescLeft">&#160;</td><td class="mdescRight">制御入力の計算  <a href="classctrl_1_1TrajectoryTracker.html#a9781a0c4c3b71ba0466686dd6db63bef">[詳解]</a><br /></td></tr>
+<tr class="separator:a9781a0c4c3b71ba0466686dd6db63bef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:a686dedb83d169045dfbe3a2c31f31985"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">sinc</a> (const float x)</td></tr>
+<tr class="memdesc:a686dedb83d169045dfbe3a2c31f31985"><td class="mdescLeft">&#160;</td><td class="mdescRight">自作の sinc 関数 sinc(x) := sin(x) / x  <a href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">[詳解]</a><br /></td></tr>
+<tr class="separator:a686dedb83d169045dfbe3a2c31f31985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+静的公開変数類</h2></td></tr>
+<tr class="memitem:ac2f315d6bfd8306fc26f22e4a7185c64"><td class="memItemLeft" align="right" valign="top">static constexpr const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">kIntegrationPeriodDefault</a> = 1e-3f</td></tr>
+<tr class="memdesc:ac2f315d6bfd8306fc26f22e4a7185c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">制御周期（積分周期）のデフォルト値 [s]  <a href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">[詳解]</a><br /></td></tr>
+<tr class="separator:ac2f315d6bfd8306fc26f22e4a7185c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bc5174b98964dcc2b250e74c5b4b4ef"><td class="memItemLeft" align="right" valign="top">static constexpr const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a2bc5174b98964dcc2b250e74c5b4b4ef">kXiThresholdDefault</a> = 150.0f</td></tr>
+<tr class="memdesc:a2bc5174b98964dcc2b250e74c5b4b4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">制御則の切り替え閾値のデフォルト値 [mm/s]  <a href="classctrl_1_1TrajectoryTracker.html#a2bc5174b98964dcc2b250e74c5b4b4ef">[詳解]</a><br /></td></tr>
+<tr class="separator:a2bc5174b98964dcc2b250e74c5b4b4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+限定公開変数類</h2></td></tr>
+<tr class="memitem:a6a95bfcfdc5dba1a19299f30ab048f37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a></td></tr>
+<tr class="memdesc:a6a95bfcfdc5dba1a19299f30ab048f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">フィードバックゲイン  <a href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">[詳解]</a><br /></td></tr>
+<tr class="separator:a6a95bfcfdc5dba1a19299f30ab048f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a448be733897440c2706de700e978ef0e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a></td></tr>
+<tr class="memdesc:a448be733897440c2706de700e978ef0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">補助状態変数  <a href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">[詳解]</a><br /></td></tr>
+<tr class="separator:a448be733897440c2706de700e978ef0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a088bc05a02fa50faf0377d54ff6e80da"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a></td></tr>
+<tr class="memdesc:a088bc05a02fa50faf0377d54ff6e80da"><td class="mdescLeft">&#160;</td><td class="mdescRight">制御則を切り替える閾値  <a href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">[詳解]</a><br /></td></tr>
+<tr class="separator:a088bc05a02fa50faf0377d54ff6e80da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>独立2輪車の軌道追従フィードバック制御器 </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="a2b34f49628394d5313c38fd6eeee0a06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b34f49628394d5313c38fd6eeee0a06">&#9670;&nbsp;</a></span>TrajectoryTracker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ctrl::TrajectoryTracker::TrajectoryTracker </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a> &amp;&#160;</td>
+          <td class="paramname"><em>gain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>xi_threshold</em> = <code><a class="el" href="classctrl_1_1TrajectoryTracker.html#a2bc5174b98964dcc2b250e74c5b4b4ef">kXiThresholdDefault</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>コンストラクタ </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>軌道追従フィードバックゲイン </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">xi_threshold</td><td>制御則を切り替える閾値 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      : <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>(<a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>), <a class="code" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a>(<a class="code" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a>) {}</div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a088bc05a02fa50faf0377d54ff6e80da"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">ctrl::TrajectoryTracker::xi_threshold</a></div><div class="ttdeci">float xi_threshold</div><div class="ttdoc">制御則を切り替える閾値</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:185</div></div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a6a95bfcfdc5dba1a19299f30ab048f37"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">ctrl::TrajectoryTracker::gain</a></div><div class="ttdeci">Gain gain</div><div class="ttdoc">フィードバックゲイン</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:183</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a651ed72d050a7567f2dee2493d0272e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651ed72d050a7567f2dee2493d0272e0">&#9670;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ctrl::TrajectoryTracker::reset </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>vs</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>状態の初期化 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">vs</td><td>初期並進速度 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{ <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a> = vs; }</div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a448be733897440c2706de700e978ef0e"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">ctrl::TrajectoryTracker::xi</a></div><div class="ttdeci">float xi</div><div class="ttdoc">補助状態変数</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:184</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a686dedb83d169045dfbe3a2c31f31985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a686dedb83d169045dfbe3a2c31f31985">&#9670;&nbsp;</a></span>sinc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr float ctrl::TrajectoryTracker::sinc </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>自作の sinc 関数 sinc(x) := sin(x) / x </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>sinc(x) </dd></dl>
+<div class="fragment"><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                                             {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> xx = x * x;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> xxxx = xx * xx;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> xxxx * xxxx / 362880 - xxxx * xx / 5040 + xxxx / 120 - xx / 6 + 1;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9781a0c4c3b71ba0466686dd6db63bef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9781a0c4c3b71ba0466686dd6db63bef">&#9670;&nbsp;</a></span>update() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a> ctrl::TrajectoryTracker::update </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>est_q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Polar.html">Polar</a> &amp;&#160;</td>
+          <td class="paramname"><em>est_v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Polar.html">Polar</a> &amp;&#160;</td>
+          <td class="paramname"><em>est_a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref_q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref_dq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref_ddq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref_dddq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>Ts</em> = <code><a class="el" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">kIntegrationPeriodDefault</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>制御入力の計算 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_q</td><td>推定位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_v</td><td>推定速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_a</td><td>推定加速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_q</td><td>目標位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_dq</td><td>目標速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_ddq</td><td>目標加速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_dddq</td><td>目標躍度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Ts</td><td>制御周期 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>u 制御入力 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                                                  {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">/* Prepare Variable */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> x = est_q.x;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> y = est_q.y;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> theta = est_q.th;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> cos_theta = std::cos(theta);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> sin_theta = std::sin(theta);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dx = est_v.tra * cos_theta;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dy = est_v.tra * sin_theta;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ddx = est_a.tra * cos_theta;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ddy = est_a.tra * sin_theta;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">/* Feedback Gain Design */</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> zeta = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#acb9ea488d407569f32afe4f34fc2414b">zeta</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> omega_n = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#ac697b878fabba5549fc585558fc8aa9c">omega_n</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> kx = omega_n * omega_n;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> kdx = 2 * zeta * omega_n;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ky = kx;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> kdy = kdx;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment">/* Determine Reference */</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dddx_r = ref_dddq.x;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dddy_r = ref_dddq.y;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ddx_r = ref_ddq.x;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> ddy_r = ref_ddq.y;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dx_r = ref_dq.x;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> dy_r = ref_dq.y;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> x_r = ref_q.x;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> y_r = ref_q.y;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> th_r = ref_q.th;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> cos_th_r = std::cos(th_r);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> sin_th_r = std::sin(th_r);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> u1 = ddx_r + kdx * (dx_r - dx) + kx * (x_r - x);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> u2 = ddy_r + kdy * (dy_r - dy) + ky * (y_r - y);</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> du1 = dddx_r + kdx * (ddx_r - ddx) + kx * (dx_r - dx);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> du2 = dddy_r + kdy * (ddy_r - ddy) + ky * (dy_r - dy);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> d_xi = u1 * cos_th_r + u2 * sin_th_r;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="comment">/* integral the state(s) */</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a> += d_xi * Ts;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="comment">/* determine the output signal */</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    Result res;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span> (std::abs(<a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>) &lt; <a class="code" href="classctrl_1_1TrajectoryTracker.html#a088bc05a02fa50faf0377d54ff6e80da">xi_threshold</a>) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> b = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a28efbe7c12da57f32681557848630933">low_b</a>;        <span class="comment">//&lt; b &gt; 0</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> zeta = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a6a95bfcfdc5dba1a19299f30ab048f37">gain</a>.<a class="code" href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a46e8cb222e099f4511bcdc7bdc0f03c1">low_zeta</a>;  <span class="comment">//&lt; zeta \in [0,1]</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> v_d = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> w_d = ref_dq.th;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> k1 = 2 * zeta * std::sqrt(w_d * w_d + b * v_d * v_d);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> k2 = b;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> k3 = k1;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> v = v_d * std::cos(th_r - theta) +</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                     k1 * (cos_theta * (x_r - x) + sin_theta * (y_r - y));</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;      <span class="keyword">const</span> <span class="keyword">auto</span> w = w_d +</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                     k2 * v_d * <a class="code" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">sinc</a>(th_r - theta) *</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                         (-sin_theta * (x_r - x) + cos_theta * (y_r - y)) +</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                     k3 * (th_r - theta);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;      res.v = v;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      res.w = w;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      res.dw = ref_ddq.th;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;      <span class="comment">// res.v = ref_dq.x * cos_th_r + ref_dq.y * sin_th_r;</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;      <span class="comment">// res.w = red_dq.th;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;      <span class="comment">// res.dv = ref_ddq.x * cos_th_r + ref_ddq.y * sin_th_r;</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;      <span class="comment">// res.dw = ref_ddq.th;</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;      res.v = <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;      res.dv = d_xi;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;      res.w = (u2 * cos_th_r - u1 * sin_th_r) / <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;      res.dw = -(2 * d_xi * res.w + du1 * sin_th_r - du2 * cos_th_r) / <a class="code" href="classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e">xi</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> res;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  }</div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a686dedb83d169045dfbe3a2c31f31985"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985">ctrl::TrajectoryTracker::sinc</a></div><div class="ttdeci">static constexpr float sinc(const float x)</div><div class="ttdoc">自作の sinc 関数 sinc(x) := sin(x) / x</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:58</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html_a28efbe7c12da57f32681557848630933"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a28efbe7c12da57f32681557848630933">ctrl::TrajectoryTracker::Gain::low_b</a></div><div class="ttdeci">float low_b</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:41</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html_a46e8cb222e099f4511bcdc7bdc0f03c1"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#a46e8cb222e099f4511bcdc7bdc0f03c1">ctrl::TrajectoryTracker::Gain::low_zeta</a></div><div class="ttdeci">float low_zeta</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:40</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html_ac697b878fabba5549fc585558fc8aa9c"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#ac697b878fabba5549fc585558fc8aa9c">ctrl::TrajectoryTracker::Gain::omega_n</a></div><div class="ttdeci">float omega_n</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:39</div></div>
+<div class="ttc" id="astructctrl_1_1TrajectoryTracker_1_1Gain_html_acb9ea488d407569f32afe4f34fc2414b"><div class="ttname"><a href="structctrl_1_1TrajectoryTracker_1_1Gain.html#acb9ea488d407569f32afe4f34fc2414b">ctrl::TrajectoryTracker::Gain::zeta</a></div><div class="ttdeci">float zeta</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:38</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="classctrl_1_1TrajectoryTracker_a9781a0c4c3b71ba0466686dd6db63bef_cgraph.png" border="0" usemap="#aclassctrl_1_1TrajectoryTracker_a9781a0c4c3b71ba0466686dd6db63bef_cgraph" alt=""/></div>
+<map name="aclassctrl_1_1TrajectoryTracker_a9781a0c4c3b71ba0466686dd6db63bef_cgraph" id="aclassctrl_1_1TrajectoryTracker_a9781a0c4c3b71ba0466686dd6db63bef_cgraph">
+<area shape="rect" title="制御入力の計算" alt="" coords="5,5,167,47"/>
+<area shape="rect" href="classctrl_1_1TrajectoryTracker.html#a686dedb83d169045dfbe3a2c31f31985" title="自作の sinc 関数 sinc(x) := sin(x) / x" alt="" coords="215,5,376,47"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a33d049bc83cd303ec45a924aba713c2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d049bc83cd303ec45a924aba713c2d">&#9670;&nbsp;</a></span>update() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structctrl_1_1TrajectoryTracker_1_1Result.html">Result</a> ctrl::TrajectoryTracker::update </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Pose.html">Pose</a> &amp;&#160;</td>
+          <td class="paramname"><em>est_q</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Polar.html">Polar</a> &amp;&#160;</td>
+          <td class="paramname"><em>est_v</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1Polar.html">Polar</a> &amp;&#160;</td>
+          <td class="paramname"><em>est_a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structctrl_1_1State.html">State</a> &amp;&#160;</td>
+          <td class="paramname"><em>ref_s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>Ts</em> = <code><a class="el" href="classctrl_1_1TrajectoryTracker.html#ac2f315d6bfd8306fc26f22e4a7185c64">kIntegrationPeriodDefault</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>制御入力の計算 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_q</td><td>推定位置 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_v</td><td>推定速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">est_a</td><td>推定加速度 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ref_s</td><td>目標状態 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">Ts</td><td>制御周期 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>u 制御入力 </dd></dl>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                                  {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d">update</a>(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq, ref_s.dddq,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                  Ts);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  }</div>
+<div class="ttc" id="aclassctrl_1_1TrajectoryTracker_html_a33d049bc83cd303ec45a924aba713c2d"><div class="ttname"><a href="classctrl_1_1TrajectoryTracker.html#a33d049bc83cd303ec45a924aba713c2d">ctrl::TrajectoryTracker::update</a></div><div class="ttdeci">const Result update(const Pose &amp;est_q, const Polar &amp;est_v, const Polar &amp;est_a, const State &amp;ref_s, const float Ts=kIntegrationPeriodDefault)</div><div class="ttdoc">制御入力の計算</div><div class="ttdef"><b>Definition:</b> trajectory_tracker.h:90</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">メンバ詳解</h2>
+<a id="a6a95bfcfdc5dba1a19299f30ab048f37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a95bfcfdc5dba1a19299f30ab048f37">&#9670;&nbsp;</a></span>gain</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structctrl_1_1TrajectoryTracker_1_1Gain.html">Gain</a> ctrl::TrajectoryTracker::gain</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フィードバックゲイン </p>
+
+</div>
+</div>
+<a id="ac2f315d6bfd8306fc26f22e4a7185c64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f315d6bfd8306fc26f22e4a7185c64">&#9670;&nbsp;</a></span>kIntegrationPeriodDefault</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const float ctrl::TrajectoryTracker::kIntegrationPeriodDefault = 1e-3f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>制御周期（積分周期）のデフォルト値 [s] </p>
+
+</div>
+</div>
+<a id="a2bc5174b98964dcc2b250e74c5b4b4ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bc5174b98964dcc2b250e74c5b4b4ef">&#9670;&nbsp;</a></span>kXiThresholdDefault</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr const float ctrl::TrajectoryTracker::kXiThresholdDefault = 150.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>制御則の切り替え閾値のデフォルト値 [mm/s] </p>
+
+</div>
+</div>
+<a id="a448be733897440c2706de700e978ef0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a448be733897440c2706de700e978ef0e">&#9670;&nbsp;</a></span>xi</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::TrajectoryTracker::xi</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>補助状態変数 </p>
+
+</div>
+</div>
+<a id="a088bc05a02fa50faf0377d54ff6e80da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a088bc05a02fa50faf0377d54ff6e80da">&#9670;&nbsp;</a></span>xi_threshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float ctrl::TrajectoryTracker::xi_threshold</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>制御則を切り替える閾値 </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>ctrl/<a class="el" href="trajectory__tracker_8h_source.html">trajectory_tracker.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

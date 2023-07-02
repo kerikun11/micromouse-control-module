@@ -1,6 +1,0 @@
-<map id="ctrl::FeedbackController&lt; T &gt;" name="ctrl::FeedbackController&lt; T &gt;">
-<area shape="rect" id="node1" title="1次フィードフォワード補償付きフィードバック制御器クラス" alt="" coords="252,78,467,105"/>
-<area shape="rect" id="node2" href="$d1/d73/structctrl_1_1FeedbackController_1_1Breakdown.html" title="制御入力の成分内訳． ゲインチューニングの際に可視化するために使用する．" alt="" coords="5,5,183,47"/>
-<area shape="rect" id="node3" href="$da/d79/structctrl_1_1FeedbackController_1_1Gain.html" title="フィードバック成分に使用するPIDゲイン 使用しない成分は，0に設定すること．" alt="" coords="5,71,183,112"/>
-<area shape="rect" id="node4" href="$d8/d7e/structctrl_1_1FeedbackController_1_1Model.html" title="フィードフォワード成分に使用する1次モデル" alt="" coords="5,136,183,177"/>
-</map>

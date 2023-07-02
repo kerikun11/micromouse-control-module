@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MicroMouse Control Module: ctrl/slalom/trajectory.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MicroMouse Control Module
+   &#160;<span id="projectnumber">v1.3.2</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_60c668f4b51723b2f4c482e06fdf6f37.html">ctrl</a></li><li class="navelem"><a class="el" href="dir_32f9f8e03cf25b09ae242dba7348f09f.html">slalom</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">trajectory.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="slalom_2trajectory_8h.html">[詳解]</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="slalom_8h.html">ctrl/slalom/slalom.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacectrl.html">ctrl</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span>slalom {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classctrl_1_1slalom_1_1Trajectory.html">Trajectory</a> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#a7e641265c69482a7ba28ac22683a8d6b">   35</a></span>&#160;  <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a7e641265c69482a7ba28ac22683a8d6b">Trajectory</a>(<span class="keyword">const</span> <a class="code" href="structctrl_1_1slalom_1_1Shape.html">Shape</a>&amp; <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>, <span class="keyword">const</span> <span class="keywordtype">bool</span> mirror_x = <span class="keyword">false</span>) : <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>(<a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>) {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (mirror_x) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;      this-&gt;shape.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a> = <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">curve</a>.<a class="code" href="structctrl_1_1Pose.html#a3f2f53d8b1f9dee8fcf8b52c0b1b3d23">mirror_x</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      this-&gt;shape.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a> = <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>.<a class="code" href="structctrl_1_1Pose.html#a3f2f53d8b1f9dee8fcf8b52c0b1b3d23">mirror_x</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#a4f8cfb2453f73fc27cb5708a2741a54a">   48</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a4f8cfb2453f73fc27cb5708a2741a54a">reset</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">velocity</a>, <span class="keyword">const</span> <span class="keywordtype">float</span> th_start = 0,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;             <span class="keyword">const</span> <span class="keywordtype">float</span> t_start = 0) {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    this-&gt;velocity = <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">velocity</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> gain = <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">velocity</a> / <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">v_ref</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a4c36cfd1e4fd67c788b9f9e8cb0c4420">ad</a>.<a class="code" href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc">reset</a>(gain * gain * gain * <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">dddth_max</a>, gain * gain * <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ddth_max</a>,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;             gain * <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">dth_max</a>, 0, 0, <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>.<a class="code" href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">total</a>.<a class="code" href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">th</a>, th_start, t_start);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#aef5cabb9cff7bd405b3cd8a70879112a">   63</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#aef5cabb9cff7bd405b3cd8a70879112a">update</a>(<a class="code" href="structctrl_1_1State.html">State</a>&amp; state, <span class="keyword">const</span> <span class="keywordtype">float</span> t, <span class="keyword">const</span> <span class="keywordtype">float</span> Ts,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">float</span> k_slip = 0)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">Shape::integrate</a>(<a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a4c36cfd1e4fd67c788b9f9e8cb0c4420">ad</a>, state, <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">velocity</a>, t, Ts, k_slip);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#a4515f6a78dfa623b41538c0da8159608">   70</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a4515f6a78dfa623b41538c0da8159608">getVelocity</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">velocity</a>; }</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#a56e0152f3d24d20219e80acfc7a0a249">   74</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a56e0152f3d24d20219e80acfc7a0a249">getTimeCurve</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a4c36cfd1e4fd67c788b9f9e8cb0c4420">ad</a>.<a class="code" href="classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f">t_end</a>(); }</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#ab187db988efc585581e3498ab669b690">   78</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="structctrl_1_1slalom_1_1Shape.html">Shape</a>&amp; <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#ab187db988efc585581e3498ab669b690">getShape</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>; }</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#a7487c3d9434cf77d595ca407e71e46ed">   82</a></span>&#160;  <span class="keyword">const</span> <a class="code" href="classctrl_1_1AccelDesigner.html">AccelDesigner</a>&amp; <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a7487c3d9434cf77d595ca407e71e46ed">getAccelDesigner</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a4c36cfd1e4fd67c788b9f9e8cb0c4420">ad</a>; }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">   85</a></span>&#160;  <a class="code" href="structctrl_1_1slalom_1_1Shape.html">Shape</a> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">shape</a>;      </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#a4c36cfd1e4fd67c788b9f9e8cb0c4420">   86</a></span>&#160;  <a class="code" href="classctrl_1_1AccelDesigner.html">AccelDesigner</a> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#a4c36cfd1e4fd67c788b9f9e8cb0c4420">ad</a>; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">   87</a></span>&#160;  <span class="keywordtype">float</span> <a class="code" href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">velocity</a>;   </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}  <span class="comment">// namespace slalom</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}  <span class="comment">// namespace ctrl</span></div>
+<div class="ttc" id="aclassctrl_1_1AccelDesigner_html"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html">ctrl::AccelDesigner</a></div><div class="ttdoc">拘束条件を満たす曲線加減速の軌道を生成するクラス</div><div class="ttdef"><b>Definition:</b> accel_designer.h:33</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelDesigner_html_a4016d1ec34a8dba19ab565878938ac3f"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#a4016d1ec34a8dba19ab565878938ac3f">ctrl::AccelDesigner::t_end</a></div><div class="ttdeci">float t_end() const</div><div class="ttdoc">終点時刻 [s]</div><div class="ttdef"><b>Definition:</b> accel_designer.h:209</div></div>
+<div class="ttc" id="aclassctrl_1_1AccelDesigner_html_affa3c260a6201c94cdd2fcc404ead6bc"><div class="ttname"><a href="classctrl_1_1AccelDesigner.html#affa3c260a6201c94cdd2fcc404ead6bc">ctrl::AccelDesigner::reset</a></div><div class="ttdeci">void reset(const float j_max, const float a_max, const float v_max, const float v_start, const float v_target, const float dist, const float x_start=0, const float t_start=0)</div><div class="ttdoc">引数の拘束条件から曲線を生成する関数</div><div class="ttdef"><b>Definition:</b> accel_designer.h:70</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html">ctrl::slalom::Trajectory</a></div><div class="ttdoc">slalom::Trajectory スラローム軌道を生成するクラス</div><div class="ttdef"><b>Definition:</b> trajectory.h:27</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_a4515f6a78dfa623b41538c0da8159608"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#a4515f6a78dfa623b41538c0da8159608">ctrl::slalom::Trajectory::getVelocity</a></div><div class="ttdeci">float getVelocity() const</div><div class="ttdoc">並進速度を取得</div><div class="ttdef"><b>Definition:</b> trajectory.h:70</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_a4c36cfd1e4fd67c788b9f9e8cb0c4420"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#a4c36cfd1e4fd67c788b9f9e8cb0c4420">ctrl::slalom::Trajectory::ad</a></div><div class="ttdeci">AccelDesigner ad</div><div class="ttdoc">角速度用の曲線加速生成器</div><div class="ttdef"><b>Definition:</b> trajectory.h:86</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_a4f8cfb2453f73fc27cb5708a2741a54a"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#a4f8cfb2453f73fc27cb5708a2741a54a">ctrl::slalom::Trajectory::reset</a></div><div class="ttdeci">void reset(const float velocity, const float th_start=0, const float t_start=0)</div><div class="ttdoc">並進速度を設定して軌道を初期化する関数</div><div class="ttdef"><b>Definition:</b> trajectory.h:48</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_a56e0152f3d24d20219e80acfc7a0a249"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#a56e0152f3d24d20219e80acfc7a0a249">ctrl::slalom::Trajectory::getTimeCurve</a></div><div class="ttdeci">float getTimeCurve() const</div><div class="ttdoc">ターンの合計時間を取得</div><div class="ttdef"><b>Definition:</b> trajectory.h:74</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_a7487c3d9434cf77d595ca407e71e46ed"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#a7487c3d9434cf77d595ca407e71e46ed">ctrl::slalom::Trajectory::getAccelDesigner</a></div><div class="ttdeci">const AccelDesigner &amp; getAccelDesigner() const</div><div class="ttdoc">角速度設計器を取得</div><div class="ttdef"><b>Definition:</b> trajectory.h:82</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_a7e641265c69482a7ba28ac22683a8d6b"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#a7e641265c69482a7ba28ac22683a8d6b">ctrl::slalom::Trajectory::Trajectory</a></div><div class="ttdeci">Trajectory(const Shape &amp;shape, const bool mirror_x=false)</div><div class="ttdoc">コンストラクタ</div><div class="ttdef"><b>Definition:</b> trajectory.h:35</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_ab187db988efc585581e3498ab669b690"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#ab187db988efc585581e3498ab669b690">ctrl::slalom::Trajectory::getShape</a></div><div class="ttdeci">const Shape &amp; getShape() const</div><div class="ttdoc">スラローム形状を取得</div><div class="ttdef"><b>Definition:</b> trajectory.h:78</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_aef5cabb9cff7bd405b3cd8a70879112a"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#aef5cabb9cff7bd405b3cd8a70879112a">ctrl::slalom::Trajectory::update</a></div><div class="ttdeci">void update(State &amp;state, const float t, const float Ts, const float k_slip=0) const</div><div class="ttdoc">軌道の更新</div><div class="ttdef"><b>Definition:</b> trajectory.h:63</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_af1726fe278382c643e7bf48790a02a6e"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e">ctrl::slalom::Trajectory::shape</a></div><div class="ttdeci">Shape shape</div><div class="ttdoc">スラロームの形状</div><div class="ttdef"><b>Definition:</b> trajectory.h:85</div></div>
+<div class="ttc" id="aclassctrl_1_1slalom_1_1Trajectory_html_af4bbe1f0c706068fcc885d0b1fa7ee6f"><div class="ttname"><a href="classctrl_1_1slalom_1_1Trajectory.html#af4bbe1f0c706068fcc885d0b1fa7ee6f">ctrl::slalom::Trajectory::velocity</a></div><div class="ttdeci">float velocity</div><div class="ttdoc">並進速度</div><div class="ttdef"><b>Definition:</b> trajectory.h:87</div></div>
+<div class="ttc" id="anamespacectrl_html"><div class="ttname"><a href="namespacectrl.html">ctrl</a></div><div class="ttdoc">制御関係の名前空間</div><div class="ttdef"><b>Definition:</b> accel_curve.h:54</div></div>
+<div class="ttc" id="aslalom_8h_html"><div class="ttname"><a href="slalom_8h.html">slalom.h</a></div><div class="ttdoc">拘束条件からスラロームを軌道生成するライブラリ</div></div>
+<div class="ttc" id="astructctrl_1_1Pose_html_a3f2f53d8b1f9dee8fcf8b52c0b1b3d23"><div class="ttname"><a href="structctrl_1_1Pose.html#a3f2f53d8b1f9dee8fcf8b52c0b1b3d23">ctrl::Pose::mirror_x</a></div><div class="ttdeci">Pose mirror_x() const</div><div class="ttdef"><b>Definition:</b> pose.h:27</div></div>
+<div class="ttc" id="astructctrl_1_1Pose_html_af5ecc24a587a445314a8ea35cbc33e42"><div class="ttname"><a href="structctrl_1_1Pose.html#af5ecc24a587a445314a8ea35cbc33e42">ctrl::Pose::th</a></div><div class="ttdeci">float th</div><div class="ttdoc">theta 成分 [rad]</div><div class="ttdef"><b>Definition:</b> pose.h:21</div></div>
+<div class="ttc" id="astructctrl_1_1State_html"><div class="ttname"><a href="structctrl_1_1State.html">ctrl::State</a></div><div class="ttdoc">軌道制御の状態変数</div><div class="ttdef"><b>Definition:</b> state.h:20</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html">ctrl::slalom::Shape</a></div><div class="ttdoc">slalom::Shape スラロームの形状を表す構造体</div><div class="ttdef"><b>Definition:</b> slalom.h:48</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a00d724e99a96480c5bd87adf2c650595"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a00d724e99a96480c5bd87adf2c650595">ctrl::slalom::Shape::v_ref</a></div><div class="ttdeci">float v_ref</div><div class="ttdoc">カーブ部分の基準速度 [m/s]</div><div class="ttdef"><b>Definition:</b> slalom.h:53</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a1338f9b449607c48ad0643298b3d1f72"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a1338f9b449607c48ad0643298b3d1f72">ctrl::slalom::Shape::total</a></div><div class="ttdeci">Pose total</div><div class="ttdoc">前後の直線を含めた移動位置姿勢</div><div class="ttdef"><b>Definition:</b> slalom.h:49</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a434e6d1806c9bb2055ba3fbf2b6923b0"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a434e6d1806c9bb2055ba3fbf2b6923b0">ctrl::slalom::Shape::curve</a></div><div class="ttdeci">Pose curve</div><div class="ttdoc">カーブ部分の移動位置姿勢</div><div class="ttdef"><b>Definition:</b> slalom.h:50</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a4e672ca813c1bcd93e89c898e0d2b190"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a4e672ca813c1bcd93e89c898e0d2b190">ctrl::slalom::Shape::integrate</a></div><div class="ttdeci">static void integrate(const AccelDesigner &amp;ad, State &amp;s, const float v, const float t, const float Ts, const float k_slip=0)</div><div class="ttdoc">軌道の積分を行う関数．ルンゲクッタ法を使用して数値積分を行う．</div><div class="ttdef"><b>Definition:</b> slalom.h:144</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a5121d4d518f300fb6f9563e5abb9258a"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a5121d4d518f300fb6f9563e5abb9258a">ctrl::slalom::Shape::dddth_max</a></div><div class="ttdeci">float dddth_max</div><div class="ttdoc">最大角躍度の大きさ [rad/s/s/s]</div><div class="ttdef"><b>Definition:</b> slalom.h:54</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_a81d848c8190f92d54415367257cf42d7"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#a81d848c8190f92d54415367257cf42d7">ctrl::slalom::Shape::ddth_max</a></div><div class="ttdeci">float ddth_max</div><div class="ttdoc">最大角加速度の大きさ [rad/s/s]</div><div class="ttdef"><b>Definition:</b> slalom.h:55</div></div>
+<div class="ttc" id="astructctrl_1_1slalom_1_1Shape_html_ae046e2a6e626fe462791e5962d5014b0"><div class="ttname"><a href="structctrl_1_1slalom_1_1Shape.html#ae046e2a6e626fe462791e5962d5014b0">ctrl::slalom::Shape::dth_max</a></div><div class="ttdeci">float dth_max</div><div class="ttdoc">最大角速度の大きさ [rad/s]</div><div class="ttdef"><b>Definition:</b> slalom.h:56</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+構築:&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

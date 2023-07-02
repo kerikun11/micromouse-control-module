@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['x_217',['x',['../d3/d14/structctrl_1_1Pose.html#a8832a75bbc82da843bcbeb1b98866fad',1,'ctrl::Pose']]],
-  ['x3_218',['x3',['../da/d97/classctrl_1_1AccelCurve.html#a0091a0442cd827c582bccffe9739f957',1,'ctrl::AccelCurve::x3()'],['../d3/dee/classctrl_1_1AccelDesigner.html#a4cdeb5cefe5ad7d591082f3934f695ae',1,'ctrl::AccelDesigner::x3()']]],
-  ['xi_219',['xi',['../dc/d23/classctrl_1_1TrajectoryTracker.html#a448be733897440c2706de700e978ef0e',1,'ctrl::TrajectoryTracker']]],
-  ['xi_5fthreshold_220',['xi_threshold',['../dc/d23/classctrl_1_1TrajectoryTracker.html#aec832143d32f6192357795d601cf87bc',1,'ctrl::TrajectoryTracker']]]
+  ['shape_277',['shape',['../classctrl_1_1slalom_1_1Trajectory.html#af1726fe278382c643e7bf48790a02a6e',1,'ctrl::slalom::Trajectory']]],
+  ['straight_5fpost_278',['straight_post',['../structctrl_1_1slalom_1_1Shape.html#aa53747854f2c8be0baa78bbc0bf2400e',1,'ctrl::slalom::Shape']]],
+  ['straight_5fprev_279',['straight_prev',['../structctrl_1_1slalom_1_1Shape.html#a9f20e0f6214c6eb0a7736d27088eea08',1,'ctrl::slalom::Shape']]]
 ];
