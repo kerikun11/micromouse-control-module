@@ -25,7 +25,6 @@ std::vector<std::pair<std::string, slalom::Shape>> shapes = {{
     {"SS_F135", slalom::Shape(Pose(45, 90, pi * 3 / 4), 80)},
     {"SS_F180", slalom::Shape(Pose(0, 90, pi), 90, 24)},
     {"SS_FV90", slalom::Shape(Pose(45 * sqrt_2, 45 * sqrt_2, pi / 2), 48)},
-    {"SS_FK90", slalom::Shape(Pose(90 * sqrt_2, 90 * sqrt_2, pi / 2), 125)},
     {"SS_FS90", slalom::Shape(Pose(45, 45, pi / 2), 44)},
 }};
 
@@ -35,8 +34,7 @@ void printDefinition(std::ostream& os, const std::string& name,
   const auto t_total =
       ad.t_end() + (s.straight_prev + s.straight_post) / s.v_ref;
   const auto sf = std::setfill(' ');
-  os << "/* " << name << " T:" << t_total << "*/" << std::endl;
-  os << "ctrl::slalom::Shape(";
+  os << "  /* " << name << " T:" << t_total << " */ ctrl::slalom::Shape(";
   for (const auto& p : {s.total, s.curve})
     os << "ctrl::Pose(" << std::setw(8) << sf << p.x << ", " << std::setw(8)
        << sf << p.y << ", " << std::setw(9) << sf << p.th << "), ";
@@ -49,6 +47,11 @@ void printDefinition(std::ostream& os, const std::string& name,
 }
 
 void printDefinitions() {
+  std::cout
+      << "  /* name    t_end                             total                 "
+         "                   , curve                                    ,  "
+         "st_prev,  st_post,    v_ref,   dth_m,  ddth_m, dddth_m */"
+      << std::endl;
   for (const auto& [name, shape] : shapes)
     printDefinition(std::cout, name, shape);
   std::cout << std::endl;

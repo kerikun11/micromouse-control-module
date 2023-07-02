@@ -54,7 +54,7 @@
 namespace ctrl {
 
 /**
- * @brief 加速曲線を生成するクラス
+ * @brief 走行距離拘束のない曲線加速の軌道を生成するクラス
  *
  * - 引数の拘束に従って加速曲線を生成する
  * - 始点速度と終点速度を滑らかにつなぐ
@@ -76,7 +76,7 @@ class AccelCurve {
   }
   /**
    * @brief とりあえずインスタンス化を行う空のコンストラクタ
-   * @details あとで reset() により初期化すること．
+   * @attention 別途 reset() により初期化すること．
    */
   AccelCurve() {
     jm = am = t0 = t1 = t2 = t3 = v0 = v1 = v2 = v3 = x0 = x1 = x2 = x3 = 0;
@@ -221,13 +221,13 @@ class AccelCurve {
    */
   float t_3() const { return t3; }
   /**
-   * @brief 境界のタイムスタンプをまとめて取得
+   * @brief 境界のタイムスタンプをまとめて取得する関数
    */
   const std::array<float, 4> getTimeStamps() const {
     return {{t0, t1, t2, t3}};
   }
   /**
-   * @brief std::ostream に軌道のcsvを出力する関数．
+   * @brief std::ostream に軌道のcsvを出力する関数
    */
   void printCsv(std::ostream& os, const float t_interval = 1e-3f) const {
     for (float t = t0; t < t_end(); t += t_interval) {
@@ -252,7 +252,7 @@ class AccelCurve {
 
  public:
   /**
-   * @brief 走行距離から達しうる終点速度を算出する関数
+   * @brief 走行距離の拘束から達しうる終点速度を算出する関数
    * @param[in] j_max 最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max 最大加速度の大きさ [m/s/s], 正であること
    * @param[in] vs    始点速度 [m/s]
@@ -305,7 +305,7 @@ class AccelCurve {
     }
   }
   /**
-   * @brief 走行距離から達しうる最大速度を算出する関数
+   * @brief 走行距離の拘束から達しうる最大速度を算出する関数
    * @param[in] j_max 最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max 最大加速度の大きさ [m/s/s], 正であること
    * @param[in] vs    始点速度 [m/s]
@@ -335,7 +335,7 @@ class AccelCurve {
     return (-amtc + (d > 0 ? sqrtD : -sqrtD)) / 2;  //< 2次方程式の解
   }
   /**
-   * @brief 速度差から変位を算出する関数
+   * @brief 速度差の拘束から達しうる変位を算出する関数
    * @param[in] j_max   最大躍度の大きさ [m/s/s/s], 正であること
    * @param[in] a_max   最大加速度の大きさ [m/s/s], 正であること
    * @param[in] v_start 始点速度 [m/s]

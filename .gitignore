@@ -1,9 +1,13 @@
-# author: Ryotaro Onuki <kerikun11+github@gmail.com>
-# description: .gitignore for a CMake Project
+## Copyright 2023 Ryotaro Onuki <kerikun11+github@gmail.com>
+## description: .gitignore for a CMake Project
 
-# build directory
+## build directory
 build
 build-*
 
-# VSCode
+## VSCode
 .vscode/*
+
+## PlatformIO
+.pio
+logs/device-monitor-*.log

@@ -4,6 +4,8 @@
  * @author Ryotaro Onuki <kerikun11+github@gmail.com>
  * @date 2019-03-31
  * @copyright Copyright 2019 Ryotaro Onuki <kerikun11+github@gmail.com>
+ * @see
+ * https://www.researchgate.net/publication/321620382_Ramsete_Articulated_and_Mobile_Robotics_for_Services_and_Technologies
  */
 #pragma once
 
@@ -22,13 +24,13 @@ namespace ctrl {
 class TrajectoryTracker {
  public:
   /**
-   * @brief 制御周期 [s]
+   * @brief 制御周期（積分周期）のデフォルト値 [s]
    */
-  static constexpr const float Ts = 1e-3f;
+  static constexpr const float kIntegrationPeriodDefault = 1e-3f;
   /**
-   * @brief 制御則の切り替え閾値 [mm/s]
+   * @brief 制御則の切り替え閾値のデフォルト値 [mm/s]
    */
-  static constexpr const float xi_threshold = 150.0f;
+  static constexpr const float kXiThresholdDefault = 150.0f;
   /**
    * @brief フィードバックゲインを格納する構造体
    */
@@ -42,9 +44,9 @@ class TrajectoryTracker {
    * @brief 計算結果を格納する構造体
    */
   struct Result {
-    float v;   //**< @brief 並進速度 [m/s]
+    float v;   //**< @brief 並進速度 [mm/s]
     float w;   //**< @brief 角速度 [rad/s]
-    float dv;  //**< @brief 並進加速度 [m/s/s]
+    float dv;  //**< @brief 並進加速度 [mm/s/s]
     float dw;  //**< @brief 角加速度 [rad/s/s]
   };
   /**
@@ -64,8 +66,11 @@ class TrajectoryTracker {
    * @brief コンストラクタ
    *
    * @param[in] gain 軌道追従フィードバックゲイン
+   * @param[in] xi_threshold 制御則を切り替える閾値
    */
-  TrajectoryTracker(const Gain& gain) : gain(gain) {}
+  TrajectoryTracker(const Gain& gain,
+                    const float xi_threshold = kXiThresholdDefault)
+      : gain(gain), xi_threshold(xi_threshold) {}
   /**
    * @brief 状態の初期化
    *
@@ -79,12 +84,14 @@ class TrajectoryTracker {
    * @param[in] est_v 推定速度
    * @param[in] est_a 推定加速度
    * @param[in] ref_s 目標状態
-   * @return 制御入力
+   * @param[in] Ts 制御周期
+   * @return u 制御入力
    */
   const Result update(const Pose& est_q, const Polar& est_v, const Polar& est_a,
-                      const State& ref_s) {
-    return update(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq,
-                  ref_s.dddq);
+                      const State& ref_s,
+                      const float Ts = kIntegrationPeriodDefault) {
+    return update(est_q, est_v, est_a, ref_s.q, ref_s.dq, ref_s.ddq, ref_s.dddq,
+                  Ts);
   }
   /**
    * @brief 制御入力の計算
@@ -96,11 +103,13 @@ class TrajectoryTracker {
    * @param[in] ref_dq 目標速度
    * @param[in] ref_ddq 目標加速度
    * @param[in] ref_dddq 目標躍度
-   * @return 制御入力
+   * @param[in] Ts 制御周期
+   * @return u 制御入力
    */
   const Result update(const Pose& est_q, const Polar& est_v, const Polar& est_a,
                       const Pose& ref_q, const Pose& ref_dq,
-                      const Pose& ref_ddq, const Pose& ref_dddq) {
+                      const Pose& ref_ddq, const Pose& ref_dddq,
+                      const float Ts = kIntegrationPeriodDefault) {
     /* Prepare Variable */
     const float x = est_q.x;
     const float y = est_q.y;
@@ -171,8 +180,9 @@ class TrajectoryTracker {
   }
 
  protected:
-  float xi;  /**< @brief 補助状態変数 */
-  Gain gain; /**< @brief フィードバックゲイン */
+  Gain gain;          /**< @brief フィードバックゲイン */
+  float xi;           /**< @brief 補助状態変数 */
+  float xi_threshold; /**< @brief 制御則を切り替える閾値 */
 };
 
 }  // namespace ctrl
